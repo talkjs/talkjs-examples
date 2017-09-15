@@ -1,9 +1,8 @@
-import React, {
-    Component
-} from "react";
-import Talk from "talkjs";
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import Talk from 'talkjs';
 
-export default class App extends Component {
+class App extends Component {
     constructor(props) {
         super(props);
         this.talkSession = undefined;
@@ -51,3 +50,5 @@ export default class App extends Component {
         </span>);
     }
 }
+
+ReactDOM.render(<App />, document.getElementById('root'));
