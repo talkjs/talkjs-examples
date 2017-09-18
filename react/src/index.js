@@ -1,12 +1,8 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import Talk from 'talkjs';
 
-(function(t,a,l,k,j,s){
-    s=a.createElement('script');s.async=1;s.src="https://cdn.talkjs.com/talk.js";a.getElementsByTagName('head')[0].appendChild(s);
-    t.Talk={ready:{then:function(c){if(l)return new l(function(r,e){k.push([c,r,e]);});k.push([c]);},catch:function(){return l&&new l();},c:k}};
-})(window,document,Promise,[]);
-
-export default class Example extends React.Component {
+class App extends Component {
     constructor(props) {
         super(props);
         this.talkSession = undefined;
@@ -14,7 +10,7 @@ export default class Example extends React.Component {
 
     componentDidMount() {
         // Promise can be `then`ed multiple times
-        window.Talk.ready
+        Talk.ready
             .then(() => {
                 const me = new Talk.User({
                     id: "12345231",
@@ -23,13 +19,13 @@ export default class Example extends React.Component {
                     photoUrl: "https://talkjs.com/docs/img/george.jpg",
                     welcomeMessage: "Hey there! How are you? :-)"
                 });
-                
+
                 this.talkSession = new Talk.Session({
                     appId: "Hku1c4Pt",
                     publishableKey: "984769823478928374",
                     me: me
                 });
-                
+
                 const other = new Talk.User({
                     id: "54321",
                     name: "Ronald Raygun",
@@ -39,7 +35,9 @@ export default class Example extends React.Component {
                 });
 
                 const conversation = this.talkSession.getOrStartConversation(other);
-                const inbox = this.talkSession.createInbox({selected: conversation});
+                const inbox = this.talkSession.createInbox({
+                    selected: conversation
+                });
                 inbox.mount(this.container);
 
             })
@@ -47,11 +45,10 @@ export default class Example extends React.Component {
     }
 
     render() {
-        return <span>
+        return (<span>
             <div ref={c => this.container = c}>Loading...</div>
-        </span>;
+        </span>);
     }
 }
 
-
-window.view = ReactDOM.render(<Example/>, document.getElementById("hello"));
+ReactDOM.render(<App />, document.getElementById('root'));
