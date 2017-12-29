@@ -10,6 +10,7 @@ TalkJS allows you to add user-to-user chat to your marketplace, on-demand app, o
 
 - [User to Operator](./user-to-operator)
 - [TalkJS + React](./react)
+- [Unread Counter](./unreads)
 
 ## Docs
 
