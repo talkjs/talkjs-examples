@@ -22,7 +22,6 @@ class App extends Component {
 
                 this.talkSession = new Talk.Session({
                     appId: "Hku1c4Pt",
-                    publishableKey: "984769823478928374",
                     me: me
                 });
 
