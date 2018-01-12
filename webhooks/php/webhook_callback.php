@@ -16,6 +16,7 @@ switch ($event->type) {
         // send a custom email somewhere
         break;
     default:
-        // this wouldn't happen :)
+        // other events that you don't need falls here
+        // save it or ignore it, according to your needs.
         break;
 }
