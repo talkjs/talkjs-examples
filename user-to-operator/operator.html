@@ -42,11 +42,12 @@ t.Talk={ready:{then:function(f){if(k)return new k(function(r,e){l.push([f,r,e])}
                 welcomeMessage: "Hi there! How can I help you?"
             });
 
-            // TODO: replace the appId and publishableKey below by the ones from your admin panel
+            // TODO: replace the appId below with the appId provided in the Dashboard
             window.talkSession = new Talk.Session({
                 appId: "YOUR_APP_ID",
                 me: me
             });
+            
             var inbox = talkSession.createInbox();
             inbox.mount(document.getElementById("talkjs-container"));
 
