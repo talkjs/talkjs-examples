@@ -8,9 +8,14 @@ TalkJS allows you to add user-to-user chat to your marketplace, on-demand app, o
 
 ## Examples
 
+### JS SDK
+
 - [User to Operator](./user-to-operator)
 - [TalkJS + React](./react)
 - [Unread Counter](./unreads)
+
+### REST API & Webhooks
+- [PHP Webhook Reciever](./webhooks/php)
 
 ## Docs
 
