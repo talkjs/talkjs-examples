@@ -44,7 +44,14 @@
                 me: _demo.me
             });
             _demo.other = new Talk.User("demo-playground-batuhan");
-            _demo.conversation = _demo.session.getOrStartConversation(_demo.other);
+
+            // You control the ID of a conversation. oneOnOneId is a helper method that generates
+            // a unique conversation ID for a given pair of users.
+            var conversationId = Talk.oneOnOneId(me, other);
+            _demo.conversation = _demo.session.getOrCreateConversation(conversationId);
+            _demo.conversation.setParticipant(me);
+            _demo.conversation.setParticipant(other);
+
             _demo.inbox = _demo.session.createInbox({
                 selected: _demo.conversation
             });
