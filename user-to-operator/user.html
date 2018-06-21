@@ -24,7 +24,7 @@
                 <p>Here, there might be some item, order or product that the user is configuring.</p>
                 <p>To the right, there is a chatbox where the user can discuss the item, order or product with an operator.</p>
             </div>
-            <div class="col-md-6" id="talkjs-container">
+            <div class="col-md-6" id="chat-container">
             </div>
         </div>
     </div>
@@ -71,15 +71,21 @@ t.Talk={ready:{then:function(f){if(k)return new k(function(r,e){l.push([f,r,e])}
                 photoUrl: "http://dmssolutions.nl/wp-content/uploads/2013/06/helpdesk.png",
                 welcomeMessage: "Hi there! How can I help you?"
             });
-
+            
             // Now, let's start or continue the conversation with the operator and
             // show the chatbox.
-            var conversation = talkSession.getOrStartConversation(operator, {
+
+            // You control the ID of a conversation. In this example, we use the item ID as 
+            // the conversation ID in order to tie this conversation to this item.
+            var conversation = window.talkSession.getOrCreateConversation("item_2493", {
                 // note: the subject field is optional
                 subject: "Item 2493"
             });
-            var inbox = talkSession.createChatbox(conversation);
-            inbox.mount(document.getElementById("talkjs-container"));
+            conversation.setParticipant(me);
+            conversation.setParticipant(operator);
+
+            var chatbox = window.talkSession.createChatbox(conversation);
+            chatbox.mount(document.getElementById("talkjs-container"));
 
         });
 
