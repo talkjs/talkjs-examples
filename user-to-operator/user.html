@@ -77,10 +77,7 @@ t.Talk={ready:{then:function(f){if(k)return new k(function(r,e){l.push([f,r,e])}
 
             // You control the ID of a conversation. In this example, we use the item ID as 
             // the conversation ID in order to tie this conversation to this item.
-            var conversation = window.talkSession.getOrCreateConversation("item_2493", {
-                // note: the subject field is optional
-                subject: "Item 2493"
-            });
+            var conversation = window.talkSession.getOrCreateConversation("item_2493");
             conversation.setParticipant(me);
             conversation.setParticipant(operator);
 
