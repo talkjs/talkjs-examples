@@ -33,7 +33,14 @@ class App extends Component {
                     welcomeMessage: "Hey there! Love to chat :-)"
                 });
 
-                const conversation = this.talkSession.getOrStartConversation(other);
+                // You control the ID of a conversation. oneOnOneId is a helper method that generates
+                // a unique conversation ID for a given pair of users. 
+                const conversationId = Talk.oneOnOneId(me, other);
+            
+                const conversation = this.talkSession.getOrCreateConversation(conversationId);
+                conversation.setParticipant(me);
+                conversation.setParticipant(other);
+            
                 const inbox = this.talkSession.createInbox({
                     selected: conversation
                 });
