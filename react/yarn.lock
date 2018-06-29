@@ -5910,9 +5910,9 @@ table@^4.0.1:
     slice-ansi "0.0.4"
     string-width "^2.0.0"
 
-talkjs@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/talkjs/-/talkjs-0.1.1.tgz#d301d834c9e008bfc22f06bdab3a3ea5d50ec059"
+talkjs@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/talkjs/-/talkjs-0.2.0.tgz#3fcbc679de8d0dd7162c2c26052e7b297b971d5b"
 
 tapable@^0.2.7:
   version "0.2.8"
