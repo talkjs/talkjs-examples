@@ -1,14 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-
-const Talk = require('talkjs');
+import Talk from "talkjs";
 
 @Component({
   selector: 'app-inbox',
   template: `<div id='talkjs-inbox-container'></div>`
 })
 export class InboxComponent implements OnInit {
-  public talkSession: any;
-
   constructor() {}
 
   ngOnInit() {
@@ -24,8 +21,22 @@ export class InboxComponent implements OnInit {
         me
       });
 
-      const inbox = talkSession.createInbox();
+      const conversation = talkSession.getOrCreateConversation("order_66");
+      conversation.setParticipant(me);
+      conversation.setAttributes({
+        subject: "Star Wars"
+      });
+      
+      const inbox = talkSession.createInbox({selected: conversation});
       inbox.mount(document.getElementById('talkjs-inbox-container'));
+      
+      const popup = talkSession.createPopup(conversation, {
+        launcher: "always"
+      });
+      popup.mount({show: false});
+      popup.show();
+
+      // talkSession.createPopup()
     });
   }
 }
