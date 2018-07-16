@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import Talk from 'talkjs';
+import * as Talk from 'talkjs';
 
 class App extends Component {
     constructor(props) {
