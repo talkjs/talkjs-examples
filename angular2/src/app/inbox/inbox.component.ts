@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import Talk from "talkjs";
+import * as Talk from "talkjs";
 
 @Component({
   selector: 'app-inbox',
