@@ -47,10 +47,10 @@
 
             // You control the ID of a conversation. oneOnOneId is a helper method that generates
             // a unique conversation ID for a given pair of users.
-            var conversationId = Talk.oneOnOneId(me, other);
+            var conversationId = Talk.oneOnOneId(_demo.me, _demo.other);
             _demo.conversation = _demo.session.getOrCreateConversation(conversationId);
-            _demo.conversation.setParticipant(me);
-            _demo.conversation.setParticipant(other);
+            _demo.conversation.setParticipant(_demo.me);
+            _demo.conversation.setParticipant(_demo.other);
 
             _demo.inbox = _demo.session.createInbox({
                 selected: _demo.conversation
