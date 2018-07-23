@@ -9,32 +9,34 @@ import * as Talk from "talkjs";
 })
 export class HomeComponent implements OnInit {
   private session: Talk.Session;
-  private currentUser: string;
+  private currentUsername: string;
   private currentConversation;
   private popup;
 
   constructor(private talkJs: TalkJsService) {}
 
-  loginClick(someUser) {
-    this.talkJs.createSession(someUser);
+  loginClick(username) {
+    this.talkJs.createSession(username);
     this.ngOnInit();
   }
 
   ngOnInit() {
-    this.currentUser = this.talkJs.getCurrentUsername();
-    if(this.currentUser) {
+    if(this.talkJs.getCurrentUsername()) {
       this.talkJs.getSession().then(session => {
         this.session = session;
-      });  
+        this.currentUsername = this.talkJs.getCurrentUsername();
+      });
     }
   }
 
-  startConversation(otherParticipant) {
-    var conversation = this.session.getOrCreateConversation("Topic XYZ");
-    console.log(this.session);
+  startConversation(otherParticipant: string) {
+    var me = new Talk.User({id: this.currentUsername, name: this.currentUsername});
+    var other = new Talk.User({id: otherParticipant, name: otherParticipant});
+    var conversation = this.session.getOrCreateConversation(Talk.oneOnOneId(me, other));
+    conversation.setParticipant(me);
+    conversation.setParticipant(other);
     var popup = this.session.createPopup(conversation);
     popup.mount({show: true});
-    popup.show();
   }
 
 }

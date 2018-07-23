@@ -1,14 +1,14 @@
 <!-- container element in which TalkJS will display a chat UI -->
 <div id="talkjs-container" style="width: 90%; margin: 30px; min-height: 150px"></div>
 
-<div *ngIf="!currentUser">
+<div *ngIf="!currentUsername">
 <button id="loginButton" (click)="loginClick('Patricia')"> Login as Patricia</button>
 <button id="loginButton" (click)="loginClick('Arjun')"> Login as Arjun</button>
 <button id="loginButton" (click)="loginClick('Sam')"> Login as Sam</button>
 </div>
-<div *ngIf="currentUser">
-    <div>Logged in as {{currentUser}}</div>
-    <button *ngIf="currentUser!=='Patricia'" id="talkToButton" (click)="startConversation('Patricia')">Talk to Patricia</button>
-    <button *ngIf="currentUser!=='Arjun'" id="talkToButton" (click)="startConversation('Arjun')">Talk to Arjun</button>
-    <button *ngIf="currentUser!=='Sam'" id="talkToButton" (click)="startConversation('Sam')">Talk to Sam</button>
+<div *ngIf="currentUsername">
+    <div>Logged in as {{currentUsername}}</div>
+    <button *ngIf="currentUsername!=='Patricia'" id="talkToButton" (click)="startConversation('Patricia')">Talk to Patricia</button>
+    <button *ngIf="currentUsername!=='Arjun'" id="talkToButton" (click)="startConversation('Arjun')">Talk to Arjun</button>
+    <button *ngIf="currentUsername!=='Sam'" id="talkToButton" (click)="startConversation('Sam')">Talk to Sam</button>
 </div>

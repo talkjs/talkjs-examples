@@ -5,13 +5,13 @@ import * as Talk from "talkjs";
 export class TalkJsService {
     private session: Promise<Talk.Session>;
     private currentUsername: string;
+    private currentUser: Talk.User;
 
     createSession(username: string) {
         this.currentUsername = username;
         console.log("Logging in as " + username + "...");
-        console.log(this.session);
         this.session = Talk.ready.then(() => {
-            const me = new Talk.User({
+            this.currentUser = new Talk.User({
                 id: username,
                 name: username,
                 configuration: 'buyer'
@@ -20,13 +20,17 @@ export class TalkJsService {
             console.log("Logged in.");
             return new Talk.Session({
                 appId: 'Hku1c4Pt',
-                me
+                me: this.currentUser
             });
         }) as Promise<Talk.Session>;
     }
 
     getCurrentUsername() {
         return this.currentUsername;
+    }
+
+    getCurrentUser() {
+        return this.currentUser;
     }
 
     getSession() {
