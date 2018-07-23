@@ -1,15 +1,40 @@
 import {Component, OnInit} from '@angular/core';
+import { TalkJsService } from "../talkjs.service";
+import * as Talk from "talkjs";
 
 @Component({
   selector: 'app-home',
-  template: `<h3>{{ message }}</h3>`
+  templateUrl: `/home.component.html`,
+  styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
-  public message: string;
+  private session: Talk.Session;
+  private currentUser: string;
+  private currentConversation;
+  private popup;
 
-  constructor() {}
+  constructor(private talkJs: TalkJsService) {}
+
+  loginClick(someUser) {
+    this.talkJs.createSession(someUser);
+    this.ngOnInit();
+  }
 
   ngOnInit() {
-    this.message = 'Hello';
+    this.currentUser = this.talkJs.getCurrentUsername();
+    if(this.currentUser) {
+      this.talkJs.getSession().then(session => {
+        this.session = session;
+      });  
+    }
   }
+
+  startConversation(otherParticipant) {
+    var conversation = this.session.getOrCreateConversation("Topic XYZ");
+    console.log(this.session);
+    var popup = this.session.createPopup(conversation);
+    popup.mount({show: true});
+    popup.show();
+  }
+
 }

@@ -1,42 +1,34 @@
 import {Component, OnInit} from '@angular/core';
 import * as Talk from "talkjs";
+import { TalkJsService } from '../talkjs.service';
 
 @Component({
   selector: 'app-inbox',
-  template: `<div id='talkjs-inbox-container'></div>`
+  template: `
+    <div *ngIf="currentUser" id='talkjs-inbox-container'>Loading....</div>
+    <div *ngIf="!currentUser">Please log in first.</div>
+  `
 })
 export class InboxComponent implements OnInit {
-  constructor() {}
+  private session: Promise<Talk.Session>;
+  private currentUser: string;
 
-  ngOnInit() {
-    Talk.ready.then(() => {
-      const me = new Talk.User({
-        id: 'my-id-for-user',
-        name: 'John Doe',
-        configuration: 'buyer'
-      });
+  constructor(private talkJs: TalkJsService) {}
 
-      const talkSession = new Talk.Session({
-        appId: 'Hku1c4Pt',
-        me
-      });
-
-      const conversation = talkSession.getOrCreateConversation("order_66");
-      conversation.setParticipant(me);
-      conversation.setAttributes({
-        subject: "Star Wars"
-      });
-      
-      const inbox = talkSession.createInbox({selected: conversation});
+  ngAfterViewInit() {
+    if(!this.session) {
+      return;
+    }
+    this.session.then(session => {
+      const inbox = session.createInbox();
       inbox.mount(document.getElementById('talkjs-inbox-container'));
-      
-      const popup = talkSession.createPopup(conversation, {
-        launcher: "always"
-      });
-      popup.mount({show: false});
-      popup.show();
-
-      // talkSession.createPopup()
-    });
+    });  
+  }
+  
+  ngOnInit() {
+    this.currentUser = this.talkJs.getCurrentUsername();
+    if(this.currentUser) {
+      this.session = this.talkJs.getSession();
+    }
   }
 }
