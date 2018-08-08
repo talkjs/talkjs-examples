@@ -10,8 +10,8 @@ import * as Talk from "talkjs";
 export class HomeComponent implements OnInit {
   private session: Talk.Session;
   private currentUsername: string;
-  private currentConversation;
-  private popup;
+  private currentConversation: Talk.ConversationBuilder;
+  private popup: Talk.Popup;
 
   constructor(private talkJs: TalkJsService) {}
 
@@ -32,11 +32,11 @@ export class HomeComponent implements OnInit {
   startConversation(otherParticipant: string) {
     var me = new Talk.User({id: this.currentUsername, name: this.currentUsername});
     var other = new Talk.User({id: otherParticipant, name: otherParticipant});
-    var conversation = this.session.getOrCreateConversation(Talk.oneOnOneId(me, other));
-    conversation.setParticipant(me);
-    conversation.setParticipant(other);
-    var popup = this.session.createPopup(conversation);
-    popup.mount({show: true});
+    this.currentConversation = this.session.getOrCreateConversation(Talk.oneOnOneId(me, other));
+    this.currentConversation.setParticipant(me);
+    this.currentConversation.setParticipant(other);
+    this.popup = this.session.createPopup(this.currentConversation);
+    this.popup.mount({show: true});
   }
 
 }
