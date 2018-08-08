@@ -9,7 +9,6 @@ import * as Talk from "talkjs";
 })
 export class HomeComponent implements OnInit {
   private session: Talk.Session;
-  private currentUsername: string;
   private currentConversation: Talk.ConversationBuilder;
   private popup: Talk.Popup;
 
@@ -24,13 +23,12 @@ export class HomeComponent implements OnInit {
     if(this.talkJs.getCurrentUsername()) {
       this.talkJs.getSession().then(session => {
         this.session = session;
-        this.currentUsername = this.talkJs.getCurrentUsername();
       });
     }
   }
 
   startConversation(otherParticipant: string) {
-    var me = new Talk.User({id: this.currentUsername, name: this.currentUsername});
+    const me = this.talkJs.getCurrentUser();
     var other = new Talk.User({id: otherParticipant, name: otherParticipant});
     this.currentConversation = this.session.getOrCreateConversation(Talk.oneOnOneId(me, other));
     this.currentConversation.setParticipant(me);
