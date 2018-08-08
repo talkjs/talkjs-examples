@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
 
   startConversation(otherParticipant: string) {
     const me = this.talkJs.getCurrentUser();
-    var other = new Talk.User({id: otherParticipant, name: otherParticipant});
+    const other = new Talk.User({id: otherParticipant, name: otherParticipant});
     this.currentConversation = this.session.getOrCreateConversation(Talk.oneOnOneId(me, other));
     this.currentConversation.setParticipant(me);
     this.currentConversation.setParticipant(other);

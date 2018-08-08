@@ -11,7 +11,8 @@ import { TalkJsService } from '../talkjs.service';
 })
 export class InboxComponent implements OnInit {
   private session: Promise<Talk.Session>;
-  private currentUser: string;
+  private inbox: Talk.Inbox;
+  private currentUser: Talk.User;
 
   constructor(private talkJs: TalkJsService) {}
 
@@ -20,13 +21,13 @@ export class InboxComponent implements OnInit {
       return;
     }
     this.session.then(session => {
-      const inbox = session.createInbox();
-      inbox.mount(document.getElementById('talkjs-inbox-container'));
+      this.inbox = session.createInbox();
+      this.inbox.mount(document.getElementById('talkjs-inbox-container'));
     });  
   }
   
   ngOnInit() {
-    this.currentUser = this.talkJs.getCurrentUsername();
+    this.currentUser = this.talkJs.getCurrentUser();
     if(this.currentUser) {
       this.session = this.talkJs.getSession();
     }
