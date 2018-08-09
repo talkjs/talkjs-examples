@@ -1,3 +1,17 @@
+A simple Angular site with a TalkJS popup and inbox.
+
+This site lets you:
+* Log in as either Patricia, Arjun or Sam (refresh to log out)
+* Choose a person to chat with in a TalkJS popup
+* Chat in all previous conversations, at `/inbox`
+
+How?
+* The service `TalkJsService`'s method `createSession` creates a `session` object
+* This session object is injected into all components
+    *  A TalkJS session object should be created on every page of your website. [Why?](/docs/Reference/Concepts/Sessions)
+* Three users are hardcoded into the HTML in `home.component.html`
+    * Their name acts as both their `id` and their `name`
+
 <p align="center">
   <img src="https://cloud.githubusercontent.com/assets/1016365/10639063/138338bc-7806-11e5-8057-d34c75f3cafc.png" alt="Universal Angular" height="320"/>
 </p>

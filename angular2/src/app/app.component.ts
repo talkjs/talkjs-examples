@@ -1,16 +1,20 @@
 import {Component} from '@angular/core';
+import { TalkJsService } from './talkjs.service';
 
 @Component({
   selector: 'app-root',
   template: `
-  <h1>Universal Demo using Angular and Angular CLI</h1>
-  <a routerLink="/">Home</a>
-  <a routerLink="/lazy">Lazy</a>
-  <a routerLink="/lazy/nested">Lazy_Nested</a>
+  <h1>TalkJS using Angular2</h1>
+  <div class="navbar">
+    <a routerLink="/">Home</a>
+    <a routerLink="/inbox">Inbox</a>
+  </div>
   <router-outlet></router-outlet>
   `,
-  styles: []
+  styleUrls: ["./app.component.css"],
+  providers: [TalkJsService]
 })
 export class AppComponent {
-
+  currentUser = undefined;
+  
 }
