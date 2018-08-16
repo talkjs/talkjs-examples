@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/home/paul/git/talkjs-react-native/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.55.4/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="e31331bdf6b5952badadbfc171f04b95c55d3b16">
+        <dex dex="/home/paul/git/talkjs-react-native/android/app/build/intermediates/pre-dexed/debug/com.facebook.react-react-native-0.55.4_b668f5dba33b1a4a0d3b2292ae3618566c6969a4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/paul/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="/home/paul/git/talkjs-react-native/android/app/build/intermediates/pre-dexed/debug/bolts-tasks-1.4.0_4a6f124866072416f6f7750cfb092d2b353ff8e6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/paul/git/talkjs-react-native/android/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="c65a2e39d54023bac3aef64a2f0cff89289c7ff6">
+        <dex dex="/home/paul/git/talkjs-react-native/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-drawee-1.3.0_49969fa56845e035bd4ed76e4111e99357d656e6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/paul/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.6.0/69edde9fc4b01c9fd51d25b83428837478c27254/okhttp-3.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="69edde9fc4b01c9fd51d25b83428837478c27254">
+        <dex dex="/home/paul/git/talkjs-react-native/android/app/build/intermediates/pre-dexed/debug/okhttp-3.6.0_5cb73037e2dce889e2fa8cdf604976bbbf97985f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/paul/git/talkjs-react-native/android/app/build/intermediates/exploded-aar/com.facebook.fbui.textlayoutbuilder/textlayoutbuilder/1.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f90b593491e4044903f0bbf68dc3fa2790b151b9">
+        <dex dex="/home/paul/git/talkjs-react-native/android/app/build/intermediates/pre-dexed/debug/com.facebook.fbui.textlayoutbuilder-textlayoutbuilder-1.0.0_2d43e405b533edfe03821d961ec2ee402fae55c1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/paul/.gradle/caches/modules-2/files-2.1/com.facebook.fbui.textlayoutbuilder/staticlayout-proxy/1.0/f162442a19fff13995fbd51ba414d9ee05579080/staticlayout-proxy-1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f162442a19fff13995fbd51ba414d9ee05579080">
+        <dex dex="/home/paul/git/talkjs-react-native/android/app/build/intermediates/pre-dexed/debug/staticlayout-proxy-1.0_7277b7f4c2b72a17568199b8b0749dbb5358509c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/paul/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.0/5871fb60dc68d67da54a663c3fd636a10a532948/jsr305-3.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
+        <dex dex="/home/paul/git/talkjs-react-native/android/app/build/intermediates/pre-dexed/debug/jsr305-3.0.0_ae4fc3a6ccbdf4f45e78201388642131618fcdff.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/paul/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
+        <dex dex="/home/paul/git/talkjs-react-native/android/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.1_28fadac292e39861908230b0621dcec34d3c454b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/paul/git/talkjs-react-native/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="37345de2ed2772f385eaeec37a9c2ff0fea99ad7">
+        <dex dex="/home/paul/git/talkjs-react-native/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fbcore-1.3.0_59f0bd08f418c68118bfeaeb8ff47b6afa55af7c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/paul/git/talkjs-react-native/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fresco/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="fe85b87215e405f5917d40ae4960488ac9224b74">
+        <dex dex="/home/paul/git/talkjs-react-native/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fresco-1.3.0_c71b503c3101e67018b8bb35762709b51e28801c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/paul/git/talkjs-react-native/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="48c7f54c2515a2312d3a4481d10c43fbb807f3af">
+        <dex dex="/home/paul/git/talkjs-react-native/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-1.3.0_7a74e3f026422dd20ce96aff306f95a1cd212a92.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/paul/git/talkjs-react-native/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.55.4/jars/libs/infer-annotations-4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="9809e90be788acdb479b2b44e2112f3295a03068">
+        <dex dex="/home/paul/git/talkjs-react-native/android/app/build/intermediates/pre-dexed/debug/infer-annotations-4.0_129c4ce2e6320afd3561acf5704f51632bd35de9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/paul/git/talkjs-react-native/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-okhttp3/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="c03c08c9934b23c8c09c803345ec51a74119127b">
+        <dex dex="/home/paul/git/talkjs-react-native/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-okhttp3-1.3.0_618b4919826fb3fcb4f73fbc796b0791ba19c355.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/paul/git/talkjs-react-native/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="/home/paul/git/talkjs-react-native/android/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.0.1_27a007a463e4be194623677e5f661841cf2fc3a7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/paul/git/talkjs-react-native/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="/home/paul/git/talkjs-react-native/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.0.1_ac387045024bec37eb99cd0c826383648990b4a1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/paul/git/talkjs-react-native/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-base/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="72128af126ddd7d6252da9357fe560d3abcdfb0c">
+        <dex dex="/home/paul/git/talkjs-react-native/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-base-1.3.0_cffb1979bfb6eae3089171e503aeac446f3d71cd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/paul/git/talkjs-react-native/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="8f615bca00639150c9eb6175d4b5471193f70794">
+        <dex dex="/home/paul/git/talkjs-react-native/android/app/build/intermediates/pre-dexed/debug/com.facebook.soloader-soloader-0.1.0_18ff583a3a32d55e4c75a0a55047b850415e2f06.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/paul/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp-urlconnection/3.6.0/3f9b16b774f2c36cfd86dd2053d0b3059531dacc/okhttp-urlconnection-3.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="3f9b16b774f2c36cfd86dd2053d0b3059531dacc">
+        <dex dex="/home/paul/git/talkjs-react-native/android/app/build/intermediates/pre-dexed/debug/okhttp-urlconnection-3.6.0_a3d922222e4f45510adc864d92b6248ca9aeda3a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/paul/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.13.0/a9283170b7305c8d92d25aff02a6ab7e45d06cbe/okio-1.13.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="a9283170b7305c8d92d25aff02a6ab7e45d06cbe">
+        <dex dex="/home/paul/git/talkjs-react-native/android/app/build/intermediates/pre-dexed/debug/okio-1.13.0_8994f5b75215417ae1f9d462ff42e62cf7964ad2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/paul/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="6975da39a7040257bd51d21a231b76c915872d38">
+        <dex dex="/home/paul/git/talkjs-react-native/android/app/build/intermediates/pre-dexed/debug/javax.inject-1_7358f78799758b811bd5ff8d5fcc43b0870be0ba.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/paul/git/talkjs-react-native/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="/home/paul/git/talkjs-react-native/android/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1_572a3cce9995f3eca63b3de1bd9244b393abe584.jar" />
+    </item>
+
+</items>
