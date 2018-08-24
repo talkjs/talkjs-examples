@@ -6,7 +6,7 @@
 $key = 'YOUR_SECRET_KEY';
 $userID = 'YOUR_USER_ID';
 
-// to lowercase hexits
+// to HEX(Base16)
 hash_hmac('sha256', $userID, $key);
 ```
 
@@ -20,7 +20,7 @@ var userID = 'YOUR_USER_ID';
 
 var hash = crypto.createHmac('sha256', key).update(userID);
 
-// to lowercase hexits
+// to HEX(Base16)
 hash.digest('hex');
 ```
 
@@ -32,7 +32,7 @@ require 'openssl'
 key = 'YOUR_SECRET_KEY'
 userID = 'YOUR_USER_ID'
 
-# to lowercase hexits
+# to HEX(Base16)
 OpenSSL::HMAC.hexdigest('sha256', key, userID)
 ```
 
@@ -44,7 +44,7 @@ userID = 'YOUR_USER_ID'
 
 signature = :crypto.hmac(:sha256, key, userID)
 
-# to lowercase hexits
+# to HEX(Base16)
 Base.encode16(signature, case: :lower)
 ```
 
@@ -66,7 +66,7 @@ func main() {
 	hash := hmac.New(sha256.New, secret)
 	hash.Write(userID)
 
-	// to lowercase hexits
+	// to HEX(Base16)
 	hex.EncodeToString(hash.Sum(nil))
 }
 ```
@@ -82,7 +82,7 @@ secret = bytes('YOUR_SECRET_KEY').encode('utf-8')
 
 hash = hmac.new(secret, userID, hashlib.sha256)
 
-# to lowercase hexits
+# to HEX(Base16)
 hash.hexdigest()
 ```
 
@@ -91,14 +91,13 @@ hash.hexdigest()
 ```py
 import hashlib
 import hmac
-import base64
 
 userID = bytes('YOUR_USER_ID', 'utf-8')
 secret = bytes('YOUR_SECRET_KEY', 'utf-8')
 
 hash = hmac.new(secret, userID, hashlib.sha256)
 
-# to lowercase hexits
+# to HEX(Base16)
 hash.hexdigest()
 ```
 
@@ -119,11 +118,8 @@ class MainClass {
 
     byte[] hashmessage = new HMACSHA256(keyByte).ComputeHash(userIDBytes);
 
-    // to lowercase hexits
+    // to HEX(Base16)
     String.Concat(Array.ConvertAll(hashmessage, x => x.ToString("x2")));
-
-    // to base64
-    Convert.ToBase64String(hashmessage);
   }
 }
 ```
@@ -148,7 +144,7 @@ class Main {
 
 	    byte[] hash = hasher.doFinal(userID.getBytes());
 
-	    // to lowercase hexits
+	    // to HEX(Base16)
 	    DatatypeConverter.printHexBinary(hash);
   	}
   	catch (NoSuchAlgorithmException e) {}
