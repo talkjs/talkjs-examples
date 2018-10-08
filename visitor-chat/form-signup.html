@@ -1,0 +1,122 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Form signup TalkJS</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/7091114/7183352/css/fonts.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.js"
+      integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+      crossorigin="anonymous"></script>
+
+    <style>
+      body {
+        overflow:hidden; 
+        margin-top:5px; 
+        background-color: transparent;
+        font-family: "Whitney SSm A", "Whitney SSm B", "Helvetica", sans-serif;
+      }
+
+      .availability-message {
+        width: 90%;
+        margin: 10px auto;
+        padding: 15px;
+        color: rgba(17,17,17,0.85);
+        background-color: rgba(255,255,255,0.75);
+        border-width: 1px;
+        border-style: solid;
+        border-color: rgba(238,238,238,0.75);
+        border-radius: 10px;
+        background-color: #fff;
+        border-radius: 3px;
+        font-size: 14px;
+        line-height: 1.4;
+        color: #000;
+        overflow: hidden;
+        position: relative;
+        -webkit-box-shadow: 0 4px 15px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.1);
+        box-shadow: 0 4px 15px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.1);
+        }
+
+      .availability-message input {
+        width: 100%;
+        height: 40px;
+        padding: 10px;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        font-size: 14px;
+        -webkit-box-shadow: inset 0 1px 3px 0 rgba(0,0,0,.07);
+        box-shadow: inset 0 1px 3px 0 rgba(0,0,0,.07);
+        border: 1px solid #e1e1e1;
+        color: #000;
+        border-radius: 4px;
+        background: #fafafa;
+        -webkit-appearance: none;
+      }
+
+      .availability-message .btn-primary {
+        cursor: pointer;
+        z-index: 1;
+        width: 40px;
+        height: 40px;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        background-color: #0785f2;
+        border-color: #0785f2;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+      }
+
+      .availability-message .btn-primary:hover {
+        color: #fff;
+        background-color: #0774d2;
+        border-color: #0774d2;
+      }
+
+      .availability-message h3 {
+        font-size: 14px;
+        margin: 0px;
+        padding-bottom: 10px;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="availability-message">
+      <h3 class="header-email">Get notified by email</h2>
+      <form class="form-signin" id="register-form">
+        <div class="form-inline">
+          <div class="input-group">
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+            <div class="input-group-btn">
+              <button id="btn-sendEmail" class="btn btn-primary btn-block">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <script>
+        function saveForm() {
+          var email = document.querySelector("#inputEmail").value;
+          if (email && email.length > 0) {
+            $.get("./add-user-info.php?email=" + encodeURIComponent(email));
+            return Promise.resolve(true);
+          } else {
+            return Promise.resolve(false);
+          }
+        }
+    </script>
+  </body>
+</html>
