@@ -1,0 +1,47 @@
+.container-title {
+    text-align: center;
+    font-weight: 600;
+}
+
+.divider {
+    width: 95%;
+}
+
+/* Personal Information */
+.personal-information-card {
+    background-color: #f7f9f9;
+    margin-bottom: 20px;
+}
+
+.personal-information-card-img-top {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    margin-top: 20px;
+}
+
+.personal-information-card-title {
+    text-align: center;
+    margin-top: 10px;
+} 
+
+/* Owned Products */
+.owned-products-card {
+    margin-bottom: 20px;
+    background-color: #f7f9f9;
+}
+
+.owned-products-card-img-top {
+    width: 700px;
+    height: 200px;
+}
+
+.owned-products-card-title {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+#products-row {
+    margin-top: 15px;
+}

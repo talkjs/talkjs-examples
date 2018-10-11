@@ -1,0 +1,78 @@
+#footer-logo {
+    margin-left: 2px;
+}
+
+.container-title {
+    text-align: center;
+    font-weight: 600;
+}
+
+.divider {
+    width: 95%;
+}
+
+.bold-warning {
+    color: #D09404;
+    font-weight: bold;
+}
+
+/* Top Products */
+.top-products-card {
+    margin-bottom: 20px;
+    background-color: #f7f9f9;
+    width: 255px;
+    height: 245px;
+    cursor: pointer;
+}
+
+.top-products-card:hover {
+    background-color: transparent;
+}
+
+.top-products-card-img-top {
+    width: 700px;
+    height: 200px;
+}
+
+.top-products-card-title {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+#top-products-row {
+    margin-top: 15px;
+    margin-left: -100px;
+}
+
+/* Top Vendors */
+#top-vendors-row {
+    margin-left: -105px;
+}
+
+.top-vendors-card {
+    background-color: transparent;
+    margin-bottom: 20px;
+    width: 255px;
+    height: 140px;
+}
+
+.top-vendors-card:hover {
+    background-color: #f7f9f9;
+}
+
+.top-vendors-card:hover {
+    cursor: pointer;
+}
+
+.top-vendors-card-img-top {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-top: 20px;
+}
+
+.top-vendors-card-title {
+    text-align: center;
+    margin-top: 5px;
+}
