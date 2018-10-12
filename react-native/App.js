@@ -21,21 +21,21 @@ class HomeScreen extends React.Component {
      this.state = {
        users: [
        {
-         id: "1",
+         id: "_1111",
          name: "Liuka",
          email: "liuka@example.com",
          photoUrl: "https://raw.githubusercontent.com/paulsmal/talkjs-react-native/screens-example/assets/user1.jpg",
          welcomeMessage: "Bonjour"
        },
        {
-         id: "2",
+         id: "_2222",
          name: "Silberstein",
          email: "silberstein@example.com",
          photoUrl: "https://raw.githubusercontent.com/paulsmal/talkjs-react-native/screens-example/assets/user2.jpg",
          welcomeMessage: "Hej"
        },
        {
-         id: "_9",
+         id: "_3333",
          name: "Karem",
          email: "dev@talkjs.com",
          photoUrl: "https://raw.githubusercontent.com/paulsmal/talkjs-react-native/screens-example/assets/user3.jpg",
@@ -93,7 +93,7 @@ class ChatScreen extends React.Component {
             photoUrl: "https://talkjs.com/docs/img/george.jpg"
           });
           window.talkSession = new Talk.Session({
-            appId: "YOUR_APP_ID",
+            appId: "Hku1c4Pt",
             me: me
           });
           var other = new Talk.User({
