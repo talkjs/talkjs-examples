@@ -1,0 +1,14 @@
+<div class="login-page">
+    <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)" class="form">
+      <div class="login-form">
+        <input type="text" class="form-control" formControlName="username" placeholder="username"/>
+        <div *ngIf="!loginForm.valid && ((getFormControl('username').invalid && (getFormControl('username').dirty) || getFormControl('username').touched))" class="validation-error-message">
+
+          <small *ngIf="getFormControl('username').errors.required">
+            Username is required.
+          </small>
+        </div>
+        <button type="Submit Form" [disabled]="!loginForm.valid" id="login-btn">login</button>
+      </div>
+    </form>
+</div>

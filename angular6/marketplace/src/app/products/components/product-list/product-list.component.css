@@ -1,0 +1,23 @@
+.card {
+    margin-bottom: 20px;
+    background-color: #f7f9f9;
+}
+
+.card:hover {
+    background-color: transparent;
+}
+
+.card:hover {
+    cursor: pointer;
+}
+
+.card-img-top {
+    width: 700px;
+    height: 200px;
+}
+
+.card-title {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}

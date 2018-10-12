@@ -1,0 +1,19 @@
+<ul class="navbar navbar-dark bg-dark fixed-top">
+    <div class="left-nav-items">
+            <li><a routerLink="home">Home</a></li>
+            <li><a routerLink="products">All Products</a></li>
+            <li><a routerLink="users">Vendors</a></li>
+    </div>
+
+    <div class="right-nav-items">
+        <div *ngIf="isLoggedIn()">
+            <li><a routerLink="home" (click)="logout()">Logout</a></li>
+            <li>
+                <a routerLink="inbox">
+                    <b><span><img id="my-messages-icon" src="assets/images/icons/my-messages.png"/></span> My Messages</b>
+                </a>
+            </li>
+        </div>
+            <li *ngIf="!isLoggedIn()"><a routerLink="login">Log in</a></li>
+    </div>
+</ul>
