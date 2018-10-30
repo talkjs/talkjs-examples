@@ -1,4 +1,10 @@
 <div class="login-page">
+    <ngb-alert [dismissible]="false">
+        <p>
+            Try logging into 'Jason'.
+        </p>         
+    </ngb-alert>
+
     <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)" class="form">
       <div class="login-form">
         <input type="text" class="form-control" formControlName="username" placeholder="username"/>

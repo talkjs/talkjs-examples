@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { routing } from 'src/app/core/authentication/authentication.routing';
 import { LoginComponent } from 'src/app/core/authentication/components/login/login.component';
@@ -9,7 +10,8 @@ import { LoginComponent } from 'src/app/core/authentication/components/login/log
   imports: [
     CommonModule,
     routing,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbAlertModule
   ],
   declarations: [LoginComponent]
 })

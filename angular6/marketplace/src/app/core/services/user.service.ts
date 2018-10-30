@@ -16,7 +16,7 @@ export class UserService {
 
     getUserForUsername(username: string) : Promise<User> {
         return new Promise((resolve) => {
-            resolve(MOCK_USERS.find(u => u.username === username));
+            resolve(MOCK_USERS.find(u => u.username.toLocaleLowerCase() === username.toLocaleLowerCase()));
         });
     }
 
