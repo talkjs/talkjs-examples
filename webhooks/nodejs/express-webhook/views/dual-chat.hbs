@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>TalkJS Webhook Demo</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- As seen in the getting started tutorial: https://talkjs.com/dashboard/tOMI1IEI/docs/Getting_Started/index.html -->
+        <script>
+            (function(t,a,l,k,j,s){
+            s=a.createElement('script');s.async=1;s.src="https://cdn.talkjs.com/talk.js";a.head.appendChild(s)
+            ;k=t.Promise;t.Talk={v:1,ready:{then:function(f){if(k)return new k(function(r,e){l.push([f,r,e])});l
+            .push([f])},catch:function(){return k&&new k()},c:l}};})(window,document,[]);
+        </script>
+    </head>
+
+    <body>
+        
+        {{!-- Left side of the chat (sebastian's view) --}}
+        <div style="height: 800px; width: 50%; position: fixed; padding-top:20px; left:0;">
+            <h1 style="text-align: center;">{{sebastian.name}}'s inbox</h1>
+            <div id="talkjs-container-left" style="height: 700px;" ><i>Loading chat...</i></div>
+        </div>
+
+        {{!-- Right side of the chat (Alice's view) --}}
+        <div style="height: 800px; width: 50%; position: fixed; padding-top:20px; right: 0;">
+            <h1 style="text-align: center;">{{alice.name}}'s inbox</h1>
+            <div id="talkjs-container-right" style="height: 700px;"><i>Loading chat...</i></div>
+        </div>
+      
+        <script>
+            // Create the left-side chat with Sebastian as the user, and alice and marco as the participant
+            Talk.ready.then(function() {
+                var sebastian = new Talk.User({
+                    id: "{{sebastian.id}}",
+                    name: "{{sebastian.name}}",
+                    email: "{{sebastian.email}}",
+                    photoUrl: "{{sebastian.photoUrl}}",
+                    welcomeMessage: "{{sebastian.welcomeMessage}}"
+                });
+
+                // Left-side chat is from the point of view of Sebastian
+                window.talkSession = new Talk.Session({
+                    appId: "{{appId}}",
+                    me: sebastian,
+                    signature: "{{sebastianSig}}"
+                });
+
+                // The other users in the conversation are alice and marco
+                var alice = new Talk.User({
+                    id: "{{alice.id}}",
+                    name: "{{alice.name}}",
+                    email: "{{alice.email}}",
+                    photoUrl: "{{alice.photoUrl}}",
+                    welcomeMessage: "{{alice.welcomeMessage}}"
+                });
+
+                var marco = new Talk.User({
+                    id: "{{marco.id}}",
+                    name: "{{marco.name}}",
+                    email: "{{marco.email}}",
+                    photoUrl: "{{marco.photoUrl}}",
+                    welcomeMessage: "{{marco.welcomeMessage}}"
+                });
+            
+                // Create a conversation ID based on the user's 
+                var conversation = talkSession.getOrCreateConversation('{{convId}}')
+
+                conversation.setParticipant(sebastian);
+                conversation.setParticipant(alice);
+                conversation.setParticipant(marco);
+
+                // Add a custom convrsation subject and picture
+                conversation.setAttributes({
+                    subject: "Holiday ideas!",
+                    photoUrl: 'https://demo.talkjs.com/img/15.jpg'
+                });
+
+                var inbox = talkSession.createInbox({selected: conversation});
+                inbox.mount(document.getElementById("talkjs-container-left"));
+            });
+
+
+            // Create the right-side chat with Alice as the user, and sebastian and marco as the participant
+            Talk.ready.then(function() {
+                var alice = new Talk.User({
+                    id: "{{alice.id}}",
+                    name: "{{alice.name}}",
+                    email: "{{alice.email}}",
+                    photoUrl: "{{alice.photoUrl}}",
+                    welcomeMessage: "{{alice.welcomeMessage}}"
+                });
+
+                // Left-side chat is from the point of view of Sebastian
+                window.talkSession = new Talk.Session({
+                    appId: "{{appId}}",
+                    me: alice,
+                    signature: "{{aliceSig}}"
+                });
+
+                // The other users in the conversation are alice and marco
+                var sebastian = new Talk.User({
+                    id: "{{sebastian.id}}",
+                    name: "{{sebastian.name}}",
+                    email: "{{sebastian.email}}",
+                    photoUrl: "{{sebastian.photoUrl}}",
+                    welcomeMessage: "{{sebastian.welcomeMessage}}"
+                });
+
+                var marco = new Talk.User({
+                    id: "{{marco.id}}",
+                    name: "{{marco.name}}",
+                    email: "{{marco.email}}",
+                    photoUrl: "{{marco.photoUrl}}",
+                    welcomeMessage: "{{marco.welcomeMessage}}"
+                });
+            
+                // Create a conversation ID based on the user's 
+                var conversation = talkSession.getOrCreateConversation('{{convId}}')
+
+                conversation.setParticipant(sebastian);
+                conversation.setParticipant(alice);
+                conversation.setParticipant(marco);
+                
+                // Add a custom convrsation subject and picture
+                conversation.setAttributes({
+                    subject: "Holiday ideas!",
+                    photoUrl: 'https://demo.talkjs.com/img/15.jpg'
+                });
+
+                var inbox = talkSession.createInbox({selected: conversation});
+                inbox.mount(document.getElementById("talkjs-container-right"));
+            });
+
+        </script>
+
+    </body>
+</html>
