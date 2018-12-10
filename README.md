@@ -1,6 +1,6 @@
 # TalkJS Usage Examples
 
-This repository holds common use case examples for TalkJS. 
+This repository holds common use case examples for TalkJS.
 
 **What is TalkJS?**
 
@@ -23,6 +23,7 @@ Using a language or framework not listed here? [Let us know](https://talkjs.com?
 
 ### REST API & Webhooks
 - [PHP Webhook Reciever](./webhooks/php)
+- [Node.js (Express.js) example and webhooks explorer](./webhooks/nodejs/express-webhook)
 
 ## Docs
 

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>TalkJS Webhook Demo</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- As seen in the getting started tutorial: https://talkjs.com/dashboard/tOMI1IEI/docs/Getting_Started/index.html -->
+        <script>
+            (function(t,a,l,k,j,s){
+            s=a.createElement('script');s.async=1;s.src="https://cdn.talkjs.com/talk.js";a.head.appendChild(s)
+            ;k=t.Promise;t.Talk={v:1,ready:{then:function(f){if(k)return new k(function(r,e){l.push([f,r,e])});l
+            .push([f])},catch:function(){return k&&new k()},c:l}};})(window,document,[]);
+        </script>
+    </head>
+
+    <body>
+        <h1 style="width: 50%; margin: auto;">{{me.name}}'s inbox</h1>
+        <h3 style="width: 50%; margin: auto;"><a href="/chat?me={{other.name}}&other={{me.name}}">View {{other.name}}'s inbox</a></h3>
+        <div id="talkjs-container" style="width: 90%; margin: 30px; height: 500px"><i>Loading chat...</i></div>
+        
+        <script>
+            Talk.ready.then(function() {
+                var me = new Talk.User({
+                    id: "{{me.id}}",
+                    name: "{{me.name}}",
+                    email: "{{me.email}}",
+                    photoUrl: "{{me.photoUrl}}",
+                    welcomeMessage: "{{me.welcomeMessage}}"
+                });
+                window.talkSession = new Talk.Session({
+                    appId: "{{appId}}",
+                    me: me,
+                    signature: "{{signature}}"
+                });
+                var other = new Talk.User({
+                    id: "{{other.id}}",
+                    name: "{{other.name}}",
+                    email: "{{other.email}}",
+                    photoUrl: "{{other.photoUrl}}",
+                    welcomeMessage: "{{other.welcomeMessage}}"
+                });
+            
+                var conversation = talkSession.getOrCreateConversation(Talk.oneOnOneId(me, other))
+
+                conversation.setParticipant(me);
+                conversation.setParticipant(other);
+
+                var inbox = talkSession.createInbox({selected: conversation});
+                inbox.mount(document.getElementById("talkjs-container"));
+            });
+
+        </script>
+
+    </body>
+</html>
