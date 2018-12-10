@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Router } from '@angular/router';
 
+import * as Talk from "talkjs";
+
 import { UserService } from 'src/app/core/services/user.service';
 import { User } from 'src/app/shared/models/user.model';
 import { TalkService } from 'src/app/core/services/talk.service';
@@ -14,6 +16,7 @@ import { Product } from 'src/app/shared/models/product.model';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
+  private chatbox: Talk.Chatbox;
   user: User;
 
   constructor(
@@ -29,9 +32,15 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  ngOnDestroy() {
+    if (this.chatbox) {
+      this.chatbox.destroy();
+    }
+  }
+
   private async loadChatbox(otherUser: User) {
-    const chatbox = await this.talkService.createChatbox(otherUser);
-    chatbox.mount(document.getElementById('talkjs-container'));
+    this.chatbox = await this.talkService.createChatbox(otherUser);
+    this.chatbox.mount(document.getElementById('talkjs-container'));
   }
 
   private getUserId() {

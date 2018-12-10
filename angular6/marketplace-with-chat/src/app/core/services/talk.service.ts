@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 
-import * as Talk from 'talkjs';
+import * as Talk from "talkjs";
 
 import { User } from "src/app/shared/models/user.model";
 import { AuthenticationService } from "src/app/core/services/authentication.service";

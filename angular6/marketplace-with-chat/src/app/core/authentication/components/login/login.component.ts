@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   login(credentials) {
     this.authenticationService.login(credentials.username).then(response => {
       if (response) {
-        this.toastrService.success('Successful login').onHidden.subscribe();
+        this.toastrService.success('Successful login');
         this.router.navigate(['home']);
 
         this.talkService.createCurrentSession();
