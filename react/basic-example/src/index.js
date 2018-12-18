@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom';
 import * as Talk from 'talkjs';
 
 class App extends Component {
+
     constructor(props) {
         super(props);
-        this.talkSession = undefined;
+        
+        this.inbox = undefined;
     }
 
     componentDidMount() {
@@ -20,10 +22,12 @@ class App extends Component {
                     welcomeMessage: "Hey there! How are you? :-)"
                 });
 
-                this.talkSession = new Talk.Session({
-                    appId: "Hku1c4Pt",
-                    me: me
-                });
+                if (!window.talkSession) {
+                    window.talkSession = new Talk.Session({
+                        appId: "Hku1c4Pt",
+                        me: me
+                    });
+                }
 
                 const other = new Talk.User({
                     id: "54321",
@@ -37,17 +41,23 @@ class App extends Component {
                 // a unique conversation ID for a given pair of users. 
                 const conversationId = Talk.oneOnOneId(me, other);
             
-                const conversation = this.talkSession.getOrCreateConversation(conversationId);
+                const conversation = window.talkSession.getOrCreateConversation(conversationId);
                 conversation.setParticipant(me);
                 conversation.setParticipant(other);
             
-                const inbox = this.talkSession.createInbox({
+                this.inbox = window.talkSession.createInbox({
                     selected: conversation
                 });
-                inbox.mount(this.container);
+                this.inbox.mount(this.container);
 
             })
             .catch(e => console.error(e));
+    }
+
+    componentWillUnmount() {
+        if (this.inbox) {
+            this.inbox.destroy();
+        }
     }
 
     render() {
