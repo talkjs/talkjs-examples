@@ -1,0 +1,62 @@
+.UserCard .user-card {
+    background-color: transparent;
+    margin-bottom: 20px;
+    min-width: 255px;
+}
+
+.UserCard .small-user-card {
+    height: 160px;
+    margin-left: 30px !important;
+}
+
+.UserCard .hoverable-card {
+    cursor: pointer;
+}
+
+.UserCard .user-card-img-top {
+    border-radius: 50%;
+    margin-top: 20px;
+}
+
+.UserCard .small-img {
+    width: 100px;
+    height: 100px;
+}
+
+.UserCard .large-img {
+    width: 250px;
+    height: 250px;
+}
+
+.UserCard .bottom-margin-image {
+    margin-bottom: 20px;
+}
+
+.UserCard .user-card-title {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.UserCard .borderless {
+    border: none;
+}
+
+/* Transparent */
+.UserCard .transparent {
+    background-color: transparent;
+}
+
+.UserCard .hoverable-transparent:hover {
+    background-color: #f7f9f9;
+}
+
+/* Gray */
+.UserCard .gray {
+    background-color: #F7F9F9;
+}
+
+.UserCard .hoverable-gray:hover {
+    background-color: transparent;
+}
+
+

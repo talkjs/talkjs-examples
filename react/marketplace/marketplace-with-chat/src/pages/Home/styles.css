@@ -1,0 +1,42 @@
+.Home .footer {
+    height: 62px;
+}
+
+.Home #footer-logo {
+    margin-left: 2px;
+}
+
+.Home .container-title {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 15px !important;
+}
+
+.Home .divider {
+    width: 95%;
+}
+
+.Home .bold-warning {
+    color: #D09404;
+    font-weight: bold;
+}
+
+.Home .bold-warning:hover {
+    color: #D09404;
+}
+
+.Home #top-products-container {
+    margin-top: 25px;
+}
+
+.Home #top-products-row {
+    display: flex;
+}
+
+.Home .invisible-card {
+    border: none;
+}
+
+.Home #top-vendor-title {
+    margin-left: 5px;
+}

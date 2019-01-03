@@ -1,0 +1,38 @@
+{
+  "name": "marketplace",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@types/classnames": "^2.2.6",
+    "@types/q": "^1.5.1",
+    "@types/react-bootstrap": "^0.32.14",
+    "@types/react-loadable": "^5.4.1",
+    "@types/react-redux": "^6.0.9",
+    "@types/react-router-dom": "^4.3.1",
+    "classnames": "^2.2.6",
+    "react": "^16.5.2",
+    "react-bootstrap": "^0.32.4",
+    "react-dom": "^16.5.2",
+    "react-loadable": "^5.5.0",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "react-scripts-ts": "3.1.0",
+    "react-toastify": "^4.4.0",
+    "redux": "^4.0.0",
+    "talkjs": "^0.6.0"
+  },
+  "scripts": {
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.5",
+    "@types/node": "^10.11.7",
+    "@types/react": "^16.4.16",
+    "@types/react-dom": "^16.0.9",
+    "typescript": "^3.1.2"
+  },
+  "homepage": "https://talkjs.com/demos/react/marketplace/with-chat/"
+}
