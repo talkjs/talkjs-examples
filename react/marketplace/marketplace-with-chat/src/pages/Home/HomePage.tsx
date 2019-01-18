@@ -78,7 +78,7 @@ class HomePage extends React.Component<DefaultProps, DefaultState, object> {
               {this.state.shouldDisplayAlert && 
               <Alert bsStyle="warning" onDismiss={this.handleAlertDismiss}>
                 <p>
-                  This demo application has been made for a <a className="bold-warning" href="https://talkjs.com/tutorials/article/integrate-buyer-seller-chat-into-a-marketplace-with-react/">tutorial</a> on how to implement <a className="bold-warning" href="http://www.talkjs.com">TalkJS</a> into any React application.
+                  This demo application has been made for a <a className="bold-warning" href="https://talkjs.com/tutorials/article/add-buyer-seller-chat-into-a-marketplace-with-react/">tutorial</a> on how to implement <a className="bold-warning" href="http://www.talkjs.com">TalkJS</a> into any React application.
                 </p>  
                 <p>
                   Try chatting with Mary!

@@ -3,7 +3,7 @@
 ## Context
 This directory contains two buyer-seller marketplace applications: one with and one without chat functionality.
 
-The application without chat functionality serves as a start application for the TalkJS implementation [tutorial](https://talkjs.com/tutorials/article/integrate-buyer-seller-chat-into-a-marketplace-with-react/), in which chat functionalities are being added within a project. The final product of the tutorial is the marketplace application with chat functionality. 
+The application without chat functionality serves as a start application for the TalkJS implementation [tutorial](https://talkjs.com/tutorials/article/add-buyer-seller-chat-into-a-marketplace-with-react/), in which chat functionalities are being added within a project. The final product of the tutorial is the marketplace application with chat functionality. 
 
 The applications both realize a simplified use case of a marketplace. In this marketplace, users are able to log in, view product listings and chat with the vendor of a product in several different ways (obviously, the chat functionalities are only implemented in the application with chat functionalities).
 
