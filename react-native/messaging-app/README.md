@@ -3,7 +3,7 @@
 ## Context
 This directory contains two applications: one with and one without chat functionality.
 
-The application without chat functionality (```base-app```) serves as a start application for the TalkJS implementation [tutorial](http://www.talkjs.com/tutorials/angular/add-buyer-seller-chat-to-marketplace), in which chat functionalities are being added within a project. The final product of the tutorial is a messaging app with working chat functionality. 
+The application without chat functionality (```base-app```) serves as a start application for the TalkJS implementation [tutorial](https://talkjs.com/tutorials/article/creating-a-messaging-app-using-talkjs-chat-api-and-react-native/), in which chat functionalities are being added within a project. The final product of the tutorial is a messaging app with working chat functionality. 
 
 Both applications have been built in React Native.
 
