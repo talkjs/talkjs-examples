@@ -39,7 +39,7 @@ class HomeScreen extends React.Component {
          name: "Karem",
          email: "dev@talkjs.com",
          photoUrl: "https://raw.githubusercontent.com/paulsmal/talkjs-react-native/screens-example/assets/user3.jpg",
-         configuration: "booker", 
+         role: "booker", 
          welcomeMessage: "Hello"
        }
        ]
@@ -89,7 +89,7 @@ class ChatScreen extends React.Component {
             id: "_10",
             name: "Alice",
             email: "george@looney.net",
-            configuration: "booker",
+            role: "booker",
             photoUrl: "https://talkjs.com/docs/img/george.jpg"
           });
           window.talkSession = new Talk.Session({

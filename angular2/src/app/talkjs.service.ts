@@ -14,7 +14,7 @@ export class TalkJsService {
             this.currentUser = new Talk.User({
                 id: username,
                 name: username,
-                configuration: 'buyer'
+                role: 'buyer'
             });
         
             console.log("Logged in.");

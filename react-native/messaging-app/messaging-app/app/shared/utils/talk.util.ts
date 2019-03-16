@@ -31,7 +31,7 @@ export function getInboxLoadScript(currentUser: User) : string {
         window.currentUser = new Talk.User({
             id: "` + 'user_' + currentUser.id + `",
             name: "` + currentUser.username + `",
-            configuration: "react_native_app"
+            role: "react_native_app"
         });
 
         window.talkSession = new Talk.Session({

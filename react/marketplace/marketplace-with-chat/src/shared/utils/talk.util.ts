@@ -13,7 +13,7 @@ export async function createTalkUser(applicationUser: User) : Promise<Talk.User>
         id: 'talkjs_react_marketplace' + applicationUser.id,
         name: applicationUser.username,
         photoUrl: applicationUser.profilePictureUrl,
-        configuration: 'demo_default',
+        role: 'demo_default',
         welcomeMessage: applicationUser.chatPreferences.chatWelcomeMessage
         });
 }

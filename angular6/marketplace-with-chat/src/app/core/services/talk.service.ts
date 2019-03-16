@@ -40,7 +40,7 @@ export class TalkService {
             id: 'talkjs_angular6_marketplace_end_product' + applicationUser.id,
             name: applicationUser.username,
             photoUrl: applicationUser.profilePictureUrl,
-            configuration: "demo_default",
+            role: "demo_default",
             welcomeMessage: applicationUser.chatPreferences.chatWelcomeMessage
          });
     }
