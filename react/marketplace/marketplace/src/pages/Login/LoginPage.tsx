@@ -26,7 +26,7 @@ class LoginPage extends React.Component<DefaultProps, object> {
         <form  className="form">
           <div className="login-form">
             <input type="text" className="form-control" ref={(ref) => this.tfUsername = ref} placeholder="username"/>
-            <button onClick={this.handleLoginAttempt} type="Submit Form" id="login-btn">login</button>
+            <button onClick={this.handleLoginAttempt} type="submit" id="login-btn">login</button>
           </div>
         </form>
       </div>
