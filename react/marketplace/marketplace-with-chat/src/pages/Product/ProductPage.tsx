@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import './styles.css';
 
-import * as Talk from 'talkjs';
+import Talk from 'talkjs';
 
 import { Product } from 'src/shared/models/product.model';
 import ProductCard, { Size as ProductCardSize } from '../../components/ProductCard/ProductCard';

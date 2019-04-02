@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import './styles.css';
 
-import * as Talk from 'talkjs';
+import Talk from 'talkjs';
 
 import Inbox from '../../components/Inbox/Inbox';
 

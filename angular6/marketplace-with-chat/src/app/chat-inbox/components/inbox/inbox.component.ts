@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import * as Talk from "talkjs";
+import Talk from "talkjs";
 
 import { TalkService } from 'src/app/core/services/talk.service';
 

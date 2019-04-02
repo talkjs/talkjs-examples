@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import './styles.css';
 
-import * as Talk from 'talkjs';
+import Talk from 'talkjs';
 
 import { User } from 'src/shared/models/user.model';
 import UserCard, { Color, Size as UserCardSize } from '../../components/UserCard/UserCard';

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import * as Talk from 'talkjs';
+import Talk from 'talkjs';
 
 import { Product } from 'src/app/shared/models/product.model';
 import { ProductService } from 'src/app/core/services/product.service';
