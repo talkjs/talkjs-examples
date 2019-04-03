@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as Talk from "talkjs";
+import Talk from "talkjs";
 
 @Injectable()
 export class TalkJsService {

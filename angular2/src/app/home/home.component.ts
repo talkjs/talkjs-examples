@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { TalkJsService } from "../talkjs.service";
-import * as Talk from "talkjs";
+import Talk from "talkjs";
 
 @Component({
   selector: 'app-home',
