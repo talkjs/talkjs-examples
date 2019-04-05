@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 
 import store from './shared/store/store';
 
-import AppContainer from './components/app/AppContainer';
+import AppContainer from './components/Test/AppContainer';
 
 import { getCurrentUser } from './core/modules/authentication.module';
 import { initializeProductMocks } from './core/modules/product.module';
