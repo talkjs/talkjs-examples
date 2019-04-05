@@ -14,7 +14,7 @@ exports.messageRead = (req, res) => {
 
 exports.userCreated = (req, res) => {
     let event = req.body;
-    console.log(`User created: ${event.data.user.id} \nEmail: ${event.data.user.email[0]}\n`);
+    console.log(`User created: ${event.data.user.id}`);
     res.sendStatus(200);
 }
 

@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Router } from '@angular/router';
 
-import * as Talk from "talkjs";
+import Talk from "talkjs";
 
 import { UserService } from 'src/app/core/services/user.service';
 import { User } from 'src/app/shared/models/user.model';

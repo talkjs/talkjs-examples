@@ -3,7 +3,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch, bindActionCreators } from 'redux';
 
-import * as Talk from 'talkjs';
+import Talk from 'talkjs';
 
 import routerHistory from '../../shared/router-history/router-history';
 

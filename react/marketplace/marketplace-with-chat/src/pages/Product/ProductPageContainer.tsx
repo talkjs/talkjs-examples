@@ -14,7 +14,7 @@ import { getIdFromURL } from 'src/shared/utils/url.util';
 import { getProduct } from 'src/core/modules/product.module';
 import { Product } from 'src/shared/models/product.model';
 
-import * as Talk from 'talkjs';
+import Talk from 'talkjs';
 import * as talkSession from '../../shared/talk/talk-session';
 import { getOrCreateConversation } from 'src/shared/utils/talk.util';
 

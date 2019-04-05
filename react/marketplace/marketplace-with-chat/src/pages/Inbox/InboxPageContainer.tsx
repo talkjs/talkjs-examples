@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import * as Talk from 'talkjs';
+import Talk from 'talkjs';
 import InboxPage from './InboxPage';
 import * as talkSession from '../../shared/talk/talk-session';
 import { destroyAllPopups } from 'src/shared/utils/talk.util';

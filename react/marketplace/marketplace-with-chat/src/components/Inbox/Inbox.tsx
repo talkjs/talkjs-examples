@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import * as Talk from 'talkjs';
+import Talk from 'talkjs';
 import { InboxOptions } from 'talkjs/types/talkjs/published/UIOptions';
 
 interface DefaultProps extends InboxOptions {

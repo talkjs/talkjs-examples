@@ -25,11 +25,11 @@
     "core-js": "^2.5.4",
     "ngx-toastr": "^9.0.2",
     "rxjs": "^6.0.0",
-    "talkjs": "^0.5.1",
+    "talkjs": "^0.8.0",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.7.0",
+    "@angular-devkit/build-angular": "^0.13.7",
     "@angular/cli": "~6.1.5",
     "@angular/compiler-cli": "^6.1.0",
     "@angular/language-service": "^6.1.0",

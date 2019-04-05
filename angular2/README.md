@@ -47,7 +47,7 @@ This repo demonstrates the use of 2 different forms of Server Side Rendering.
 ---
 
 ### Installation
-* `npm install` or `yarn`
+* `npm install`
 
 ### Development (Client-side only rendering)
 * run `npm run start` which will start `ng serve`

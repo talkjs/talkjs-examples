@@ -1,4 +1,4 @@
-import * as Talk from 'talkjs';
+import Talk from 'talkjs';
 
 import { Deferred } from "../utils/deferred.util";
 import { User } from '../models/user.model';
