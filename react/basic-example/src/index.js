@@ -24,7 +24,7 @@ class App extends Component {
 
                 if (!window.talkSession) {
                     window.talkSession = new Talk.Session({
-                        appId: "Hku1c4Pt",
+                        appId: "YOUR APP ID HERE",
                         me: me
                     });
                 }

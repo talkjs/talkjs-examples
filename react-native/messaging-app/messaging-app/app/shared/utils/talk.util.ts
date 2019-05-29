@@ -1,7 +1,7 @@
 import { User } from "../models/user.model";
 import sha1 from "sha1";
 
-const APP_ID = 'Hku1c4Pt';
+const APP_ID = 'YOUR APP ID HERE';
 
 export function getInboxSelectConversationScript(participants: User[], conversationId: string) : string {
     let script = `Talk.ready.then(function() {
