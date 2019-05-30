@@ -31,6 +31,8 @@ A minimal Angular starter for Universal JavaScript using TypeScript and Webpack
 
 We're utilizing packages from the [Angular Universal @nguniversal](https://github.com/angular/universal) repo, such as [ng-module-map-ngfactory-loader](https://github.com/angular/universal/tree/master/modules/module-map-ngfactory-loader) to enable Lazy Loading.
 
+
+
 ---
 
 ### Build Time Prerender(prerender) Vs. Server Side Rendering(ssr)
@@ -48,6 +50,7 @@ This repo demonstrates the use of 2 different forms of Server Side Rendering.
 
 ### Installation
 * `npm install`
+* Open `/src/app/talkjs.service.ts` and replace YOUR_APP_ID with your own appId which you can find in the [TalkJS dashboard](https://talkjs.com/dashboard).
 
 ### Development (Client-side only rendering)
 * run `npm run start` which will start `ng serve`

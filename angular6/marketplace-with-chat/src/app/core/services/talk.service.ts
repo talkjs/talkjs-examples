@@ -10,7 +10,7 @@ import { Deferred } from "src/app/shared/utils/deffered.util";
     providedIn: 'root'
 })
 export class TalkService {
-    private static APP_ID = 'Hku1c4Pt';
+    private static APP_ID = 'YOUR APP ID HERE';
     private currentTalkUser: Talk.User;
     private loadedPopups: Talk.Popup[];
     private currentSessionDeferred = new Deferred<Talk.Session>();

@@ -4,7 +4,7 @@ import { User } from '../models/user.model';
 
 let loadedPopups: Talk.Popup[] = [];
 
-export const appId = 'Hku1c4Pt';
+export const appId = 'YOUR APP ID HERE';
 
 export async function createTalkUser(applicationUser: User) : Promise<Talk.User> {
     await Talk.ready;

@@ -19,7 +19,7 @@ export class TalkJsService {
         
             console.log("Logged in.");
             return new Talk.Session({
-                appId: 'Hku1c4Pt',
+                appId: 'YOUR APP ID HERE',
                 me: this.currentUser
             });
         }) as Promise<Talk.Session>;
