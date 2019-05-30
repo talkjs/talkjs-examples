@@ -22,6 +22,7 @@ Make sure you're working with NodeJS v8.11.4 or above.
 The following steps should be executed in either the ```marketplace``` or ```marketplace-with-chat``` directory.
 
 - Install all the needed modules by using ```npm install```
+- Open `//src/shared/utils/talk.util.ts` and replace YOUR_APP_ID with your own appId which you can find in the [TalkJS dashboard](https://talkjs.com/dashboard).
 - Start the devserver by using ```npm start```
 - Navigate to ```http://localhost:3000``` in your preferred browser.
 - Log into the application. More information about logging in can be found in the next chapter.

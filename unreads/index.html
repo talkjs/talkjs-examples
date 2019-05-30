@@ -40,6 +40,7 @@
         Talk.ready.then(function () {
             _demo.me = new Talk.User("demo-playground-marcin3");
             _demo.session = new Talk.Session({
+                // Replace YOUR_APP_ID with your own appId which you can find in the TalkJS dashboard (https://talkjs.com/dashboard)
                 appId: "YOUR APP ID HERE",
                 me: _demo.me
             });

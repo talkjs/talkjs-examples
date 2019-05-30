@@ -20,6 +20,7 @@ Make sure you're working with NodeJS v10.13.0 or above.
 The following steps should be executed in either the ```base-app``` or ```messaging-app``` directory.
 
 - Install all the needed modules. ```npm install```
+- Open `/app/shared/utils/talk.util.ts ` and replace YOUR_APP_ID with your own appId which you can find in the [TalkJS dashboard](https://talkjs.com/dashboard).
 - For Apple devices, start the application on either your mobile device or an emulator as you normally would with a React Native application.
 - For Android devices, to start the application on your mobile device, use ```npm run start-android-device```. To start it on an emulator, use ```npm run start-android-emulator```
 
