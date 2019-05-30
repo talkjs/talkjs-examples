@@ -14,18 +14,20 @@ Not sure how to cover your use case with TalkJS? [Get in touch](https://talkjs.c
 
 - [User to Operator chat](./user-to-operator)
 - [Unread Counter](./unreads)
-- [Visitor chat](./visitor-chat)
+- [Chat without an account](./visitor-chat)
 
 ### JavaScript SDK - Libraries
 
 Using a library, framework or language not listed here? [Let us know](https://talkjs.com?ref=gh-example-readme&chatwithus=1) and we'll fix it right away.
 
 - [React](./react)
+    - [Server-side rendered](./react/next.js)
 - [React Native](./react-native)
 
 ### JavaScript SDK - Frameworks
 
 - [Angular](./angular6)
+- [Next.js](./react/next.js)
 
 ### REST API & Webhooks
 - [PHP Webhook Receiver](./webhooks/php)
