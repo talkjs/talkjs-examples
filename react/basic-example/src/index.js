@@ -62,7 +62,7 @@ class App extends Component {
 
     render() {
         return (<span>
-            <div ref={c => this.container = c}>Loading...</div>
+            <div style={{height: '500px'}} ref={c => this.container = c}>Loading...</div>
         </span>);
     }
 }
