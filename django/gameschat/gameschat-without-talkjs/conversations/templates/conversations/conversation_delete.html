@@ -1,0 +1,16 @@
+{% extends 'games/base.html' %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Delete Conversation</legend>
+                <h4>Are you sure you want to delete the conversation "{{ object.text }}" ?</h4>
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-danger" type="submit">Yes, Delete</button>
+                <a href="{% url 'conversations' game_id=object.game.id %}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends 'games/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Join Today</legend>
+                {{ form|crispy }}
+                <small class="font-italic font-weight-bold">*Make sure to fill in a valid email address to receive notifications.</small>
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">Sign Up</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already Have An Account?<a href="{% url 'login' %}" class="ml-2">Sign In</a> 
+            </small>
+        </div>
+    </div>
+{% endblock content %}

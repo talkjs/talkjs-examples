@@ -1,0 +1,29 @@
+{% extends 'games/base.html' %}
+{% block content %}
+    {% if games %}
+        <div class="card-columns">
+            {% for game in games %}
+                <div class="card mb-4">
+                    <img src="{{ game.image_url }}" class="card-img-top" alt="{{ game.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ game.name }}</h5>
+                        <p class="card-text">{{ game.description }}</p>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'conversations' game_id=game.id %}" class="btn btn-primary">Conversations</a>
+                        {% endif %}
+                        {% if user.is_authenticated and user.id == game.owner.id %}
+                            <a href="{% url 'game-update' pk=game.id %}" class="btn btn-secondary">Edit</a>
+                            <a href="{% url 'game-delete' pk=game.id %}" class="btn btn-danger">Delete</a>
+                        {% endif %}
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">created {{ game.created_at|date:"M j'y \a\t G:i" }} by <strong>@{{ game.owner.username }}</strong></small>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% if is_paginated %}
+        {% include './paginator.html' %}
+    {% endif %}
+{% endblock content %}

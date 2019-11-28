@@ -1,0 +1,91 @@
+{% extends 'games/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="my-3 p-3 bg-white rounded">
+       <div class="row">
+            <div class="col">
+                <h4>{{ game_name }}</h4>
+            </div>
+            <div class="col">
+                <div class="pull-right">
+                    <a href="{% url 'conversation-create' game_id=game_id %}" class="btn btn-primary float-right">Create Conversation</a>
+                </div>
+            </div>
+       </div>
+        {% if conversations %}
+            <hr class="pb-2 mb-0" />
+            {% for conversation in conversations %}
+                <div class="media text-muted pt-4" >
+                    <img class="mr-2 rounded-circle medium-profile-image" src="{{ conversation.owner.profile.image_url }}" />
+                    <div class="media-body small border-bottom border-gray">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-block accordion" 
+                                id="conversation-answers" 
+                                data-toggle="collapse" 
+                                data-target="#collapse{{conversation.id}}" 
+                                aria-expanded="false" 
+                                aria-controls="collapse{{conversation.id}}">
+                                <strong>{{ conversation.name }}</strong> - {{ conversation.text }}
+                                <p>created {{ conversation.created_at|date:"M j'y \a\t G:i" }} by <strong>@{{ conversation.owner.username }}</strong></p>
+                            </div>
+                            <div>
+                                {% if user.id != conversation.owner.id %}
+                                    <button id="private-message" 
+                                        class="btn btn-primary" 
+                                        data-other-id="{{ conversation.owner.id }}"
+                                        data-conv-subject="{{ conversation.name }}">
+                                        PM
+                                    </button>
+                                {% else %}
+                                {% endif %}
+                                <a href="{% url 'conversation-answer-create' game_id=game_id pk=conversation.id %}" class="btn btn-primary">Answer</a>
+                                {% if user.id == conversation.owner.id %}
+                                    <a href="{% url 'conversation-update' game_id=game_id pk=conversation.id %}" class="btn btn-secondary">Edit</a>
+                                    <a href="{% url 'conversation-delete' game_id=game_id pk=conversation.id %}" class="btn btn-danger">Delete</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div id="collapse{{conversation.id}}" class="collapse" data-parent="#conversation-answers">
+                            {% for answer in conversation.answer_set.all|dictsort:"id" %}
+                                <div class="media text-muted border-top border-gray">
+                                    <img class="mr-2 mt-2 rounded-circle small-profile-image" src="{{ answer.owner.profile.image_url }}" />
+                                    <div class="media-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-block mt-1 answer-text">
+                                                <strong>{{ answer.text }}</strong>
+                                                <p>answered {{ answer.created_at|date:"M j'y \a\t G:i" }} by <strong>@{{ answer.owner.username }}</strong></p>
+                                            </div>
+                                            <div>
+                                                {% if user.id != answer.owner.id %}
+                                                    <button id="private-message" 
+                                                        class="btn btn-sm btn-primary" 
+                                                        data-other-id="{{ answer.owner.id }}"
+                                                        data-conv-subject="{{ conversation.name }}">
+                                                        PM
+                                                    </button>
+                                                {% endif %} 
+                                                {% if user.id == answer.owner.id %}
+                                                    <a href="{% url 'conversation-answer-update' game_id=game_id conv_id=conversation.id pk=answer.id %}" class="btn btn-sm btn-secondary">Edit</a>
+                                                {% endif %}
+                                                {% if user.id == answer.owner.id or user.id == conversation.owner.id %}
+                                                    <a href="{% url 'conversation-answer-delete' game_id=game_id conv_id=conversation.id pk=answer.id %}" class="btn btn-sm btn-danger">Delete</a>
+                                                {% endif %}
+                                            </div>
+                                        </div>   
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    {% if is_paginated %}
+       {% include 'games/paginator.html' %}
+    {% endif %}
+{% endblock content %}
+
+{% block extrajs %} 
+    <script src="{% static 'games/js/privateMessage.js' %}"></script>
+{% endblock extrajs %}

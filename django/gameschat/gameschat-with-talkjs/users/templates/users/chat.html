@@ -1,0 +1,77 @@
+{% extends 'games/base.html' %}
+{% load static %}
+{% block content %}
+    <h3 class="text-center mb-5">Chat privately with a friend or with your game team!</h3>
+
+    {% if users %}
+        <div class="row">
+            <div class="col">
+                <ul class="list-group users-statuses-list">
+                    <li>
+                        <small class="font-italic font-weight-bold">*Group chats can contain up to 5 team members(including you) - </small>
+                        <small class="font-italic font-weight-bold" id="invited-users-count">Selected 0/4</small>
+                    </li>
+                    {% for user in users %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ user.username }}
+
+                            {% if user.is_online %}
+                                <span class="badge badge-pill badge-success">online</span>
+                            {% else %}
+                                <span class="badge badge-pill badge-secondary">offline</span>
+                            {% endif %}
+
+                            <button class="btn btn-sm btn-primary" id="invite-user" data-other-id="{{ user.id }}">Invite</button>
+                        </li>
+                    {% endfor %}    
+                </ul>
+                <div class="row hidden mt-3" id="chat-actions">
+                    <div class="col">
+                        <button class="btn btn-primary form-control" id="create-chat"></button>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#chat-options-modal">
+                            Edit chat settings
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="chat-options-modal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Settings are optional</h5>
+                            </div>
+                            <div class="modal-body">
+                                <input id="chat-subject" class="form-control mt-3 mb-3" type="text" placeholder="Subject" />
+                                <input id="chat-welcome-message" class="form-control mt-3 mb-3" type="text" placeholder="Welcome message" />
+                                <input id="chat-photo-url" class="form-control mt-3 mb-3" type="text" placeholder="Photo url" />
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="chatbox-container">
+                    <div class="chatbox-header">
+                        <div id="header-avatar"></div>
+                        <p id="header-usernames"></p> 
+                        <p id="header-subject"></p>
+                    </div>
+                    <div id="talkjs-container" style="width: 100%; height: 570px;"><i>Loading chat...</i></div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <h5 class="text-center">There are no other users registered ;(</h5>
+    {% endif %}
+{% endblock content %}
+
+{% block extrajs %} 
+    <script src="{% static 'games/js/chat.js' %}"></script>
+{% endblock extrajs %}
