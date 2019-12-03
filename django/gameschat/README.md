@@ -39,7 +39,7 @@ The following steps should be executed in either the ```gameschat-with-talkjs```
 
 - After you've cloned/downloaded the repository, open the terminal in the project's directory and write `pip install -r requirements.txt`. After the installation is done, write `python manage.py migrate`. Lastly, write `python manage.py runserver`, this will start the server on port 8000. Go ahead and write the following in your browser `http://localhost:8000`.
 
-Good job! Additional information can be found in the tutorial of this application.
+Good job! Additional information can be found in the [tutorial](https://talkjs.com/tutorials/article/how-to-add-direct-messaging-to-a-discussion-forum-with-django-and-talkjs/) of this application.
 
 ## Documentation
 For more information on how to integrate TalkJS into your projects, check out our [documentation](https://talkjs.com/docs/?ref=gh-example-readme).
