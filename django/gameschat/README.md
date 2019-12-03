@@ -1,4 +1,4 @@
-# Games Chat App chat with Django and TalkJS
+# Games Chat App with Django and TalkJS
 
 ## Context
 This directory contains two games chat applications: one with and one without TalkJS integrated.
