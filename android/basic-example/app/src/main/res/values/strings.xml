@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TalkJS webview example</string>
+    <string name="tab_text_1">Inbox</string>
+    <string name="tab_text_2">New chat</string>
+</resources>

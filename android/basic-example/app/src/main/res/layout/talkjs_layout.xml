@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--
+    On some older Android versions, a WebView won't load unless it is visible.
+    We want to show a loading animation until the chat is fully loaded, so as
+    a workaround we make the WebView 1dip high. That makes it "visible" except
+    it's hardly noticeable for the user. When it's fully loaded, we set
+    the height to full and hide the loading animation.
+    -->
+    <WebView
+        android:id="@+id/talkjs_webview"
+        android:layout_width="match_parent"
+        android:layout_height="1dip" />
+
+    <ProgressBar
+        android:id="@+id/talkjs_loading_spinner"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+</RelativeLayout>
