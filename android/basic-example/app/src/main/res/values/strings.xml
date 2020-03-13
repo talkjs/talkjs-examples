@@ -1,5 +1,10 @@
 <resources>
-    <string name="app_name">TalkJS webview example</string>
+    <string name="app_name">TalkJS WebView example</string>
     <string name="tab_text_1">Inbox</string>
     <string name="tab_text_2">New chat</string>
+    <string name="chat_with">Chat with %1$s</string>
+    <string name="retry">Retry</string>
+    <string name="back">Back</string>
+    <string name="chat_timeout_title">Network trouble</string>
+    <string name="chat_timeout_message">Could not load chat</string>
 </resources>

@@ -19,7 +19,7 @@ public class ChatboxActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(String.format("Chat with %s", extras.getString("name")));
+        getSupportActionBar().setTitle(getString(R.string.chat_with, extras.getString("name")));
 
         WebView webView = findViewById(R.id.talkjs_webview);
         webView.getSettings().setJavaScriptEnabled(true);
