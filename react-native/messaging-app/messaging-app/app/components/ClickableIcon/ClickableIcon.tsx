@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { View, TouchableOpacity } from 'react-native';
 
-import Icon from 'react-native-vector-icons/Ionicons';
-import { IconProps } from 'react-native-vector-icons/Icon';
+import Icon from 'react-native-ionicons'
+import { IconProps } from 'react-native-ionicons';
 
 interface DefaultProps extends IconProps { 
     padding?: number,
     onPress?: () => void
 }
+
 
 class ClickableIcon extends Component<DefaultProps, object> {
 

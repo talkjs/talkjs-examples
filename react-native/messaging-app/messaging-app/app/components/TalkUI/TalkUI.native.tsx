@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import { WebView, Platform } from 'react-native';
+import React, { Component, createRef } from 'react';
+import { Platform } from 'react-native';
+import { WebView } from 'react-native-webview';
 
 interface DefaultProps { 
     loadScript: string,
@@ -9,9 +10,8 @@ interface DefaultProps {
     onScriptInjection?: () => void
 }
 
-class TalkUI extends Component<DefaultProps, object> {
-
-    private webView: any;
+class TalkUI extends Component<DefaultProps, object> {         
+    private webView = createRef<WebView>();
 
     shouldComponentUpdate(nextProps: any) {
         if (nextProps.shouldInjectScript) {
@@ -24,20 +24,22 @@ class TalkUI extends Component<DefaultProps, object> {
         return false;
     }
 
+
+
     componentWillUnmount() {
         this.injectJavaScript('window.ui.destroy();');
     }
 
     injectJavaScript(script: string) {
         if (this.webView) {
-            this.webView.injectJavaScript(script);
+            this.webView.current!.injectJavaScript(script);
         }
     }
 
     render() {
         return (
             <WebView
-                ref={r => this.webView = r}
+                ref={this.webView}
                 javaScriptEnabled={true}
                 domStorageEnabled={true}
                 source={ Platform.OS === 'ios' ? require('./talkjs-container.html') : { uri: 'file:///android_asset/html/talkjs-container.html' } }

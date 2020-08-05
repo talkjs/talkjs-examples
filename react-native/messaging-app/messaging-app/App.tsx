@@ -8,7 +8,7 @@ import React from 'react';
 
 import ClickableIcon from './app/components/ClickableIcon/ClickableIcon';
 import { Platform, View } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-ionicons';
 import CreateChatScreenContainer from './app/screens/CreateChat/CreateChatScreenContainer.native';
 
 const stackNavigatorHeaderTitleStyle = {
