@@ -30,9 +30,9 @@
     </div>
     <script>
         (function(t,a,l,k,j,s){
-s=a.createElement('script');s.async=1;s.src="https://cdn.talkjs.com/talk.js";a.getElementsByTagName('head')[0].appendChild(s);k=t.Promise
-t.Talk={ready:{then:function(f){if(k)return new k(function(r,e){l.push([f,r,e])});l.push([f])},catch:function(){return k&&new k()},c:l}}
-})(window,document,[]);
+        s=a.createElement('script');s.async=1;s.src="https://cdn.talkjs.com/talk.js";a.head.appendChild(s)
+        ;k=t.Promise;t.Talk={v:3,ready:{then:function(f){if(k)return new k(function(r,e){l.push([f,r,e])});l
+        .push([f])},catch:function(){return k&&new k()},c:l}};})(window,document,[]);
     </script>
     <script>
         Talk.ready.then(function() {
@@ -43,13 +43,13 @@ t.Talk={ready:{then:function(f){if(k)return new k(function(r,e){l.push([f,r,e])}
             var me = new Talk.User({
                 // must be any value that uniquely identifies this user
                 id: "123456",
-                name: "George Looney",
-                email: "george@looney.net",
-                photoUrl: "https://talkjs.com/docs/img/george.jpg"
+                name: "Alice",
+                email: "alice@example.com",
+                photoUrl: "https://demo.talkjs.com/img/alice.jpg"
             });
-            // TODO: add a "configuration" field to the user object so your
+            // TODO: add a "role" field to the user object so your
             // user can get email notifications.
-            // See https://talkjs.com/docs/Emails_and_Configurations.html for more 
+            // See https://talkjs.com/docs/Features/Notifications/Email_Notifications/index.html for more 
             // info.
 
             // TODO: replace the appId below with the appId provided in the Dashboard
@@ -68,7 +68,7 @@ t.Talk={ready:{then:function(f){if(k)return new k(function(r,e){l.push([f,r,e])}
                 id: "myapp_operator",
                 name: "ExampleApp Operator",
                 email: "support@example.com",
-                photoUrl: "http://dmssolutions.nl/wp-content/uploads/2013/06/helpdesk.png",
+                photoUrl: "https://talkjs.com/images/logo.jpg",
                 welcomeMessage: "Hi there! How can I help you?"
             });
             

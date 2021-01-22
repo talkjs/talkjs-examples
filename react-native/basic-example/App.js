@@ -37,7 +37,7 @@ class HomeScreen extends React.Component {
        {
          id: "_9",
          name: "Karem",
-         email: "dev@talkjs.com",
+         email: "dev@example.com",
          photoUrl: "https://raw.githubusercontent.com/paulsmal/talkjs-react-native/screens-example/assets/user3.jpg",
          configuration: "booker", 
          welcomeMessage: "Hello"

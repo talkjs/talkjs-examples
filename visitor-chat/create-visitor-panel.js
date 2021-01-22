@@ -30,7 +30,7 @@ function getUser() {
     var user = {
         id: userId,
         name: name,
-        configuration: 'visitor'
+        role: 'visitor'
     };
     return user;
 }
