@@ -2,9 +2,15 @@ require("dotenv").config()
 var express = require("express");
 var path = require("path");
 var app = express();
+var bodyParser = require("body-parser");
 
-// Use the standard express middleware
-app.use(express.json());
+// bodyParser trick to ensure we get access to the raw request body, taken from
+// https://flaviocopes.com/express-get-raw-body/
+app.use(bodyParser.json({
+    verify: (req, res, buf) => {
+      req.rawBody = buf
+    }
+}));
 app.use(express.urlencoded({
     extended: false
 }));

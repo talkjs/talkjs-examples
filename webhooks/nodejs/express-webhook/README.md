@@ -15,8 +15,9 @@ And lastly, install the required npm packages:
 ## Initial setup
 The example requires you to set your  application ID in the a `.env` file. Visit the [TalkJS dashboard](https://talkjs.com/dashboard/) and copy your development `appId` to the `example.env` file and then rename the file to '`.env`'.
 
-*Optional:* a secret key can be set to allow TalkJS's [identity verification](https://talkjs.com/docs/Features/Identity_Verification.html) feature to work if it is enabled your TalkJS [settings](https://talkjs.com/dashboard/).
-*Optional:* A port can be specified to override the default port (3000) that the application runs on
+Additionally, a secret key must be set to allow TalkJS's [identity verification](https://talkjs.com/docs/Features/Identity_Verification.html) and [webhook integrity](https://talkjs.com/docs/Features/Security_Settings/Security_Recommendations.html#page_Webhook_Integrity) features to work.
+
+*Optional:* A port can be specified to override the default port (3000) that the application runs on.
 
 The `.env` file should look similar to the following:
 
