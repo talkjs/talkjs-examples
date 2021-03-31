@@ -3,8 +3,8 @@ var crypto = require("crypto");
 // Import a mock user Model
 var User = require("../models/User");
 
-// Optionally set a secret in the .env file to to use
-// with identity verification see: https://talkjs.com/docs/Features/Identity_Verification.html
+// Set this secret in the .env file for use with identity verification, see:
+// https://talkjs.com/docs/Features/Identity_Verification.html
 const secret = process.env.SECRET;
 
 exports.index = (req, res) => {
