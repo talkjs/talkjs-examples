@@ -53,7 +53,8 @@ async function doRequest(path, secretKey, verb, body) {
         }
     });
 
-    await new Promise(resolve => setTimeout(resolve, 200));
+    // Wait 250ms between each request to keep within REST API rate limits
+    await new Promise(resolve => setTimeout(resolve, 250));
 
     if (response.status === 200) {
         const result = await response.json();
