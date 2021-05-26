@@ -28,7 +28,7 @@ function Chatbox(props) {
     }, [props, me, talkSession]);
 
 	return (
-        <div ref={chatContainer} style={{height: '700px', width: '450px'}}></div>
+        <div ref={chatContainer} style={{minHeight: '100%', width: '100%'}}></div>
 	);
 };
 

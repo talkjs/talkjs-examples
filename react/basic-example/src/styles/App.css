@@ -1,3 +1,40 @@
 a {
   color: #1E60E1;
 }
+
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.main-layout {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+.main-layout__chat { 
+  min-height: 400px;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+@media screen and (min-width: 800px) {
+  .main-layout {
+    flex-direction: row;
+  }
+
+  .main-layout__video {
+    min-height: 300px;
+    width: 65%;
+  }
+
+  .main-layout__chat {
+    min-height: 100%;
+    width: 35%;
+  }
+
+}

@@ -24,11 +24,15 @@ function App() {
 
   return (
       <TalkSession appId={appId} me={me}>
-        <div style={{width: '65%', margin: 'auto'}}>
+        <div className="container">
           <h1>TalkJS Chatbox example</h1>
-          <div style={{display: 'flex', justifyContent: 'space-between'}}>
-            <Video videoSrc={mockVimeoVideoSrc}></Video>
-            <Chatbox conversationId={mockConversationTopic}></Chatbox>
+          <div className="main-layout">
+            <div className="main-layout__video">
+              <Video videoSrc={mockVimeoVideoSrc} />
+            </div>
+            <div className="main-layout__chat">
+              <Chatbox conversationId={mockConversationTopic} />
+            </div>
           </div>
 
           <div>
