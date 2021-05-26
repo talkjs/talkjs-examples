@@ -2,7 +2,7 @@
 
 This project is designed to demonstrate how you can easily add chat in to your React application using [TalkJS](https://talkjs.com)
 
-!(./public/example.png)
+![Chatbox Example](public/example.png)
 
 First you'll need to enter your own `appId` inside the `App.js` component. You can find your `appId` in the TalkJS dashboard (https://talkjs.com/dashboard)
 
