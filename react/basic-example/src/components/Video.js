@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactPlayer from 'react-player'
-import './Video.css';
+import '../styles/Video.css';
 
 // This component contains an video to be used as mock content to base the chat around
 function Video(props) {

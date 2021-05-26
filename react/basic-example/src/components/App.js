@@ -7,7 +7,7 @@ import Video from './Video';
 function App() {
 
   // Fetch this from the TalkJS dashboard (https://talkjs.com/dashboard)
-  const appId = 'your_app_id'
+  const appId = 'replace with your app id'
 
   // Mock user to load the chat as, tradditionally this would be fetched this from your database or store
   // properties map to a Talk.User (https://talkjs.com/docs/Reference/JavaScript_Chat_SDK/User.html)
