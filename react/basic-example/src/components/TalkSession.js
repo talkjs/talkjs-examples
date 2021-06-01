@@ -13,26 +13,26 @@ import { TalkSessionContext } from '../contexts/TalkSessionContext';
 function TalkSession(props) {
 
     const [me, setMe] = useState(null);
-    const [talkSession, setTalkSession] = useState(null);
+    const [session, setSession] = useState(null);
 
     useEffect(() => {
         
-        if(!talkSession) {
+        if(!session) {
             Talk.ready.then(() => {
                 const me = new Talk.User(props.me);
-                const session = new Talk.Session({
+                const talkSession = new Talk.Session({
                     me,
                     appId: props.appId,
                 });
     
                 setMe(me);
-                setTalkSession(session);
+                setSession(talkSession);
             });
         }
-    }, [props.me, props.appId, talkSession]);
+    }, [props.me, props.appId, session]);
 
 	return (
-        <TalkSessionContext.Provider value={{me, talkSession}}>
+        <TalkSessionContext.Provider value={{me, session}}>
             {props.children}
         </TalkSessionContext.Provider>
 	);
