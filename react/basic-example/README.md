@@ -8,7 +8,7 @@ First you'll need to enter your own `appId` inside the `App.js` component. You c
 
 To run the example, run `yarn start` and open [http://localhost:3000](http://localhost:3000) in the browser.
 
-The page will reload if you make edits.
+The page will reload if you make edits. This example was made using the Create React App scaffolding, although this example should be applicable for any type of React projects. 
 
 
 ## Learn More

@@ -4,7 +4,7 @@ import { TalkSessionContext } from '../contexts/TalkSessionContext';
 
 /* 
 This is an example component that uses one of TalkJS' pre-built UI modes - or more specifically, the 'Chatbox' UI mode
-The Chatbox UI is typically used when the chat may be related to a speicific 'topic' such as a video, product order etc.
+The Chatbox UI is typically used when the chat may be related to a specific 'topic' such as a video, product order etc.
 */
 function Chatbox(props) {
 
@@ -15,17 +15,17 @@ function Chatbox(props) {
 
         if(talkSession && props.conversationId) {
             
-           const conv = talkSession.getOrCreateConversation(props.conversationId); 
-           conv.setParticipant(me);
-           conv.setAttributes({
+           const conversation = talkSession.getOrCreateConversation(props.conversationId); 
+           conversation.setParticipant(me);
+           conversation.setAttributes({
                subject: 'Example chat subject',
            });
 
-           const chatbox = talkSession.createChatbox(conv);
+           const chatbox = talkSession.createChatbox(conversation);
            chatbox.mount(chatContainer.current);
         }
 
-    }, [props, me, talkSession]);
+    }, [props.conversationId, me, talkSession]);
 
 	return (
         <div ref={chatContainer} style={{minHeight: '100%', width: '100%'}}></div>

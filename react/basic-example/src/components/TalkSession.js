@@ -29,7 +29,7 @@ function TalkSession(props) {
                 setTalkSession(session);
             });
         }
-    }, [props, talkSession]);
+    }, [props.me, props.appId, talkSession]);
 
 	return (
         <TalkSessionContext.Provider value={{me, talkSession}}>
@@ -39,7 +39,7 @@ function TalkSession(props) {
 };
 
 TalkSession.propTypes = {
-    children: PropTypes.any,
+    children: PropTypes.node,
     appId: PropTypes.string.isRequired,
     me: PropTypes.object.isRequired,
 }
