@@ -6,4 +6,5 @@ When a tutorial related to a sample is published add a row to the table below. A
 
  | Title        | blog link     | dev.to link | sample |
 | ------------- | ------------- | ------------|--------|
-|How to Hide Some Chat Messages for Certain Users in a TalkJS Chat|               |[read on dev.to](https://dev.to/talkjs/how-to-hide-some-chat-messages-for-certain-users-in-a-talkjs-chat-23g4) |[view sample code](https://github.com/SapneshNaik/talkjs-examples/tree/master/howtos/how-to-hide-some-chat-messages-for-certain-users-in-a-talkjs-chat)|
+|How to Hide Some Chat Messages for Certain Users in a TalkJS Chat|               |[read on dev.to](https://dev.to/talkjs/how-to-hide-some-chat-messages-for-certain-users-in-a-talkjs-chat-23g4) |[view sample code](https://github.com/SapneshNaik/talkjs-examples/tree/master/howtos/how-to-hide-some-chat-messages-for-certain-users-in-a-talkjs-chat)
+|How to add a Custom UI in TalkJS HTML Panels with Vue||[read on dev.to](https://dev.to/talkjs/how-to-add-a-custom-ui-in-talkjs-html-panels-with-vue-190p)|[view sample code]()
