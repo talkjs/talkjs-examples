@@ -1,4 +1,6 @@
-# TalkJS-Questionnaire
-Code to build a simple TalkJS interactive questionnaire using HTML Panels
++ [Read it on our blog](https://talkjs.com/resources/how-to-make-an-interactive-in-chat-questionnaire-with-talkjs-html-panels/)
++ [Read it on dev.to](https://dev.to/talkjs/how-to-make-an-interactive-in-chat-questionnaire-with-talkjs-html-panels-4moi)
+## Project Setup
 
-<img src="https://github.com/aswinrajeevofficial/TalkJS-Questionnaire/raw/master/screenshots/final_demo.gif?" width="650" height="400" alt="TalkJS Questionnaire Screenshot" style="max-width:100%;">
++ Replace the APP_ID in script.js with your own APPID
++ Start the chat with "No" to start answering the questionnaire

@@ -1,5 +1,3 @@
-// const inbox = session.createInbox({selected: conversation});
-// inbox.mount(document.getElementById("talkjs-container"));
 Talk.ready.then(function () {
     const me = new Talk.User({
         id: "123456",
@@ -15,7 +13,7 @@ Talk.ready.then(function () {
         role: "original"
     });
     const session = new Talk.Session({
-        appId: "tAU5JKLC",
+        appId: "YOUR_APP_ID_HERE",
         me: me
     });
     const other = new Talk.User({
