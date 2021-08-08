@@ -1,4 +1,7 @@
-# TalkJS-Questionnaire
-Code to build a simple TalkJS interactive questionnaire using HTML Panels
++ [Read it on our blog](https://talkjs.com/resources/how-to-build-a-chat-app-that-looks-like-whatsapp-with-the-talkjs-chat-api/)
++ [Read it on dev.to](https://dev.to/talkjs/building-a-whatsapp-clone-with-talkjs-chat-api-cdf)
+## Project Setup
 
-<img src="https://github.com/aswinrajeevofficial/TalkJS-Questionnaire/raw/master/screenshots/final_demo.gif?" width="650" height="400" alt="TalkJS Questionnaire Screenshot" style="max-width:100%;">
++ Replace the APP_ID in script.js with your own APPID
++ Create a new theme and apply it to the default role
++ Add the role property to your user and the other user and set it to default to apply the new theme

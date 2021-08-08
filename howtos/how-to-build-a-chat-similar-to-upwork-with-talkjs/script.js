@@ -15,7 +15,7 @@ Talk.ready.then(function() {
     });
 
     window.talkSession = new Talk.Session({
-        appId: "tAU5JKLC",
+        appId: "YOUR_APP_ID_HERE",
         me: me
     });
 

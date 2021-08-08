@@ -8,7 +8,7 @@ Talk.ready.then(function(){
         role: "original"
     });
     const session = new Talk.Session({
-        appId: "tAU5JKLC",
+        appId: "YOUR_APP_ID_HERE",
         me: me
     });
     // const other = new Talk.User({

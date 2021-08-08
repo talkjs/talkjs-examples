@@ -8,7 +8,7 @@ Talk.ready.then(function() {
         role: "default"
     });
     window.talkSession = new Talk.Session({
-        appId: "tAU5JKLC",
+        appId: "YOUR_APP_ID_HERE",
         me: me
     });
     var other = new Talk.User({
