@@ -1,7 +1,8 @@
 <?php
-// This is a vanilla PHP example to read a webhook and validate its integrity. 
-// Some lines are different if you use Laravel, those are shown in comments.
-
+// This is a vanilla PHP example of how to receive webhook requests and validate the signature, so
+// you can be certain that the request was sent by TalkJS.
+// 
+// Some lines can be written differently if you use Laravel, those are shown in comments.
 
 // Read the POST body in full + relevant headers
 $payload = file_get_contents("php://input");
@@ -13,9 +14,10 @@ $timestamp = $_SERVER["HTTP_X_TALKJS_TIMESTAMP"];
 //   $timestamp = $request->header("X-TalkJS-Timestamp");
 
 
-// Your secret key, as found in the TalkJS dashboard. Make sure that you never
-// share your secret key anywhere nor commit it to code repositories.
-$secret = "YOUR_SECRET_KEY";
+// Your secret key, as found in the TalkJS dashboard. In this example we read it from an environment
+// variable, but this might work differently in your setup. Don't just hard-code it here:
+// Make sure that you never share your secret key anywhere or commit it to code repositories.
+$secret = $_ENV["TALKJS_SECRET_KEY"];
 // Laravel:
 //   $secret = env("TALKJS_SECRET_KEY");
 
