@@ -1,10 +1,36 @@
 <?php
-// Read more on https://talkjs.com/docs/Webhooks/Getting_Started.html
-// Parse the request body as JSON
+// This is a vanilla PHP example to read a webhook and validate its integrity. 
+// Some lines are different if you use Laravel, those are shown in comments.
 
-$input = file_get_contents("php://input");
-$event = json_decode($input);
 
+// Read the POST body in full + relevant headers
+$payload = file_get_contents("php://input");
+$signature = $_SERVER["HTTP_X_TALKJS_SIGNATURE"];
+$timestamp = $_SERVER["HTTP_X_TALKJS_TIMESTAMP"];
+// Laravel:
+//   $payload = $request->getContent();
+//   $signature = $request->header("X-TalkJS-Signature");
+//   $timestamp = $request->header("X-TalkJS-Timestamp");
+
+
+// Your secret key, as found in the TalkJS dashboard. Make sure that you never
+// share your secret key anywhere nor commit it to code repositories.
+$secret = "YOUR_SECRET_KEY";
+// Laravel:
+//   $secret = env("TALKJS_SECRET_KEY");
+
+
+// Verify that the event is really originating from TalkJS and has not been tampered with.
+$signedPayload = "$timestamp.$payload";
+$expectedSignature = strtoupper(hash_hmac("sha256", $signedPayload, $secret));
+if (!hash_equals($expectedSignature, $signature)) {
+    error_log("invalid webhook event, signature does not match.");
+    die();
+}
+
+
+// Parse the event payload JSON and handle it appropriately. Your custom code comes below.
+$event = json_decode($payload);
 switch ($event->type) {
     case "message.sent":
         // save to the database etc.
