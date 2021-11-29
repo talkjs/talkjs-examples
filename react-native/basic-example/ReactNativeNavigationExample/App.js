@@ -41,7 +41,7 @@ conversationBuilder.setAttributes({ subject: 'Random conversation' });
 function Chatbox(props) {
   return (
     <View style={{ flex: 1 }}>
-      <TalkRn.Session appId="tyWJarpc" me={me}>
+      <TalkRn.Session appId="YOUR_APP_ID" me={me}>
         <TalkRn.Chatbox conversationBuilder={conversationBuilder} />
       </TalkRn.Session>
     </View>
@@ -62,7 +62,7 @@ function ConversationList(props) {
 
   return (
     <View style={{ flex: 1 }}>
-      <TalkRn.Session appId="tyWJarpc" me={me}>
+      <TalkRn.Session appId="YOUR_APP_ID" me={me}>
         <TalkRn.ConversationList onSelectConversation={onSelectConversation} />
       </TalkRn.Session>
     </View>
