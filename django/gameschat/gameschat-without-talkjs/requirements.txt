@@ -24,7 +24,7 @@ requests==2.22.0
 six==1.12.0
 sqlparse==0.3.0
 typed-ast==1.4.0
-urllib3==1.25.3
+urllib3==1.26.5
 whitenoise==4.1.3
 wrapt==1.11.2
 yarl==1.3.0
