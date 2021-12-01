@@ -1228,8 +1228,8 @@
 
 "@talkjs/react-native@^0.2.0":
   version "0.2.0"
-  resolved "https://npm.pkg.github.com/download/@talkjs/react-native/0.2.0/78328554de26c036fca2ab98cd06f8eb7c14da36cfb5e9c1e67e8f72b628971e#4226795deb357c374abce092d852b6561b5fd5dc"
-  integrity sha512-khCJPKjh5v1PxisQ8vsJhPQYXBeb+INuM3iiBRoFKfv8/bf8Dx8W5R8dcnC/WK9zdNsZQOo+FG3vO5S7HRbtTA==
+  resolved "https://registry.yarnpkg.com/@talkjs/react-native/-/react-native-0.2.0.tgz#28421b9985fa7ca8a8f810b3b07a282c88fb2a28"
+  integrity sha512-ZTJmdqFvO+KnIyj+HUJ2sKDenK0GxWXNv0Zg2yOBTntUCxX1J4Gu/gYRrN6+sjuZaf+AYOEozP3CC0DOKyFwOQ==
   dependencies:
     sha1 "^1.1.1"
     talkjs "^0.14.5"
