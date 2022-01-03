@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Chat with Contact List</h1>
+    <!-- minified snippet to load TalkJS without delaying your page -->
+    <script>
+    (function(t,a,l,k,j,s){
+    s=a.createElement('script');s.async=1;s.src="https://cdn.talkjs.com/talk.js";a.head.appendChild(s)
+    ;k=t.Promise;t.Talk={v:3,ready:{then:function(f){if(k)return new k(function(r,e){l.push([f,r,e])});l
+    .push([f])},catch:function(){return k&&new k()},c:l}};})(window,document,[]);
+    </script>
+    <style>
+
+        #contacts-list {
+            margin-top: auto;
+            width: 700px;
+            border: #d0d8dc solid 1px;
+            border-radius: 6px;
+            height: 510px;
+            color: #111;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        #contacts-list h2 {
+            color: #111;
+            background: #e7ecee;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            font-size: 13.3px;
+            font-weight: 700;
+            margin: 0;
+            padding-top: 20px;
+            padding-left: 20px;
+            text-align: left;
+            height: 40px;
+        }
+        
+        .contact-container {
+            height: 50px;
+            display: flex;
+            margin: 5px 0;
+            padding: 5px 0;
+            cursor: pointer; 
+        }
+
+        .contact-container:hover {
+            background-color: #e7ecee;
+        }
+
+        .contact-name {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        img {
+            height: 40px;
+            width: 40px;
+            border: #fff 2px solid;
+            border-radius: 200px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+    </style>
+    <div style="display: flex; justify-content: center;">
+        <!-- container element in which TalkJS will display a chat UI -->
+        <div id="talkjs-container" style="width: 30%;">
+        <i>Loading chat...</i>
+        </div>
+
+        <div id="contacts-list" style="width: 400px;">
+            <h2>Contacts</h2>
+        </div>
+
+    </div>
+
+    <script>
+        const contactsList = [
+
+            {
+                id: 1,
+                name: 'Lisa',
+                photoUrl: 'https://talkjs.com/images/avatar-1.jpg'
+            },
+            {
+                id: 2,
+                name: 'Alice',
+                photoUrl: 'https://talkjs.com/images/avatar-2.jpg'
+            },
+            {
+                id: 3,
+                name: 'Tina',
+                photoUrl: 'https://talkjs.com/images/avatar-3.jpg'
+            },
+            {
+                id: 4,
+                name: 'Lee',
+                photoUrl: 'https://talkjs.com/images/avatar-4.jpg'
+            },
+            {
+                id: 5,
+                name: 'Pete',
+                photoUrl: 'https://talkjs.com/images/avatar-5.jpg'
+            },
+            {
+                id: 6,
+                name: 'Dana',
+                photoUrl: 'https://talkjs.com/images/avatar-6.jpg'
+            },
+            {
+                id: 7,
+                name: 'Ro',
+                photoUrl: 'https://talkjs.com/images/avatar-7.jpg'
+            },
+        ];
+        // Display contacts list on page
+        // Get contacts list container from the DOM
+        const contactsWrapper = document.getElementById('contacts-list');
+        // Loop through array and display each contact in contact-list div
+        for (let contact of contactsList) {
+            // Extract contact details
+            const id = contact.id;
+            const username = contact.name;
+            const photoUrl = contact.photoUrl;
+
+            //create img tag to hold contact pic, give it a class name (for styling purposes) and add photo to it
+            const contactPhoto = document.createElement('img');
+            contactPhoto.classList.add('contact-photo');
+            contactPhoto.src = photoUrl;
+
+            // Create div to hold contact Name and add name
+            const usernameDiv = document.createElement('div');
+            usernameDiv.classList.add('contact-name');
+            usernameDiv.innerText = username;
+
+            // Create contact parent div and add to it contactPhotoDiv and usernameDiv
+            const contactContainerDiv = document.createElement('div');
+            contactContainerDiv.classList.add('contact-container');
+
+            contactContainerDiv.appendChild(contactPhoto);
+            contactContainerDiv.appendChild(usernameDiv);
+
+            contactsWrapper.appendChild(contactContainerDiv);
+        };
+
+        Talk.ready.then(function() {
+        // Create user "me"
+        let me = new Talk.User({
+          id: '0',
+          name: 'Josh',
+          photoUrl: 'images/josh.webp'
+        });
+
+        // Start TalkJS Session
+        window.talkSession = new Talk.Session({
+          appId: 'YOUR_APP_ID',
+          me: me
+        });
+
+        // Create and mount the chatbox
+        const chatbox = talkSession.createChatbox();
+        chatbox.select(null);
+        chatbox.mount(document.getElementById('talkjs-container'));
+
+        // Create conversationBuilder objects for each user
+        const conversations = contactsList.map(function(user, index) {
+          const talkUser = new Talk.User(user);
+
+          conversation = talkSession.getOrCreateConversation(Talk.oneOnOneId(me, talkUser));
+
+          conversation.setParticipant(me);
+          conversation.setParticipant(talkUser);
+
+          return conversation;
+        });
+
+        // Listen for clicks on each contact and select the appropriate conversation
+        let contactsListDivs = document.getElementsByClassName('contact-container');
+
+        conversations.forEach(function(conversation, index) {
+          contactsListDivs[index].addEventListener('click', () => {
+            chatbox.select(conversation);
+          });
+        });
+      });
+    </script>
+</body>
+</html>
