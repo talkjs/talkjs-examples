@@ -14,6 +14,8 @@ When a tutorial related to a sample is published add a row to the table below. A
 
 |How to Hide Some Chat Messages for Certain Users in a TalkJS Chat|               |[read on dev.to](https://dev.to/talkjs/how-to-hide-some-chat-messages-for-certain-users-in-a-talkjs-chat-23g4) |[view sample code](https://github.com/SapneshNaik/talkjs-examples/tree/master/howtos/how-to-hide-some-chat-messages-for-certain-users-in-a-talkjs-chat)|
 
+|How to Add a Real-time Unread Conversation Counter to a TalkJS Chat|               |[read on dev.to](https://dev.to/talkjs/how-to-add-a-real-time-unread-conversation-counter-to-a-talkjs-chat-2o05) |[view sample code](https://github.com/SapneshNaik/talkjs-examples/tree/master/howtos/how-to-add-a-real-time-unread-conversation-counter-to-a-talkjs-chat)|
+
 |How to create a channel list in TalkJS chat| |[read on dev.to](https://dev.to/talkjs/how-to-create-a-channel-list-in-talkjs-chat-4d4n) ||
 
 |How to make an interactive in-chat questionnaire with TalkJS HTML Panels|[read on talkjs.com](https://talkjs.com/resources/how-to-make-an-interactive-in-chat-questionnaire-with-talkjs-html-panels/)|[read on dev.to](https://dev.to/talkjs/how-to-make-an-interactive-in-chat-questionnaire-with-talkjs-html-panels-4moi) |[view sample code](https://github.com/aswinrajeevofficial/talkjs-examples/tree/master/howtos/how-to-make-an-interactive-in-chat-questionnaire-with-talkjs-html-panels)|
@@ -30,5 +32,3 @@ When a tutorial related to a sample is published add a row to the table below. A
 |How to create direct messages like on Twitter with the TalkJS Chat API|[read on talkjs.com](https://talkjs.com/resources/how-to-create-direct-messages-like-on-twitter-with-the-talkjs-chat-api/)|[read on dev.to](https://dev.to/talkjs/how-to-create-direct-messages-like-on-twitter-with-the-talkjs-chat-api-3jo6) |[view sample code](https://github.com/aswinrajeevofficial/talkjs-examples/tree/master/howtos/how-to-create-direct-messages-like-on-twitter-with-the-talkjs-chat-api)|
 
 |How to build a chat similar to Upwork with TalkJS|[read on talkjs.com](https://talkjs.com/resources/how-to-build-a-chat-similar-to-upwork-with-talkjs/)|[read on dev.to](https://dev.to/talkjs/how-to-build-a-chat-similar-to-upwork-with-talkjs-4la9) |[view sample code](https://github.com/aswinrajeevofficial/talkjs-examples/tree/master/howtos/how-to-build-a-chat-similar-to-upwork-with-talkjs)|
-
-
