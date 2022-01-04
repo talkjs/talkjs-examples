@@ -1,0 +1,209 @@
+<html>
+    <style>
+        #channel-list{
+            width: 300px;
+            font-family: arial;
+            margin-right: 1rem;
+
+        }
+        #channel-list h2{
+            position: relative;
+            color: #fff;
+            background: #1C2833;
+            padding: 10px 20px; 
+            font-size:20px;
+            font-weight: 700;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            margin: 0;
+        }
+    
+        #channel-list ul{
+            background:#212F3D; 
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    
+        #channel-list ul li{
+            left:0;
+            list-style: none;
+            background: #212F3D;
+            color: #999;
+            transition: 0.5s;
+            cursor: pointer;
+            padding: 5px;
+
+        }
+    
+        #channel-list li:hover {
+            color: #fff; 
+        }
+    </style>
+<head>
+    <title>TalkJS Inbox Example</title>
+</head>
+<body>
+    <script>
+
+        var chatbox;
+
+        (function (t, a, l, k, j, s) {
+            s = a.createElement('script'); s.async = 1; s.src = "https://cdn.talkjs.com/talk.js"; a.head.appendChild(s)
+                ; k = t.Promise; t.Talk = {
+                    v: 3, ready: {
+                        then: function (f) {
+                            if (k) return new k(function (r, e) { l.push([f, r, e]) }); l
+                                .push([f])
+                        }, catch: function () { return k && new k() }, c: l
+                    }
+                };
+        })(window, document, []);
+
+        const start = async function () {
+            await Talk.ready;
+            const me = new Talk.User({
+                id: "454546",
+                name: "Alice",
+                email: "alice@example.com",
+                photoUrl: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                role: "default",
+                welcomeMessage: "Hey there! How are you? :-)"
+            });
+
+            const session = new Talk.Session({
+                appId: "APP_ID",
+                me: me
+            });
+
+            const user1 = new Talk.User({
+                id: "545457",
+                name: "Sebastian",
+                email: "Sebastian@example.com",
+                photoUrl: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                role: "default",
+                welcomeMessage: "Hey, how can I help?"
+            });
+
+            const user2 = new Talk.User({
+                id: "565658",
+                name: "Paul",
+                email: "Paul@example.com",
+                photoUrl: "https://images.pexels.com/photos/7388867/pexels-photo-7388867.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                role: "default",
+                welcomeMessage: "You wanna play something?"
+            });
+
+            const user3 = new Talk.User({
+                id: "6767679",
+                name: "Anna",
+                email: "Anna@example.com",
+                photoUrl: "https://images.pexels.com/photos/5177543/pexels-photo-5177543.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                role: "default",
+                welcomeMessage: "What's up Alice?"
+            });
+
+            //#general
+            conversation1 = session.getOrCreateConversation("1");
+            conversation1.setParticipant(me);
+            conversation1.setParticipant(user1);
+            conversation1.setParticipant(user2);
+            conversation1.setParticipant(user3);
+            
+            //#dev-team
+            conversation2 = session.getOrCreateConversation("2");
+            conversation2.setParticipant(me);
+            conversation2.setParticipant(user1);
+            conversation2.setParticipant(user2);
+
+            //#random
+            conversation3 = session.getOrCreateConversation("3");
+            conversation3.setParticipant(me);
+            conversation3.setParticipant(user1);
+            conversation3.setParticipant(user2);
+            conversation3.setParticipant(user3);
+
+            //#qa-team
+            conversation4 = session.getOrCreateConversation("4");
+            conversation4.setParticipant(me);
+            conversation4.setParticipant(user3);
+
+            //release-tickets
+            conversation5 = session.getOrCreateConversation("5");
+            conversation5.setParticipant(me);
+            conversation5.setParticipant(user1);
+            conversation5.setParticipant(user2);
+
+            //#demo-env
+            conversation6 = session.getOrCreateConversation("6");
+            conversation6.setParticipant(me);
+            conversation6.setParticipant(user1);
+            conversation6.setParticipant(user3);
+
+            chatbox = session.createChatbox(conversation1);	            
+            chatbox.mount(document.getElementById('talkjs-container'));
+
+            
+        }
+
+        start();
+
+        const makeList = async function () {
+            await Talk.ready;
+    
+            const channelData= [
+                {name: "#general", id: 1},
+                {name: "#dev-team", id: 2},
+                {name: "#random", id: 3},
+                {name: "#qa-team", id: 4},
+                {name: "#release-tickets", id: 5},
+                {name: "#demo-env", id: 6}
+            ]
+
+            // Get the container element for the list
+            const listContainer = document.getElementById('channel-list');
+
+            // Make the list
+            const listElement = document.createElement('ul');
+
+            // Add the list to the container
+            listContainer.appendChild(listElement);
+
+            // Set up a loop that goes through the items in channelData one at a time
+            for (let channel of channelData) {
+            // create a list item for each channel
+            const listItem = document.createElement('li');
+
+            // Add the channel text and id to the list item
+            listItem.innerHTML = channel.name;
+            listItem.id = channel.id; 
+            listItem.addEventListener('click', clickList, false);
+
+            // Add the list item to listElement
+            listElement.appendChild(listItem);
+
+        }
+    }
+
+    function clickList() {
+        console.log(this.id);
+        chatbox.select(this.id.toString());
+    }
+
+    // Usage
+    makeList();
+
+</script>
+
+<div style="display: flex; width:100%;">
+    <div id = "channel-list">
+        <h2>Channels</h2>
+    </div>
+
+    <div id="talkjs-container" style="width:30%; height: 500px;">
+        <i>Loading chat...</i>
+    </div>
+</div>
+
+</body>
+
+</html>
