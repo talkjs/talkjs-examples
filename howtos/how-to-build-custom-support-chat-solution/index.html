@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Support</title>
+</head>
+<body>
+
+    <h1>Live Support</h1>
+    <!-- minified snippet to load TalkJS without delaying your page -->
+    <script>
+        (function(t,a,l,k,j,s){
+        s=a.createElement('script');s.async=1;s.src="https://cdn.talkjs.com/talk.js";a.head.appendChild(s)
+        ;k=t.Promise;t.Talk={v:3,ready:{then:function(f){if(k)return new k(function(r,e){l.push([f,r,e])});l
+        .push([f])},catch:function(){return k&&new k()},c:l}};})(window,document,[]);
+    </script>
+    
+    <!-- container element in which TalkJS will display a chat UI -->
+    <div id="talkjs-container" style="width: 90%; margin: 30px; height: 500px">
+      <i>Loading chat...</i>
+    </div>
+
+    <script>
+        Talk.ready.then(function() {
+            var me = new Talk.User({
+                id: "678",
+                name: "Alice",
+                email: "alice@example.com",
+                photoUrl: "https://talkjs.com/images/avatar.jpg",
+                role: 'admin'
+            });
+            var other = new Talk.User({
+                id: "854791",
+                name: "Sebastian",
+                email: "sebastian@example.com",
+                role: 'customer'
+            });
+            var other1 = new Talk.User({
+                id: '237644',
+                name: 'Jon',
+                email: 'jon@example.com',
+                role: 'customer'
+            });
+            var other2 = new Talk.User({
+                id: '2267363',
+                name: 'Chloe',
+                email: 'chloe@example.com',
+                role: 'customer'
+            });
+            window.talkSession = new Talk.Session({
+                appId: "YOUR_APP_ID",
+                me: me
+            });
+
+            var conversation = talkSession.getOrCreateConversation(
+                Talk.oneOnOneId(me, other1)
+            );
+
+            conversation.setAttributes({
+                subject: "Team TalkJS",
+                photoUrl: "https://talkjs.com/images/logo.jpg",
+                welcomeMessages: [ "Hi, welcome. We are usually online during working hours but feel free to leave a message anytime", "You can also check out our <https://example.com|docs>"]
+            })
+            conversation.setParticipant(me);
+            conversation.setParticipant(other);
+            conversation.setParticipant(other1);
+            conversation.setParticipant(other2);
+
+
+            var inbox = talkSession.createInbox({ selected: conversation });
+            inbox.mount(document.getElementById('talkjs-container'));
+
+            const chatPopup = talkSession.createPopup(conversation);
+            chatPopup.mount({ show: true }); 
+
+        });
+
+    </script>
+</body>
+</html>

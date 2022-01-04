@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talk JS Group Chat</title>
+</head>
+<body>
+    <h1>Talk JS Group Chat</h1>
+    
+    <!-- minified snippet to load TalkJS without delaying your page -->
+    <script>
+        (function(t,a,l,k,j,s){
+        s=a.createElement('script');s.async=1;s.src="https://cdn.talkjs.com/talk.js";a.head.appendChild(s)
+        ;k=t.Promise;t.Talk={v:3,ready:{then:function(f){if(k)return new k(function(r,e){l.push([f,r,e])});l
+        .push([f])},catch:function(){return k&&new k()},c:l}};})(window,document,[]);
+    </script>
+    
+    <!-- container element in which TalkJS will display a chat UI -->
+    <div id="talkjs-container" style="width: 90%; margin: 30px; height: 500px">
+      <i>Loading chat...</i>
+    </div>
+
+    <script>
+        Talk.ready.then(function() {
+            var me = new Talk.User({
+                id: "123456",
+                name: "Alice",
+                email: "alice@example.com",
+                photoUrl: "./images/alice.jpeg",
+                welcomeMessage: "Hello, welcome to Cooking with Alice",
+                role: "youtube"
+            });
+
+            var other1 = new Talk.User({
+                id: "654321",
+                name: "Sebastian",
+                email: "sebastian@example.com",
+                photoUrl: "./images/sebastian.jpeg",
+                role: "youtube"
+            });
+
+            var other2 = new Talk.User({
+                id: "234567",
+                name: "Jane",
+                email: "jane@example.com",
+                photoUrl: "./images/jane.jpeg",
+                role: "youtube"
+            });
+
+            var other3 = new Talk.User({
+                id: "345678",
+                name: "Jon",
+                email: "jon@example.com",
+                photoUrl: "./images/jon.jpeg",
+                role: "youtube"
+            });
+
+            window.talkSession = new Talk.Session({
+                appId: "YOUR_APP_ID",
+                me: me
+            });
+
+            var conversation = window.talkSession.getOrCreateConversation("cooking");
+            conversation.setParticipant(me);
+            conversation.setParticipant(other1);
+            conversation.setParticipant(other2);
+            conversation.setParticipant(other3);
+
+            conversation.setAttributes({
+                subject: "Cooking With Alice"
+            });
+
+            var chatbox = talkSession.createChatbox(conversation);
+            chatbox.mount(document.getElementById("talkjs-container"));
+        })
+    </script>
+</body>
+</html>
