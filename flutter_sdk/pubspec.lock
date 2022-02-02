@@ -163,13 +163,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
-  talkjs:
-    dependency: "direct main"
-    description:
-      path: "/home/fri/flutter-sdk-victor"
-      relative: false
-    source: path
-    version: "0.0.1"
   term_glyph:
     dependency: transitive
     description:
