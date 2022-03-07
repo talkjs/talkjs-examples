@@ -116,7 +116,7 @@
               var chatbox = talkSession.createChatbox();
               chatbox.mount(document.getElementById("talkjs-container"));
 
-              chatbox.on("sendMessage", function(ev) {
+              chatbox.onSendMessage(function(ev) {
                   if (!ev.message.attachment) {
                       console.log("Text message")
                       ev.override({

@@ -99,7 +99,7 @@
              var inbox = talkSession.createInbox();
              inbox.mount(document.getElementById("talkjs-container"));
          
-             window.talkSession.unreads.on("change", function (conversationIds) {
+             window.talkSession.unreads.onChange(function (conversationIds) {
                  console.log(conversationIds)
                  var amountOfUnreads = conversationIds.length;
                  document.getElementById("unreadCount").textContent= amountOfUnreads;

@@ -34,7 +34,7 @@ Talk.ready.then(function () {
     let count = 1;
     let questionnaireAnswered = me.custom.questionnaireAnswered;
     //As soon as the user sends a message, this callback will be triggered
-    chatboxPopup.on("sendMessage", function (data) { 
+    chatboxPopup.onSendMessage(function (data) { 
         //If the count is equal to 0, it means that it is the user's first reply, 
         //and if it is equal to No and if they haven't answered the questionnaire before, we will 
         //display the first question
