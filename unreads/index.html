@@ -57,7 +57,7 @@
                 selected: _demo.conversation
             });
             _demo.inbox.mount(document.getElementById("talkjs-container"));
-            _demo.session.unreads.on("change", function (conversationIds) {
+            _demo.session.unreads.onChange(function (conversationIds) {
                 var unreadCount = conversationIds.length;
                 document.getElementById("unread-message-count").innerHTML = unreadCount;
                 console.log("Conversation ID's", conversationIds);

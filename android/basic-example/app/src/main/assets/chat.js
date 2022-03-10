@@ -31,7 +31,7 @@ Talk.ready.then(function() {
 function createInbox() {
     var inbox = talkSession.createInbox({ selected: null, showMobileBackButton: false });
 
-    inbox.on("selectConversation", function(event) {
+    inbox.onSelectConversation(function(event) {
         // This prevents the TalkJS inbox UI from actually opening the chat. Instead, we want to
         // open a new Android activity with a TalkJS chatbox UI, so that the navigation works as
         // users expect.
