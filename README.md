@@ -4,7 +4,7 @@ This repository holds common use case examples for TalkJS.
 
 **What is TalkJS?**
 
-TalkJS allows you to add user-to-user chat to your marketplace, on-demand app, or social platform. For more information, visit [talkjs.com](https://talkjs.com/?ref=jssdk-npm-readme).
+TalkJS is a chat API with pre-built UI for web & mobile apps. Build any chat use case into your product with just a few lines of code. Frontend UI SDK and out-of-the-box notifications included. Visit [talkjs.com](https://talkjs.com/?ref=jssdk-npm-readme) to learn more!
 
 ## Examples
 
