@@ -1,0 +1,37 @@
+body {
+  height: 100vh;
+
+  position: relative;
+
+  padding: 0;
+  margin: 0;
+
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+
+  --lightred: #ffadad;
+  --red: #f94144;
+  
+  --lightorange: #ffd6a5;
+  --orange: #F8961E;
+
+  --lightyellow: #fdffb6;
+  --yellow: #f9c74f;
+
+  --lightgreen: #caffbf;
+  --green: #90be6d;
+
+  --lightblue: #a0c4ff;
+  --blue: #277da1;
+
+  --lightpurple: #bdb2ff;
+  --purple: #54478c;
+
+  --lightwhite: #dcf0ee;
+  --white: #c9dddc;
+
+  --lightgrey: #708d8b;
+  --grey: #455756;
+
+  --lightblack: #00333d;
+  --black: #001c22;
+}

@@ -23,6 +23,7 @@ Using a library, framework or language not listed here? [Let us know](https://ta
 - [React](./react)
     - [Server-side rendered](./react/next.js)
 - [React Native](./react-native)
+- [Svelte](./svelte)
 
 ### JavaScript SDK - Frameworks
 
