@@ -1,37 +1,36 @@
 <script>
-  import { abby, appId, george, oliver, rebecca } from "$lib/TalkJsConfig";
+  import { abby, oliver } from "$lib/TalkJsConfig";
   import { onMount } from "svelte";
   import Talk from "talkjs";
 
-  let session;
+  let element;
 
   onMount(async () => {
-    await Talk.ready;
-    const currentUser = new Talk.User(oliver);
-    session = new Talk.Session({ appId, me: currentUser });
-  })
+    Talk.ready.then(() => {
+      const me = new Talk.User(oliver);
+      const other = new Talk.User(abby);
 
-  let otherUserOptions = abby;
-  $: otherUser = session ? new Talk.User(otherUserOptions) : undefined;
+      const session = new Talk.Session({ appId, me });
 
-  let conversation;
-  $: if (session && otherUser) {
-    const currentUser = session.me;
-    conversation = session.getOrCreateConversation(Talk.oneOnOneId(currentUser, otherUser));
-    conversation.setParticipant(currentUser);
-    conversation.setParticipant(otherUser);
-  }
+      const conversationId = Talk.oneOnOneId(me, other);
+      const conversation = session.getOrCreateConversation(conversationId);
+      conversation.setParticipant(me);
+      conversation.setParticipant(other);
 
-  let element;
-  $: chatbox = session?.createChatbox();
-  $: chatbox?.select(conversation);
-  $: chatbox?.mount(element);
+      const chatbox = session.createChatbox();
+      chatbox.select(conversation);
+      chatbox.mount(element);
+    });
+  });
 </script>
+
+<div class="container">
+  <div bind:this={element} />
+</div>
 
 <style>
   .container {
     display: grid;
-    grid-template-rows: auto 1fr;
 
     padding: 2em;
     gap: 1em;
@@ -39,17 +38,4 @@
     height: 100%;
     box-sizing: border-box;
   }
-  select {
-    margin: auto;
-  }
 </style>
-
-<div class="container">
-  <select bind:value={otherUserOptions}>
-    {#each [abby, rebecca, george] as user}
-      <option value={user}>{user.name}</option>
-    {/each}
-  </select>
-  
-  <div bind:this={element}/>
-</div>
