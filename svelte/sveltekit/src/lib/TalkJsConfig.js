@@ -1,4 +1,4 @@
-export let appId = "tMe47L0r";
+export let appId = "YOUR_APP_ID";
 
 export let oliver = {
   id: '1920',
