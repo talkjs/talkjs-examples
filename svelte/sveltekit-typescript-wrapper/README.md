@@ -14,6 +14,6 @@ For example:
 
 Inside the `MyChatInterface` component, you can assume that TalkJS is loaded and ready, meaning you don't have to put anything in `onMount`.
 
-Open `/src/lib/TalkJsConfig.ts` and replace `YOUR_APP_ID` with your own appId which you can find in the [TalkJS Dashboard](https://talkjs.com/dashboard)
+Open `/src/lib/talkJsConfig.ts` and replace `YOUR_APP_ID` with your own appId which you can find in the [TalkJS Dashboard](https://talkjs.com/dashboard)
 
 Run `npm install && npm run dev` to start the example on port 5000.
