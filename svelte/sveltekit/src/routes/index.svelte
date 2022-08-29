@@ -1,5 +1,5 @@
 <script>
-  import { abby, oliver } from "$lib/TalkJsConfig";
+  import { appId, abby, oliver } from "$lib/talkJsConfig";
   import { onMount } from "svelte";
   import Talk from "talkjs";
 
