@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import Talk from "talkjs"
-  import { appId } from "./TalkJsConfig";
+  import Talk from "talkjs";
+  import { appId } from "$lib/talkJsConfig";
 
   export let currentUser: Talk.UserOptions;
   let session: Talk.Session;
@@ -13,7 +13,7 @@
 
     const me = new Talk.User(currentUser);
     session = new Talk.Session({ appId, me });
-  })
+  });
 </script>
 
 {#if session === undefined}

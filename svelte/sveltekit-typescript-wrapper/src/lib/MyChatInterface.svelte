@@ -1,6 +1,6 @@
 <script lang="ts">
   import Talk from "talkjs";
-  import { abby, rebecca, george } from "$lib/TalkJsConfig";
+  import { abby, rebecca, george } from "$lib/talkJsConfig";
 
   export let session: Talk.Session;
   $: currentUser = session.me;
