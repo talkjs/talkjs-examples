@@ -58,7 +58,7 @@
     "@types/node": "^8.0.30",
     "codelyzer": "^4.0.2",
     "cpy-cli": "^1.0.1",
-    "express": "^4.15.2",
+    "express": "^4.17.3",
     "http-server": "^0.10.0",
     "pre-commit": "^1.2.2",
     "reflect-metadata": "^0.1.10",
