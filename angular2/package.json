@@ -59,7 +59,7 @@
     "codelyzer": "^4.0.2",
     "cpy-cli": "^1.0.1",
     "express": "^4.17.3",
-    "http-server": "^0.10.0",
+    "http-server": "^14.1.1",
     "pre-commit": "^1.2.2",
     "reflect-metadata": "^0.1.10",
     "ts-loader": "^2.3.7",
