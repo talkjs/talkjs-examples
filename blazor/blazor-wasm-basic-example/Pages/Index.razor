@@ -1,0 +1,47 @@
+﻿@page "/"
+@using TalkJsInBlazorWasm.Components
+@using TalkJsInBlazorWasm.Models.TalkJsModels;
+
+<PageTitle>TalkJS in Blazor WebAssembly example</PageTitle>
+
+<h1>TalkJS in Blazor WebAssembly example</h1>
+
+<p>Please check the example of TalkJS below:</p>
+
+<div style="width: 500px; height: 500px;">
+    <TalkJsChatComponent MyUser="Me" OtherUser="OtherUser" AppId="@APP_ID" />
+</div>
+
+@code {
+    private const string APP_ID = "YOUR_APP_ID";
+    protected User Me { get; set; }
+    protected User OtherUser { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        // Populate users any way you want
+        // Most often from a database or something
+        Me = new User()
+            {
+                Id = 123456,
+                Name = "Alice",
+                Email = "alice@example.com",
+                PhotoUrl = "https://talkjs.com/images/avatar-1.jpg",
+                WelcomeMessage = "Hey there! How are you? :-)",
+            };
+
+        OtherUser = new User()
+            {
+
+                Id = 654321,
+                Name = "Sebastian",
+                Email = "Sebastian@example.com",
+                PhotoUrl = "+https://talkjs.com/images/avatar-5.jpg",
+                WelcomeMessage = "Hey, how can I help?",
+            };
+
+        StateHasChanged();
+    }
+}

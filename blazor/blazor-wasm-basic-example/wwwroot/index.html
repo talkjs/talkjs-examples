@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>TalkJsInBlazorWasm</title>
+    <base href="/" />
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/app.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link href="TalkJsInBlazorWasm.styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="app">
+        <svg class="loading-progress">
+            <circle r="40%" cx="50%" cy="50%" />
+            <circle r="40%" cx="50%" cy="50%" />
+        </svg>
+        <div class="loading-progress-text"></div>
+    </div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+    <script src="_framework/blazor.webassembly.js"></script>
+
+    <!-- Initialize TalkJS -->
+    <script>
+        (function (t, a, l, k, j, s) {
+            s = a.createElement('script'); s.async = 1; s.src = "https://cdn.talkjs.com/talk.js"; a.head.appendChild(s)
+                ; k = t.Promise; t.Talk = {
+                    v: 3, ready: {
+                        then: function (f) {
+                            if (k) return new k(function (r, e) { l.push([f, r, e]) }); l
+                                .push([f])
+                        }, catch: function () { return k && new k() }, c: l
+                    }
+                };
+        })(window, document, []);
+    </script>
+    <script src="talkjs-aux.js"></script>
+
+</body>
+
+</html>
