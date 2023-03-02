@@ -174,7 +174,7 @@ However, as we don't know where in the code we are going to be placing it, my pr
 
 So, I'd prefer to add a `TalkJsChatComponent.razor.css` file in the same folder (which allows neat nesting of files in the Visual Studio IDE):
 
-{{PICTURE-1}}
+![alt text](Blazor-nested-files-in-IDE.png)
 
 In the CSS file I literally add width and height to be 100%:
 
@@ -241,6 +241,6 @@ The code is pretty self-explanatory: in the `OnInitializedAsync` method we creat
 
 And that's it. If you've followed the steps above, you should end up with something nice and simple like this:
 
-{{ PICTURE-2 }}
+![TalkJS Chat Component in a Blazor WebAssembly App](TalkJS-chat-component-in-Blazor-WebAssembly-app.png)
 
 Also, the component we've just built is completely reusable from anywhere in our codebase.
