@@ -9,13 +9,13 @@
 <p>Please check the example of TalkJS below:</p>
 
 <div style="width: 500px; height: 500px;">
-    <TalkJsChatComponent MyUser="Me" OtherUser="OtherUser" AppId="@APP_ID" />
+    <TalkJsChatComponent MyUser="Me" OtherUsers="OtherUsers" AppId="@APP_ID" />
 </div>
 
 @code {
-    private const string APP_ID = "YOUR_APP_ID";
+    private const string APP_ID = "tryy1oJ0";
     protected User Me { get; set; }
-    protected User OtherUser { get; set; }
+    protected List<User> OtherUsers { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
@@ -32,15 +32,26 @@
                 WelcomeMessage = "Hey there! How are you? :-)",
             };
 
-        OtherUser = new User()
+        OtherUsers = new List<User>();
+        OtherUsers.Add(new User()
             {
 
                 Id = 654321,
                 Name = "Sebastian",
-                Email = "Sebastian@example.com",
-                PhotoUrl = "+https://talkjs.com/images/avatar-5.jpg",
+                Email = "sebastian@example.com",
+                PhotoUrl = "https://talkjs.com/images/avatar-5.jpg",
                 WelcomeMessage = "Hey, how can I help?",
-            };
+            });
+        OtherUsers.Add(new User()
+            {
+
+                Id = 754321,
+                Name = "Michael",
+                Email = "michael@example.com",
+                PhotoUrl = "https://talkjs.com/images/avatar-2.jpg",
+                WelcomeMessage = "Hola!",
+            });
+
 
         StateHasChanged();
     }

@@ -11,12 +11,12 @@
     [Parameter]
     public User MyUser { get; set; }
     /// <summary>
-    /// The user representing the other person the user of the app wants to talk to.
+    /// A list representing the other participants of the conversation.
     /// </summary>
     [Parameter]
-    public User OtherUser { get; set; }
+    public List<User> OtherUsers { get; set; }
     /// <summary>
-    /// AppId from the TalkJS Dashboard
+    /// AppId from the TalkJS Dashboard.
     /// </summary>
     [Parameter]
     public string AppId { get; set; }
@@ -29,9 +29,9 @@
     {
         await base.OnAfterRenderAsync(firstRender);
     
-        if (MyUser != null && OtherUser != null && !string.IsNullOrEmpty(AppId))
+        if (MyUser != null && OtherUsers != null && OtherUsers.Count > 0 && !string.IsNullOrEmpty(AppId))
         {
-            await jsRuntime.InvokeVoidAsync("TalkAux.createOneOnOneConversation", AppId, MyUser, OtherUser, OUTPUT_DIV_ID);
+            await jsRuntime.InvokeVoidAsync("TalkWrapper.createConversation", AppId, MyUser, OtherUsers, OUTPUT_DIV_ID);
         }
     }
 }
