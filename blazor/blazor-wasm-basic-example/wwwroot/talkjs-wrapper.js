@@ -8,8 +8,9 @@ window.TalkWrapper = {
      * @param {object} myUser - object with parameters needed to create a Talk.User object
      * @param {object} otherUsers - array of objects with parameters needed to create Talk.User objects
      * @param {string} outputElementId - Id of the element where we want the window to be output to
+     * @param {string} conversationId - unique Id of the conversation being created
      */
-    createConversation: function (appId, myUser, otherUsers, outputElementId) {
+    createConversation: function (appId, myUser, otherUsers, outputElementId, conversationId) {
 
         // Create a Talk.User object for me
         var me = new Talk.User(myUser);
@@ -21,7 +22,7 @@ window.TalkWrapper = {
         });
 
         // Create a conversation with a unique conversation ID
-        var conversation = this.talkSession.getOrCreateConversation("CONVERSATION_ID");
+        var conversation = this.talkSession.getOrCreateConversation(conversationId);
 
         // Add myself as a participant
         conversation.setParticipant(me);

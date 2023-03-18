@@ -31,7 +31,7 @@
     
         if (MyUser != null && OtherUsers != null && OtherUsers.Count > 0 && !string.IsNullOrEmpty(AppId))
         {
-            await jsRuntime.InvokeVoidAsync("TalkWrapper.createConversation", AppId, MyUser, OtherUsers, OUTPUT_DIV_ID);
+            await jsRuntime.InvokeVoidAsync("TalkWrapper.createConversation", AppId, MyUser, OtherUsers, OUTPUT_DIV_ID, "MY_CONVERSATION_ID");
         }
     }
 }
