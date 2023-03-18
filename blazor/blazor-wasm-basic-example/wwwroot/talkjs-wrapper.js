@@ -3,7 +3,7 @@ window.TalkWrapper = {
     talkSession: undefined,
 
     /**
-     * Function that creates a conversation between 2 users
+     * Function that creates a conversation between users
      * @param {string} appId - appId from your Talk account
      * @param {object} myUser - object with parameters needed to create a Talk.User object
      * @param {object} otherUsers - array of objects with parameters needed to create Talk.User objects
