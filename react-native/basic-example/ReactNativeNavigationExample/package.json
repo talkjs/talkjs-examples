@@ -10,12 +10,17 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@talkjs/react-native": "^0.2.0",
+    "@notifee/react-native": "^7.6.1",
+    "@react-native-async-storage/async-storage": "^1.17.12",
+    "@react-native-community/push-notification-ios": "^1.10.1",
+    "@react-native-firebase/app": "^17.3.2",
+    "@react-native-firebase/messaging": "^17.3.2",
+    "@talkjs/react-native": "^0.5.1",
     "react": "18.2.0",
     "react-native": "0.71.4",
-    "react-native-navigation": "^7.23.1-hotfix.1",
+    "react-native-navigation": "^7.32.1",
     "react-native-push-notification": "^8.1.1",
-    "react-native-webview": "^11.14.3"
+    "react-native-webview": "^11.26.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
