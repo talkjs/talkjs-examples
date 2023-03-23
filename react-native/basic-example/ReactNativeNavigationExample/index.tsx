@@ -1,7 +1,7 @@
-import { Navigation } from 'react-native-navigation';
+import {Navigation} from 'react-native-navigation';
 import App from './App';
 
-Navigation.registerComponent('com.talkjs.example.MainScreen', () => App);
+Navigation.registerComponent('ReactNativeNavigationExample', () => App);
 Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
     root: {
@@ -9,7 +9,7 @@ Navigation.events().registerAppLaunchedListener(() => {
         children: [
           {
             component: {
-              name: 'com.talkjs.example.MainScreen',
+              name: 'ReactNativeNavigationExample',
             },
           },
         ],

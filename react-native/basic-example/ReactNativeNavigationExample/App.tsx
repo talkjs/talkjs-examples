@@ -7,8 +7,8 @@
  */
 
 import * as React from 'react';
-import { View, StyleSheet, Button } from 'react-native';
-import { Navigation } from 'react-native-navigation';
+import {View, Button} from 'react-native';
+import {Navigation} from 'react-native-navigation';
 
 import * as TalkRn from '@talkjs/react-native';
 
@@ -36,20 +36,20 @@ const conversationBuilder = TalkRn.getConversationBuilder(conversationId);
 conversationBuilder.setParticipant(me);
 conversationBuilder.setParticipant(other);
 
-conversationBuilder.setAttributes({ subject: 'Random conversation' });
+conversationBuilder.setAttributes({subject: 'Random conversation'});
 
-function Chatbox(props) {
+function Chatbox(props: {conversationBuilder: TalkRn.ConversationBuilder}) {
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{flex: 1}}>
       <TalkRn.Session appId="YOUR_APP_ID" me={me}>
-        <TalkRn.Chatbox conversationBuilder={conversationBuilder} />
+        <TalkRn.Chatbox conversationBuilder={props.conversationBuilder} />
       </TalkRn.Session>
     </View>
   );
 }
 
-function ConversationList(props) {
-  const onSelectConversation = event => {
+function ConversationList(props: {componentId: string}) {
+  const onSelectConversation = (event: TalkRn.SelectConversationEvent) => {
     Navigation.push(props.componentId, {
       component: {
         name: 'Chatbox',
@@ -61,7 +61,7 @@ function ConversationList(props) {
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{flex: 1}}>
       <TalkRn.Session appId="YOUR_APP_ID" me={me}>
         <TalkRn.ConversationList onSelectConversation={onSelectConversation} />
       </TalkRn.Session>
@@ -69,9 +69,14 @@ function ConversationList(props) {
   );
 }
 
-const App = props => {
+const App = (props: {componentId: string}) => {
   return (
-    <View style={styles}>
+    <View
+      style={{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
+      }}>
       <Button
         title="Go to Chatbox"
         onPress={() =>
@@ -101,11 +106,5 @@ const App = props => {
 
 Navigation.registerComponent('Chatbox', () => Chatbox);
 Navigation.registerComponent('ConversationList', () => ConversationList);
-
-const styles = StyleSheet.create({
-  flex: 1,
-  alignItems: 'center',
-  justifyContent: 'space-evenly',
-});
 
 export default App;
