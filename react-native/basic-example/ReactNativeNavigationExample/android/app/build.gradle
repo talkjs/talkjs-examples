@@ -92,6 +92,7 @@ android {
     ndkVersion rootProject.ext.ndkVersion
 
     compileSdkVersion rootProject.ext.compileSdkVersion
+    namespace "com.reactnativenavigationexample"
 
     defaultConfig {
         applicationId "com.reactnativenavigationexample"

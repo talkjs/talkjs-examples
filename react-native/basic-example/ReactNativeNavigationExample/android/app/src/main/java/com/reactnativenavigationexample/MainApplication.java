@@ -34,16 +34,6 @@ public class MainApplication extends NavigationApplication {
         protected String getJSMainModuleName() {
           return "index";
         }
-
-        @Override
-        protected boolean isNewArchEnabled() {
-          return BuildConfig.IS_NEW_ARCHITECTURE_ENABLED;
-        }
-
-        @Override
-        protected boolean isHermesEnabled() {
-          return BuildConfig.IS_HERMES_ENABLED;
-        }
       };
 
   @Override
