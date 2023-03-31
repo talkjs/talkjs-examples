@@ -1,10 +1,18 @@
 import * as React from 'react';
-import { View, Button } from 'react-native';
+import {View, Button} from 'react-native';
 
 import * as Talkjs from '@talkjs/react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {
+  createNativeStackNavigator,
+  NativeStackScreenProps,
+} from '@react-navigation/native-stack';
 
+type RootStackParamList = {
+  Home: undefined;
+  ConversationList: undefined;
+  Chatbox: {conversationBuilder: Talkjs.ConversationBuilder} | undefined;
+};
 
 const me = {
   id: '123456789',
@@ -30,17 +38,19 @@ const conversationBuilder = Talkjs.getConversationBuilder(conversationId);
 conversationBuilder.setParticipant(me);
 conversationBuilder.setParticipant(other);
 
-conversationBuilder.setAttributes({ subject: 'Random conversation' });
+conversationBuilder.setAttributes({subject: 'Random conversation'});
 
-function ConversationList(props) {
-  const onSelectConversation = event => {
+function ConversationList(
+  props: NativeStackScreenProps<RootStackParamList, 'ConversationList'>,
+) {
+  const onSelectConversation = (event: Talkjs.SelectConversationEvent) => {
     props.navigation.navigate('Chatbox', {
       conversationBuilder: event.conversation,
     });
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{flex: 1}}>
       <Talkjs.Session appId="YOUR_APP_ID" me={me}>
         <Talkjs.ConversationList onSelectConversation={onSelectConversation} />
       </Talkjs.Session>
@@ -48,11 +58,11 @@ function ConversationList(props) {
   );
 }
 
-function Chatbox(props) {
+function Chatbox(props: NativeStackScreenProps<RootStackParamList, 'Chatbox'>) {
   const conversation = props?.route?.params?.conversationBuilder;
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{flex: 1}}>
       <Talkjs.Session appId="YOUR_APP_ID" me={me}>
         <Talkjs.Chatbox
           conversationBuilder={conversation ?? conversationBuilder}
@@ -62,10 +72,10 @@ function Chatbox(props) {
   );
 }
 
-function HomeScreen(props) {
+function HomeScreen(props: NativeStackScreenProps<RootStackParamList, 'Home'>) {
   return (
     <View
-      style={{ flex: 1, alignItems: 'center', justifyContent: 'space-evenly' }}>
+      style={{flex: 1, alignItems: 'center', justifyContent: 'space-evenly'}}>
       <Button
         title="Go to Chatbox"
         onPress={() => props.navigation.navigate('Chatbox')}
@@ -79,7 +89,7 @@ function HomeScreen(props) {
 }
 
 export default function App() {
-  const Stack = createNativeStackNavigator();
+  const Stack = createNativeStackNavigator<RootStackParamList>();
 
   return (
     <NavigationContainer>
