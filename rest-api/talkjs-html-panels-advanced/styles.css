@@ -1,0 +1,64 @@
+#row {
+  align-items: stretch;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.card {
+  float: left;
+  width: 40%;
+  padding: 0.4rem;
+  margin-bottom: 2rem;
+  flex-basis: 33.333%;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin: 0.4rem 0.4rem;
+  border: 2px solid rgb(230, 230, 230);
+  border-radius: 8%;
+  margin: 10px 4px;
+  transition: .6s ease;
+  background-color: rgb(233, 233, 233);
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-image {
+  float: left;
+  width: 7.3rem;
+  height: 5.5rem;
+  vertical-align: middle;
+  border-radius: 8%;
+  border: 2px solid rgb(216, 216, 216);
+}
+
+a {
+  font-size: 85%;
+  text-decoration: none;
+  color: black;
+}
+
+.brand-name {
+  text-align: left;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.price {
+  font-size: 85%;
+  text-decoration: none;
+  color: black;
+}
+
+#close-button{
+  padding: 0px 0.2rem;
+  border-radius: 1.5rem;
+  display: inline-block;
+  margin-left: 0.4rem;
+  cursor: pointer;
+  color: red;
+}
