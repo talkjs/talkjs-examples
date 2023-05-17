@@ -41,20 +41,17 @@ const TALKJS_URL = "https://api.talkjs.com/v1/";
   });
 
   chatbox.onSendMessage(async function (data) {
-    htmlPanel.isVisible() ? htmlPanel.hide() : htmlPanel.show();
+    if(htmlPanel.isVisible())
+      htmlPanel.hide();
     const messageText = data.message.text;
     const conversationId = data.conversation.id;
-    const productData = await getProducts(messageText, htmlPanel);
+    const productData = await getProducts(messageText);
     addProductsToHTMLPanel(productData, htmlPanel, conversationId);
   });
 })();
 
 //Function to get products from Sneaks API
-async function getProducts(messageText, htmlPanel) {
-  if (htmlPanel.window.document.getElementById("row").hasChildNodes()) {
-    htmlPanel.window.document.getElementById("row").innerHTML = "";
-  }
-
+async function getProducts(messageText) {
   const product_url = `http://localhost:4000/search/${messageText}?count=10`;
   const product_url_options = {
     method: "GET",
@@ -65,9 +62,6 @@ async function getProducts(messageText, htmlPanel) {
     const result = await response.json();
     const productData = result.slice(0, 10);
 
-    await htmlPanel.DOMContentLoadedPromise;
-    await htmlPanel.windowLoadedPromise;   
-    
     return productData;
 
   } catch (error) {
@@ -100,7 +94,14 @@ async function sendReply(conversationId) {
 }
 
 //Function to add products to the HTML panel
-function addProductsToHTMLPanel(productData, htmlPanel, conversationId){
+async function addProductsToHTMLPanel(productData, htmlPanel, conversationId){
+  if (htmlPanel.window.document.getElementById("row").hasChildNodes()) {
+    htmlPanel.window.document.getElementById("row").innerHTML = "";
+  }
+  
+  await htmlPanel.DOMContentLoadedPromise;
+  await htmlPanel.windowLoadedPromise;   
+  
   const row = htmlPanel.window.document.getElementById("row");
 
   productData.forEach((product) => {
