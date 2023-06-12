@@ -36,7 +36,7 @@
 
   <script>
     Talk.ready.then(function () {
-      var me = new Talk.User({
+      const me = new Talk.User({
         id: "2123436",
         name: "Alice",
         email: "alice@example.com",
@@ -48,7 +48,7 @@
         appId: "<APP_ID>", // replace with your app ID
         me: me,
       });
-      var sebastian = new Talk.User({
+      const sebastian = new Talk.User({
         id: "2654331",
         name: "Sebastian",
         email: "Sebastian@example.com",
@@ -56,7 +56,7 @@
         role: "customer",
         welcomeMessage: "Hi!",
       });
-      var bob = new Talk.User({
+      const bob = new Talk.User({
         id: "2432332",
         name: "Bob",
         email: "Bob@example.com",
@@ -65,19 +65,19 @@
         welcomeMessage: "Hello!",
       });
 
-      var conversation = talkSession.getOrCreateConversation(
+      const conversation = talkSession.getOrCreateConversation(
         Talk.oneOnOneId(me, sebastian)
       );
       conversation.setParticipant(me);
       conversation.setParticipant(sebastian);
 
-      var conversation2 = talkSession.getOrCreateConversation(
+      const conversation2 = talkSession.getOrCreateConversation(
         Talk.oneOnOneId(me, bob)
       );
       conversation2.setParticipant(me);
       conversation2.setParticipant(bob);
 
-      var inbox = talkSession.createInbox({ selected: conversation });
+      const inbox = talkSession.createInbox({ selected: conversation });
       inbox.setFeedFilter({ custom: { answered: ["!=", "true"] } });
       inbox.mount(document.getElementById("talkjs-container"));
     });
