@@ -1,4 +1,4 @@
-This is an example project for TalkJS's tutorial on how to mark a conversation as answered.
+This is an example project for TalkJS's tutorial on [how to mark a conversation as answered](https://talkjs.com/resources/how-to-mark-a-conversation-as-answered/).
 
 The project uses TalkJS webhooks to listen for new message events from the TalkJS server, and then calls the REST API to add a custom `answered` field with a value of `true` to conversations where the latest message is from support, and `false` otherwise. It then filters the inbox to only show unanswered messages.
 
