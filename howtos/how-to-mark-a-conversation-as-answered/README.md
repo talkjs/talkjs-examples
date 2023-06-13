@@ -18,6 +18,6 @@ To run this tutorial, you will need:
 3. Enable the `message.sent` option in the **Webhooks** section of the TalkJS dashboard.
 4. Add "support" and "customer" roles in the **Roles** tab of the TalkJS dashboard.
 5. Start ngrok with `ngrok http 3000`.
-6. Add the ngrok URL to **Webhook URLs** in the TalkJS dashboard.
+6. Add the ngrok URL plus `/talkjs` to **Webhook URLs** in the TalkJS dashboard.
 7. Run `npm install` to install dependencies.
 8. Run `npm start` to start the webhooks server.
