@@ -36,6 +36,17 @@
   </script>
 
   <script>
+    async function postConversationId(conversationId) {
+      // Send conversation id to your backend server
+      const response = await fetch("http://localhost:3000/deleteConversation", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ conversationId }),
+      });
+    }
+
     Talk.ready.then(function () {
       const me = new Talk.User({
         id: "deleteConversationExampleSupportAgent",
@@ -52,29 +63,8 @@
 
       const inbox = talkSession.createInbox();
       inbox.mount(document.getElementById("talkjs-container"));
-      inbox.onCustomConversationAction("delete", (event) => {
-        async function postConversationId() {
-          // Send conversation id to your backend server
-          const response = await fetch(
-            "http://localhost:3000/conversationAction",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ conversationId: event.conversation.id }),
-            }
-          );
-        }
-
-        if (
-          window.confirm(
-            "If you delete this conversation, it will disappear for everybody."
-          )
-        ) {
-          postConversationId();
-        }
-
+      inbox.onCustomConversationAction("delete", async (event) => {
+        await postConversationId(event.conversation.id);
         console.log("Deleted conversation with id:", event.conversation.id);
       });
     });

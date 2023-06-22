@@ -2,13 +2,13 @@ import express from "express";
 import fetch from "node-fetch";
 import cors from "cors";
 
+// Replace with your app ID and secret key
 const appId = "<APP_ID>";
 const secretKey = "<SECRET_KEY>";
 
 const basePath = "https://api.talkjs.com";
 
 const app = express();
-
 app.use(cors());
 app.use(express.json());
 
@@ -17,7 +17,7 @@ app.listen(3000, () => console.log("Server is up"));
 async function deleteConversation(conversationId) {
   console.log("Deleting conversation with id:", conversationId);
   return fetch(`${basePath}/v1/${appId}/conversations/${conversationId}`, {
-    method: "delete",
+    method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${secretKey}`,
@@ -25,7 +25,7 @@ async function deleteConversation(conversationId) {
   });
 }
 
-app.post("/conversationAction", async (req, res) => {
+app.post("/deleteConversation", async (req, res) => {
   const conversationId = req.body["conversationId"];
   await deleteConversation(conversationId);
   res.status(200).end();
@@ -44,7 +44,7 @@ async function setupConversation(i) {
 
   // Delete the conversation (if it exists)
   await fetch(`${basePath}/v1/${appId}/conversations/${conversationId}`, {
-    method: "delete",
+    method: "DELETE",
     headers: {
       Authorization: `Bearer ${secretKey}`,
     },
@@ -52,7 +52,7 @@ async function setupConversation(i) {
 
   // Create a new conversation
   await fetch(`${basePath}/v1/${appId}/conversations/${conversationId}`, {
-    method: "put",
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${secretKey}`,
@@ -66,7 +66,7 @@ async function setupConversation(i) {
   await fetch(
     `${basePath}/v1/${appId}/conversations/${conversationId}/messages`,
     {
-      method: "post",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${secretKey}`,
@@ -86,7 +86,7 @@ async function setup() {
   const supportAgent = fetch(
     `${basePath}/v1/${appId}/users/deleteConversationExampleSupportAgent`,
     {
-      method: "put",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${secretKey}`,
@@ -104,7 +104,7 @@ async function setup() {
   const user1 = fetch(
     `${basePath}/v1/${appId}/users/deleteConversationExampleUser1`,
     {
-      method: "put",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${secretKey}`,
@@ -121,7 +121,7 @@ async function setup() {
   const user2 = fetch(
     `${basePath}/v1/${appId}/users/deleteConversationExampleUser2`,
     {
-      method: "put",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${secretKey}`,

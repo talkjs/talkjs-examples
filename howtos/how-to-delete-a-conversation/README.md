@@ -13,7 +13,7 @@ To run this tutorial, you will need:
 ## How to run the tutorial
 
 1. Clone or download the project.
-2. Go to the **Roles** tab of your TalkJS dashboard. In the **Custom conversation actions** section of the `"default"` role settings, add a new custom conversation action with a name of `"delete"` and a label of `"Delete conversation"`.
+2. Go to the **Roles** tab of your TalkJS dashboard. In the **Custom conversation actions** section of the "default" role settings, add a new custom conversation action with a name of "delete" and a label of "Delete conversation".
 3. Replace `<APP_ID>` and `<SECRET_KEY>` in `index.html` and `server.js` with the values found in your [TalkJS dashboard](https://talkjs.com/dashboard/login).
 4. Run `npm install` to install dependencies.
-5. Run `npm start` to start the webhooks server.
+5. Run `npm start` to start the server.
