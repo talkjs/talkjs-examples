@@ -1,0 +1,50 @@
+.chatbox-container {
+    width: 420px;
+    max-width: 100%;
+    margin: auto;
+    position: relative;
+}
+
+.chatbox-header {
+    height: 80px;
+    background-color: #E7ECEE;
+    border-radius: 10px 10px 0 0;
+    border: 1px solid #D0D8DC;
+    border-bottom: 0px;
+}
+
+.chatbox-header-button-icon {
+    color: #fff;
+    border-radius: 50%;
+    background-color: #2D8CFF;
+    position: absolute;
+    top: 25px;
+    right: 10px;
+    border: 1px solid #9b9b9b;
+}
+
+.chatbox-header-button-icon:hover {
+    color: #2D8CFF;
+    background-color: white;
+}
+
+#avatar {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    border: 2px solid #eee;
+    left: 10px;
+    top: 15px;
+}
+
+#header-alt {
+    position: absolute;
+    left: 70px;
+    top: 18px;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
