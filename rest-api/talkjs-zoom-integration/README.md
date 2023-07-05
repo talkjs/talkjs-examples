@@ -1,4 +1,4 @@
-This is an example project for integrating Zoom with TalkJS.
+This is an example project to go with our tutorial on [How to create Zoom meetings directly from your TalkJS chat](https://talkjs.com/resources/how-to-create-zoom-meetings-in-talkjs/).
 
 The project uses TalkJS's [custom headers](https://talkjs.com/docs/Features/Customizations/Creating_Custom_Headers/) to add a new header with a button to start Zoom meetings from the chat. The button is hooked to a backend server that calls the Zoom API to create a meeting and also sends a message to the chat with the details of the meeting.
 
