@@ -1,4 +1,4 @@
-This is an example project for TalkJS's tutorial on [how to mute a conversation]().
+This is an example project for TalkJS's tutorial on [how to mute a conversation](https://talkjs.com/resources/how-to-mute-a-conversation/).
 
 The project uses TalkJS's [custom conversation actions](https://talkjs.com/docs/Features/Customizations/Conversation_Actions/) to add a new "Mute conversation" option to the chat UI. It then listens for this custom action and calls TalkJS's JavaScript SDK to mute notifications for the conversation.
 
