@@ -72,14 +72,14 @@ app.post("/talkjs", async (req, res) => {
   );
 
   if (outOfOffice && role === "customer") {
-    if (!(conversationId in autoReplied)) {
+    if (!(conversationId in alreadyReplied)) {
       await sendReply(conversationId);
     }
-    autoReplied[conversationId] = new Date();
+    alreadyReplied[conversationId] = new Date();
   }
 
-  if (role === "support" && conversationId in autoReplied) {
-    delete autoReplied[conversationId];
+  if (role === "support") {
+    delete alreadyReplied[conversationId];
   }
 
   res.status(200).end();
