@@ -9,7 +9,8 @@ const basePath = "https://api.talkjs.com";
 const app = express().use(express.json()); // creates http server
 app.listen(3000, () => console.log("Server is up"));
 
-const autoReplied = {};
+// Track when we auto-replied to each conversation ID so we don't send multiple replies in a row
+const alreadyReplied = {};
 
 // Start and end of support hours in "HH:mm:ss" format
 const startTime = "09:00:00";
