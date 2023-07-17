@@ -12,29 +12,21 @@ app.listen(3000, () => console.log("Server is up"));
 // Track when we auto-replied to each conversation ID so we don't send multiple replies in a row
 const alreadyReplied = {};
 
-// Start and end of support hours in "HH:mm:ss" format
-const startTime = "09:00:00";
-const endTime = "17:00:00";
+function isOutOfHours(date) {
+  // Sunday
+  if (date.getDay() === 0) return true;
 
-function isTimeBetween(start, end, check) {
-  if (start <= end) {
-    return check >= start && check <= end;
-  } else {
-    // window overlaps midnight
-    return (
-      (check >= start && check <= "23:59:59") ||
-      (check >= "00:00:00" && check <= end)
-    );
-  }
-}
+  // Saturday
+  if (date.getDay() === 6) return true;
 
-// Convert timestamp to "HH:mm:ss" format
-function timeStampToTime(timestamp) {
-  const checkDate = new Date(timestamp);
-  const hours = "0" + checkDate.getHours();
-  const minutes = "0" + checkDate.getMinutes();
-  const seconds = "0" + checkDate.getSeconds();
-  return hours.slice(-2) + ":" + minutes.slice(-2) + ":" + seconds.slice(-2);
+  // Before 9am
+  if (date.getHours() < 12) return true;
+
+  // After 5pm
+  if (date.getHours() >= 17) return true;
+
+  // Otherwise
+  return false;
 }
 
 async function sendReply(conversationId) {
@@ -63,15 +55,9 @@ app.post("/talkjs", async (req, res) => {
   const conversationId = data.conversation.id;
 
   const role = data.sender?.role;
-  const timestamp = data.message.createdAt;
+  const date = new Date(data.message.createdAt);
 
-  const outOfOffice = !isTimeBetween(
-    startTime,
-    endTime,
-    timeStampToTime(timestamp)
-  );
-
-  if (outOfOffice && role === "customer") {
+  if (isOutOfHours(date) && role === "customer") {
     if (!(conversationId in alreadyReplied)) {
       await sendReply(conversationId);
     }
