@@ -70,7 +70,7 @@ app.post("/talkjs", async (req, res) => {
     timeStampToTime(timestamp)
   );
 
-  if (role === "customer" && outOfOffice === true) {
+  if (outOfOffice && role === "customer") {
     if (!(conversationId in autoReplied)) {
       await sendReply(conversationId);
     }
