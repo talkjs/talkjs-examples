@@ -20,7 +20,7 @@ function isOutOfHours(date) {
   if (date.getDay() === 6) return true;
 
   // Before 9am
-  if (date.getHours() < 12) return true;
+  if (date.getHours() < 9) return true;
 
   // After 5pm
   if (date.getHours() >= 17) return true;
