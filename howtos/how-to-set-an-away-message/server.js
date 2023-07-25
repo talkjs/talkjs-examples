@@ -57,10 +57,12 @@ app.post("/talkjs", async (req, res) => {
   const role = data.sender?.role;
   const date = new Date(data.message.createdAt);
 
-  if (isOutOfHours(date) && role === "customer") {
-    if (!(conversationId in alreadyReplied)) {
-      await sendReply(conversationId);
-    }
+  if (
+    isOutOfHours(date) &&
+    role === "customer" &&
+    !(conversationId in alreadyReplied)
+  ) {
+    await sendReply(conversationId);
     alreadyReplied[conversationId] = new Date();
   }
 
