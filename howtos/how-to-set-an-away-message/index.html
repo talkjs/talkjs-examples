@@ -64,8 +64,8 @@
       conversation.setParticipant(me);
       conversation.setParticipant(other);
 
-      const inbox = talkSession.createInbox({ selected: conversation });
-      inbox.mount(document.getElementById("talkjs-container"));
+      const chatbox = talkSession.createChatbox({ selected: conversation });
+      chatbox.mount(document.getElementById("talkjs-container"));
     });
   </script>
 
