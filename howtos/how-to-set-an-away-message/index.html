@@ -37,19 +37,34 @@
   <script>
     Talk.ready.then(function () {
       const me = new Talk.User({
-        id: "autoReplyExampleSupportAgent",
-        name: "Alice",
-        email: "alice@example.com",
-        photoUrl: "https://talkjs.com/images/avatar-1.jpg",
-        role: "support",
-        welcomeMessage: "Hey there! How can I help?",
+        id: "autoReplyExampleUser",
+        name: "Sebastian",
+        email: "sebastian@example.com",
+        photoUrl: "https://talkjs.com/images/avatar-5.jpg",
+        role: "customer",
+        welcomeMessage: "Hi!",
       });
       const talkSession = new Talk.Session({
         appId: "<APP_ID>", // replace with your app ID
         me: me,
       });
 
-      const inbox = talkSession.createInbox();
+      var other = new Talk.User({
+        id: "autoReplyExampleSupportAgent",
+        name: "Alice",
+        email: "alice@example.com",
+        photoUrl: "https://talkjs.com/images/avatar-1.jpg",
+        role: "support",
+        welcomeMessage: "Hey, how can I help?",
+      });
+
+      var conversation = talkSession.getOrCreateConversation(
+        "autoReplyExampleConversation"
+      );
+      conversation.setParticipant(me);
+      conversation.setParticipant(other);
+
+      const inbox = talkSession.createInbox({ selected: conversation });
       inbox.mount(document.getElementById("talkjs-container"));
     });
   </script>
