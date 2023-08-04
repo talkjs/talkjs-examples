@@ -1,55 +1,16 @@
-import express from "express";
+// THIS IS SETUP CODE FOR THE EXAMPLE
+// You won't need any of it in your live app!
+//
+// It's just here so that you can play around with this example more easily
+// When you run the script, we make sure the two example users are created,
+// recreate the two conversations, and send messages from the example users
+
 import fetch from "node-fetch";
-import cors from "cors";
 
 const appId = "<APP_ID>";
 const secretKey = "<SECRET_KEY>";
 
 const basePath = "https://api.talkjs.com";
-
-const app = express();
-app.use(cors());
-app.use(express.json());
-
-app.listen(3000, () => console.log("Server is up"));
-
-async function setArchived(conversationId, isOn) {
-  console.log("Setting archived on", conversationId, "to", isOn);
-  return fetch(`${basePath}/v1/${appId}/conversations/${conversationId}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${secretKey}`,
-    },
-    body: JSON.stringify({
-      custom: {
-        archived: isOn ? "true" : "false",
-      },
-    }),
-  });
-}
-
-app.post("/addCustomData", async (req, res) => {
-  const data = req.body.data;
-  const conversationId = data.conversation.id;
-
-  await setArchived(conversationId, false);
-  res.status(200).end();
-});
-
-app.post("/archiveConversation", async (req, res) => {
-  const conversationId = req.body.conversationId;
-
-  await setArchived(conversationId, true);
-  res.status(200).end();
-});
-
-// EVERYTHING BELOW IS SETUP CODE FOR THIS EXAMPLE
-// You won't need any of it in your live app!
-//
-// It's just here so that you can play around with this example more easily
-// Whenever you start the server, we make sure the two example users are created
-// recreate the two conversations, and send messages from the example users
 
 async function setupConversation(i) {
   const conversationId = `archiveConversationExample${i}`;

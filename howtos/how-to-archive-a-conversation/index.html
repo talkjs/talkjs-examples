@@ -8,77 +8,94 @@
     <title>TalkJS tutorial</title>
   </head>
 
-  <!-- minified snippet to load TalkJS without delaying your page -->
-  <script>
-    (function (t, a, l, k, j, s) {
-      s = a.createElement("script");
-      s.async = 1;
-      s.src = "https://cdn.talkjs.com/talk.js";
-      a.head.appendChild(s);
-      k = t.Promise;
-      t.Talk = {
-        v: 3,
-        ready: {
-          then: function (f) {
-            if (k)
-              return new k(function (r, e) {
-                l.push([f, r, e]);
-              });
-            l.push([f]);
-          },
-          catch: function () {
-            return k && new k();
-          },
-          c: l,
-        },
-      };
-    })(window, document, []);
-  </script>
-
-  <script>
-    Talk.ready.then(function () {
-      const me = new Talk.User({
-        id: "archiveConversationExampleSupportAgent",
-        name: "Alice",
-        email: "alice@example.com",
-        role: "default",
-        photoUrl: "https://talkjs.com/images/avatar-1.jpg",
-        welcomeMessage: "Hey there! How can I help?",
-      });
-      const talkSession = new Talk.Session({
-        appId: "<APP_ID>", // replace with your app ID
-        me: me,
-      });
-
-      const inbox = talkSession.createInbox();
-      inbox.mount(document.getElementById("talkjs-container"));
-      inbox.onCustomConversationAction("archive", async (event) => {
-        async function postConversationId() {
-          // Send conversation id to your backend server
-          const response = await fetch(
-            "http://localhost:3000/archiveConversation",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ conversationId: event.conversation.id }),
-            }
-          );
-        }
-
-        await postConversationId();
-
-        console.log("Archived conversation with id:", event.conversation.id);
-      });
-      inbox.setFeedFilter({ custom: { archived: ["!=", "true"] } });
-    });
-  </script>
-
   <body>
-    <!-- container element in which TalkJS will display a chat UI -->
-    <div id="talkjs-container" style="width: 90%; margin: 30px; height: 500px">
-      <i>Loading chat...</i>
+    <div id="chat-container" style="width: 90%; margin: 30px; height: 500px">
+      <button type="button" id="archive-button">View archived chats</button>
+      <!-- container element in which TalkJS will display a chat UI -->
+      <div id="talkjs-container" style="margin: 30px; height: 500px">
+        <i>Loading chat...</i>
+      </div>
     </div>
   </body>
 </html>
+
+<!-- minified snippet to load TalkJS without delaying your page -->
+<script>
+  (function (t, a, l, k, j, s) {
+    s = a.createElement("script");
+    s.async = 1;
+    s.src = "https://cdn.talkjs.com/talk.js";
+    a.head.appendChild(s);
+    k = t.Promise;
+    t.Talk = {
+      v: 3,
+      ready: {
+        then: function (f) {
+          if (k)
+            return new k(function (r, e) {
+              l.push([f, r, e]);
+            });
+          l.push([f]);
+        },
+        catch: function () {
+          return k && new k();
+        },
+        c: l,
+      },
+    };
+  })(window, document, []);
+</script>
+
+<script>
+  Talk.ready.then(function () {
+    const me = new Talk.User({
+      id: "archiveConversationExampleSupportAgent",
+      name: "Alice",
+      email: "alice@example.com",
+      role: "default",
+      photoUrl: "https://talkjs.com/images/avatar-1.jpg",
+      welcomeMessage: "Hey there! How can I help?",
+    });
+    const talkSession = new Talk.Session({
+      appId: "<APP_ID>", // replace with your app ID
+      me: me,
+    });
+
+    const inbox = talkSession.createInbox();
+    inbox.mount(document.getElementById("talkjs-container"));
+    inbox.onCustomConversationAction("archive", async (event) => {
+      let conv = talkSession.getOrCreateConversation(
+        inbox.currentConversation.id
+      );
+      conv.setAttributes({ custom: { archived: "true" } });
+      inbox.select(conv);
+
+      console.log("Archived conversation with id:", event.conversation.id);
+    });
+
+    inbox.onCustomConversationAction("unarchive", async (event) => {
+      let conv = talkSession.getOrCreateConversation(
+        inbox.currentConversation.id
+      );
+      conv.setAttributes({ custom: { archived: "false" } });
+      inbox.select(conv);
+
+      console.log("Unarchived conversation with id:", event.conversation.id);
+    });
+
+    const button = document.getElementById("archive-button");
+    let isArchived = false;
+
+    button.addEventListener("click", (event) => {
+      if (isArchived) {
+        inbox.setFeedFilter({ custom: { archived: ["!=", "true"] } });
+        button.innerHTML = "View archived chats";
+        isArchived = false;
+      } else {
+        inbox.setFeedFilter({ custom: { archived: ["==", "true"] } });
+        button.innerHTML = "Back to inbox";
+        isArchived = true;
+      }
+    });
+  });
+</script>
