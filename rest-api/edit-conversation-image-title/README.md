@@ -8,7 +8,7 @@ The project uses TalkJS's [conversation actions](https://talkjs.com/docs/Feature
 To run this tutorial, you will need:
 
 - A [TalkJS account](https://talkjs.com/dashboard/login)
-- [Node.js](https://nodejs.org/en) and [npm]()
+- [Node.js](https://nodejs.org/en) and [npm](https://www.npmjs.com/)
 
 ## How to run the tutorial
 
