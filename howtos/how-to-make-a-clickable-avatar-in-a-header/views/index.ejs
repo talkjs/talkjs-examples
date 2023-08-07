@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talk JS custom header</title>
+</head>
+
+<body>
+
+    <%- include('shared'); %>
+
+        <div>
+            <div id="users-list-container">
+                <h4>Friends</h4>
+
+                <ul id="users-list">
+                    <% if (users) { %>
+                        <% users.forEach(user => { %>
+                            <li data-id="<%= user.id %>" data-name="<%= user.name %>" data-photoUrl="<%= user.photoUrl %>"
+                                data-role="<%= user.role %>" data-email="<%= user.email %>"
+                                data-welcomeMessage="<%= user.welcomeMessage %>">
+                                <img src="<%= user.photoUrl %>">
+                                <span>
+                                    <%= user.name %>
+                                </span>
+                            </li>
+                        <% }) %>
+                    <% } %>
+                </ul>
+            </div>
+
+            <div class="hidden" id="chatbox-container">
+                <div id="header-row">
+                    <div id="feed-header">
+                        Chats
+                    </div>
+                    <div id="chatbox-header">
+                        <a href="#" id="back-btn"> ᐸ </a>
+                        <p id="chat-title">Header</span>
+                    </div>
+                </div>
+                <div id="talkjs-container"></div>
+            </div>
+
+            <script>
+                const usersListContainer = document.querySelector("#users-list-container");
+                const usersList = usersListContainer.querySelector('ul');
+                const chatboxContainer = document.querySelector("#chatbox-container");
+                const chatHeader = document.querySelector("#chatbox-header");
+                const feedHeader = document.querySelector("#feed-header");
+                const title = document.querySelector("#chat-title");
+                const talkjsContainer = document.querySelector("#talkjs-container");
+
+                let me;
+
+                Talk.ready.then(() => {
+                    me = new Talk.User(currentUser);
+                    window.talkSession = new Talk.Session({ appId, me });
+                });
+
+                Array.from(usersList.children).forEach(listItem => {
+                    listItem.addEventListener('click', (e) => {
+                        let selectedUser;
+                        if (e.target.tagName === 'SPAN' || e.target.tagName === 'IMG') {
+                            selectedUser = Array.from(e.target.parentElement.attributes);
+                        } else if (e.target.tagName === 'LI') {
+                            selectedUser = Array.from(e.target.attributes);
+                        }
+                        initChat({
+                            id: +selectedUser[0].value,
+                            name: selectedUser[1].value,
+                            photoUrl: selectedUser[2].value,
+                            role: selectedUser[3].value,
+                            email: selectedUser[4].value,
+                            welcomeMessage: selectedUser[5].value
+                        });
+                    });
+                });
+
+                function initChat(user) {
+                    usersListContainer.classList.add('hidden');
+                    chatboxContainer.classList.remove('hidden');
+
+                    const otherUser = new Talk.User(user);
+                    const conversation = talkSession.getOrCreateConversation(Talk.oneOnOneId(me, otherUser));
+
+                    conversation.setParticipant(me);
+                    conversation.setParticipant(otherUser);
+
+                    const inbox = talkSession.createInbox({
+                        selected: conversation,
+                        showChatHeader: false,
+                        showFeedHeader: false,
+                        showMobileBackButton: false
+                    });
+                    inbox.mount(talkjsContainer);
+
+                    inbox.on("conversationSelected", ({ others }) => {
+                        if (others) {
+                            title.innerHTML = "<span>Chat with " + others[0].name + `</span><a href="/user-profile/${others[0].id}"><img src="${others[0].photoUrl}"></a>`
+                            chatHeader.classList.remove("hidden");
+                            feedHeader.classList.add("hidden")
+                        } else {
+                            chatHeader.classList.add("hidden");
+                            feedHeader.classList.remove("hidden");
+                        }
+                    });
+
+                    document.querySelector("#back-btn").addEventListener("click", (e) => {
+                        inbox.select(null);
+                    });
+                }
+            </script>
+</body>
+
+</html>

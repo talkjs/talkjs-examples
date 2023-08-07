@@ -1,0 +1,138 @@
+<style>
+    body {
+        font-family: sans-serif;
+    }
+
+    #users-list-container {
+        text-align: center;
+    }
+
+    #users-list {
+        width: 300px;
+        margin: auto;
+        padding: 0;
+    }
+
+    #users-list li {
+        justify-content: space-around;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    #chatbox-container {
+        width: 100%;
+        height: 100%;
+    }
+
+    #talkjs-container {
+        height: 90vh;
+        width: 100%;
+    }
+
+    #users-list li {
+        padding: 10px;
+        border-bottom: 1px solid rgb(220, 220, 220);
+        cursor: pointer;
+    }
+
+    #users-list span {
+        padding: 10px;
+    }
+
+    #chat-title {
+        margin: 0 0 0 50%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    #users-list li img,
+    #chat-title img {
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        margin: 0;
+    }
+
+    #header-row {
+        width: 100%;
+        max-width: 740px;
+        margin: auto;
+        height: 5vh;
+        display: flex;
+    }
+
+    #feed-header,
+    #chatbox-header {
+        height: 2em;
+        font-size: 1.5em;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    #feed-header {
+        width: 40%;
+    }
+
+    #chatbox-header {
+        width: 100%;
+    }
+
+    #back-btn {
+        display: none;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    @media all and (max-width: 640px) {
+        #chatbox-header {
+            width: 100%;
+            max-width: 420px;
+            margin: auto;
+        }
+
+        #feed-header {
+            width: 100%;
+            max-width: 300px;
+            margin: auto;
+        }
+
+        #chat-title {
+            margin: 0;
+        }
+
+        #back-btn {
+            display: inline-block;
+            float: left;
+            margin-left: 1em;
+            text-decoration: none;
+            color: rgb(50, 50, 255);
+            vertical-align: middle;
+        }
+    }
+</style>
+
+<script>
+    (function (t, a, l, k, j, s) {
+        s = a.createElement('script'); s.async = 1; s.src = "https://cdn.talkjs.com/talk.js"; a.head.appendChild(s)
+            ; k = t.Promise; t.Talk = {
+                v: 3, ready: {
+                    then: function (f) {
+                        if (k) return new k(function (r, e) { l.push([f, r, e]) }); l
+                            .push([f])
+                    }, catch: function () { return k && new k() }, c: l
+                }
+            };
+    })(window, document, []);
+</script>
+
+
+<% if (config) { %>
+    <script>
+        const { appId, currentUser } = JSON.parse('<%- config %>');    
+    </script>
+    <% } %>
