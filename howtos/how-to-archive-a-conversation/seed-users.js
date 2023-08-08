@@ -47,7 +47,7 @@ async function setupConversation(i) {
       },
       body: JSON.stringify([
         {
-          text: "Everything is broken again!",
+          text: "Can I get some help please?",
           sender: userId,
           type: "UserMessage",
         },
