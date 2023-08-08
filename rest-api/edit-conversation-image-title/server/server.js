@@ -35,7 +35,7 @@ async function editImageOrTitle(conversationId, imageURL, conversationTitle) {
   return response;
 }
 
-app.patch("/editImageOrTitle", async (req, res) => {
+app.put("/editImageOrTitle", async (req, res) => {
   const requestBody = await req.body;
   await editImageOrTitle(requestBody["conversationId"], requestBody["imageURL"], requestBody["conversationTitle"]);
   res.status(200).end();
