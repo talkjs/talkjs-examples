@@ -67,7 +67,7 @@ async function editImageOrTitle(conversationId, imageURL, conversationTitle) {
     imageURL: imageURL ? imageURL : undefined,
   };
   const response = await fetch(serverURL, {
-    method: "PATCH",
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
