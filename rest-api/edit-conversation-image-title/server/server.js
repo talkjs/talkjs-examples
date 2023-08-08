@@ -9,9 +9,17 @@ const app = express();
 app.use(cors())
 app.use(bodyParser.json())
 
-async function editImageOrTitle(conversationId, imageURL, conversationTitle) {
-  
-  const data = conversationTitle === "" ? { photoUrl: imageURL } : imageURL === "" ? { subject: conversationTitle } : { subject: conversationTitle, photoUrl: imageURL };
+async function editImageOrTitle(conversationId, imageURL, conversationTitle) {  
+  let data = {};
+
+  if (conversationTitle === undefined) {
+    data.photoUrl = imageURL;
+  } else if (imageURL === undefined) {
+    data.subject = conversationTitle;
+  } else {
+    data.subject = conversationTitle;
+    data.photoUrl = imageURL;
+  }
 
   const talkJSURL = `${process.env.TALKJS_URL}/${process.env.APP_ID}/conversations/${conversationId}`;
   const options = {
@@ -22,16 +30,12 @@ async function editImageOrTitle(conversationId, imageURL, conversationTitle) {
     },
     body: JSON.stringify(data),
   };
-  try {
-    const response = await fetch(talkJSURL, options);
-    console.log(response);
-    return response;
-  } catch (error) {
-    console.log(error);
-  }
+  const response = await fetch(talkJSURL, options).catch(err => console.log(err));
+  console.log(response.status);
+  return response;
 }
 
-app.post("/editImageOrTitle", async (req, res) => {
+app.patch("/editImageOrTitle", async (req, res) => {
   const requestBody = await req.body;
   await editImageOrTitle(requestBody["conversationId"], requestBody["imageURL"], requestBody["conversationTitle"]);
   res.status(200).end();
