@@ -6,11 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>TalkJS tutorial</title>
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700"
+    />
+
+    <style>
+      button {
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        background-color: #ececec;
+        border: 1px solid #d4d4d4;
+        border-radius: 0.75rem;
+        padding: 0.5rem;
+      }
+
+      button:hover {
+        background-color: #d0d8dc;
+      }
+
+      #button-row {
+        width: 100%;
+        max-width: 750px;
+        margin: auto;
+        height: 2em;
+        display: flex;
+      }
+    </style>
   </head>
 
   <body>
-    <div id="chat-container" style="width: 90%; margin: 30px; height: 500px">
-      <button type="button" id="archive-button">View archived chats</button>
+    <div id="chat-container">
+      <div id="button-row">
+        <button type="button" id="archive-button">View archived chats</button>
+      </div>
       <!-- container element in which TalkJS will display a chat UI -->
       <div id="talkjs-container" style="margin: 30px; height: 500px">
         <i>Loading chat...</i>
