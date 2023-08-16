@@ -12,15 +12,13 @@ app.use(bodyParser.json())
 async function editImageOrTitle(conversationId, imageURL, conversationTitle) {  
   let data = {};
 
-  if (conversationTitle === undefined) {
-    data.photoUrl = imageURL;
-  } else if (imageURL === undefined) {
+  if (conversationTitle) {
     data.subject = conversationTitle;
-  } else {
-    data.subject = conversationTitle;
+  }
+  if (imageURL) {
     data.photoUrl = imageURL;
   }
-
+  
   const talkJSURL = `${process.env.TALKJS_URL}/${process.env.APP_ID}/conversations/${conversationId}`;
   const options = {
     method: "PUT",
