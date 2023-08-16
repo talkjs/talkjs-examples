@@ -1,4 +1,4 @@
-This is an example project for TalkJS's tutorial on [how to archive a conversation]().
+This is an example project for TalkJS's tutorial on [how to archive a conversation](https://talkjs.com/resources/how-to-archive-a-conversation/).
 
 The project uses TalkJS's [custom conversation actions](https://talkjs.com/docs/Features/Customizations/Conversation_Actions/) to add a new "Archive conversation" option to the chat UI. It then listens for this custom action and sends the conversation ID to the backend server, which calls TalkJS's REST API to delete the conversation.
 
