@@ -104,6 +104,8 @@
     });
 
     inbox.onCustomConversationAction("unarchive", async (event) => {
+      // TalkJS updates a conversation's details when it's passed to one of our widgets to be displayed.
+      // So we recreate the current conversation with updated custom values, and then pass it to our inbox widget to be synced.
       let conv = talkSession.getOrCreateConversation(
         inbox.currentConversation.id
       );
