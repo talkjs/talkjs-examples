@@ -68,12 +68,10 @@
 
     inbox.onCustomConversationAction('setReadOnly', (event) => {
       console.log('Locked conversation with id:', event.conversation.id);
-      inbox.destroy();
       conversation = talkSession.getOrCreateConversation(event.conversation.id);
       conversation.setParticipant(me, { access: 'Read' });
       conversation.setParticipant(other, { access: 'Read' });
-      inbox = talkSession.createInbox({ selected: conversation });
-      inbox.mount(document.getElementById('talkjs-container'));
+      inbox.select(conversation);
     });
   });
    
