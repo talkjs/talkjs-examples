@@ -1,5 +1,5 @@
 {
-  "name": "talkjs",
+  "name": "talkjs-clickable-avatar-example",  
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -14,7 +14,9 @@
     "cors": "^2.8.5",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
-    "node-fetch": "^3.3.2",
     "nodemon": "^3.0.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.6"
   }
 }

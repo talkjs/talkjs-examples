@@ -8,68 +8,14 @@
     <title>
         <%= user.name %> | Profile
     </title>
-
-    <style>
-        .header {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-evenly;
-            align-items: center;
-        }
-
-        .card {
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            max-width: 300px;
-            margin: auto;
-            text-align: center;
-            font-family: sans-serif;
-            border-radius: 5px;
-        }
-
-        img {
-            border-radius: 50%;
-            margin: 30px auto 0;
-            box-shadow: 0 0 5px 0px #38383875;
-            width: 80px;
-            height: 80px;
-        }
-
-        .title {
-            color: grey;
-            font-size: 18px;
-        }
-
-        button {
-            border: none;
-            border-radius: 5px;
-            outline: 0;
-            display: inline-block;
-            padding: 8px;
-            color: white;
-            background-color: #000;
-            text-align: center;
-            cursor: pointer;
-            width: 95%;
-            font-size: 18px;
-            margin: 10px auto 15px;
-        }
-
-        a {
-            text-decoration: none;
-            font-size: 22px;
-            color: black;
-        }
-
-        button:hover,
-        a:hover {
-            opacity: 0.7;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
 
-    <%- include('shared'); %>
+    <script>
+        const { appId, currentUser } = JSON.parse('<%- config %>');    
+    </script>
 
         <div>
             <div id="user-profile-container">
@@ -86,16 +32,20 @@
                     <p class="title">
                         <%= user.email %>
                     </p>
-                    <p>ID: <%= user.id %>
+                    <p>
+                        ID: <%= user.id %>
                     </p>
-                    <p>Role: <%= user.role %>
+                    <p>
+                        Role: <%= user.role %>
                     </p>
-                    <p>Welcome msg: <%= user.welcomeMessage %>
+                    <p>
+                        Welcome message: <%= user.welcomeMessage %>
                     </p>
-                    <p><button id="open-chat-btn" data-id="<%= user.id %>" data-name="<%= user.name %>"
-                            data-photoUrl="<%= user.photoUrl %>" data-role="<%= user.role %>"
-                            data-email="<%= user.email %>" data-welcomeMessage="<%= user.welcomeMessage %>">Chat with
-                            <%= user.name %></button></p>
+                    <p>
+                        <button onclick="initChat('<%=encodeURIComponent(JSON.stringify(user))%>')">
+                            Chat with <%= user.name %>
+                        </button>
+                    </p>
                 </div>
             </div>
 
@@ -113,67 +63,7 @@
             </div>
         </div>
 
-        <script>
-            const userProfileContainer = document.querySelector("#user-profile-container");
-            const chatboxContainer = document.querySelector("#chatbox-container");
-            const chatHeader = document.getElementById("chatbox-header");
-            const feedHeader = document.getElementById("feed-header");
-            const title = document.getElementById("chat-title");
-            const talkjsContainer = document.querySelector("#talkjs-container");
-            const openChatButton = document.querySelector("#open-chat-btn");
-
-            let me;
-
-            Talk.ready.then(() => {
-                me = new Talk.User(currentUser);
-                window.talkSession = new Talk.Session({ appId, me });
-            });
-
-            openChatButton.addEventListener('click', e => {
-                initChat({
-                    id: +e.target.getAttribute('data-id'),
-                    name: e.target.getAttribute('data-name'),
-                    photoUrl: e.target.getAttribute('data-photourl'),
-                    role: e.target.getAttribute('data-role'),
-                    email: e.target.getAttribute('data-email'),
-                    welcomeMessage: e.target.getAttribute('data-welcomemessage')
-                });
-            })
-
-            function initChat(user) {
-                userProfileContainer.classList.add('hidden');
-                chatboxContainer.classList.remove('hidden');
-
-                const otherUser = new Talk.User(user);
-                const conversation = talkSession.getOrCreateConversation(Talk.oneOnOneId(me, otherUser));
-
-                conversation.setParticipant(me);
-                conversation.setParticipant(otherUser);
-
-                const inbox = talkSession.createInbox({
-                    selected: conversation,
-                    showChatHeader: false,
-                    showFeedHeader: false,
-                    showMobileBackButton: false
-                });
-                inbox.mount(talkjsContainer);
-
-                inbox.on("conversationSelected", function ({ others }) {
-                    if (others) {
-                        title.innerHTML = "<span>Chat with " + others[0].name + `</span><a href="/user-profile/${others[0].id}"><img src="${others[0].photoUrl}"></a>`
-                        chatHeader.classList.remove("hidden");
-                        feedHeader.classList.add("hidden")
-                    } else {
-                        chatHeader.classList.add("hidden");
-                        feedHeader.classList.remove("hidden");
-                    }
-                });
-
-                document.querySelector("#back-btn").addEventListener("click", (e) => {
-                    inbox.select(null);
-                });
-            }
-        </script>
+        <script type="text/javascript" src="/js/script.js"></script>
 
 </body>
 

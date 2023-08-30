@@ -1,64 +1,75 @@
-import express from "express";
-import cors from "cors";
+import express from 'express';
+import cors from 'cors';
+
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.set('view engine', 'ejs');
 
-const users = [
-    {
+app.use(express.static('public'));
+app.use('/css', express.static(__dirname + 'public/css'))
+app.use('/js', express.static(__dirname + 'public/js'))
+
+const users = {
+    '0': {
         id: 0,
-        name: 'Ken',
-        email: 'ken@test-email.io',
-        photoUrl: 'https://fastly.picsum.photos/id/0/5000/3333.jpg?hmac=_j6ghY5fCfSD6tvtcV74zXivkJSPIfR9B8w34XeQmvU',
+        name: 'Sarah',
+        email: 'sarah@test-email.io',
+        photoUrl: 'https://talkjs.com/images/avatar-1.jpg',
         welcomeMessage: 'Welcome to the chat!',
         role: 'default'
     },
-    {
+    '1': {
         id: 1,
+        name: 'Marie',
+        email: 'marie@test-email.io',
+        photoUrl: 'https://talkjs.com/images/avatar-2.jpg',
+        welcomeMessage: 'Hi 👋',
+        role: 'default'
+    },
+    '2': {
+        id: 2,
+        name: 'Jenna',
+        email: 'jenna@test-email.io',
+        photoUrl: 'https://talkjs.com/images/avatar-3.jpg',
+        welcomeMessage: 'Hello friend.',
+        role: 'default'
+    },
+    '3': {
+        id: 3,
         name: 'Denis',
         email: 'denis@test-email.io',
-        photoUrl: 'https://fastly.picsum.photos/id/1/5000/3333.jpg?hmac=Asv2DU3rA_5D1xSe22xZK47WEAN0wjWeFOhzd13ujW4',
-        welcomeMessage: 'Hi',
-        role: 'default'
-    },
-    {
-        id: 2,
-        name: 'Tim',
-        email: 'tim@test-email.io',
-        photoUrl: 'https://fastly.picsum.photos/id/2/5000/3333.jpg?hmac=_KDkqQVttXw_nM-RyJfLImIbafFrqLsuGO5YuHqD-qQ',
-        welcomeMessage: 'Hello friend',
-        role: 'default'
-    },
-    {
-        id: 3,
-        name: 'Sarah',
-        email: 'sarah@test-email.io',
-        photoUrl: 'https://fastly.picsum.photos/id/3/5000/3333.jpg?hmac=GDjZ2uNWE3V59PkdDaOzTOuV3tPWWxJSf4fNcxu4S2g',
+        photoUrl: 'https://talkjs.com/images/avatar-4.jpg',
         welcomeMessage: 'How can I help you?',
         role: 'default'
     },
-    {
+    '4': {
         id: 4,
         name: 'Adam',
         email: 'adam@test-email.io',
-        photoUrl: 'https://fastly.picsum.photos/id/4/5000/3333.jpg?hmac=ghf06FdmgiD0-G4c9DdNM8RnBIN7BO0-ZGEw47khHP4',
-        welcomeMessage: 'What\'s up?',
+        photoUrl: 'https://talkjs.com/images/avatar-5.jpg',
+        welcomeMessage: 'Nice to meet you 🐱',
         role: 'default'
     }
-];
+};
 
 const config = {
     currentUser: {
         id: '123456',
         name: 'Me',
         email: 'me@test-email.io',
-        photoUrl: 'https://fastly.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68',
+        photoUrl: 'https://talkjs.com/images/avatar-4.jpg',
         welcomeMessage: 'Welcome to the chat!',
         role: 'default'
     },
-    appId: 'APP_ID'
+    // appId: '<APP_ID>',
+    appId: 't6Gp1hgh'
 };
 
 app.get('/', (req, res) => {
@@ -66,9 +77,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/user-profile/:id', (req, res) => {
-    const id = +req.params.id;
-    const user = users.find(user => user.id === id);
+    const user = users[req.params.id];
     res.render('profile', { config: JSON.stringify(config), user });
 });
 
-app.listen(3000, () => console.log("Server Listening on port:", 3000));
+app.listen(3000, () => console.log('Server listening on port:', 3000));
