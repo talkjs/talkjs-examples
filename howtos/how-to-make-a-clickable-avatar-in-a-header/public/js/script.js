@@ -53,6 +53,7 @@ Talk.ready.then(() => {
             } else {
                 chatHeader.classList.add('hidden');
                 feedHeader.classList.remove('hidden');
+                title.innerHTML = '';
             }
         });
 
