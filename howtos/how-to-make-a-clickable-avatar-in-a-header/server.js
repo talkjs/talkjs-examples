@@ -68,8 +68,7 @@ const config = {
         welcomeMessage: 'Welcome to the chat!',
         role: 'default'
     },
-    // appId: '<APP_ID>',
-    appId: 't6Gp1hgh'
+    appId: '<APP_ID>'
 };
 
 app.get('/', (req, res) => {
