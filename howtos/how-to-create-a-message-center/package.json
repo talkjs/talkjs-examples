@@ -1,5 +1,5 @@
 {
-  "name": "how-to-create-a-notification-center",
+  "name": "how-to-create-a-message-center",
   "dependencies": {
     "node-fetch": "^3.3.2"
   },

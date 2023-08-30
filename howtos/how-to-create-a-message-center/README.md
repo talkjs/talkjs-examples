@@ -1,6 +1,6 @@
-This is an example project for TalkJS's tutorial on [how to create a notification center](https://talkjs.com/resources/how-to-archive-a-conversation/).
+This is an example project for TalkJS's tutorial on [how to create a message center](https://talkjs.com/resources/how-to-create-a-message-center/).
 
-The project uses TalkJS's [REST API](https://talkjs.com/docs/Features/Customizations/Conversation_Actions/) to create notifications and set the user's conversation access to read-only, and then hides the message field of the inbox.
+The project uses TalkJS's [REST API](https://talkjs.com/docs/Features/Customizations/Conversation_Actions/) to create messages and set the user's conversation access to read-only, and then hides the message field of the inbox.
 
 ## Prerequisites
 

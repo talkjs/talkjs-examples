@@ -12,11 +12,11 @@ const secretKey = "<SECRET_KEY>";
 
 const basePath = "https://api.talkjs.com";
 
-const senderId = `notificationsExampleSender`;
-const receiverId = `notificationsExampleReceiver`;
+const senderId = `messageCenterExampleSender`;
+const receiverId = `messageCenterExampleReceiver`;
 
 async function setupConversation(i, conversationSubject) {
-  const conversationId = `notificationsExample${i}`;
+  const conversationId = `messageCenterExample${i}`;
 
   // Delete the conversation (if it exists)
   await fetch(`${basePath}/v1/${appId}/conversations/${conversationId}`, {
@@ -56,7 +56,7 @@ async function setupConversation(i, conversationSubject) {
 }
 
 async function sendMessage(i, messageText) {
-  const conversationId = `notificationsExample${i}`;
+  const conversationId = `messageCenterExample${i}`;
 
   // Send a message from the user to make sure it will show up in the conversation list
   await fetch(
