@@ -101,28 +101,29 @@ async function setup() {
       Authorization: `Bearer ${secretKey}`,
     },
     body: JSON.stringify({
-      name: "TalkJS",
+      name: "NeXus Trust Bank",
       email: ["example@example.com"],
-      photoUrl: "https://talkjs.com/images/logo.jpg",
+      role: "default",
+      photoUrl: "https://talkjs.com/images/nexus-bank-dark.jpg",
       welcomeMessage: "Hi!",
     }),
   });
   await receiver;
   await sender;
 
-  const conv1 = setupConversation(1, "Welcome to TalkJS 👋");
-  const conv2 = setupConversation(2, "We have a new feature ✨");
+  const conv1 = setupConversation(1, "Your August statement is ready");
+  const conv2 = setupConversation(2, "Changes to terms and conditions");
 
   await conv1;
   await conv2;
 
   const message1 = sendMessage(
     1,
-    "Check out our <https://talkjs.com/docs/Getting_Started/|Getting Started guide>!"
+    "Your August statement is now ready to view. Download your statement <https://example.com|here>."
   );
   const message2 = sendMessage(
     2,
-    "See our <https://changelog.talkjs.com/|changelog> for more details!"
+    "We wish to inform you that the terms and conditions for our banking app are changing. See <https://example.com|our website> for more details."
   );
 
   await message1;
