@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>TalkJS tutorial</title>
+  </head>
+
+  <!-- minified snippet to load TalkJS without delaying your page -->
+  <script>
+    (function (t, a, l, k, j, s) {
+      s = a.createElement("script");
+      s.async = 1;
+      s.src = "https://cdn.talkjs.com/talk.js";
+      a.head.appendChild(s);
+      k = t.Promise;
+      t.Talk = {
+        v: 3,
+        ready: {
+          then: function (f) {
+            if (k)
+              return new k(function (r, e) {
+                l.push([f, r, e]);
+              });
+            l.push([f]);
+          },
+          catch: function () {
+            return k && new k();
+          },
+          c: l,
+        },
+      };
+    })(window, document, []);
+  </script>
+
+  <script>
+    async function postMessageData(messageId, conversationId, messageText) {
+      // Send message data to your backend server
+      const response = await fetch("http://localhost:3000/newThread", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ messageId, conversationId, messageText }),
+      });
+    }
+
+    Talk.ready.then(function () {
+      const me = new Talk.User({
+        id: "threadsExampleReceiver",
+        name: "Alice",
+        email: "alice@example.com",
+        photoUrl: "https://talkjs.com/images/avatar-1.jpg",
+        role: "default",
+      });
+      const talkSession = new Talk.Session({
+        appId: "<APP_ID>", // replace with your app ID
+        me: me,
+      });
+
+      const chatbox = talkSession.createChatbox();
+
+      chatbox.onCustomMessageAction("replyInThread", async (event) => {
+        await postMessageData(
+          event.message.id,
+          event.message.conversation.id,
+          event.message.body
+        );
+
+        let thread = talkSession.getOrCreateConversation(
+          "replyto_" + event.message.id
+        );
+        chatbox.select(thread);
+      });
+
+      chatbox.onCustomConversationAction("back", async (event) => {
+        const parentConvId = event.conversation.custom.parentConvId;
+
+        if (parentConvId != undefined) {
+          let thread = talkSession.getOrCreateConversation(parentConvId);
+          chatbox.select(thread);
+        }
+      });
+
+      chatbox.mount(document.getElementById("talkjs-container"));
+    });
+  </script>
+
+  <body>
+    <!-- container element in which TalkJS will display a chat UI -->
+    <div id="talkjs-container" style="width: 90%; margin: 30px; height: 500px">
+      <i>Loading chat...</i>
+    </div>
+  </body>
+</html>
