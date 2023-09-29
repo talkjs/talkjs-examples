@@ -33,3 +33,8 @@ To run this tutorial, you will need:
    4. Find the code for displaying the user's name in the header (something like `<span>{{user.name}}</span>`) and replace it with the following:
       `<span><ActionButton action="back">&lt; Back</ActionButton>{{user.name}}</ActionButton></span>`
    5. If you are in Live mode, select **Copy to live**.
+7. Set up a webhook to respond to new message events:
+   1. Go to the **Settings** tab of the TalkJS dashboard.
+   2. Enable the `message.sent` option in the **Webhooks** section of the TalkJS dashboard.
+   3. Start ngrok with `ngrok http 3000`.
+   4. Add the ngrok URL to **Webhook URLs** in the TalkJS dashboard, including the `updateReplyCount` path: `https://<YOUR-URL>.ngrok.io/updateReplyCount`
