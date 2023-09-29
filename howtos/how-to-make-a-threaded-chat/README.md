@@ -24,7 +24,10 @@ To run this tutorial, you will need:
    2. Select to **Edit** the theme you use for your "default" role.
    3. In the list of **Built-in Components**, select **UserMessage**.
    4. Add the following line below the `<MessageBody />` component:
-      `<ActionButton action="replyInThread">Reply</ActionButton>`
+      ```
+      <ActionButton t:if="{{ custom.replyCount > 0 }}" action="replyInThread">Replies ({{ custom.replyCount }})</ActionButton>
+      <ActionButton t:else action="replyInThread">Reply</ActionButton>
+      ```
    5. If you are in Live mode, select **Copy to live**.
 6. Add a "Back" action button to the chat header of your theme:
    1. Go to the **Themes** tab of the TalkJS dashboard.
