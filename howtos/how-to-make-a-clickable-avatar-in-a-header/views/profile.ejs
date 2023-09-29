@@ -1,70 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= user.name %> | Profile</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <%= user.name %> | Profile
-    </title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-
-<body>
-
+  <body>
     <script>
-        const { appId, currentUser } = JSON.parse('<%- config %>');    
+      // prettier-ignore
+      const { appId, currentUser } = JSON.parse('<%- config %>');
     </script>
 
-        <div>
-            <div id="user-profile-container">
-                <div class="header">
-                    <a href="/"> ᐸ Friends</a>
-                    <h2>User profile</h2>
-                </div>
-
-                <div class="card">
-                    <img src="<%= user.photoUrl %>" alt="<%= user.name %>">
-                    <h1>
-                        <%= user.name %>
-                    </h1>
-                    <p class="title">
-                        <%= user.email %>
-                    </p>
-                    <p>
-                        ID: <%= user.id %>
-                    </p>
-                    <p>
-                        Role: <%= user.role %>
-                    </p>
-                    <p>
-                        Welcome message: <%= user.welcomeMessage %>
-                    </p>
-                    <p>
-                        <button onclick="initChat('<%=encodeURIComponent(JSON.stringify(user))%>')">
-                            Chat with <%= user.name %>
-                        </button>
-                    </p>
-                </div>
-            </div>
-
-            <div class="hidden" id="chatbox-container">
-                <div id="header-row">
-                    <div id="feed-header">
-                        Chats
-                    </div>
-                    <div id="chatbox-header">
-                        <a href="#" id="back-btn"> ᐸ </a>
-                        <p id="chat-title">Header</span>
-                    </div>
-                </div>
-                <div id="talkjs-container"></div>
-            </div>
+    <div>
+      <div id="user-profile-container">
+        <div class="header">
+          <a href="/"> ᐸ Friends</a>
         </div>
 
-        <script type="text/javascript" src="/js/script.js"></script>
+        <div class="card">
+          <img src="<%= user.photoUrl %>" alt="<%= user.name %>" />
+          <h1><%= user.name %></h1>
+          <p class="title"><%= user.email %></p>
+          <p>ID: <%= user.id %></p>
+          <p>Role: <%= user.role %></p>
+          <p>Welcome message: <%= user.welcomeMessage %></p>
+          <p>
+            <button
+              onclick="initChat('<%=encodeURIComponent(JSON.stringify(user))%>')"
+            >
+              Chat with <%= user.name %>
+            </button>
+          </p>
+        </div>
+      </div>
 
-</body>
+      <div class="hidden" id="chatbox-container">
+        <div class="header">
+          <a href="/"> ᐸ Friends</a>
+        </div>
 
+        <div id="talkjs-container"></div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="/js/script.js"></script>
+  </body>
 </html>
