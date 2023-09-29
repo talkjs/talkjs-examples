@@ -16,9 +16,8 @@ app.listen(3000, () => console.log("Server is up"));
 const senderId = `threadsExampleSender`;
 const receiverId = `threadsExampleReceiver`;
 
-async function newThread(parentMessageId, parentConvId) {
+async function createConversation(parentMessageId, parentConvId) {
   const conversationId = "replyto_" + parentMessageId;
-
   return fetch(`${basePath}/v1/${appId}/conversations/${conversationId}`, {
     method: "PUT",
     headers: {
@@ -30,12 +29,13 @@ async function newThread(parentMessageId, parentConvId) {
       subject: "Replies",
       custom: {
         parentConvId: parentConvId,
+        parentMessageId: parentMessageId,
       },
     }),
   });
 }
 
-async function newMessage(parentMessageId, messageText) {
+async function createMessage(parentMessageId, messageText) {
   const conversationId = "replyto_" + parentMessageId;
   return fetch(
     `${basePath}/v1/${appId}/conversations/${conversationId}/messages`,
@@ -56,6 +56,22 @@ async function newMessage(parentMessageId, messageText) {
   );
 }
 
+async function updateReplyCount(messageId, conversationId, count) {
+  return fetch(
+    `${basePath}/v1/${appId}/conversations/${conversationId}/messages/${messageId}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${secretKey}`,
+      },
+      body: JSON.stringify({
+        custom: { replyCount: count.toString() },
+      }),
+    }
+  );
+}
+
 function getMessages(messageId) {
   const conversationId = "replyto_" + messageId;
 
@@ -72,18 +88,23 @@ function getMessages(messageId) {
 }
 
 app.post("/newThread", async (req, res) => {
-  const messageId = req.body["messageId"];
-  const conversationId = req.body["conversationId"];
-  const messageText = req.body["messageText"];
+  // Get details of the message we'll reply to
+  const parentMessageId = req.body["messageId"];
+  const parentConvId = req.body["conversationId"];
+  const parentMessageText = req.body["messageText"];
 
-  await newThread(messageId, conversationId);
-
-  let response = await getMessages(messageId);
+  let response = await getMessages(parentMessageId);
   let messages = await response.json();
 
-  // Create a new thread if one doesn't already exist
+  // Create a message with the text of the parent message if one doesn't already exist
   if (messages.data === undefined || messages.data.length == 0) {
-    await newMessage(messageId, messageText);
+    await createConversation(parentMessageId, parentConvId);
+    await createMessage(parentMessageId, parentMessageText);
+  }
+
+  res.status(200).end();
+});
+
   }
 
   res.status(200).end();
