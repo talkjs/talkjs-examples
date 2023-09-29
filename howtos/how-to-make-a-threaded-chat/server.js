@@ -105,6 +105,28 @@ app.post("/newThread", async (req, res) => {
   res.status(200).end();
 });
 
+// Endpoint for message.sent webhook
+app.post("/updateReplyCount", async (req, res) => {
+  const data = req.body.data;
+  const conversationId = data.conversation.id;
+  const messageType = data.message.type;
+
+  if (
+    conversationId.slice(0, 8) === "replyto_" &&
+    messageType === "UserMessage"
+  ) {
+    const parentMessageId = data.conversation.custom.parentMessageId;
+    const parentConvId = data.conversation.custom.parentConvId;
+
+    let response = await getMessages(parentMessageId);
+    let messages = await response.json();
+
+    const messageCount = messages.data.length;
+
+    // Ignore the first message in thread (it's a repeat of the parent message)
+    if (messageCount > 1) {
+      await updateReplyCount(parentMessageId, parentConvId, messageCount - 1);
+    }
   }
 
   res.status(200).end();
