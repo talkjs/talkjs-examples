@@ -36,17 +36,6 @@
   </script>
 
   <script>
-    async function postMessageData(messageId, conversationId, messageText) {
-      // Send message data to your backend server
-      const response = await fetch("http://localhost:3000/newThread", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ messageId, conversationId, messageText }),
-      });
-    }
-
     Talk.ready.then(function () {
       const me = new Talk.User({
         id: "threadsExampleReceiver",
@@ -62,8 +51,19 @@
 
       const chatbox = talkSession.createChatbox();
 
-      chatbox.onCustomMessageAction("replyInThread", async (event) => {
-        await postMessageData(
+      chatbox.onCustomMessageAction("replyInThread", (event) => {
+        async function postMessageData(messageId, conversationId, messageText) {
+          // Send message data to your backend server
+          const response = await fetch("http://localhost:3000/newThread", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ messageId, conversationId, messageText }),
+          });
+        }
+
+        postMessageData(
           event.message.id,
           event.message.conversation.id,
           event.message.body
