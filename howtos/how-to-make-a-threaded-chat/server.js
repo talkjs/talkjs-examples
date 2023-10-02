@@ -139,8 +139,8 @@ app.post("/updateReplyCount", async (req, res) => {
 // Whenever you run this script, we make sure the two example users are created
 // recreate the two conversations, and send messages from the example users
 
-async function setupConversation(i) {
-  const conversationId = `threadsExample${i}`;
+async function setupConversation() {
+  const conversationId = "threadsExample";
 
   // Delete the conversation (if it exists)
   await fetch(`${basePath}/v1/${appId}/conversations/${conversationId}`, {
@@ -163,8 +163,8 @@ async function setupConversation(i) {
   });
 }
 
-async function sendMessage(i, messageText) {
-  const conversationId = `threadsExample${i}`;
+async function sendMessage(messageText) {
+  const conversationId = "threadsExample";
 
   // Send a message from the user to make sure it will show up in the conversation list
   await fetch(
@@ -188,7 +188,7 @@ async function sendMessage(i, messageText) {
 
 async function setup() {
   const receiver = fetch(`${basePath}/v1/${appId}/users/${receiverId}`, {
-    method: "put",
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${secretKey}`,
@@ -202,7 +202,7 @@ async function setup() {
   });
 
   const sender = fetch(`${basePath}/v1/${appId}/users/${senderId}`, {
-    method: "put",
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${secretKey}`,
@@ -217,11 +217,11 @@ async function setup() {
   await receiver;
   await sender;
 
-  const conv1 = setupConversation(1);
-  await conv1;
+  const conv = setupConversation();
+  await conv;
 
-  const message1 = sendMessage(1, "Hello this is a test message");
-  await message1;
+  const message = sendMessage("Hello this is a test message");
+  await message;
 }
 
 setup();
