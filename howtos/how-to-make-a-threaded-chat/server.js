@@ -16,7 +16,8 @@ app.listen(3000, () => console.log("Server is up"));
 const senderId = `threadsExampleSender`;
 const receiverId = `threadsExampleReceiver`;
 
-async function createConversation(parentMessageId, parentConvId) {
+// Create a thread as a new conversation
+async function createThread(parentMessageId, parentConvId, participants) {
   const conversationId = "replyto_" + parentMessageId;
   return fetch(`${basePath}/v1/${appId}/conversations/${conversationId}`, {
     method: "PUT",
@@ -25,7 +26,7 @@ async function createConversation(parentMessageId, parentConvId) {
       Authorization: `Bearer ${secretKey}`,
     },
     body: JSON.stringify({
-      participants: [receiverId, senderId],
+      participants: participants,
       subject: "Replies",
       custom: {
         parentConvId: parentConvId,
@@ -35,7 +36,7 @@ async function createConversation(parentMessageId, parentConvId) {
   });
 }
 
-async function createMessage(parentMessageId, messageText) {
+async function duplicateParentMessageText(parentMessageId, messageText) {
   const conversationId = "replyto_" + parentMessageId;
   return fetch(
     `${basePath}/v1/${appId}/conversations/${conversationId}/messages`,
@@ -48,7 +49,6 @@ async function createMessage(parentMessageId, messageText) {
       body: JSON.stringify([
         {
           text: messageText,
-          sender: senderId,
           type: "SystemMessage",
         },
       ]),
@@ -92,14 +92,15 @@ app.post("/newThread", async (req, res) => {
   const parentMessageId = req.body["messageId"];
   const parentConvId = req.body["conversationId"];
   const parentMessageText = req.body["messageText"];
+  const parentParticipants = req.body["participants"];
 
   let response = await getMessages(parentMessageId);
   let messages = await response.json();
 
   // Create a message with the text of the parent message if one doesn't already exist
   if (messages.data === undefined || messages.data.length == 0) {
-    await createConversation(parentMessageId, parentConvId);
-    await createMessage(parentMessageId, parentMessageText);
+    await createThread(parentMessageId, parentConvId, parentParticipants);
+    await duplicateParentMessageText(parentMessageId, parentMessageText);
   }
 
   res.status(200).end();

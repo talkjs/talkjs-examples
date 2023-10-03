@@ -52,26 +52,38 @@
       const chatbox = talkSession.createChatbox();
 
       chatbox.onCustomMessageAction("replyInThread", (event) => {
-        async function postMessageData(messageId, conversationId, messageText) {
+        async function postMessageData(
+          messageId,
+          conversationId,
+          messageText,
+          participants
+        ) {
           // Send message data to your backend server
           const response = await fetch("http://localhost:3000/newThread", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ messageId, conversationId, messageText }),
+            body: JSON.stringify({
+              messageId,
+              conversationId,
+              messageText,
+              participants,
+            }),
           });
         }
 
         postMessageData(
           event.message.id,
           event.message.conversation.id,
-          event.message.body
+          event.message.body,
+          Object.keys(event.message.conversation.participants)
         );
 
         let thread = talkSession.getOrCreateConversation(
           "replyto_" + event.message.id
         );
+        thread.setParticipant(me);
         chatbox.select(thread);
       });
 
