@@ -113,8 +113,7 @@ app.post("/updateReplyCount", async (req, res) => {
   const messageType = data.message.type;
 
   if (conversationId.startsWith("replyto_") && messageType === "UserMessage") {
-    const parentMessageId = data.conversation.custom.parentMessageId;
-    const parentConvId = data.conversation.custom.parentConvId;
+    const { parentMessageId, parentConvId } = data.conversation.custom;
 
     const response = await getMessages(parentMessageId);
     const messages = await response.json();
