@@ -89,16 +89,16 @@ function getMessages(messageId) {
 
 app.post("/newThread", async (req, res) => {
   // Get details of the message we'll reply to
-  const parentMessageId = req.body["messageId"];
-  const parentConvId = req.body["conversationId"];
-  const parentMessageText = req.body["messageText"];
-  const parentParticipants = req.body["participants"];
+  const parentMessageId = req.body.messageId;
+  const parentConvId = req.body.conversationId;
+  const parentMessageText = req.body.messageText;
+  const parentParticipants = req.body.participants;
 
-  let response = await getMessages(parentMessageId);
-  let messages = await response.json();
+  const response = await getMessages(parentMessageId);
+  const messages = await response.json();
 
   // Create a message with the text of the parent message if one doesn't already exist
-  if (messages.data === undefined || messages.data.length == 0) {
+  if (!messages.data?.length) {
     await createThread(parentMessageId, parentConvId, parentParticipants);
     await duplicateParentMessageText(parentMessageId, parentMessageText);
   }
@@ -112,15 +112,12 @@ app.post("/updateReplyCount", async (req, res) => {
   const conversationId = data.conversation.id;
   const messageType = data.message.type;
 
-  if (
-    conversationId.slice(0, 8) === "replyto_" &&
-    messageType === "UserMessage"
-  ) {
+  if (conversationId.startsWith("replyto_") && messageType === "UserMessage") {
     const parentMessageId = data.conversation.custom.parentMessageId;
     const parentConvId = data.conversation.custom.parentConvId;
 
-    let response = await getMessages(parentMessageId);
-    let messages = await response.json();
+    const response = await getMessages(parentMessageId);
+    const messages = await response.json();
 
     const messageCount = messages.data.length;
 

@@ -90,7 +90,7 @@
       chatbox.onCustomConversationAction("back", async (event) => {
         const parentConvId = event.conversation.custom.parentConvId;
 
-        if (parentConvId != undefined) {
+        if (parentConvId !== undefined) {
           let thread = talkSession.getOrCreateConversation(parentConvId);
           chatbox.select(thread);
         }
