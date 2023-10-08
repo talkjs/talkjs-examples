@@ -1,0 +1,23 @@
+#gif-search{
+    display: none;
+    background-color: #fff;
+    width: 418px;
+    height: 357px;
+    position: absolute;
+    margin-left: 38%;
+    margin-bottom: 5.4rem;
+    overflow: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.gif-image{
+    width: 115px;
+    height: 115px;
+    cursor: pointer;
+    margin: 5px;
+}
+#searchTerm{
+    width: 300px;
+    display: inline-block;
+}
