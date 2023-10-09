@@ -1,6 +1,6 @@
 This is an example project for TalkJS's tutorial on how to make a comment section with threaded replies.
 
-!! expand...
+This project uses action buttons and the REST API to add a custom reply option that opens a new conversation for replies, and a back button to navigate back to the original message. It also uses a webhook to listen for new messages and updates the reply action button to show the number of replies.
 
 ## Prerequisites
 
