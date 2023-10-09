@@ -16,6 +16,19 @@ app.listen(3000, () => console.log("Server is up"));
 const senderId = `threadsExampleSender`;
 const receiverId = `threadsExampleReceiver`;
 
+function getMessages(messageId) {
+  return fetch(
+    `${basePath}/v1/${appId}/conversations/replyto_${messageId}/messages`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${secretKey}`,
+      },
+    }
+  );
+}
+
 // Create a thread as a new conversation
 async function createThread(parentMessageId, parentConvId, participants) {
   return fetch(
@@ -69,20 +82,6 @@ async function updateReplyCount(messageId, conversationId, count) {
       body: JSON.stringify({
         custom: { replyCount: count.toString() },
       }),
-    }
-  );
-}
-
-function getMessages(messageId) {
-
-  return fetch(
-    `${basePath}/v1/${appId}/conversations/replyto_${messageId}/messages`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${secretKey}`,
-      },
     }
   );
 }
