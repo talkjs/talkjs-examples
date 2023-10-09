@@ -18,10 +18,6 @@ const receiverId = `threadsExampleReceiver`;
 
 // Create a thread as a new conversation
 async function createThread(parentMessageId, parentConvId, participants) {
-  const conversationId = "replyto_" + parentMessageId;
-  return fetch(`${basePath}/v1/${appId}/conversations/${conversationId}`, {
-    method: "PUT",
-    headers: {
   // const conversationId = "replyto_" + parentMessageId;
   return fetch(
     `${basePath}/v1/${appId}/conversations/replyto_${parentMessageId}`,
