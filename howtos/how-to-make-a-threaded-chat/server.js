@@ -18,7 +18,6 @@ const receiverId = `threadsExampleReceiver`;
 
 // Create a thread as a new conversation
 async function createThread(parentMessageId, parentConvId, participants) {
-  // const conversationId = "replyto_" + parentMessageId;
   return fetch(
     `${basePath}/v1/${appId}/conversations/replyto_${parentMessageId}`,
     {
@@ -40,7 +39,6 @@ async function createThread(parentMessageId, parentConvId, participants) {
 }
 
 async function duplicateParentMessageText(parentMessageId, messageText) {
-  // const conversationId = "replyto_" + parentMessageId;
   return fetch(
     `${basePath}/v1/${appId}/conversations/replyto_${parentMessageId}/messages`,
     {
@@ -76,7 +74,6 @@ async function updateReplyCount(messageId, conversationId, count) {
 }
 
 function getMessages(messageId) {
-  // const conversationId = "replyto_" + messageId;
 
   return fetch(
     `${basePath}/v1/${appId}/conversations/replyto_${messageId}/messages`,
