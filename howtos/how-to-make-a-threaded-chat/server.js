@@ -22,24 +22,31 @@ async function createThread(parentMessageId, parentConvId, participants) {
   return fetch(`${basePath}/v1/${appId}/conversations/${conversationId}`, {
     method: "PUT",
     headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${secretKey}`,
-    },
-    body: JSON.stringify({
-      participants: participants,
-      subject: "Replies",
-      custom: {
-        parentConvId: parentConvId,
-        parentMessageId: parentMessageId,
+  // const conversationId = "replyto_" + parentMessageId;
+  return fetch(
+    `${basePath}/v1/${appId}/conversations/replyto_${parentMessageId}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${secretKey}`,
       },
-    }),
-  });
+      body: JSON.stringify({
+        participants: participants,
+        subject: "Replies",
+        custom: {
+          parentConvId: parentConvId,
+          parentMessageId: parentMessageId,
+        },
+      }),
+    }
+  );
 }
 
 async function duplicateParentMessageText(parentMessageId, messageText) {
-  const conversationId = "replyto_" + parentMessageId;
+  // const conversationId = "replyto_" + parentMessageId;
   return fetch(
-    `${basePath}/v1/${appId}/conversations/${conversationId}/messages`,
+    `${basePath}/v1/${appId}/conversations/replyto_${parentMessageId}/messages`,
     {
       method: "POST",
       headers: {
@@ -73,10 +80,10 @@ async function updateReplyCount(messageId, conversationId, count) {
 }
 
 function getMessages(messageId) {
-  const conversationId = "replyto_" + messageId;
+  // const conversationId = "replyto_" + messageId;
 
   return fetch(
-    `${basePath}/v1/${appId}/conversations/${conversationId}/messages`,
+    `${basePath}/v1/${appId}/conversations/replyto_${messageId}/messages`,
     {
       method: "GET",
       headers: {
