@@ -193,7 +193,7 @@ async function setup() {
       name: "Alice",
       email: ["alice@example.com"],
       role: "default",
-      photoUrl: "https://talkjs.com/images/avatar-1.jpg",
+      photoUrl: "https://talkjs.com/new-web/avatar-14.jpg",
     }),
   });
 
@@ -207,7 +207,7 @@ async function setup() {
       name: "Bob",
       email: ["bob@example.com"],
       role: "default",
-      photoUrl: "https://talkjs.com/images/avatar-2.jpg",
+      photoUrl: "https://talkjs.com/new-web/avatar-15.jpg",
     }),
   });
   await receiver;
@@ -216,7 +216,7 @@ async function setup() {
   const conv = setupConversation();
   await conv;
 
-  const message = sendMessage("Hello this is a test message");
+  const message = sendMessage("We've added reply threads to the chat!");
   await message;
 }
 
