@@ -1,6 +1,6 @@
 import { GiphyFetch } from "@giphy/js-fetch-api";
 
-const gf = new GiphyFetch("YOUR_GIPHY_API_KEY");
+const gf = new GiphyFetch("<YOUR_GIPHY_API_KEY>");
 
 let conversationId = "";
 let currentUser = {};
@@ -74,7 +74,7 @@ async function addGIFtoChat(conversationId, senderId, imageURL) {
     role: "default",
   });
   window.talkSession = new Talk.Session({
-    appId: "YOUR_APP_ID",
+    appId: "<YOUR_APP_ID>",
     me: other,
   });
 
