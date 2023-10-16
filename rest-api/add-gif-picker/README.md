@@ -1,4 +1,5 @@
 This is an example project to go with our tutorial on How to add a GIF picker to your TalkJS chat.
+
 <!-- Add link to tutorial once published -->
 
 The project uses TalkJS's [Action Buttons](https://talkjs.com/docs/Features/Customizations/Action_Buttons_Links/) to add a custom action to the message field that lets users add GIFs to their chats. The action is hooked to a backend server that calls the TalkJS REST API to upload the GIF and add it to the conversation.
@@ -18,4 +19,4 @@ To run this tutorial, you will need:
 3. Go to the project folder and run `npm install`. This installs all the required dependencies.
 4. Go to the `server` folder and run `npm install` followed by `npm start`. This installs all the required dependencies and starts the NodeJS server.
 5. Rename the `.env_new` file to `.env` and paste your TalkJS appID and secret key. You can find both of these on your TalkJS dashboard.
-6. Open `index.html` from a browser, or through an extension like Live Server from your favorite IDE or text editor.
+6. Go to the `talkjs-giphy-integration` folder and run `npm install` followed by `npm run dev`. This installs the required dependencies for the frontend and runs the app at `localhost:1234`.
