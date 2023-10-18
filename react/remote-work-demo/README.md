@@ -1,5 +1,5 @@
 ## Intro
-This repo is basically a clone of our [remote work demo](link), set up as a standalone react app.
+This repo is basically a clone of our [remote work demo](https://talkjs.com/demo/team-chat/), set up as a standalone react app.
 
 ## Instructions
 1. Clone the repo.
