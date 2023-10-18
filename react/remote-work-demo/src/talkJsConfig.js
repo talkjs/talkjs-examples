@@ -1,6 +1,6 @@
 const talkJsConfig = {
-    appId: "tYGS1Q0R", // Replace this value with your app id 
-    userId: "USER_ID", // The user id for the user from who's perspective you're using the UI
+    appId: "<APP_ID>", // Replace this value with your app id 
+    userId: "<USER_ID>", // The user id for the user from who's perspective you're using the UI
     /**
      * Below is a couple of example conversations to get you up and running.
      * The conversations are split into two categories, which is also reflected in the UI.
