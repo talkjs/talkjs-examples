@@ -14,5 +14,5 @@ This repo is basically a clone of our [remote work demo](https://talkjs.com/demo
 
 6. From this point on, you're ready to start up the app using using either `npm run` or `yarn start`. The app will be up and running at localhost:3000.
 
-The app is prepopulated with a default user and a couple of hardcoded conversations, which easily can be replaced with your own users and conversations. You can find these conversations and the default userId in talkJsConfig.js as well. 
+The app is prepopulated with a default user and a couple of hardcoded conversations, which easily can be replaced with your own users and conversations. You can find these conversations and the default `userId` in `src/talkJsConfig.js` as well. 
 
