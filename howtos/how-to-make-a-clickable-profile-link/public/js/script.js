@@ -56,7 +56,6 @@ Talk.ready.then(() => {
     inbox.mount(talkjsContainer);
 
     inbox.onCustomConversationAction("goToProfile", (event) => {
-      console.log(event.params.userId);
       location.href = `/user-profile/${event.params.userId}`;
     });
   };
