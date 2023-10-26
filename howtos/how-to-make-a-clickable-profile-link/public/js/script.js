@@ -25,9 +25,7 @@
 const chatboxContainer = document.getElementById("chatbox-container");
 const talkjsContainer = document.getElementById("talkjs-container");
 const usersListContainer = document.getElementById("users-list-container");
-const usersList = document.getElementById("users-list");
 const userProfileContainer = document.getElementById("user-profile-container");
-const openChatButton = document.getElementById("open-chat-btn");
 
 let me;
 
