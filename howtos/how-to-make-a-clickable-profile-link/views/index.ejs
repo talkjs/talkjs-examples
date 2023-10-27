@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TalkJS clickable profile link tutorial</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+
+  <body>
+    <script>
+      // prettier-ignore
+      const { appId, currentUser } = JSON.parse('<%- config %>');
+    </script>
+
+    <div>
+      <div id="users-list-container">
+        <h4>Friends</h4>
+        <ul id="users-list">
+          <% if (users) { %> <% Object.keys(users).forEach(key=> { %>
+          <li
+            onclick="initChat('<%=encodeURIComponent(JSON.stringify(users[key]))%>');"
+          >
+            <img
+              src="<%= users[key].photoUrl %>"
+              alt="<%= users[key].name %>'s photo"
+            />
+            <span> <%= users[key].name %> </span>
+          </li>
+          <% }); %> <% } %>
+        </ul>
+      </div>
+
+      <div class="hidden" id="chatbox-container">
+        <div class="header">
+          <a href="/"> ᐸ Friends</a>
+        </div>
+
+        <div id="talkjs-container"></div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="/js/script.js"></script>
+  </body>
+</html>
