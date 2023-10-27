@@ -1,4 +1,4 @@
-This is an example project for TalkJS's tutorial on how to make a clickable link to the user’s profile.
+This is an example project for TalkJS's tutorial on [how to add a custom link to a user's profile](https://talkjs.com/resources/how-to-make-a-clickable-link-to-a-users-profile/).
 
 This project uses TalkJS's [custom header feature](https://talkjs.com/docs/Features/Customizations/Creating_Custom_Headers/). The custom header in this example contains a link that leads to user's profile page.
 
