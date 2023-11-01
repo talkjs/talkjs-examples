@@ -1,35 +1,28 @@
 import talkJsConfig from "./talkJsConfig";
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
 import Talk from "talkjs";
 import CategoryCollapse from "./components/CategoryCollapse";
 import ConversationListItem from "./components/ConversationListItem";
 import ChatHeader from "./components/ChatHeader";
+import { Session, Chatbox } from "@talkjs/react";
 
 function App() {
-  /*
-   * The three values of the currentConversation object pertain to the UI,
-   * and they are essential for rendering the contents of the components properly.
-   */
-  const [currentConversation, setCurrentConversation] = useState({
-    id: "",
-    subject: "",
-    avatar: "",
-  });
+  const initialConversation = talkJsConfig.conversations.channels[0];
+  const [currentConversation, setCurrentConversation] =
+    useState(initialConversation);
 
-  const talkjsContainer = useRef(null); //This is used to create a ref for the mounting of the TalkJS UI
-  const [talkLoaded, setTalkLoaded] = useState(false); // This is used to check whether or not TalkJS has loaded,
+  const sessionRef = useRef(null);
+  const chatboxRef = useRef(null);
 
-  const [sessionChatbox, setSessionChatbox] = useState(null); // This is used to store the session chatbox
   const [mobileChannelSelected, setMobileChannelSelected] = useState(true); //This is used to control whether or not to display the chatbox or the inbox while on mobile displays
-
   const [unreadMessages, setUnreadMessages] = useState([]); //This is used to create the unread effect in the conversationlist
 
-  useEffect(() => {
-    Talk.ready.then(() => setTalkLoaded(true));
-  }, [talkLoaded]);
+  const changeConversation = (conversation) => {
+    if (sessionRef.current?.isAlive) {
+      const talkJsConversation = sessionRef.current.getOrCreateConversation(
+        conversation.id
+      );
 
-  useEffect(() => {
-    if (talkLoaded) {
       const me = new Talk.User({
         id: talkJsConfig.userId,
         name: "Eulalia Van Helgen",
@@ -37,68 +30,42 @@ function App() {
         role: "default",
       });
 
-      const other = new Talk.User({
-        id: "remoteWorkOther",
-        name: "TalkJS",
-        photoUrl: "https://talkjs.com/new-web/avatar-talkjs.jpg",
-        welcomeMessage:
-          "Hi there 👋 \nThis is our chat demo and you can test it out in any way you like. Play with some of the chat features, kick the tyres a little, and experience what you could easily build with TalkJS. Also consider checking out our Docs: https://talkjs.com/docs/",
-        role: "default",
-      });
-
-      window.talkSession = new Talk.Session({
-        appId: talkJsConfig.appId,
-        me: me,
-      });
-
-      const defaultConv =
-        window.talkSession.getOrCreateConversation("remoteWorkDefault");
-      defaultConv.setParticipant(me);
-      defaultConv.setParticipant(other);
-      defaultConv.setAttributes({
-        subject: "welcome",
-        welcomeMessages: ["Welcome to the TalkJS team chat demo!"],
-      });
-
-      const chatbox = window.talkSession.createChatbox({
-        theme: "team_chat",
-        conversation: defaultConv,
-        showChatHeader: false,
-      });
-
-      setCurrentConversation({
-        id: "remoteWorkDefault",
-        subject: "TalkJS",
-        avatar: "https://talkjs.com/new-web/avatar-talkjs.jpg",
-      });
-      setSessionChatbox(chatbox);
-      chatbox.select(defaultConv);
-      chatbox.mount(talkjsContainer.current);
-
-      window.talkSession.unreads.on("change", function (unreadConversations) {
-        setUnreadMessages(unreadConversations);
-      });
+      talkJsConversation.setParticipant(me);
+      talkJsConversation.setAttributes(conversation);
+      setMobileChannelSelected(true);
+      setCurrentConversation(conversation);
+      if (chatboxRef.current?.isAlive) {
+        chatboxRef.current.select(talkJsConversation);
+      }
     }
-  }, [talkLoaded]);
+  };
 
-  const changeConversation = (conversation) => {
-    const talkJsConversation = window.talkSession.getOrCreateConversation(
-      conversation.id
-    );
+  const syncUser = useCallback(
+    () =>
+      new Talk.User({
+        id: talkJsConfig.userId,
+        name: "Eulalia Van Helgen",
+        photoUrl: "https://talkjs.com/new-web/avatar-7.jpg",
+        role: "default",
+      }),
+    []
+  );
 
-    const me = new Talk.User({
-      id: talkJsConfig.userId,
-      name: "Eulalia Van Helgen",
-      photoUrl: "https://talkjs.com/new-web/avatar-7.jpg",
+  const syncConversation = useCallback((session) => {
+    const other = new Talk.User({
+      id: "remoteWorkOther",
+      name: "TalkJS",
+      photoUrl: "https://talkjs.com/new-web/avatar-talkjs.jpg",
+      welcomeMessage:
+        "Hi there 👋 \nThis is our chat demo and you can test it out in any way you like. Play with some of the chat features, kick the tyres a little, and experience what you could easily build with TalkJS. Also consider checking out our Docs: https://talkjs.com/docs/",
       role: "default",
     });
 
-    talkJsConversation.setParticipant(me);
-    talkJsConversation.setAttributes(conversation);
-    setMobileChannelSelected(true);
-    setCurrentConversation(conversation);
-    sessionChatbox.select(talkJsConversation);
-  };
+    const defaultConv = session.getOrCreateConversation("remoteWorkWelcome");
+    defaultConv.setParticipant(session.me);
+    defaultConv.setParticipant(other);
+    return defaultConv;
+  }, []);
 
   return (
     <div className="w-full h-screen flex flex-row bg-gray-900 text-white border-none">
@@ -172,11 +139,20 @@ function App() {
             setMobileChannelSelected={setMobileChannelSelected}
           />
         </div>
-
-        <div
-          className="h-full w-full overflow-hidden rounded-b-xl lg:rounded-none lg:rounded-br-xl"
-          ref={talkjsContainer}
-        ></div>
+        <Session
+          appId={talkJsConfig.appId}
+          syncUser={syncUser}
+          sessionRef={sessionRef}
+          onUnreadsChange={(unreads) => setUnreadMessages(unreads)}
+        >
+          <Chatbox
+            chatboxRef={chatboxRef}
+            syncConversation={syncConversation}
+            className="h-full w-full overflow-hidden rounded-b-xl lg:rounded-none lg:rounded-br-xl"
+            showChatHeader={false}
+            theme="team_chat"
+          />
+        </Session>
       </div>
     </div>
   );
