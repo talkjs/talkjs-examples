@@ -2,7 +2,7 @@ import { GiphyFetch } from "@giphy/js-fetch-api";
 
 const gf = new GiphyFetch("<YOUR_GIPHY_API_KEY>");
 
-let conversation = {};
+let conversation;
 
 const gifSearchForm = document.querySelector("form");
 
@@ -38,8 +38,7 @@ gifSearchForm.addEventListener("click", (event) => {
   }
 });
 
-(async () => {
-  await Talk.ready;
+Talk.ready.then(() => {
   const me = new Talk.User({
     id: "0004",
     name: "Kirsten Doe",
@@ -68,8 +67,6 @@ gifSearchForm.addEventListener("click", (event) => {
   conversation.setParticipant(other);
 
   const chatbox = talkSession.createChatbox();
-  chatbox.select(conversation);
-  chatbox.mount(document.getElementById("talkjs-container"));
 
   chatbox.onCustomConversationAction("pickGIF", (event) => {
     const gifSearch = document.getElementById("gif-search");
@@ -81,4 +78,7 @@ gifSearchForm.addEventListener("click", (event) => {
       gifSearch.style.display = "block";
     }
   });
-})();
+
+  chatbox.select(conversation);
+  chatbox.mount(document.getElementById("talkjs-container"));
+});
