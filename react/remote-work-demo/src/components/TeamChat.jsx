@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import Talk from "talkjs";
 import { Chatbox, useSession } from "@talkjs/react";
 import talkJsConfig from "../talkJsConfig";
@@ -12,6 +12,7 @@ const TeamChat = ({ unreadMessages }) => {
     useState(initialConversation);
 
   const session = useSession();
+  const chatboxRef = useRef(null);
 
   const [mobileChannelSelected, setMobileChannelSelected] = useState(true); //This is used to control whether or not to display the chatbox or the inbox while on mobile displays
 
@@ -27,8 +28,9 @@ const TeamChat = ({ unreadMessages }) => {
       setMobileChannelSelected(true);
       setCurrentConversation(conversation);
 
-      const chatbox = session.getChatboxes()[0];
-      chatbox.select(talkJsConversation);
+      if (chatboxRef.current?.isAlive) {
+        chatboxRef.current.select(talkJsConversation);
+      }
     }
   };
 
@@ -121,6 +123,7 @@ const TeamChat = ({ unreadMessages }) => {
             className="h-full w-full overflow-hidden rounded-b-xl lg:rounded-none lg:rounded-br-xl"
             showChatHeader={false}
             theme="team_chat"
+            chatboxRef={chatboxRef}
           />
         </div>
       </div>
