@@ -1,6 +1,18 @@
 import { GiphyFetch } from "@giphy/js-fetch-api";
 const giphy = new GiphyFetch("<YOUR_GIPHY_API_KEY>");
 
+let timer = null;
+function debounce(callback) {
+  if (timer !== null) {
+    clearTimeout(timer);
+  }
+
+  timer = setTimeout(() => {
+    callback();
+    timer = null;
+  }, 500);
+}
+
 let conversation;
 
 const gifOverlay = document.getElementById("gif-overlay");
@@ -70,12 +82,13 @@ gifSearchInput.addEventListener("input", async () => {
     return;
   }
 
-  const response = await giphy.search(gifSearchInput.value, {
-    sort: "popular",
-    limit: 30,
+  debounce(async () => {
+    const response = await giphy.search(gifSearchInput.value, {
+      sort: "popular",
+      limit: 30,
+    });
+    updateResults(response.data);
   });
-
-  updateResults(response.data);
 });
 
 Talk.ready.then(() => {
