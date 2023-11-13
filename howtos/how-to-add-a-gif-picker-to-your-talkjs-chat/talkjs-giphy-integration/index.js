@@ -1,41 +1,81 @@
 import { GiphyFetch } from "@giphy/js-fetch-api";
-
-const gf = new GiphyFetch("<YOUR_GIPHY_API_KEY>");
+const giphy = new GiphyFetch("<YOUR_GIPHY_API_KEY>");
 
 let conversation;
 
-const gifSearchForm = document.querySelector("form");
+const gifOverlay = document.getElementById("gif-overlay");
+const gifSearchInput = document.getElementById("gif-search-input");
+const gifResults = document.getElementById("gif-search-results");
+const closeButton = document.getElementById("close-button");
 
-gifSearchForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  (async () => {
-    const searchTerm = document.getElementById("searchTerm").value;
-    const gifResults = document.getElementById("gifSearchResults");
-    if(gifResults.innerHTML !== "") gifResults.innerHTML = "";
-    const result = await gf
-      .search(searchTerm, { sort: "popular", limit: 30 })
-      .then((response) => {
-        response.data.forEach((gif) => {
-          const cardImage = window.document.createElement("img");
-          cardImage.src = gif.images.fixed_width.url;
-          cardImage.classList.add("gif-image");
-          gifResults.appendChild(cardImage);
-        });
-      })
-      .catch((err) => console.error(`search`, err));
-  })();  
+let showingOverlay = false;
+function showOverlay() {
+  if (showingOverlay) {
+    return;
+  }
+
+  showingOverlay = true;
+  gifOverlay.classList.remove("hidden");
+  gifSearchInput.focus();
+}
+
+function hideOverlay() {
+  if (!showingOverlay) {
+    return;
+  }
+
+  showingOverlay = false;
+  gifOverlay.classList.add("hidden");
+  gifSearchInput.blur();
+  updateResults([]);
+  gifSearchInput.value = "";
+}
+
+function toggleOverlay() {
+  if (showingOverlay) {
+    hideOverlay();
+  } else {
+    showOverlay();
+  }
+}
+
+gifSearchInput.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    hideOverlay();
+  }
 });
 
+closeButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  hideOverlay();
+});
 
-gifSearchForm.addEventListener("click", (event) => {
-  if (event.target.tagName !== "IMG") return;
-  else {
-    conversation.sendMessage(event.target.src, { custom: { gifAttachment: "true" }})
-    const gifSearch = document.getElementById("gif-search");
-    const gifResults = document.getElementById("gifSearchResults");
-    gifResults.innerHTML = "";
-    gifSearch.style.display = "none";
+function updateResults(gifs) {
+  const newGifElements = gifs.map((gif) => {
+    const cardImage = window.document.createElement("img");
+    cardImage.src = gif.images.fixed_width.url;
+    cardImage.addEventListener("click", () => {
+      conversation.sendMessage(gif.images.original.mp4, {
+        custom: { gifAttachment: "true" },
+      });
+      hideOverlay();
+    });
+    return cardImage;
+  });
+  gifResults.replaceChildren(...newGifElements);
+}
+
+gifSearchInput.addEventListener("input", async () => {
+  if (!showingOverlay) {
+    return;
   }
+
+  const response = await giphy.search(gifSearchInput.value, {
+    sort: "popular",
+    limit: 30,
+  });
+
+  updateResults(response.data);
 });
 
 Talk.ready.then(() => {
@@ -68,16 +108,7 @@ Talk.ready.then(() => {
 
   const chatbox = talkSession.createChatbox();
 
-  chatbox.onCustomConversationAction("pickGIF", (event) => {
-    const gifSearch = document.getElementById("gif-search");
-    if (gifSearch.style.display === "block") {
-      gifSearch.style.display = "none";
-      const gifResults = document.getElementById("gifSearchResults");
-      gifResults.innerHTML = "";
-    } else {
-      gifSearch.style.display = "block";
-    }
-  });
+  chatbox.onCustomConversationAction("pickGIF", () => toggleOverlay());
 
   chatbox.select(conversation);
   chatbox.mount(document.getElementById("talkjs-container"));
