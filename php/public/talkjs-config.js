@@ -1,7 +1,7 @@
 import Talk from 'talkjs';
 
 const talkjs = new Talk({
-    appId: 'tAfAFKWp',
+    appId: '<APP_ID>',
 });
 
 export default talkjs;
