@@ -16,6 +16,8 @@ Before getting started, make sure you have the following installed:
 
 - **TalkJS Account:** Sign up for a TalkJS account at https://talkjs.com/ to obtain the App_ID.
 
+- **Use APP_ID:** Use your obtained App_ID in "resources/views/chat.blade.php" replace it with placeholder "<APP_ID>".
+
 ## Installation
 
 ### Clone the Repository:

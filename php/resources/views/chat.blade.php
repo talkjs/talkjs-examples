@@ -113,7 +113,7 @@
         });
 
         window.talkSession = new Talk.Session({
-            appId: '<APP_ID>,
+            appId: '<APP_ID>',
             me: me,
         });
 
