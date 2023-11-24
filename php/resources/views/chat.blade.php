@@ -7,33 +7,38 @@
     <title>Laravel</title>
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet"/>
-
-
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
     <style>
         #contacts-list {
             overflow-y: auto;
             width: 300px;
-            padding: 20px 40px;
-            height: 460px;
+            height: 500px;
             background-color: #ECECEC;
-        }
+            border-radius:0.75rem;
+            border:1px solid #D4D4D4;
+            font-family: 'Inter';
 
+        }
+        #contacts-list h2{
+            padding:20px;
+        }
         .contact-container {
+
             height: 50px;
             display: flex;
-            margin: 5px 0;
             padding: 5px 0;
             cursor: pointer;
+            border-bottom:1px solid #D4D4D4;
         }
 
         .contact-container:hover {
-            background-color: #fff;
+            background-color: #007DF9;
+            color:#fff;
+            font-weight: bold;
         }
 
         .contact-name {
-            padding: 0px 20px;
+            padding: 0 20px;
             display: flex;
             flex-direction: column;
             justify-content: space-around;
@@ -43,7 +48,7 @@
 </head>
 <body>
 
-  <a href="{{route('chat')}}">TalkJS Chat</a>
+  <a href="{{route('home')}}">Go Back</a>
 
 <script>
     (function (t, a, l, k, j, s) {
