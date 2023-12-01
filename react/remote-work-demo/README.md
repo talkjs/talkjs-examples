@@ -10,7 +10,7 @@ This repo is basically a clone of our [remote work demo](https://talkjs.com/demo
 
 4. Grab your App ID, which you can find in your dashboard.
 
-5. In talkjsConfig.js, replace `appId` with your App ID.
+5. In `talkjsConfig.js`, replace `appId` with your App ID.
 
 6. From this point on, you're ready to start up the app using using either `npm run` or `yarn start`. The app will be up and running at localhost:3000.
 
