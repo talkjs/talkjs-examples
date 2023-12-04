@@ -1,0 +1,62 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 30px;
+}
+
+#stacking-wrapper {
+  position: relative;
+}
+
+#gif-overlay {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 4rem;
+  left: 0;
+  right: 0;
+  bottom: 5rem;
+  padding: 1rem;
+  background-color: rgba(230, 230, 230, 0.9);
+}
+
+#gif-overlay.hidden {
+  display: none;
+}
+
+#gif-search-input {
+  width: 100%;
+  font-size: 1.2rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  border: none;
+  margin-right: 0.5rem;
+}
+
+#close-button {
+  font-size: 1.5rem;
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  width: 3rem;
+}
+
+#gif-search-results {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 0.5rem;
+  row-gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  margin-top: 0.5rem;
+}
+
+#gif-search-results img {
+  cursor: pointer;
+  min-width: 0;
+  max-width: 100%;
+}
