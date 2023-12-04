@@ -51,17 +51,6 @@ function toggleOverlay() {
   }
 }
 
-gifSearchInput.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    hideOverlay();
-  }
-});
-
-closeButton.addEventListener("click", (event) => {
-  event.preventDefault();
-  hideOverlay();
-});
-
 function updateResults(gifs) {
   const newGifElements = gifs.map((gif) => {
     const cardImage = window.document.createElement("img");
@@ -76,6 +65,17 @@ function updateResults(gifs) {
   });
   gifResults.replaceChildren(...newGifElements);
 }
+
+gifSearchInput.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    hideOverlay();
+  }
+});
+
+closeButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  hideOverlay();
+});
 
 gifSearchInput.addEventListener("input", async () => {
   if (!showingOverlay) {
