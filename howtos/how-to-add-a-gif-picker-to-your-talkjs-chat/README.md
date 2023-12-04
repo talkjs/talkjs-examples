@@ -14,6 +14,7 @@ To run this tutorial, you will need:
 ## How to run the tutorial
 
 1. Clone or download this project.
-2. Go to your TalkJS dashboard and navigate to the Themes tab. Create a new theme called "gif_picker" based on the "default" theme. Add a custom action button, code, and the required styles from the tutorial. Go back to the Roles tab and set the UI Theme to "gif_picker". Don’t forget to click **Save all roles** to persist your changes.
-3. Sign up for a basic [Giphy Developer](https://developers.giphy.com/dashboard/) account. To get an API key, you must create an app on Giphy and it generates an API key for you. Copy this API key and paste it in Line 3 (`<YOUR_GIPHY_API_KEY>`) of `talkjs-giphy-integration/index.js` file.
-4. Go to the `talkjs-giphy-integration` folder and run `npm install` followed by `npm run dev`. This installs the required dependencies for the frontend and runs the app at `localhost:1234`.
+2. Go to your TalkJS dashboard and navigate to the **Themes** tab. Create a new theme called "gif_picker" based on the "default" theme. Add a custom action button, code, and the required styles from the tutorial. Go back to the **Roles** tab and set the UI Theme to "gif_picker". Don’t forget to click **Save all roles** to persist your changes.
+3. Go to the **Settings** tab of your TalkJS dashboard and find your App ID. Add this to line 111 (`<YOUR_APP_ID>`) of your `talkjs-giphy-integration/index.js` file.
+4. Sign up for a basic [Giphy Developer](https://developers.giphy.com/dashboard/) account. To get an API key, you must create an app on Giphy and it generates an API key for you. Copy this API key and paste it in line 3 (`<YOUR_GIPHY_API_KEY>`) of your `talkjs-giphy-integration/index.js` file.
+5. Go to the `talkjs-giphy-integration` folder and run `npm install` followed by `npm run dev`. This installs the required dependencies for the frontend and runs the app at `localhost:1234`.
