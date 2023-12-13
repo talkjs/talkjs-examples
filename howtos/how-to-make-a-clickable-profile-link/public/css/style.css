@@ -1,37 +1,63 @@
 body {
-  font-family: sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 #users-list-container {
-  text-align: center;
+  padding: 20px;
+  border-radius: 0.375rem;
+  border: 1px solid #d4d4d4;
+  width: 300px;
+  margin: 40px auto;
 }
 
 #users-list {
-  width: 300px;
-  margin: auto;
+  list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
 #users-list li {
-  justify-content: space-around;
+  font-size: 12px;
+  font-weight: bold;
   display: flex;
-  flex-direction: row;
   align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 0.375rem;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+#users-list li:hover {
+  background-color: #ececec;
+}
+
+#users-list img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+  border: 2px solid #ddd;
 }
 
 #chatbox-container {
-  width: 100%;
-  height: 100%;
+  width: 754px;
+  margin: auto;
+}
+
+#chatbox-container button {
+  text-align: left;
 }
 
 #talkjs-container {
-  height: 90vh;
+  height: 600px;
   width: 100%;
+  margin-top: 16px;
 }
 
 #users-list li {
   padding: 10px;
-  border-bottom: 1px solid rgb(220, 220, 220);
+  font-size: 14px;
   cursor: pointer;
 }
 
@@ -46,67 +72,65 @@ body {
   margin: 0;
 }
 
-#header-row {
-  width: 100%;
-  max-width: 740px;
-  margin: auto;
-  height: 5vh;
-  display: flex;
-}
-
 .hidden {
   display: none;
 }
 
-.header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
+.card-container {
+  max-width: 300px;
+  margin: auto;
+  text-align: left;
 }
 
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 300px;
   margin: auto;
+  margin-top: 16px;
   text-align: center;
-  font-family: sans-serif;
-  border-radius: 5px;
+  border: 1px solid #d4d4d4;
+  border-radius: 0.375rem;
   padding: 5px 15px;
 }
 
 img {
+  display: flex;
+  align-items: center;
   border-radius: 50%;
   margin: 30px auto 0;
-  box-shadow: 0 0 5px 0px #38383875;
   width: 80px;
   height: 80px;
 }
 
 .title {
   color: grey;
-  font-size: 18px;
 }
 
 button {
-  border: none;
-  border-radius: 5px;
-  outline: 0;
-  display: inline-block;
-  padding: 8px;
-  color: white;
-  background-color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
   text-align: center;
-  cursor: pointer;
-  width: 95%;
-  font-size: 18px;
-  margin: 10px auto 15px;
+  background-color: #ececec;
+  border: 1px solid #d4d4d4;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+  line-height: 1;
+}
+
+button:hover {
+  background-color: #d0d8dc;
+}
+
+button svg {
+  margin-left: -4px;
+  vertical-align: middle;
 }
 
 a {
   text-decoration: none;
-  font-size: 22px;
+  font-size: 14px;
   color: black;
+  display: inline-flex;
+  align-items: center;
 }
 
 button:hover,
