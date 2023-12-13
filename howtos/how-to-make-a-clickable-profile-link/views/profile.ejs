@@ -41,20 +41,18 @@
             </a>
           </button>
 
-        <div class="card">
-          <img src="<%= user.photoUrl %>" alt="<%= user.name %>" />
-          <h1><%= user.name %></h1>
-          <p class="title"><%= user.email %></p>
-          <p>ID: <%= user.id %></p>
-          <p>Role: <%= user.role %></p>
-          <p>Welcome message: <%= user.welcomeMessage %></p>
-          <p>
-            <button
-              onclick="initChat('<%=encodeURIComponent(JSON.stringify(user))%>')"
-            >
-              Chat with <%= user.name %>
-            </button>
-          </p>
+          <div class="card">
+            <img src="<%= user.photoUrl %>" alt="<%= user.name %>" />
+            <h1><%= user.name %></h1>
+            <p class="title"><%= user.email %></p>
+            <p>
+              <button
+                onclick="initChat('<%=encodeURIComponent(JSON.stringify(user))%>')"
+              >
+                Chat with <%= user.name %>
+              </button>
+            </p>
+          </div>
         </div>
       </div>
 
