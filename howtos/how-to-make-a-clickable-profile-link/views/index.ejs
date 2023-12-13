@@ -20,7 +20,6 @@
 
     <div>
       <div id="users-list-container">
-        <h4>Friends</h4>
         <ul id="users-list">
           <% if (users) { %> <% Object.keys(users).forEach(key=> { %>
           <li
@@ -37,9 +36,25 @@
       </div>
 
       <div class="hidden" id="chatbox-container">
-        <div class="header">
-          <a href="/"> ᐸ Friends</a>
-        </div>
+        <button>
+          <a href="/">
+            <!-- SVG left arrow icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            >
+              <path d="m15 18-6-6 6-6" fill="none" />
+            </svg>
+            Friends</a
+          >
+        </button>
 
         <div id="talkjs-container"></div>
       </div>
