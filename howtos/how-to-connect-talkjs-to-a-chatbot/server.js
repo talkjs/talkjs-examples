@@ -2,17 +2,24 @@ import express from "express";
 import fetch from "node-fetch";
 import OpenAI from "openai";
 
-const appId = "<APP_ID>"; // replace with your TalkJS app ID
-const talkJSSecretKey = "<TALKJS_SECRET_KEY>"; // replace with your TalkJS secret key
+const appId = "<APP_ID>";
+const talkJSSecretKey = "<TALKJS_SECRET_KEY>";
 const basePath = "https://api.talkjs.com";
 const conversationId = "chatbotExampleConversation";
 
-const openAISecretKey = "<OPENAI_SECRET_KEY>"; // replace with your OpenAI secret key
+const openAISecretKey = "<OPENAI_SECRET_KEY>";
 const openai = new OpenAI({ apiKey: openAISecretKey });
+
+const botId = "chatbotExampleBot";
+const userId = "chatbotExampleUser";
+
+const messageHistory = [
+  { role: "system", content: "You are a helpful assistant." },
+];
 
 async function getCompletion(prompt) {
   const completion = await openai.chat.completions.create({
-    messages: [{ role: "system", content: prompt }],
+    messages: messageHistory,
     model: "gpt-3.5-turbo",
   });
 
@@ -51,16 +58,17 @@ app.get("/", (req, res) => {
 });
 
 app.post("/getMessages", async (req, res) => {
-  console.log(req.body.data.message.text);
-
   const userMessage = req.body.data.message.text;
   const senderId = req.body.data.message.senderId;
 
-  if (senderId != "chatbotExampleBot") {
+  if (senderId == userId) {
+    messageHistory.push({ role: "user", content: userMessage });
+
     const reply = await getCompletion(userMessage);
 
     await sendMessage(reply);
+  } else if (senderId == botId) {
+    messageHistory.push({ role: "assistant", content: userMessage });
   }
-
   res.status(200).end();
 });
