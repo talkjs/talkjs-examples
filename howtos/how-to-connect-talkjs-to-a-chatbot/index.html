@@ -43,7 +43,6 @@
         email: "alice@example.com",
         role: "default",
         photoUrl: "https://talkjs.com/images/avatar-1.jpg",
-        welcomeMessage: "Hey there! How can I help?",
       });
       const talkSession = new Talk.Session({
         appId: "<APP_ID>", // replace with your TalkJS app ID
@@ -56,7 +55,8 @@
         email: "bot@example.com",
         role: "default",
         photoUrl: "https://talkjs.com/new-web/talkjs-logo.svg",
-        welcomeMessage: "Hey there! How can I help?",
+        welcomeMessage:
+          "Hi, I'm a friendly chatbot! I'll use OpenAI's chat API to assist with your queries. How can I help?",
       });
 
       var conversation = talkSession.getOrCreateConversation(
