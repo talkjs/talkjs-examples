@@ -14,7 +14,11 @@ const botId = "chatbotExampleBot";
 const userId = "chatbotExampleUser";
 
 const messageHistory = [
-  { role: "system", content: "You are a helpful assistant." },
+  {
+    role: "system",
+    content:
+      "You are a helpful assistant. Please provide short, concise answers.",
+  },
 ];
 
 async function getCompletion() {
