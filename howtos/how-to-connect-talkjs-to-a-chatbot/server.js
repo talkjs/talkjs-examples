@@ -4,37 +4,26 @@ import OpenAI from "openai";
 
 const appId = "<APP_ID>";
 const talkJSSecretKey = "<TALKJS_SECRET_KEY>";
-const basePath = "https://api.talkjs.com";
-const conversationId = "chatbotExampleConversation";
 
 const openAISecretKey = "<OPENAI_SECRET_KEY>";
 const openai = new OpenAI({ apiKey: openAISecretKey });
 
 const botId = "chatbotExampleBot";
-const userId = "chatbotExampleUser";
+const allMessageHistory = {};
 
-const messageHistory = [
-  {
-    role: "system",
-    content:
-      "You are a helpful assistant. Please provide short, concise answers.",
-  },
-];
-
-async function getCompletion() {
+async function getCompletion(messageHistory) {
   const completion = await openai.chat.completions.create({
     messages: messageHistory,
     model: "gpt-3.5-turbo",
   });
 
   const reply = completion.choices[0].message.content;
-
   return reply;
 }
 
-async function sendMessage(text) {
+async function sendMessage(conversationId, text) {
   return fetch(
-    `${basePath}/v1/${appId}/conversations/${conversationId}/messages`,
+    `https://api.talkjs.com/v1/${appId}/conversations/${conversationId}/messages`,
     {
       method: "POST",
       headers: {
@@ -55,24 +44,32 @@ async function sendMessage(text) {
 const app = express();
 app.use(express.json());
 
-app.listen(3000, () => console.log("Server is up"));
+app.post("/onMessageSent", async (req, res) => {
+  const convId = req.body.data.conversation.id;
+  const messageText = req.body.data.message.text;
+  const senderId = req.body.data.sender.id;
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
-
-app.post("/getMessages", async (req, res) => {
-  const userMessage = req.body.data.message.text;
-  const senderId = req.body.data.message.senderId;
-
-  if (senderId == userId) {
-    messageHistory.push({ role: "user", content: userMessage });
-
-    const reply = await getCompletion();
-
-    await sendMessage(reply);
-  } else if (senderId == botId) {
-    messageHistory.push({ role: "assistant", content: userMessage });
+  if (!(convId in allMessageHistory)) {
+    allMessageHistory[convId] = [
+      {
+        role: "system",
+        content:
+          "You are a helpful assistant. Please provide short, concise answers.",
+      },
+    ];
   }
+  const messageHistory = allMessageHistory[convId];
+
+  if (senderId == botId) {
+    // Bot message
+    messageHistory.push({ role: "assistant", content: messageText });
+  } else {
+    // User message
+    messageHistory.push({ role: "user", content: messageText });
+    getCompletion(messageHistory).then((reply) => sendMessage(convId, reply));
+  }
+
   res.status(200).end();
 });
+
+app.listen(3000, () => console.log("Server is up"));
