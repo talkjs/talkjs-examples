@@ -1,16 +1,17 @@
 package com.reactnativenavigationexample;
 
 import android.app.Application;
-import android.webkit.WebView;
 import com.facebook.react.PackageList;
-import com.reactnativenavigation.NavigationApplication;
 import com.facebook.react.ReactNativeHost;
-import com.reactnativenavigation.react.NavigationReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactNativeHost;
+import com.facebook.react.flipper.ReactNativeFlipper;
 import com.facebook.soloader.SoLoader;
 import java.util.List;
+
+import com.reactnativenavigation.NavigationApplication;
+import com.reactnativenavigation.react.NavigationReactNativeHost;
 
 public class MainApplication extends NavigationApplication {
 
@@ -44,7 +45,6 @@ public class MainApplication extends NavigationApplication {
   @Override
   public void onCreate() {
     super.onCreate();
-    WebView.setWebContentsDebuggingEnabled(true);
 
     if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {
       // if you opted-in for the New Architecture, we load the native entry point for this app.
