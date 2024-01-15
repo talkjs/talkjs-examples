@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>TalkJS tutorial</title>
+  </head>
+
+  <!-- minified snippet to load TalkJS without delaying your page -->
+  <script>
+    (function (t, a, l, k, j, s) {
+      s = a.createElement("script");
+      s.async = 1;
+      s.src = "https://cdn.talkjs.com/talk.js";
+      a.head.appendChild(s);
+      k = t.Promise;
+      t.Talk = {
+        v: 3,
+        ready: {
+          then: function (f) {
+            if (k)
+              return new k(function (r, e) {
+                l.push([f, r, e]);
+              });
+            l.push([f]);
+          },
+          catch: function () {
+            return k && new k();
+          },
+          c: l,
+        },
+      };
+    })(window, document, []);
+  </script>
+
+  <script>
+    Talk.ready.then(function () {
+      const me = new Talk.User({
+        id: "chatbotExampleUser",
+        name: "Alice",
+        email: "alice@example.com",
+        role: "default",
+        photoUrl: "https://talkjs.com/images/avatar-1.jpg",
+      });
+      const talkSession = new Talk.Session({
+        appId: "<APP_ID>", // replace with your TalkJS app ID
+        me: me,
+      });
+
+      const bot = new Talk.User({
+        id: "chatbotExampleBot",
+        name: "Bot 🤖",
+        email: "bot@example.com",
+        role: "default",
+        photoUrl: "https://talkjs.com/new-web/talkjs-logo.svg",
+        welcomeMessage:
+          "Hi, I'm a friendly chatbot! I'll use OpenAI's chat API to assist with your queries. How can I help?",
+      });
+
+      var conversation = talkSession.getOrCreateConversation(
+        "chatbotExampleConversation"
+      );
+      conversation.setParticipant(me);
+      conversation.setParticipant(bot);
+
+      const inbox = talkSession.createChatbox();
+      inbox.select(conversation);
+      inbox.mount(document.getElementById("talkjs-container"));
+    });
+  </script>
+
+  <body>
+    <!-- container element in which TalkJS will display a chat UI -->
+    <div id="talkjs-container" style="width: 90%; margin: 30px; height: 500px">
+      <i>Loading chat...</i>
+    </div>
+  </body>
+</html>
