@@ -9,7 +9,8 @@ class MyAppState with ChangeNotifier {
   // Private field used by the conversation getter and setter
   Conversation? _conversation;
 
-  MyAppState({required this.session, Conversation? conversation}) : _conversation = conversation;
+  MyAppState({required this.session, Conversation? conversation})
+      : _conversation = conversation;
 
   Conversation? get conversation => _conversation;
 
@@ -23,6 +24,8 @@ class MyAppState with ChangeNotifier {
 }
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
   final session = Session(appId: 'YOUR_APP_ID');
 
   final me = session.getUser(
@@ -36,12 +39,26 @@ void main() {
 
   session.me = me;
 
+  final other = session.getUser(
+    id: '654321',
+    name: 'Sebastian',
+    email: ['Sebastian@example.com'],
+    photoUrl: 'https://demo.talkjs.com/img/sebastian.jpg',
+    welcomeMessage: 'Hey, how can I help?',
+    role: 'default',
+  );
+
+  final conversation = session.getConversation(
+      id: Talk.oneOnOneId(me.id, other.id),
+      participants: {Participant(me), Participant(other)});
+
   runApp(
     // We use ChangeNotifierProvider to have a global app state
     ChangeNotifierProvider(
       // The global app state is created on the create callback, and we
       // initialize it with the newly created Session
-      create: (context) => MyAppState(session: session),
+      create: (context) =>
+          MyAppState(session: session, conversation: conversation),
       child: MaterialApp(
         title: 'TalkJS Demo',
         initialRoute: '/',
@@ -131,7 +148,8 @@ class ConversationListScreen extends StatelessWidget {
           // the selected conversation id, and set it as the app state
           // Note that setting state.conversation triggers the
           // MyAppState.conversation setter, that calls notifyListeners()
-          state.conversation = state.session.getConversation(id: event.conversation.id);
+          state.conversation =
+              state.session.getConversation(id: event.conversation.id);
 
           // Navigate to the ChatBox, which will use the selected conversation
           Navigator.pushNamed(context, '/chatbox');
@@ -140,4 +158,3 @@ class ConversationListScreen extends StatelessWidget {
     );
   }
 }
-
