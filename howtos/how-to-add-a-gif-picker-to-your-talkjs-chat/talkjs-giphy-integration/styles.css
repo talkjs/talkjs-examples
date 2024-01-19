@@ -23,7 +23,7 @@ body {
   right: 0;
   bottom: 5rem;
   padding: 1rem;
-  background-color: rgba(230, 230, 230, 0.9);
+  background-color: #ffffff;
 }
 
 #gif-overlay.hidden {
