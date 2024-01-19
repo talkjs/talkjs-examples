@@ -6,6 +6,10 @@
     <title>TalkJS - Giphy Integration</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Inter"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
 
@@ -40,14 +44,31 @@
     <div class="container">
       <div id="stacking-wrapper">
         <form id="gif-overlay" class="hidden">
-          <div style="display: flex">
+          <div style="display: flex; align-items: center">
             <input
               id="gif-search-input"
-              type="search"
+              type="text"
               autocomplete="off"
               placeholder="Search for GIFs"
             />
-            <button id="close-button">✕</button>
+            <button id="close-button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                viewBox="0 0 24 24"
+                class="Icon icon-close"
+                aria-hidden="true"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" fill="none"></line>
+                <line fill="none" x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
           </div>
 
           <div id="gif-search-results"></div>
