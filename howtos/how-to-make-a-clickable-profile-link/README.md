@@ -1,6 +1,6 @@
 This is an example project for TalkJS's tutorial on [how to add a custom link to a user's profile](https://talkjs.com/resources/how-to-make-a-clickable-link-to-a-users-profile/).
 
-This project uses TalkJS's [custom header feature](https://talkjs.com/docs/Features/Customizations/Creating_Custom_Headers/). The custom header in this example contains a link that leads to user's profile page.
+This project uses TalkJS's [action buttons feature](https://talkjs.com/docs/Features/Customizations/Action_Buttons_Links/). The action button in this example links to a user's profile page.
 
 The frontend fetches the data from a backend ExpressJS server that returns the list of users, the information about the current user and the current template.
 
