@@ -1,60 +1,41 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>TalkJS Zoom Integration</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <title>TalkJS Zoom Integration</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
+  <body>
+    <script>
+      (function (t, a, l, k, j, s) {
+        s = a.createElement("script");
+        s.async = 1;
+        s.src = "https://cdn.talkjs.com/talk.js";
+        a.head.appendChild(s);
+        k = t.Promise;
+        t.Talk = {
+          v: 3,
+          ready: {
+            then: function (f) {
+              if (k)
+                return new k(function (r, e) {
+                  l.push([f, r, e]);
+                });
+              l.push([f]);
+            },
+            catch: function () {
+              return k && new k();
+            },
+            c: l,
+          },
+        };
+      })(window, document, []);
+    </script>
+    <script src="script.js"></script>
 
-<body>
-  <script>
-    (function (t, a, l, k, j, s) {
-      s = a.createElement('script');
-      s.async = 1;
-      s.src = "https://cdn.talkjs.com/talk.js";
-      a.head.appendChild(s);
-      k = t.Promise;
-      t.Talk = {
-        v: 3,
-        ready: {
-          then: function (f) {
-            if (k) return new k(function (r, e) {
-              l.push([f, r, e])
-            });
-            l
-              .push([f])
-          },
-          catch: function () {
-            return k && new k()
-          },
-          c: l
-        }
-      };
-    })(window, document, []);
-  </script>
-  <script src="script.js"></script>
-  <div class="chatbox-container">
-    <div class="chatbox-header">
-      <div id="avatar"></div>
-      <p id="header-alt"><span id="header-username">Username</span></p>
-      <a class="chatbox-header-button" onclick="createZoomMeeting()">
-        <svg class="chatbox-header-button-icon" xmlns="http://www.w3.org/2000/svg" width="36" height="36"
-          viewBox="0 0 24 24" fill="currentColor" stroke-width="2" class="ai ai-ZoomFill">          
-          <g clip-path="url(#clip0_822_311)">            
-            <path fill-rule="evenodd" clip-rule="evenodd"
-              d="M24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12zM6 16.2h9V9.6a1.8 1.8 0 0 0-1.8-1.8h-9v6.6A1.8 1.8 0 0 0 6 16.2zm10.2-2.4l3.6 2.4V7.8l-3.6 2.4v3.6z" />
-          </g>
-          <defs>
-            <clipPath id="clip0_822_311">
-              <rect width="24" height="24" />
-            </clipPath>
-          </defs>
-        </svg>        
-      </a>
+    <div id="talkjs-container" style="height: 600px">
+      <i>Loading chat...</i>
     </div>
-    <div id="talkjs-container" style="height: 400px"><i>Loading chat...</i></div>
-  </div>
-</body>
-
+  </body>
 </html>
