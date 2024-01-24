@@ -31,6 +31,7 @@ async function createTalkJSConversation() {
   const chatbox = talkSession.createChatbox();
   chatbox.select(conversation);
   chatbox.mount(document.getElementById("talkjs-container"));
+  chatbox.onCustomConversationAction("goToZoom", () => createZoomMeeting());
   return conversation;
 }
 
@@ -42,9 +43,8 @@ async function createZoomMeeting() {
       method: "GET",
     });
     const data = await response.json();
-    conversation.sendMessage("Please join the Zoom meeting " + data.join_url) 
+    conversation.sendMessage("Please join the Zoom meeting " + data.join_url);
   } catch (error) {
     console.log(error);
   }
 }
-

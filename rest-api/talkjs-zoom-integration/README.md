@@ -13,5 +13,9 @@ To run this tutorial, you will need:
 ## How to run the tutorial
 
 1. Clone or download this project.
-2. Go to the `server` folder and run `npm start`. This starts the NodeJS server.
-3. Open `index.html` from a browser, or through an extension like Live Server from your favorite IDE or text editor. 
+2. Replace `<YOUR_APP_ID>` in `server/server.js` with the value found in the **Settings** tab of your [TalkJS dashboard](https://talkjs.com/dashboard/login).
+3. Follow the instructions in the [tutorial](https://talkjs.com/resources/how-to-create-zoom-meetings-in-talkjs/) to set up your Zoom app and add the credentials to a `.env` file.
+4. Follow the instructions in the tutorial to update your TalkJS theme.
+5. Go to the `server` folder and run `npm install` to install dependencies.
+6. Run `npm start` to start the NodeJS server.
+7. Open `index.html` from a browser, or through an extension like Live Server from your favorite IDE or text editor.
