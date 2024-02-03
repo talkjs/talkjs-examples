@@ -1,5 +1,6 @@
 This is an example project to go with our tutorial on How to add a GIF picker to your TalkJS chat.
-<!-- Add link to tutorial once published -->
+
+[How to add a GIF picker to your TalkJS chat](https://talkjs.com/resources/how-to-add-a-gif-picker-to-your-talkjs-chat/)
 
 The project uses TalkJS's [Action Buttons](https://talkjs.com/docs/Features/Customizations/Action_Buttons_Links/) to add a custom action to the message field that lets users add GIFs to their chats. The action is hooked to a backend server that calls the TalkJS REST API to upload the GIF and add it to the conversation.
 
