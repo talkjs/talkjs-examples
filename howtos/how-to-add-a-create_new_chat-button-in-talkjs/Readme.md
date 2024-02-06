@@ -14,7 +14,6 @@ Follow these steps to run this project:
    
    ```javascript
        const appId = "<Add Your TalkJS APP ID Here>"
-       const api_token = "<Add Your TalkJS REST API Token Here>"
    ```
 
 3. Start a Web Server in this directory and open the link in the browser.
