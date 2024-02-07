@@ -4,7 +4,7 @@ https://docs.google.com/document/d/1d4EZ2HTq6yj8POuDjnCnMjBbd_RZ-aYNQYRR3lh1eUo/
 
 ![Demo GIF](<Demo.gif>)
 
-## Runing this project
+## Running this project
 
 Follow these steps to run this project:
 
@@ -16,9 +16,9 @@ Follow these steps to run this project:
        const appId = "<Add Your TalkJS APP ID Here>"
    ```
 
-3. Start a Web Server in this directory and open the link in the browser.
+3. Start a web server in this directory and open the link in the browser.
    
-   For example, you can use Python to create a quick web server:
+   For example, you can use VS Code's [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension, or use Python to create a quick web server:
    
    ```shell
    python -m http.server
