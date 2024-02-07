@@ -36,6 +36,21 @@
   </script>
 
   <script>
+    async function postMessageId(messageId, conversationId) {
+      const data = {
+        messageId: messageId,
+        conversationId: conversationId
+      };
+      // Send system message ID and conversation ID to your backend server
+      const response = await fetch("http://localhost:3000/deleteSystemMessage", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+    }
+
     Talk.ready.then(function () {
       const me = new Talk.User({  
         id: "conversationExampleSupportAgent",
@@ -51,13 +66,15 @@
       });
 
       const inbox = talkSession.createInbox();
+      inbox.mount(document.getElementById("talkjs-container"));
       
       //Set up HTML panel for poll and track votes
       var yesVotes = 0;
       var noVotes = 0;
 
-      inbox.onCustomMessageAction('yesOrNo', (event) => {
+      inbox.onCustomMessageAction('yesOrNo', async (event) => {
         if (event.params.choice == 'end') {
+          await postMessageId(event.message.id, event.message.conversation.id);
           var htmlPanelQuery= 'html-panel.html?yes=' + yesVotes + '&no=' + noVotes;
           inbox.createHtmlPanel({
                 url: htmlPanelQuery,
@@ -73,8 +90,6 @@
           noVotes++;
         }
       });
-
-      inbox.mount(document.getElementById("talkjs-container"));
     });
   </script>
 

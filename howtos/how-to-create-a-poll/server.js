@@ -15,6 +15,23 @@ app.use(express.json());
 
 app.listen(3000, () => console.log("Server is up"));
 
+async function deleteSystemMessage(messageId, conversationId) {
+  console.log("Deleting message with id:", messageId);
+  return fetch(`${basePath}/v1/${appId}/conversations/${conversationId}/messages/${messageId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${secretKey}`,
+    },
+  });
+}
+
+app.post("/deleteSystemMessage", async (req, res) => {
+  const { messageId, conversationId } = req.body;
+  await deleteSystemMessage(messageId, conversationId);
+  res.status(200).end();
+});
+
 // EVERYTHING BELOW IS SETUP CODE FOR THIS EXAMPLE
 // You won't need any of it in your live app!
 //
@@ -57,7 +74,7 @@ async function setupConversation(i) {
       },
       body: JSON.stringify([
         {
-          text: "Everything is broken again!",
+          text: "Hello, I have a question!",
           sender: userId,
           type: "UserMessage",
         },
