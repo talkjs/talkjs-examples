@@ -1,0 +1,45 @@
+.poll-div{
+    border: 0.5px solid #e0e0e0;
+    border-radius: 20px;
+    padding: 0.6rem 0.6rem;
+    background-color: white;
+    color: black;
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    height: auto;
+    vertical-align: baseline;
+}
+.total{
+    color: white;    
+    display: inline;
+}
+
+.poll-title{
+    margin: 0.1rem;
+    padding: 0.1rem;
+}
+
+.chart {
+    width: auto;
+    height: 25px;
+    border: 1px solid #ccc;
+    display: flex;
+}
+
+.bar {
+    height: 100%;
+    transition: width 0.5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#bar1 {
+    width: 50%;
+    background-color: #007DF9;
+}
+
+#bar2 {
+    width: 30%;
+    background-color: #93c9ff;
+}
