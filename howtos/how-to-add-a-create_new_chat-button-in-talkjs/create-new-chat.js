@@ -30,6 +30,13 @@ Talk.ready.then(function () {
     conversation.setParticipant(me);
     conversation.setParticipant(other);
 
+    //Create some test users for this example.
+    let testUsers = getTalkJSUsers()
+    for(let id in testUsers){
+        let user = new Talk.User(testUsers[id]);
+        conversation.setParticipant(user);
+    }
+
     const inbox = talkSession.createInbox({ theme: 'Create-New-Chat-From-Conv-Header' });
     inbox.select(conversation);
     inbox.mount(document.getElementById('talkjs-container'));
@@ -75,9 +82,7 @@ function showNewConversationModal() {
     participantsSelect = document.getElementById('participants');
 
     for (let i = 0; i < talkJsUsers.length; i++) {
-        let user = new Talk.User(talkJsUsers[i]);
-        console.log(user)
-        participantsSelect.options[i] = new Option(user.name, user.id);
+        participantsSelect.options[i] = new Option(talkJsUsers[i].name, talkJsUsers[i].id);
     }
 
     modal.show();
