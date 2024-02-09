@@ -31,7 +31,7 @@ Talk.ready.then(function () {
     conversation.setParticipant(other);
 
     //Create some test users for this example.
-    let testUsers = getTalkJSUsers()
+    let testUsers = getTalkJSUsers();
     for(let id in testUsers){
         let user = new Talk.User(testUsers[id]);
         conversation.setParticipant(user);
