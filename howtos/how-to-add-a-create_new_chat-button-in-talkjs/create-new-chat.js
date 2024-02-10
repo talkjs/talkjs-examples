@@ -15,24 +15,14 @@ Talk.ready.then(function () {
         appId: appId,
         me: me,
     });
-    const other = new Talk.User({
-        id: '654321',
-        name: 'Sebastian',
-        email: 'Sebastian@example.com',
-        photoUrl: 'https://talkjs.com/images/avatar-5.jpg',
-        role: 'default',
-        welcomeMessage: 'Hey, how can I help?',
-    });
 
-    const conversation = talkSession.getOrCreateConversation(
-        Talk.oneOnOneId(me, other)
-    );
+    const conversation = talkSession.getOrCreateConversation("createNewChatExampleConv");
+
     conversation.setParticipant(me);
-    conversation.setParticipant(other);
-
-    //Create some test users for this example.
+    
+    // Create some test users for this example
     let testUsers = getTalkJSUsers();
-    for(let id in testUsers){
+    for (let id in testUsers) {
         let user = new Talk.User(testUsers[id]);
         conversation.setParticipant(user);
     }
@@ -41,9 +31,7 @@ Talk.ready.then(function () {
     inbox.select(conversation);
     inbox.mount(document.getElementById('talkjs-container'));
 
-    inbox.onCustomConversationAction('createNewChat', (event) => {
-        showNewConversationModal()
-    });
+    inbox.onCustomConversationAction('createNewChat', showNewConversationModal);
 });
 
 function createNewChat(event) {
@@ -70,6 +58,7 @@ function createNewChat(event) {
     let inbox = talkSession.createInbox({ theme: 'Create-New-Chat-From-Conv-Header' });
     inbox.select(conversation);
     inbox.mount(document.getElementById('talkjs-container'));
+    inbox.onCustomConversationAction('createNewChat', showNewConversationModal);
 
     modal.hide();
 
