@@ -3,22 +3,22 @@ let conversation;
 Talk.ready.then(() => {
   const me = new Talk.User({
     id: "0001",
-    name: "Kirsten Doe",
-    email: "kirsten.doe@example.com",
-    photoUrl: "https://talkjs.com/images/avatar-1.jpg",
+    name: "Mikaela Ross",
+    email: "mikaela.ross@example.com",
+    photoUrl: "https://talkjs.com/images/avatar-7.jpg",
     custom: {
-      "hidden":"true"
+      "hidden":"false"
     },
     role: "default"
   });
 
   const other1 = new Talk.User({
     id: "0002",
-    name: "Mikaela Ross",
-    email: "mikaela.ross@example.com",
-    photoUrl: "https://talkjs.com/images/avatar-7.jpg",
+    name: "Kirsten Doe",
+    email: "kirsten.doe@example.com",
+    photoUrl: "https://talkjs.com/images/avatar-1.jpg",
     custom: {
-      "hidden":"false"
+      "hidden":"true"
     },
     role: "default"
   });
