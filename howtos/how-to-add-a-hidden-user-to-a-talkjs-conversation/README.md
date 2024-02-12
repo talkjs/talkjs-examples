@@ -1,4 +1,4 @@
-This is an example project to go with our tutorial on how to add a hidden user to your TalkJS chat.
+This is an example project to go with our tutorial on [how to add a hidden user to your TalkJS chat](https://talkjs.com/resources/how-to-add-a-hidden-user-to-a-talkjs-conversation/).
 
 <!-- Add link to tutorial once published -->
 
