@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>TalkJS Polls Sample</title>
+  </head>
+
+  <!-- minified snippet to load TalkJS without delaying your page -->
+  <script>
+    (function (t, a, l, k, j, s) {
+      s = a.createElement("script");
+      s.async = 1;
+      s.src = "https://cdn.talkjs.com/talk.js";
+      a.head.appendChild(s);
+      k = t.Promise;
+      t.Talk = {
+        v: 3,
+        ready: {
+          then: function (f) {
+            if (k)
+              return new k(function (r, e) {
+                l.push([f, r, e]);
+              });
+            l.push([f]);
+          },
+          catch: function () {
+            return k && new k();
+          },
+          c: l,
+        },
+      };
+    })(window, document, []);
+  </script>
+
+  <script>
+    async function deleteSystemMessage(messageId, conversationId) {
+      const data = {
+        messageId: messageId,
+        conversationId: conversationId
+      };
+      // Send system message ID and conversation ID to your backend server
+      const response = await fetch("http://localhost:3000/deleteSystemMessage", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+    }
+
+    Talk.ready.then(function () {
+      const me = new Talk.User({  
+        id: "conversationExampleSupportAgent",
+        name: "Alice",
+        email: "alice@example.com",
+        role: "default",
+        photoUrl: "https://talkjs.com/images/avatar-1.jpg",
+        welcomeMessage: "Hey there! How can I help?",
+      });
+      const talkSession = new Talk.Session({
+        appId: "<APP_ID>", // replace with your app ID
+        me: me,
+      });
+
+      const inbox = talkSession.createInbox();
+      inbox.mount(document.getElementById("talkjs-container"));
+      
+      //Set up HTML panel for poll and track votes
+      var yesVotes = 0;
+      var noVotes = 0;
+
+      inbox.onCustomMessageAction('yesOrNo', async (event) => {
+        if (event.params.choice == 'end') {
+          await deleteSystemMessage(event.message.id, event.message.conversation.id);
+          var htmlPanelQuery= 'html-panel.html?yes=' + yesVotes + '&no=' + noVotes;
+          inbox.createHtmlPanel({
+                url: htmlPanelQuery,
+                height: 100,
+                show: true
+            });
+            return;
+        }
+        else if (event.params.choice == 'yes') {
+          yesVotes++;
+        } 
+        else if (event.params.choice == 'no') {
+          noVotes++;
+        }
+      });
+    });
+  </script>
+
+  <body>
+    <!-- container element in which TalkJS will display a chat UI -->
+    <div id="talkjs-container" style="width: 90%; margin: 30px; height: 500px">
+      <i>Loading chat...</i>
+    </div>
+  </body>
+</html>
