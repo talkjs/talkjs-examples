@@ -27,7 +27,7 @@ const talkjsContainer = document.getElementById("talkjs-container");
 const usersList = document.getElementById("users-list");
 const popupTriggerBtn = document.getElementById("popup-trigger-btn");
 
-const appId = "0RWGWLM5";
+const appId = "<APP_ID>";
 const currentUser = {
   id: "1234",
   name: "me",
