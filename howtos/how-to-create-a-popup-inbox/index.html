@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Talk JS Popup Inbox</title>
+  <script src="https://unpkg.com/feather-icons@4.29.1/dist/feather.min.js"></script>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+  <div class="h-screen flex flex-col items-center justify-center">
+    <div class="p-6 bg-white rounded-2xl border-4 border-transparent dark:bg-gray-800 dark:text-gray-300">
+      <div class="h2 mt-0 mb-3 dark:text-white">Friends</div>
+      <ul role="list" class="divide-y divide-gray-100" id="users-list"></ul>
+    </div>
+  </div>
+
+  <div id="popup-inbox-container" class="h-[550px] w-[340px] absolute bottom-[60px] right-[10px]">
+    <div id="talkjs-container" class="w-[98%] h-[90%]"></div>
+  </div>
+
+  <div class="fixed bottom-4 right-4">
+    <button id="popup-trigger-btn"
+      class="px-4 py-4 font-semibold rounded-2xl bg-blue-500 text-white text-lg hover:shadow-3xl hover:shadow-blue-500 ease-in-out duration-200">
+      <i data-feather="message-circle"></i>
+    </button>
+  </div>
+
+  <script type="text/javascript" src="./js/script.js"></script>
+</body>
+
+</html>
