@@ -91,7 +91,9 @@ Talk.ready.then(() => {
     popupInboxContainer.classList.remove("hidden");
 
     selectedConversation = convItem;
-    const conversation = talkSession.getOrCreateConversation(selectedConversation.id);
+    const conversation = talkSession.getOrCreateConversation(
+      selectedConversation.id
+    );
 
     conversation.setParticipant(me);
     const otherUser = new Talk.User(convItem.user);
@@ -119,9 +121,23 @@ Talk.ready.then(() => {
           <div class="flex flex-col justify-center">
           </div>`;
     const button = document.createElement("button");
-    button.classList.add("px-4", "py-3", "font-semibold", "rounded-xl", "bg-blue-500", "text-white", "text-base", "hover:shadow-3xl", "hover:shadow-blue-500", "ease-in-out", "duration-200", "flex");
+    button.classList.add(
+      "px-4",
+      "py-3",
+      "font-semibold",
+      "rounded-xl",
+      "bg-blue-500",
+      "text-white",
+      "text-base",
+      "hover:shadow-3xl",
+      "hover:shadow-blue-500",
+      "ease-in-out",
+      "duration-200",
+      "flex"
+    );
     button.addEventListener("click", () => initChat(convo));
-    button.innerHTML = '<span class="grow">Chat</span> <i data-feather="arrow-right"></i>';
+    button.innerHTML =
+      '<span class="grow">Chat</span> <i data-feather="arrow-right"></i>';
     el.children[1].append(button);
     usersList.appendChild(el);
   });
@@ -132,5 +148,5 @@ Talk.ready.then(() => {
     }
   });
 
-  feather.replace();
+  feather.replace(); // to display icons
 });
