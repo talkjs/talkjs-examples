@@ -6,28 +6,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Talk JS Popup Inbox</title>
-  <script src="./node_modules/feather-icons/dist/feather.min.js"></script>
   <link rel="stylesheet" href="./css/style.css" />
 </head>
 
 <body>
-  <div class="h-screen flex flex-col items-center justify-center">
-    <div class="p-6 bg-white rounded-2xl border-4 border-transparent dark:bg-gray-800 dark:text-gray-300">
-      <div class="h2 mt-0 mb-3 dark:text-white">Friends</div>
-      <ul role="list" class="divide-y divide-gray-100" id="users-list"></ul>
-    </div>
+  <div id="popup-inbox-container">
+    <div id="talkjs-container"></div>
   </div>
 
-  <div id="popup-inbox-container" class="h-[550px] w-[340px] absolute bottom-[60px] right-[10px]">
-    <div id="talkjs-container" class="w-[98%] h-[90%]"></div>
-  </div>
-
-  <div class="fixed bottom-4 right-4">
-    <button id="popup-trigger-btn"
-      class="px-4 py-4 font-semibold rounded-2xl bg-blue-500 text-white text-lg hover:shadow-3xl hover:shadow-blue-500 ease-in-out duration-200">
-      <i data-feather="message-circle"></i>
-    </button>
-  </div>
+  <button id="popup-trigger-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path
+        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+      </path>
+    </svg>
+  </button>
 
   <script type="text/javascript" src="./js/script.js"></script>
 </body>
