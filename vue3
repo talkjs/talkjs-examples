@@ -1,0 +1,61 @@
+<template>
+	<id="talkjs-container" ref="talk"></div>
+</template>
+
+<script>
+import Talk from "talkjs";
+
+export default {
+	props: {
+  	user: Object,
+		others: Object,
+	},
+	mounted: function () {
+		Talk.ready.then(() => {
+			let user = this.user;
+			let others = this.others;
+
+			let me = new Talk.User({
+				id: user.id,
+				name: user.name,
+				email: user.email,
+				photoUrl: user.img,
+				role: "default",
+				welcomeMessage: "Hey everyone",
+			});
+
+			others.forEach((u, index) => {
+				window["others" + index] = new Talk.User({
+					id: u.id,
+					name: u.name,
+					photoUrl: u.photoUrl,
+					role: "default",
+					welcomeMessage: "Hey everyone",
+				});
+			});
+
+			let talkSession = new Talk.Session({
+				appId: "XXXXXXX", // <---- put your appId here. It can be found in your dashboard
+				me: me,
+			});
+
+			var conversation =
+				talkSession.getOrCreateConversation("XXXXX");
+
+			conversation.setAttributes({
+				subject: "XXXXXX",
+			});
+
+			conversation.setParticipant(me);
+
+			others.forEach((u, index) => {
+				conversation.setParticipant(window["others" + index]);
+			});
+
+			let chatbox = talkSession.createChatbox();
+			chatbox.select(conversation);
+			chatbox.mount(this.$refs.talk);
+		});
+	},
+};
+</script>
