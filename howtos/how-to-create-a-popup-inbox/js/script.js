@@ -26,7 +26,7 @@ const popupInboxContainer = document.getElementById("popup-inbox-container");
 const talkjsContainer = document.getElementById("talkjs-container");
 const popupTriggerBtn = document.getElementById("popup-trigger-btn");
 
-const appId = "<APP_ID>";
+const appId = "<APP_ID>"; // replace with your app ID
 const currentUser = {
   id: "1234",
   name: "me",
@@ -36,45 +36,21 @@ const currentUser = {
   role: "default",
 };
 
-const conversationItems = [
-  {
-    id: "conversation_0",
-    subject: "Chat with Bob The Builder",
-    user: {
-      id: "user_0",
-      name: "Bob The Builder",
-      email: ["bobthebuilder@email.com"],
-      photoUrl: "https://talkjs.com/images/avatar-2.jpg",
-      welcomeMessage: "Can we fix it? ⚒️",
-    },
+const currentConversation = {
+  id: "conversation_0",
+  subject: "Chat with Bob The Builder",
+  user: {
+    id: "user_0",
+    name: "Bob The Builder",
+    email: ["bobthebuilder@email.com"],
+    photoUrl: "https://talkjs.com/images/avatar-2.jpg",
+    welcomeMessage: "Can we fix it? ⚒️",
   },
-  {
-    id: "conversation_1",
-    subject: "Chat with Ash Ketchum",
-    user: {
-      id: "user_1",
-      name: "Ash Ketchum",
-      email: ["ashketchum@email.com"],
-      photoUrl: "https://talkjs.com/images/avatar-3.jpg",
-      welcomeMessage: "Gotta catch `em all 👾",
-    },
-  },
-  {
-    id: "conversation_2",
-    subject: "Chat with Patrick Star",
-    user: {
-      id: "user_2",
-      name: "Patrick Star",
-      email: ["patrickstar@email.com"],
-      photoUrl: "https://talkjs.com/images/avatar-4.jpg",
-      welcomeMessage: "Hi, this is Patrick ⭐",
-    },
-  },
-];
+};
 
 Talk.ready.then(() => {
   let selectedConversation;
-  let me = new Talk.User(currentUser);
+  const me = new Talk.User(currentUser);
   window.talkSession = new Talk.Session({ appId, me });
 
   if (!selectedConversation) {
@@ -106,10 +82,6 @@ Talk.ready.then(() => {
   }
 
   popupTriggerBtn.addEventListener("click", () => {
-    if (selectedConversation) {
-      initChat(selectedConversation);
-    } else {
-      initChat(conversationItems[0]);
-    }
+    initChat(currentConversation);
   });
 });
