@@ -44,6 +44,7 @@ const currentConversation = {
     name: "Bob The Builder",
     email: ["bobthebuilder@email.com"],
     photoUrl: "https://talkjs.com/images/avatar-2.jpg",
+    role: "default",
     welcomeMessage: "Can we fix it? ⚒️",
   },
 };
