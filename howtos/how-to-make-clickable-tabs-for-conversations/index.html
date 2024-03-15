@@ -58,6 +58,7 @@
 
 <script>
   let chatbox;
+  let talkSession;
 
   Talk.ready.then(function () {
     const me = new Talk.User({
@@ -90,8 +91,12 @@
       });
       
       const conversation = talkSession.getOrCreateConversation(
-          event.message.senderId
+        Talk.oneOnOneId(me, event.message.senderId)
       );
+
+      conversation.setParticipant(me);
+      conversation.setParticipant(messageSender);
+      chatbox.select(conversation);
     
       convId = conversation.id;
       tab = document.getElementById(convId);
@@ -99,8 +104,6 @@
         tab.click();
       }
       else{
-        conversation.setParticipant(me);
-        conversation.setParticipant(messageSender);
 
         const groupTab = document.getElementById('tabConversationExample1')
         if(!groupTab){

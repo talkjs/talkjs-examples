@@ -12,11 +12,11 @@ const secretKey = "<SECRET_KEY>";
 
 const basePath = "https://api.talkjs.com";
 
-async function setupConversation(i) {
-  const conversationId = `tabConversationExample${i}`;
-  const userIdOne = `tabConversationExampleUser${i}`;
-  const userIdTwo = `tabConversationExampleUser${i+1}`;
-  const userIdThree = `tabConversationExampleUser${i+2}`;
+async function setupConversation() {
+  const conversationId = `tabConversationExample1`;
+  const userIdOne = `tabConversationExampleUser1`;
+  const userIdTwo = `tabConversationExampleUser2`;
+  const userIdThree = `tabConversationExampleUser3`;
   
   // delete the conversation (if it exists)
   await fetch(`${basePath}/v1/${appId}/conversations/${conversationId}`, {
@@ -169,7 +169,7 @@ async function setup() {
 
   await Promise.all([supportAgent, user1, user2, user3]);
 
-  const conv1 = setupConversation(1);
+  const conv1 = setupConversation();
 
   await conv1;
 }
