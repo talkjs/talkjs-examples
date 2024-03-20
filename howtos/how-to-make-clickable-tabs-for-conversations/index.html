@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>TalkJS tutorial</title>
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700"
+    />
+    <link
+      rel="stylesheet"
+      href="styles.css"
+    />
+  </head>
+
+  <body>
+    <div id="chat-container">
+      <div id="dynamicTabContainer" class="tab">
+        <!-- Tabs will be added here -->
+      </div>
+      <!-- container element in which TalkJS will display a chat UI -->
+      <div id="talkjs-container">
+        <i>Loading chat...</i>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  (function (t, a, l, k, j, s) {
+    s = a.createElement("script");
+    s.async = 1;
+    s.src = "https://cdn.talkjs.com/talk.js";
+    a.head.appendChild(s);
+    k = t.Promise;
+    t.Talk = {
+      v: 3,
+      ready: {
+        then: function (f) {
+          if (k)
+            return new k(function (r, e) {
+              l.push([f, r, e]);
+            });
+          l.push([f]);
+        },
+        catch: function () {
+          return k && new k();
+        },
+        c: l,
+      },
+    };
+  })(window, document, []);
+</script>
+
+<script>
+  let chatbox;
+  let talkSession;
+
+  Talk.ready.then(function () {
+    const me = new Talk.User({
+      id: "tabConversationExampleSupportAgent",
+      name: "Alice",
+      email: "alice@example.com",
+      role: "default",
+      photoUrl: "https://talkjs.com/images/avatar-1.jpg",
+      welcomeMessage: "Hey there! How can I help?",
+    });
+
+    const talkSession = new Talk.Session({
+      appId: "<APP_ID>", // replace with your app ID
+      me: me,
+    });
+
+    chatbox = talkSession.createChatbox();
+    chatbox.mount(document.getElementById("talkjs-container"));
+
+    chatbox.onCustomMessageAction("openTab", (event) => {
+    //The handler for our open tab custom action. This event
+    //creates the tab for the user and swaps to a conversation with the selected user.
+      const messageSender = new Talk.User({
+          id: event.message.senderId,
+          name: event.message.sender.name,
+          email: event.message.sender.email,
+          role: event.message.sender.role,
+          photoUrl: event.message.sender.photoUrl,
+          welcomeMessage: event.message.sender.welcomeMessage,
+      });
+      
+      const conversation = talkSession.getOrCreateConversation(
+        Talk.oneOnOneId(me, event.message.senderId)
+      );
+
+      conversation.setParticipant(me);
+      conversation.setParticipant(messageSender);
+      chatbox.select(conversation);
+    
+      convId = conversation.id;
+      tab = document.getElementById(convId);
+      if(tab){
+        tab.click();
+      }
+      else{
+
+        const groupTab = document.getElementById('tabConversationExample1')
+        if(!groupTab){
+          createTab('tabConversationExample1', 'Group');
+        }
+
+        const privateConversation = document.getElementById(convId);
+        if(!privateConversation){
+          createTab(convId, event.message.sender.name);
+        }
+
+        tab = document.getElementById(convId);
+        tab.click();
+      }
+    });
+  });
+
+  function createTab(tabId, tabName) {
+    // Create the new tab button
+    var btn = document.createElement("button");
+    btn.id = tabId;
+    btn.className = "tablinks";
+    btn.textContent = tabName;
+    btn.onclick = function(event) { openTab(event, tabId, tabName); };
+
+    // Add the new tab button to the tab container
+    var tabContainer = document.getElementById("dynamicTabContainer");
+    tabContainer.appendChild(btn);
+  }
+
+  function openTab(event, tabId, tabName) {
+    var i, tablinks;
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(tabId).style.display = "block";
+    event.currentTarget.className += " active";
+    
+    //changes the active conversation in the chatbox to the tab/conversationId we have selected.
+    chatbox.select(tabId);
+}
+</script>
