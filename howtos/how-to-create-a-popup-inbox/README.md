@@ -1,4 +1,4 @@
-This is an example project for TalkJS's tutorial on how to create a popup inbox.
+This is an example project for TalkJS's tutorial on [how to create a popup inbox](https://talkjs.com/resources/how-to-create-a-pop-up-inbox-in-talkjs/).
 
 The project uses TalkJS's [Inbox UI mode](https://talkjs.com/docs/Features/Chat_UI_Modes/The_Inbox/) as a popup element.
 
