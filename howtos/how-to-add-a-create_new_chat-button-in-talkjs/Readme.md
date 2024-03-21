@@ -1,6 +1,6 @@
 ## Article link
 
-https://docs.google.com/document/d/1d4EZ2HTq6yj8POuDjnCnMjBbd_RZ-aYNQYRR3lh1eUo/edit?usp=sharing
+This is the example project for our [How to add a "Create new chat" button in TalkJS](https://talkjs.com/resources/how-to-add-a-create-new-chat-button-in-talkjs/) tutorial.
 
 ![Demo GIF](<Demo.gif>)
 
