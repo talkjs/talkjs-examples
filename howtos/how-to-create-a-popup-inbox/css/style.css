@@ -1,0 +1,57 @@
+@import url("https://rsms.me/inter/inter.css");
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+  border: 0 solid #ececec;
+}
+
+html {
+  font-family: "Inter", sans-serif;
+}
+
+#popup-inbox-container {
+  height: 550px;
+  width: 340px;
+  position: absolute;
+  bottom: 60px;
+  right: 10px;
+}
+
+#talkjs-container {
+  width: 98%;
+  height: 90%;
+}
+
+#popup-trigger-btn {
+  cursor: pointer;
+  appearance: button;
+  text-transform: none;
+  margin: 0;
+  background-image: none;
+  padding: 1rem;
+  font-weight: 600;
+  border-radius: 1rem;
+  background-color: rgb(59 130 246);
+  color: rgb(255 255 255);
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  transition-duration: .2s;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+#popup-trigger-btn:hover {
+  box-shadow: 0 0 #0000, 0 0 #0000, 0 0 #0000, 0 0 #0000, 0 0 0 0.25rem #007df9;
+}
+
+svg {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
