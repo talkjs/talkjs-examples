@@ -1,4 +1,5 @@
 let talkSession;
+const appId = "<YOUR_APP_ID>";
 const userEntryFormModal = new bootstrap.Modal(document.getElementById('userEntryFormModal'), {})
 const talkJSContainer = document.getElementById("talkjs-container");
 
@@ -27,8 +28,8 @@ async function setMainConversation(){
   await Talk.ready;
   const user = new Talk.User(sessionStorage.getItem("currentUser"));
   talkSession = window.talkSession = new Talk.Session({
-    appId: "<YOUR_APP_ID>",
-    me: user,
+    appId: appId,
+    me: user
   });
   const inbox = talkSession.createInbox();
   const currentConversation = await talkSession.getOrCreateConversation(sessionStorage.getItem("currentConversation"));
@@ -66,7 +67,7 @@ async function createUser(name, email, profilePictureURL){
     role: "default"
   });
   talkSession = window.talkSession = new Talk.Session({
-    appId: "<YOUR_APP_ID>",
+    appId: appId,
     me: user,
   });
   return user;
