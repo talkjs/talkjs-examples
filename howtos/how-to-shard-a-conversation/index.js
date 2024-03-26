@@ -1,74 +1,77 @@
-let talkSession;
 const appId = "<YOUR_APP_ID>";
-const userEntryFormModal = new bootstrap.Modal(document.getElementById('userEntryFormModal'), {})
+
+const userEntryFormModal = new bootstrap.Modal(
+  document.getElementById("userEntryFormModal"),
+  {}
+);
 const talkJSContainer = document.getElementById("talkjs-container");
 
-if(sessionStorage.getItem("showModal") == "false")
-  setMainConversation();
-else{
+const savedUserId = sessionStorage.getItem("currentUser");
+if (savedUserId) {
+  Talk.ready.then(() => {
+    const user = new Talk.User(savedUserId);
+    showChat(user);
+  });
+} else {
   userEntryFormModal.show();
   talkJSContainer.style.display = "none";
 }
 
-document.getElementById("myForm").addEventListener("submit", async (event) => {
+async function modalSubmitted(event) {
   event.preventDefault();
-  const name = document.querySelector('.userName').value;
-  const email = document.querySelector('.userEmailAddress').value;
-  const profilePictureURL = document.querySelector('.userProfilePicture').value;
-  const user = await createUser(name, email, profilePictureURL);
-  const conversation = await getRandomConversation();  
-  await assignUserToConversation(user, conversation);
-  sessionStorage.setItem("currentUser", user.id);
-  sessionStorage.setItem("currentConversation", conversation.id);
-  sessionStorage.setItem("showModal", "false");
-  userEntryFormModal.hide();  
-});
 
-async function setMainConversation(){
+  const name = document.getElementById("userName").value;
+  const email = document.getElementById("userEmailAddress").value;
+  const profilePictureURL = document.getElementById("userProfilePicture").value;
   await Talk.ready;
-  const user = new Talk.User(sessionStorage.getItem("currentUser"));
-  talkSession = window.talkSession = new Talk.Session({
-    appId: appId,
-    me: user
-  });
-  const inbox = talkSession.createInbox();
-  const currentConversation = await talkSession.getOrCreateConversation(sessionStorage.getItem("currentConversation"));
-  inbox.select(currentConversation);
-  inbox.mount(talkJSContainer);
+  const user = createUser(name, email, profilePictureURL);
+  await showChat(user);
 }
 
-async function getRandomConversation(){
-  let conversationArray = [];
-  let conversation1, conversation2, conversation3;
-  conversation1 = await talkSession.getOrCreateConversation("sharded-conversation-1");
-  conversation2 = await talkSession.getOrCreateConversation("sharded-conversation-2");
-  conversation3 = await talkSession.getOrCreateConversation("sharded-conversation-3");
-  conversationArray.push(conversation1, conversation2, conversation3);
-  const randomIndex = Math.floor(Math.random() * conversationArray.length);
-  return conversationArray[randomIndex];
-}
-
-async function assignUserToConversation(user, conversation){
-  await Talk.ready;
-  conversation.setParticipant(user);
-  const inbox = talkSession.createInbox();
-  inbox.select(conversation);
-  talkJSContainer.style.display = "block";
-  inbox.mount(talkJSContainer);
-}
-
-async function createUser(name, email, profilePictureURL){
-  await Talk.ready;
-  const user = new Talk.User({
-    id: crypto.randomUUID(),
+function createUser(name, email, profilePictureURL) {
+  const userId = crypto.randomUUID();
+  sessionStorage.setItem("currentUser", userId);
+  return new Talk.User({
+    id: userId,
     name: name,
     email: email,
     photoUrl: profilePictureURL,
-    role: "default"
+    role: "default",
   });
-  talkSession = window.talkSession = new Talk.Session({
-    appId: appId,
-    me: user,
-  });
-  return user;
+}
+
+async function showChat(user) {
+  console.log("show chat");
+  const session = new Talk.Session({ appId, me: user });
+
+  const shard = getShard(user.id);
+  const conversation = session.getOrCreateConversation(
+    `sharded-conversation-${shard}`
+  );
+  conversation.setParticipant(user);
+
+  const chatbox = session.createChatbox();
+  chatbox.select(conversation);
+  await chatbox.mount(talkJSContainer);
+
+  talkJSContainer.style.display = "block";
+  userEntryFormModal.hide();
+}
+
+/**
+ * Returns the shard id for a given user id
+ * When re-ran with the same user id, this will always return the same conversation id
+ * So the sharding is stable
+ */
+function getShard(userId) {
+  const shardCount = 3;
+
+  // UUID is like 88710ed2-4121-4c60-90c5-506be6bcd664, take just the last section, 506be6bcd664
+  const lastIdSection = userId.substring(userId.lastIndexOf("-") + 1);
+
+  // Convert that from hexadecimal to decimal number, 88424362858084
+  const lastIdNumeric = parseInt(lastIdSection, 16);
+
+  // Assign to one of N shards using modulo, in this case 88424362858084 % 3 = 1
+  return (lastIdNumeric % shardCount) + 1;
 }
