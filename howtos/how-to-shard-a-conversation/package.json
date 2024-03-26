@@ -1,0 +1,10 @@
+{
+    "name": "shard-a-conversation",
+    "dependencies": {
+      "node-fetch": "^3.3.1"
+    },
+    "type": "module",
+    "scripts": {
+      "start": "node seed-users.js"
+    }
+  }
