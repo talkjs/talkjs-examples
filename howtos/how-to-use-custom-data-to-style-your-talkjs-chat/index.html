@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>How to use custom data to style your TalkJS Chat</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <script>
+    (function (t, a, l, k, j, s) {
+      s = a.createElement("script");
+      s.async = 1;
+      s.src = "https://cdn.talkjs.com/talk.js";
+      a.head.appendChild(s);
+      k = t.Promise;
+      t.Talk = {
+        v: 3,
+        ready: {
+          then: function (f) {
+            if (k)
+              return new k(function (r, e) {
+                l.push([f, r, e]);
+              });
+            l.push([f]);
+          },
+          catch: function () {
+            return k && new k();
+          },
+          c: l,
+        },
+      };
+    })(window, document, []);
+  </script>
+  <script src="index.js" async defer></script>
+  <div class="container">
+    <div id="talkjs-container-1" class="column">
+      <i>Loading chat...</i>
+    </div>
+    <div id="talkjs-container-2" class="column">
+      <i>Loading chat...</i>
+    </div>
+    <div id="talkjs-container-3" class="column">
+      <i>Loading chat...</i>
+    </div>
+  </div>
+  </div>
+
+</body>
+
+</html>
