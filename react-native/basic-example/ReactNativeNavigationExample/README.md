@@ -1,9 +1,13 @@
+# React Native example
+
+This example demonstrates how to use TalkJS with React Native to create a basic app. It uses the [React Native Navigation](https://wix.github.io/react-native-navigation/docs/before-you-start/) library to navigate between screens.
+
 ## Prerequisites
 
-Setup your Android and/or iOS development environment as specified [here](https://reactnative.dev/docs/environment-setup?os=linux&platform=android).
+Set up your Android and/or iOS development environment as specified [here](https://reactnative.dev/docs/set-up-your-environment?os=linux&platform=android).
 No need to follow the steps after **Create a new application**.
 
-## Installing Dependencies
+## Install dependencies
 
 ```sh
 yarn
@@ -16,7 +20,11 @@ inside the ios folder
 pod install
 ```
 
-## Installing/Running the App
+## Add your TalkJS App ID
+
+Update the `YOUR_APP_ID` placeholders in `App.tsx` with your TalkJS App ID. You can find your App ID in the **Settings** tab of the [TalkJS dashboard](https://talkjs.com/dashboard).
+
+## Install and run the app
 
 Before running the app, make sure you have connected your device via ADB for Android and on XCode for iOS.
 If you aren't using a physical device, make sure the emulator/simulator for your respective platform is
