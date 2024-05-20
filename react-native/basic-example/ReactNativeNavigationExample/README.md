@@ -24,6 +24,10 @@ pod install
 
 Update the `YOUR_APP_ID` placeholders in `App.tsx` with your TalkJS App ID. You can find your App ID in the **Settings** tab of the [TalkJS dashboard](https://talkjs.com/dashboard).
 
+## Configure push notifications
+
+Follow our React Native push notifications guide to configure push notifications for [Android](https://talkjs.com/docs/Features/Notifications/Mobile_Push_Notifications/React_Native/#android) or [iOS](https://talkjs.com/docs/Features/Notifications/Mobile_Push_Notifications/React_Native/#ios).
+
 ## Install and run the app
 
 Before running the app, make sure you have connected your device via ADB for Android and on XCode for iOS.
