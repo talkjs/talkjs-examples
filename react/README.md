@@ -1,4 +1,4 @@
-# React tutorials
+# React examples
 
 The examples in this directory demonstrate how to use TalkJS with React.
 
