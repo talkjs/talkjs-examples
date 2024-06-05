@@ -13,19 +13,31 @@ import Talk from "talkjs";
 })
 export class TalkjsChatComponent {
   constructor() {
-    Talk.ready.then((): void => {
-      const me = new Talk.User("sample_user_alice");
-      const talkSession = new Talk.Session({
+    Talk.ready.then(function () {
+      const me = new Talk.User({
+        id: "nina",
+        name: "Nina",
+        email: "nina@example.com",
+        photoUrl: "https://talkjs.com/new-web/avatar-7.jpg",
+        welcomeMessage: "Hi!",
+      });
+      const session = new Talk.Session({
         appId: "<APP_ID>",
         me: me,
       });
+      const other = new Talk.User({
+        id: "frank",
+        name: "Frank",
+        email: "frank@example.com",
+        photoUrl: "https://talkjs.com/new-web/avatar-8.jpg",
+        welcomeMessage: "Hey, how can I help?",
+      });
 
-      const conversation = talkSession.getOrCreateConversation(
-        "sample_conversation"
-      );
+      const conversation = session.getOrCreateConversation("new_conversation");
       conversation.setParticipant(me);
+      conversation.setParticipant(other);
 
-      const chatbox = talkSession.createChatbox();
+      const chatbox = session.createChatbox();
       chatbox.select(conversation);
       chatbox.mount(document.getElementById("talkjs-container"));
     });
