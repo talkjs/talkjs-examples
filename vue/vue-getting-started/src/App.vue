@@ -1,5 +1,5 @@
 <script setup>
-import Chat from "./components/Chat.vue";
+import Inbox from "./components/Inbox.vue";
 
 const me = {
   id: "sample_user_alice",
@@ -14,6 +14,6 @@ const me = {
   <header></header>
 
   <main>
-    <Chat :currentUser="me" />
+    <Inbox :currentUser="me" />
   </main>
 </template>
