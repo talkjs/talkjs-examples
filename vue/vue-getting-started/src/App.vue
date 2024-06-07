@@ -11,8 +11,6 @@ const me = {
 </script>
 
 <template>
-  <header></header>
-
   <main>
     <Inbox :currentUser="me" />
   </main>
