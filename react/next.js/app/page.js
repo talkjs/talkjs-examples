@@ -1,4 +1,5 @@
-// Marks the file as a Next.js Client Component, so that it will be rendered on the client
+// Marks the file as a Next.js Client Component, so that it will only be rendered on the client,
+// as the TalkJS JavaScript SDK, which the React SDK uses, can only run in the browser.
 // See https://nextjs.org/docs/app/building-your-application/rendering/client-components
 "use client";
 
