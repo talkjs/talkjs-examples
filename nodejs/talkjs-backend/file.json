@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": 2,
+      "name": "John Morrison",
+      "email": "john.morrison@operator.com",
+      "photoUrl": "https://randomuser.me/api/portraits/men/62.jpg",
+      "role": "USER"
+    },
+    {
+      "id": 1,
+      "name": "Tom Hardy",
+      "email": "tom.hardy@operator.com",
+      "photoUrl": "https://randomuser.me/api/portraits/men/1.jpg",
+      "role": "USER"
+    }
+  ]
+}
