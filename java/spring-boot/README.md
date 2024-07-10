@@ -1,5 +1,7 @@
 # TalkJS and Spring Boot example
 
+This is an example project for TalkJS's tutorial on [how to build a Spring Boot chat app with TalkJS](https://talkjs.com/resources/how-to-add-chat-into-a-spring-boot-app/).
+
 This example demonstrates how to integrate TalkJS with a Java application that uses the Spring Boot framework. There are two projects present inside the repo:
 
 - The `SpringBootTalkJS` project contains the Spring Boot backend, which serves a REST endpoint with user data.

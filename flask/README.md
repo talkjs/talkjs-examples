@@ -1,5 +1,7 @@
 # TalkJS and Flask example
 
+This is an example project for TalkJS's tutorial on [how to build a Flask chat app with TalkJS](https://talkjs.com/resources/flask-chat-app/).
+
 This example demonstrates how to integrate TalkJS with a Python application that uses the Flask framework. There are two projects present inside the repo:
 
 - The `talkjs-flask-python` project contains the Flask backend, which serves a REST endpoint with user data.
