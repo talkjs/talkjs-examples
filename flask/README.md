@@ -12,7 +12,7 @@ This example demonstrates how to integrate TalkJS with a Python application that
 To run this tutorial, you will need:
 
 - A [TalkJS account](https://talkjs.com/dashboard/login)
-- [Python](https://www.oracle.com/uk/java/technologies/downloads/)
+- [Python](https://www.python.org/downloads/)
 
 ## How to run the tutorial
 
