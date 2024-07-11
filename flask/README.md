@@ -44,6 +44,6 @@ To run this tutorial, you will need:
 
    ```
 
-1. From the `talkjs-springboot-frontend` directory:
+1. From the `talkjs-frontend` directory:
    1. Replace `<APP_ID>` in `script.js` with the value found in the **Settings** tab of your [TalkJS dashboard](https://talkjs.com/dashboard/login).
    1. Open `index.html` from a browser, or through an extension like VS Code's Live Server, to view the app
