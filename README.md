@@ -29,13 +29,17 @@ Our [JavaScript SDK](https://talkjs.com/docs/Reference/JavaScript_Chat_SDK/) let
 
 Examples of integrating with popular frontend frameworks:
 
-- [Svelte](./svelte)
 - [Angular](./angular6)
+- [Svelte](./svelte)
+- [Vue](./vue/vue-getting-started)
+
 
 Examples of integrating with popular backend frameworks:
 
 - [Laravel](./php/laravel-integration/)
+- [Spring Boot](./java/spring-boot)
 - [Django](./django/)
+- [Flask](./flask)
 
 Using a library, framework or language not listed here? [Let us know](https://talkjs.com?ref=gh-example-readme&chatwithus=1) and we can help out.
 
