@@ -30,6 +30,7 @@ Our [JavaScript SDK](https://talkjs.com/docs/Reference/JavaScript_Chat_SDK/) let
 Examples of integrating with popular frontend frameworks:
 
 - [Angular](./angular6)
+- [Next.js](./react/next.js)
 - [Svelte](./svelte)
 - [Vue](./vue/vue-getting-started)
 
