@@ -2,7 +2,9 @@
 
 This repo demonstrates common use cases for TalkJS.
 
-TalkJS is a chat API with pre-built UI for web & mobile apps. Build any chat use case into your product with just a few lines of code. Frontend UI SDK and out-of-the-box notifications included. Visit [talkjs.com](https://talkjs.com/?ref=jssdk-npm-readme) to learn more!
+TalkJS is a chat API with a pre-built UI for web and mobile apps. Build any chat use case into your product with just a few lines of code. Frontend UI SDK and out-of-the-box notifications included.
+
+Visit [talkjs.com](https://talkjs.com/?ref=jssdk-npm-readme) or see our [docs](https://talkjs.com/docs/) to learn more!
 
 ## How-to guides
 
