@@ -1,5 +1,6 @@
 # Chatting without an account
 In this example we will show you how to let users join a conversation without needing an account. It will also give the option for users to set their email in the chat to receive notifications. The example popup will look like this:
+
 ![text](https://firebasestorage.googleapis.com/v0/b/klets-3642/o/user_files%2FHku1c4Pt%2F508cec80a2254a06a817e35f8b86f31c%2Fimage.png?alt=media&token=c5b55860-f273-4bc1-88e1-6fe5f6f6b8a9) 
 
 Even though `add-user-info.php` is written in PHP for this example, you can use any framework you desire. `add-user-info.php` sets and reads cookies, makes API calls and hides your secret key. If you need help with other languages, please [let us know](https://talkjs.com/?chat) and we can create it. 
