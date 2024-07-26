@@ -45,15 +45,15 @@ async function buildSession({ me, appId, signature }) {
 }
 
 async function initializeSession() {
-    const currentSession = sessionStorage.getItem(currentSessionKey)
+    const currentSessionCredentials = sessionStorage.getItem(currentSessionKey)
 
-    if (currentSession) {
-        await buildSession(JSON.parse(currentSession))
+    if (currentSessionCredentials) {
+        await chatBuildSession(JSON.parse(currentSessionCredentials))
         return
     }
-
-    await buildSession(await getSessionCredentials())
-    sessionStorage.setItem(currentSessionKey, JSON.stringify(talkSession))  
+    const newSessionCredentials = await getSessionCredentials()
+    await chatBuildSession(newSessionCredentials)
+    sessionStorage.setItem(currentSessionKey, JSON.stringify(newSessionCredentials))
 }
 
 $(async function() {
