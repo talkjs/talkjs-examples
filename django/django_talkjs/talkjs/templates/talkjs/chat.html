@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TalkJS and Django example</title>
+    <link rel="stylesheet" href="{% static 'talkjs/styles.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Inter"
+      rel="stylesheet"
+    />
+
+    <script>
+      (function (t, a, l, k, j, s) {
+        s = a.createElement("script");
+        s.async = 1;
+        s.src = "https://cdn.talkjs.com/talk.js";
+        a.head.appendChild(s);
+        k = t.Promise;
+        t.Talk = {
+          v: 3,
+          ready: {
+            then: function (f) {
+              if (k)
+                return new k(function (r, e) {
+                  l.push([f, r, e]);
+                });
+              l.push([f]);
+            },
+            catch: function () {
+              return k && new k();
+            },
+            c: l,
+          },
+        };
+      })(window, document, []);
+    </script>
+  </head>
+  <body>
+    <main>
+      <div id="chatbox-container">
+        <button class="chat-button">
+          <!-- SVG left arrow icon -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          >
+            <path d="m15 18-6-6 6-6" fill="none" />
+          </svg>
+          {{ me.user.first_name }}'s chats
+        </button>
+        <div id="talkjs-container" style="height: 600px">
+          <i>Loading chat...</i>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      Talk.ready.then(function () {
+        var me = new Talk.User({
+          id: "{{ me.user.username }}",
+          name: "{{ me.user.first_name }}",
+          email: "{{ me.user.email }}",
+          photoUrl: "{{ me.photo_url }}",
+          welcomeMessage: "{{ me.welcome_message }}",
+          role: "{{ me.role }}",
+        });
+
+        window.talkSession = new Talk.Session({
+          appId: "<APP_ID>", // replace with your TalkJS app ID
+          me: me,
+        });
+
+        var other = new Talk.User({
+          id: "{{ other.user.username }}",
+          name: "{{ other.user.first_name }}",
+          email: "{{ other.user.email }}",
+          photoUrl: "{{ other.photo_url }}",
+          welcomeMessage: "{{ other.welcome_message }}",
+          role: "{{ other.role }}",
+        });
+
+        var conversation = talkSession.getOrCreateConversation(
+          Talk.oneOnOneId(me, other)
+        );
+        conversation.setParticipant(me);
+        conversation.setParticipant(other);
+
+        var chatbox = talkSession.createChatbox();
+        chatbox.mount(document.getElementById("talkjs-container"));
+        chatbox.select(conversation);
+      });
+    </script>
+    <script>
+      document.querySelectorAll(".chat-button").forEach((element) => {
+        element.addEventListener("click", function () {
+          window.location.href = "/chat/{{ me.user.username }}";
+        });
+      });
+    </script>
+  </body>
+</html>

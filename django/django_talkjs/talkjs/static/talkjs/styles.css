@@ -1,0 +1,72 @@
+html {
+  font-size: 14px;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+}
+
+#chat-list-container {
+  margin: 0 auto;
+  padding: 1.5rem 2rem 3rem 2rem;
+  border: 1px solid #d4d4d4;
+  border-radius: 0.75rem;
+}
+
+#chat-list-title {
+  font-size: 1.25rem;
+  padding-bottom: 1.5rem;
+}
+
+#chatbox-container {
+  width: 420px;
+  margin: auto;
+}
+
+.chat-item {
+  display: flex;
+}
+
+.chat-button {
+  display: flex;
+  margin: 0.5rem 0;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: #3b82f6;
+  color: #ffffff;
+  font-size: 1rem;
+  transition: box-shadow 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  cursor: pointer;
+  border: none;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.chat-button:hover {
+  box-shadow: 0 0 0 0.25rem #3b82f6;
+}
+
+.chat-button svg {
+  margin-left: -4px;
+  vertical-align: middle;
+}
+
+.avatar {
+  align-items: center;
+  border-radius: 50%;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+#talkjs-container {
+  height: 600px;
+}
