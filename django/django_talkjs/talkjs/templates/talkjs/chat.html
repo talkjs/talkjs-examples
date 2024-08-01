@@ -41,21 +41,26 @@
     <main>
       <div id="chatbox-container">
         <button class="chat-button">
-          <!-- SVG left arrow icon -->
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+          <a
+            onclick="location.href='/chat/{{ me.user.username }}'"
+            type="button"
           >
-            <path d="m15 18-6-6 6-6" fill="none" />
-          </svg>
-          {{ me.user.first_name }}'s chats
+            <!-- SVG left arrow icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            >
+              <path d="m15 18-6-6 6-6" fill="none" />
+            </svg>
+            {{ me.user.first_name }}'s chats
+          </a>
         </button>
         <div id="talkjs-container" style="height: 600px">
           <i>Loading chat...</i>
@@ -97,13 +102,6 @@
         var chatbox = talkSession.createChatbox();
         chatbox.mount(document.getElementById("talkjs-container"));
         chatbox.select(conversation);
-      });
-    </script>
-    <script>
-      document.querySelectorAll(".chat-button").forEach((element) => {
-        element.addEventListener("click", function () {
-          window.location.href = "/chat/{{ me.user.username }}";
-        });
       });
     </script>
   </body>
