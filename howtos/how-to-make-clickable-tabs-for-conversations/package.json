@@ -1,0 +1,10 @@
+{
+  "name": "tab-for-chatbox",
+  "dependencies": {
+    "node-fetch": "^3.3.1"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "node seed-users.js"
+  }
+}

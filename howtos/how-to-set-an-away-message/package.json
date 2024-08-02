@@ -1,0 +1,11 @@
+{
+  "name": "how-to-set-an-away-message",
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-fetch": "^3.3.1"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

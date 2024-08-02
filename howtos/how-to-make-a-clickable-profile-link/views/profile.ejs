@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= user.name %> | Profile</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Inter"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+
+  <body>
+    <script>
+      // prettier-ignore
+      const { appId, currentUser } = JSON.parse('<%- config %>');
+    </script>
+
+    <div>
+      <div id="user-profile-container">
+        <div class="card-container">
+          <button>
+            <a href="/">
+              <!-- SVG left arrow icon -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+              >
+                <path d="m15 18-6-6 6-6" fill="none" />
+              </svg>
+              Friends
+            </a>
+          </button>
+
+          <div class="card">
+            <img src="<%= user.photoUrl %>" alt="<%= user.name %>" />
+            <h1><%= user.name %></h1>
+            <p class="title"><%= user.email %></p>
+            <p>
+              <button
+                onclick="initChat('<%=encodeURIComponent(JSON.stringify(user))%>')"
+              >
+                Chat with <%= user.name %>
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hidden" id="chatbox-container">
+        <button>
+          <a href="/">
+            <!-- SVG left arrow icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            >
+              <path d="m15 18-6-6 6-6" fill="none" />
+            </svg>
+            Friends</a
+          >
+        </button>
+
+        <div id="talkjs-container"></div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="/js/script.js"></script>
+  </body>
+</html>

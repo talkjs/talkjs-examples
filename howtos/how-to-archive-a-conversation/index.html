@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>TalkJS tutorial</title>
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700"
+    />
+
+    <style>
+      button {
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        background-color: #ececec;
+        border: 1px solid #d4d4d4;
+        border-radius: 0.75rem;
+        padding: 0.5rem;
+      }
+
+      button:hover {
+        background-color: #d0d8dc;
+      }
+
+      #button-row {
+        width: 100%;
+        max-width: 750px;
+        margin: auto;
+        height: 2em;
+        display: flex;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="chat-container">
+      <div id="button-row">
+        <button type="button" id="archive-button">View archived chats</button>
+      </div>
+      <!-- container element in which TalkJS will display a chat UI -->
+      <div id="talkjs-container" style="margin: 30px; height: 500px">
+        <i>Loading chat...</i>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!-- minified snippet to load TalkJS without delaying your page -->
+<script>
+  (function (t, a, l, k, j, s) {
+    s = a.createElement("script");
+    s.async = 1;
+    s.src = "https://cdn.talkjs.com/talk.js";
+    a.head.appendChild(s);
+    k = t.Promise;
+    t.Talk = {
+      v: 3,
+      ready: {
+        then: function (f) {
+          if (k)
+            return new k(function (r, e) {
+              l.push([f, r, e]);
+            });
+          l.push([f]);
+        },
+        catch: function () {
+          return k && new k();
+        },
+        c: l,
+      },
+    };
+  })(window, document, []);
+</script>
+
+<script>
+  Talk.ready.then(function () {
+    const me = new Talk.User({
+      id: "archiveConversationExampleSupportAgent",
+      name: "Alice",
+      email: "alice@example.com",
+      role: "default",
+      photoUrl: "https://talkjs.com/images/avatar-1.jpg",
+      welcomeMessage: "Hey there! How can I help?",
+    });
+    const talkSession = new Talk.Session({
+      appId: "<APP_ID>", // replace with your app ID
+      me: me,
+    });
+
+    const inbox = talkSession.createInbox();
+    inbox.mount(document.getElementById("talkjs-container"));
+    inbox.onCustomConversationAction("archive", async (event) => {
+      let conv = talkSession.getOrCreateConversation(
+        inbox.currentConversation.id
+      );
+      conv.setAttributes({ custom: { archived: "true" } });
+      inbox.select(conv);
+
+      console.log("Archived conversation with id:", event.conversation.id);
+    });
+
+    inbox.onCustomConversationAction("unarchive", async (event) => {
+      // TalkJS updates a conversation's details when it's passed to one of our widgets to be displayed.
+      // So we recreate the current conversation with updated custom values, and then pass it to our inbox widget to be synced.
+      let conv = talkSession.getOrCreateConversation(
+        inbox.currentConversation.id
+      );
+      conv.setAttributes({ custom: { archived: "false" } });
+      inbox.select(conv);
+
+      console.log("Unarchived conversation with id:", event.conversation.id);
+    });
+
+    const button = document.getElementById("archive-button");
+    let isArchived = false;
+
+    button.addEventListener("click", (event) => {
+      if (isArchived) {
+        inbox.setFeedFilter({ custom: { archived: ["!=", "true"] } });
+        button.innerHTML = "View archived chats";
+        isArchived = false;
+      } else {
+        inbox.setFeedFilter({ custom: { archived: ["==", "true"] } });
+        button.innerHTML = "Back to inbox";
+        isArchived = true;
+      }
+    });
+  });
+</script>

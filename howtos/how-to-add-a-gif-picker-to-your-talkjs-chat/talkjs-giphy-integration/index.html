@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>TalkJS - Giphy Integration</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Inter"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <script>
+      (function (t, a, l, k, j, s) {
+        s = a.createElement("script");
+        s.async = 1;
+        s.src = "https://cdn.talkjs.com/talk.js";
+        a.head.appendChild(s);
+        k = t.Promise;
+        t.Talk = {
+          v: 3,
+          ready: {
+            then: function (f) {
+              if (k)
+                return new k(function (r, e) {
+                  l.push([f, r, e]);
+                });
+              l.push([f]);
+            },
+            catch: function () {
+              return k && new k();
+            },
+            c: l,
+          },
+        };
+      })(window, document, []);
+    </script>
+    <script src="index.js" async defer></script>
+
+    <div class="container">
+      <div id="stacking-wrapper">
+        <form id="gif-overlay" class="hidden">
+          <div id="gif-search-container">
+            <input
+              id="gif-search-input"
+              type="text"
+              autocomplete="off"
+              placeholder="Search for GIFs"
+            />
+            <button id="close-button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                viewBox="0 0 24 24"
+                class="Icon icon-close"
+                aria-hidden="true"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" fill="none"></line>
+                <line fill="none" x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+
+          <div id="gif-search-results"></div>
+        </form>
+        <div id="talkjs-container" style="height: 500px; width: 420px">
+          <i>Loading chat...</i>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

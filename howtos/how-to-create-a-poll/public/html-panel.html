@@ -1,0 +1,41 @@
+<head>
+    <link rel="stylesheet" href="panel-style.css">
+</head>
+<body onload="loadVotes()">
+    <div class = "poll-div">
+        <p class="poll-title">Poll results:</p>
+        <div class = "total">
+            <div class="chart">
+                <div class="bar" id="bar1"><p id="yes-total">0</p></div>
+                <div class="bar" id="bar2"><p id="no-total">0</p></div>
+            </div>
+        </div> 
+    </div>
+</body>
+<script>
+    function loadVotes() {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+
+        // Display the vote counts in the HTML
+        document.getElementById("yes-total").innerText = 'Yes: ' + urlParams.get('yes');
+        document.getElementById("no-total").innerText = 'No: ' + urlParams.get('no');
+
+        // Get the bar chart bars
+        const bar1 = document.getElementById('bar1');
+        const bar2 = document.getElementById('bar2');
+
+        // Set data for the bar chart
+        const data1 = Number(urlParams.get('yes'));
+        const data2 = Number(urlParams.get('no')); 
+        const total = data1 + data2;
+
+        // Convert vote totals to percentages
+        percentage1 = (100 * data1) / total;
+        percentage2 = (100 * data2) / total;
+
+        // Set the width of the bars based on the data
+        bar1.style.width = `${percentage1}%`;
+        bar2.style.width = `${percentage2}%`;
+    }
+</script>

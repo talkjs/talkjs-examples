@@ -1,38 +1,38 @@
 import * as React from 'react';
-import {View, Button} from 'react-native';
+import {View, Button, ActivityIndicator} from 'react-native';
 
 import * as Talkjs from '@talkjs/react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import {
-  createNativeStackNavigator,
-  NativeStackScreenProps,
-} from '@react-navigation/native-stack';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+import type Talk from '@talkjs/react-native';
+import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 type RootStackParamList = {
-  Home: undefined;
+  Chatbox: {conversationData: Talk.ConversationData} | undefined;
   ConversationList: undefined;
-  Chatbox: {conversationBuilder: Talkjs.ConversationBuilder} | undefined;
+  Home: undefined;
 };
 
-const me = {
+const me: Talkjs.User = {
   id: '123456789',
   name: 'Alice',
   email: 'alice@example.com',
-  photoUrl: 'https://demo.talkjs.com/old_demo/img/alice.jpg',
+  photoUrl: 'https://demo.talkjs.com/marketplace_demo/img/alice.jpg',
   welcomeMessage: 'Hey there! How are you? :-)',
   role: 'default',
 };
 
-const other = {
+const other: Talkjs.User = {
   id: '432156789',
   name: 'Sebastian',
   email: 'Sebastian@example.com',
-  photoUrl: 'https://demo.talkjs.com/old_demo/img/sebastian.jpg',
+  photoUrl: 'https://demo.talkjs.com/marketplace_demo/img/sebastian.jpg',
   welcomeMessage: 'Hey, how can I help? https://google.com',
   role: 'default',
 };
 
-const conversationId = Talkjs.oneOnOneId(me.id, other.id);
+const conversationId = Talkjs.oneOnOneId(me, other);
 const conversationBuilder = Talkjs.getConversationBuilder(conversationId);
 
 conversationBuilder.setParticipant(me);
@@ -45,13 +45,16 @@ function ConversationList(
 ) {
   const onSelectConversation = (event: Talkjs.SelectConversationEvent) => {
     props.navigation.navigate('Chatbox', {
-      conversationBuilder: event.conversation,
+      conversationData: event.conversation,
     });
   };
 
   return (
     <View style={{flex: 1}}>
-      <Talkjs.Session appId="YOUR_APP_ID" me={me}>
+      <Talkjs.Session
+        appId="YOUR_APP_ID"
+        me={me}
+        enablePushNotifications={true}>
         <Talkjs.ConversationList onSelectConversation={onSelectConversation} />
       </Talkjs.Session>
     </View>
@@ -59,14 +62,46 @@ function ConversationList(
 }
 
 function Chatbox(props: NativeStackScreenProps<RootStackParamList, 'Chatbox'>) {
-  const conversation = props?.route?.params?.conversationBuilder;
+  const chatboxRef = React.useRef<Talkjs.ChatboxRef>(null);
+  const conversationData = props?.route?.params?.conversationData;
+  let conversation: Talkjs.ConversationBuilder | undefined;
+  if (conversationData) {
+    conversation = Talkjs.getConversationBuilder(conversationData.id);
+  }
+
+  React.useEffect(() => {
+    //chatboxRef!.current!.messageField.setText("Let's go!!!!");
+    //chatboxRef!.current!.messageField.setVisible(false);
+  });
 
   return (
     <View style={{flex: 1}}>
       <Talkjs.Session appId="YOUR_APP_ID" me={me}>
         <Talkjs.Chatbox
+          ref={chatboxRef}
           conversationBuilder={conversation ?? conversationBuilder}
-        />
+          showChatHeader={false}
+          highlightedWords={['he', 'hehe', 'you']}
+          messageFilter={{type: ['==', 'UserMessage']}}
+          onBlur={event => console.log('onBlur: ', event)}
+          onFocus={event => console.log('onFocus: ', event)}
+          onSendMessage={event => console.log('onSendMessage: ', event)}
+          loadingComponent={
+            <ActivityIndicator
+              size="large"
+              style={{
+                flex: 1,
+                alignSelf: 'center',
+                justifyContent: 'center',
+                width: '100%',
+                height: '100%',
+              }}
+            />
+          }>
+          <Talkjs.HtmlPanel
+            url={`data:text/html,${encodeURIComponent('<p>Html panel</p>')}`}
+          />
+        </Talkjs.Chatbox>
       </Talkjs.Session>
     </View>
   );

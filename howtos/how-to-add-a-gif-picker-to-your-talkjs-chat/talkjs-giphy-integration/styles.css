@@ -1,0 +1,87 @@
+body {
+  font-family: sans-serif;
+  font-family: "Inter", sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 30px;
+}
+
+#stacking-wrapper {
+  position: relative;
+}
+
+#gif-search-container {
+  display: flex;
+  align-items: center;
+}
+
+#gif-overlay {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 4rem;
+  left: 0;
+  right: 0;
+  bottom: 5rem;
+  padding: 1rem;
+  background-color: #ffffff;
+}
+
+#gif-overlay.hidden {
+  display: none;
+}
+
+#gif-search-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #d4d4d4;
+  color: #111;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+#gif-search-input:focus {
+  outline-width: 0;
+  border-color: #a3a3a3;
+}
+
+#gif-search-input::placeholder {
+  color: #a3a3a3;
+  opacity: 1;
+}
+
+#close-button {
+  font-size: 1.5rem;
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  width: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+}
+
+#gif-search-results {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 0.5rem;
+  row-gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  margin-top: 0.5rem;
+}
+
+#gif-search-results img {
+  cursor: pointer;
+  min-width: 0;
+  max-width: 100%;
+}
