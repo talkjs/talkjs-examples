@@ -12,7 +12,7 @@ To run this tutorial, you will need:
 ## How to run the tutorial
 
 1. Clone or download the project.
-2. Replace `<APP_ID>` in `rails-talkjs/app/javascript/application.js` with the value found in the **Settings** tab of your [TalkJS dashboard](https://talkjs.com/dashboard/login).
+2. Replace `<APP_ID>` in `rails-talkjs/app/javascript/conversation.js` with the value found in the **Settings** tab of your [TalkJS dashboard](https://talkjs.com/dashboard/login).
 3. Install Rails:
 
    ```bash

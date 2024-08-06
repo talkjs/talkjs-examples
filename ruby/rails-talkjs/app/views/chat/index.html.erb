@@ -1,5 +1,2 @@
-<h1>Chat</h1>
-
-<div id="talkjs-container" style="width: 90%; margin: 30px; height: 500px">
-  <i>Loading chat...</i>
-</div>
+<%= button_to 'Chat with Leroy', chat_conversation_path(@users.second.id), method: 'get', class: 'chat-button' %>
+<%= button_to 'Chat with Ryan', chat_conversation_path(@users.third.id), method: 'get', class: 'chat-button' %>

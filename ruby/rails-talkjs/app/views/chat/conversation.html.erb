@@ -1,0 +1,6 @@
+<%= javascript_import_module_tag "conversation" %>
+<div id="user-data" data-users="<%= @users.to_json %>"></div>
+<%= button_to "< John's Chats", chat_path , method: 'get', class: 'chat-button' %>
+<div id="talkjs-container" style="width: 90%; margin: 30px; height: 500px">
+  <i>Loading chat...</i>
+</div>
