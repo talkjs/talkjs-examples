@@ -1,6 +1,6 @@
 # TalkJS and Django example
 
-This is an example project for TalkJS's tutorial on [how to build a Django chat app with TalkJS](). This example demonstrates how to integrate TalkJS with a Python application that uses the Django framework.
+This is an example project for TalkJS's tutorial on [how to build a Django chat app with TalkJS](https://talkjs.com/resources/how-to-build-a-django-chat-app-with-talkjs/). This example demonstrates how to integrate TalkJS with a Python application that uses the Django framework.
 
 ## Prerequisites
 
