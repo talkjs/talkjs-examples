@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TalkJS and Django example</title>
+    <link rel="stylesheet" href="{% static 'talkjs/styles.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Inter"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <div id="chat-list-container">
+        <h1 id="chat-list-title">{{ me.user.first_name }}'s chats</h1>
+        {% for other in others %}
+        <div class="chat-item">
+          <img
+            class="avatar"
+            src="{{ other.photo_url }}"
+            alt="{{ other.user.first_name }}"
+          />
+          <button class="chat-button" data-username="{{ other.user.username }}">
+            Chat with {{ other.user.first_name }}
+          </button>
+        </div>
+        {% endfor %}
+      </div>
+    </main>
+  </body>
+
+  <script>
+    document.querySelectorAll(".chat-button").forEach((element) => {
+      element.addEventListener("click", function () {
+        var selectedUsername = event.target.getAttribute("data-username");
+        window.location.href =
+          "/chat/{{ me.user.username }}/" + selectedUsername;
+      });
+    });
+  </script>
+</html>
