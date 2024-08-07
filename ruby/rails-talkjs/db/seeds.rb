@@ -7,6 +7,6 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-User.create(name: "John", email: "christopher.garcia@example.com", id: "john.garcia", photoUrl: "https://talkjs.com/new-web/avatar-2.jpg", role: "default")
-User.create(name: "Leroy", email: "leroy.stanley@example.com", id: "leroy.stanley", photoUrl: "https://talkjs.com/new-web/avatar-3.jpg", role: "default")
-User.create(name: "Ray", email: "ray.mitchelle@example.com", id: "ray.mitchelle", photoUrl: "https://talkjs.com/new-web/avatar-4.jpg", role: "default")
+User.create(name: "John", email: "christopher.garcia@example.com", id: "john.garcia", photoUrl: "https://randomuser.me/api/portraits/men/3.jpg", role: "default")
+User.create(name: "Leroy", email: "leroy.stanley@example.com", id: "leroy.stanley", photoUrl: "https://randomuser.me/api/portraits/men/12.jpg", role: "default")
+User.create(name: "Ray", email: "ray.mitchelle@example.com", id: "ray.mitchelle", photoUrl: "https://randomuser.me/api/portraits/men/39.jpg", role: "default")
