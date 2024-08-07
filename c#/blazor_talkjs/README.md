@@ -11,7 +11,7 @@ This example demonstrates how to integrate TalkJS with a Blazor web application 
 To run this tutorial, you will need:
 
 - A [TalkJS account](https://talkjs.com/dashboard/login)
-- The [Visual Studio 2022](https://visualstudio.microsoft.com/vs/community/) with the `ASP.NET and Web Development workload` and .NET 8 runtime selected while intalling Visual Studio.
+- [Visual Studio 2022](https://visualstudio.microsoft.com/vs/community/) IDE with the `ASP.NET and Web Development workload` and .NET 8 runtime selected while intalling Visual Studio.
 
 ## How to run the tutorial
 
