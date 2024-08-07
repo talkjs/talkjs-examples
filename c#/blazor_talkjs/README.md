@@ -20,5 +20,5 @@ To run this tutorial, you will need:
    1. Open the `blazor_talkjs.sln` file.
    -This will open the project in Visual Studio
    1. In the `app.razor` file:
-   1. Replace `<APP_ID>` with the value found in the **Settings** tab of your [TalkJS dashboard](https://talkjs.com/dashboard/login). 
+   1. Replace `<APP_ID>` with your App Id which can be found in the **Settings** tab of your [TalkJS dashboard](https://talkjs.com/dashboard/login). 
    1. Click the green run button at top-center of visual studio to run the project. Your project should be render on the browser.
