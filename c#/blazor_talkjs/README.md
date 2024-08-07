@@ -4,7 +4,7 @@ This is an example project for TalkJS's tutorial on [how to integrate TalkJS wit
 
 This example demonstrates how to integrate TalkJS with a Blazor web application . There is one project present inside the repo:
 
-- The `Blazor Web App` Interactive Server project which uses TalkJS's [JavaScript SDK](https://talkjs.com/docs/Getting_Started/JavaScript_SDK) to create a one on one chat between users.
+- The `Blazor Web App` Interactive Server project which uses TalkJS's [JavaScript SDK](https://talkjs.com/docs/Getting_Started/JavaScript_SDK) to create a one on one chat.
 
 ## Prerequisites
 
