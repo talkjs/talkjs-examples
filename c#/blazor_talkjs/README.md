@@ -15,7 +15,6 @@ To run this tutorial project, you will need:
 - A code editor like [Visual Studio Code](https://code.visualstudio.com/download)/an IDE like [Visual Studio](https://visualstudio.microsoft.com/vs/community/) or any other code editor or Integrated Development Environment(IDE) 
 
 1. Clone or download the project.
-1. From the `blazor_talkjs` directory:
-   1. Open the `blazor_talkjs.sln` file. This will open the project in Visual Studio
+1. Open the project in your code editor or IDE.
    1. In the `app.razor` file, replace `<APP_ID>` with your App Id which can be found in the **Settings** tab of your [TalkJS dashboard](https://talkjs.com/dashboard/login). 
    1. From the `blazor_talkjs` directory run the command `dotnet run` to render your project on the browser.
