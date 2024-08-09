@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\c#\\blazor_talkjs\\blazor_talkjs\\blazor_talkjs.csproj",
+      "projectUniqueName": "D:\\Talkjs-examples\\talkjs-examples\\c#\\blazor_talkjs\\blazor_talkjs\\blazor_talkjs.csproj",
       "projectName": "blazor_talkjs",
-      "projectPath": "D:\\c#\\blazor_talkjs\\blazor_talkjs\\blazor_talkjs.csproj",
+      "projectPath": "D:\\Talkjs-examples\\talkjs-examples\\c#\\blazor_talkjs\\blazor_talkjs\\blazor_talkjs.csproj",
       "packagesPath": "C:\\Users\\METRINE\\.nuget\\packages\\",
-      "outputPath": "D:\\c#\\blazor_talkjs\\blazor_talkjs\\obj\\",
+      "outputPath": "D:\\Talkjs-examples\\talkjs-examples\\c#\\blazor_talkjs\\blazor_talkjs\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\METRINE\\AppData\\Roaming\\NuGet\\NuGet.Config",
