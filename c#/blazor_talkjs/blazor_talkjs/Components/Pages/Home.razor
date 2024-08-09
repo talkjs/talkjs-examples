@@ -11,15 +11,14 @@
 
 
 @code {
-    // private const string AppId = "tm0N20qA";   //Get your App Id from your TalkJS Dashboard after creating an account
     protected User Me { get; set; }
     protected User Other { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        // Populate Users
-        // In real world application this would come from the database
-        //First participant/You
+        // Populate users
+        // In a real world application, this would come from the database
+        // First participant (you):
         Me = new User()
             {
                 Id = 123456,
@@ -28,7 +27,7 @@
                 PhotoUrl = "https://talkjs.com/images/avatar-1.jpg",
                 WelcomeMessage = "Hey there! How are you? :-)",
             };
-        //Second participant/Whoever you're chatting with
+        // Second participant (the user you're chatting with):
         Other = new User()
             {
                 Id = 754321,
@@ -42,12 +41,12 @@
     }
 
 
-    private const string AppId = "<APP_ID>";   //Get your App Id from your TalkJS Dashboard after creating an account
+    private const string AppId = "<APP_ID>";   // Get your App Id from your TalkJS Dashboard after creating an account
 
-    //Call javascript that initializes TalkJS api
+    // Call javascript that initializes TalkJS api
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        //Only call javascript if both users and the app id is available
+        // Only call javascript if both users and the app id is available
         if (Me != null && Other != null && !string.IsNullOrEmpty(AppId))
         {
             await jsRuntime.InvokeVoidAsync("TalkWrapper.createConversation", AppId, Me, Other, "SAMPLE_CONVERSATION");
@@ -55,7 +54,7 @@
 
     }
 
-    //Model for a typical chat participant
+    // Model for a typical chat participant
     public class User
     {
         public long Id { get; set; }
