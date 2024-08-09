@@ -24,14 +24,15 @@
 
                 // Create a Talk.User object for me
                 const me = new Talk.User(myUser);
-                //Create a Talk.User object for other participant
-                const other = new Talk.User(otherUser);
 
                 // Create a Talk.Session object
                 const talkSession = new Talk.Session({
                     appId: appId,
                     me: me,
                 });
+
+                // Create a Talk.User object for other participant
+                const other = new Talk.User(otherUser);
 
                 // Create a conversation with a unique conversation ID
                 const conversation = talkSession.getOrCreateConversation(conversationId);
@@ -45,7 +46,7 @@
                 const chatbox = talkSession.createChatbox();
                 chatbox.select(conversation);
                 // Mount a conversation into a given div
-                //We're getting the div by id, make sure the div has the id specified i.e talkjs-container
+                // We're getting the div by id, make sure the div has the id specified i.e talkjs-container
                 chatbox.mount(document.getElementById('talkjs-container'));
             }
         }
@@ -54,7 +55,6 @@
 
     @* Initialize TalkJS *@
     @* Minified snippet to load TalkJS without delaying your page *@
-    @* This code needs to be below the Talk.Wrapper Code above for it work appropriately *@
     <script>
         (function (t, a, l, k, j, s) {
             s = a.createElement('script'); s.async = 1; s.src = 'https://cdn.talkjs.com/talk.js'; a.head.appendChild(s)
