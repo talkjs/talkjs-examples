@@ -116,3 +116,5 @@ dist
 .pnp.*
 
 .idea
+
+.vs
