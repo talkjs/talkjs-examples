@@ -33,7 +33,7 @@
     </script>
 
     <script>
-        // Wait for TalkJS to be ready and then call createConversation
+        // Wait for TalkJS to be ready and then call createConversation function
         window.TalkWrapper = {
             initializeAndCreateConversation: function (appId, myUser, otherUser, conversationId) {
                 Talk.ready.then(function () {
@@ -43,7 +43,7 @@
         };
 
 
-        //Create a conversation 
+        // Create a conversation 
         function createConversation(appId, myUser, otherUser, conversationId) {
 
                 // Create a Talk.User object for me
