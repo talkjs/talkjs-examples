@@ -46,13 +46,11 @@
     // Call javascript that initializes TalkJS api
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        // Wait for TalkJS to initialize
-        await Task.Delay(1500);
 
         // Only call javascript if both users and the app id is available
         if (Me != null && Other != null && !string.IsNullOrEmpty(AppId))
         {
-            await jsRuntime.InvokeVoidAsync("TalkWrapper.createConversation", AppId, Me, Other, "SAMPLE_CONVERSATION");
+            await jsRuntime.InvokeVoidAsync("TalkWrapper.initializeAndCreateConversation", AppId, Me, Other, "SAMPLE_CONVERSATION");
         }
 
     }
