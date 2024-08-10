@@ -43,11 +43,11 @@
 
     private const string AppId = "<APP_ID>";   // Get your App Id from your TalkJS Dashboard after creating an account
 
-    // Call javascript that initializes TalkJS api
+    // Call the JavaScript function that initializes TalkJS api
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
 
-        // Only call javascript if both users and the app id is available
+        // Only call the JavaScript function if both users and the app id are available
         if (Me != null && Other != null && !string.IsNullOrEmpty(AppId))
         {
             await jsRuntime.InvokeVoidAsync("TalkWrapper.initializeAndCreateConversation", AppId, Me, Other, "SAMPLE_CONVERSATION");
