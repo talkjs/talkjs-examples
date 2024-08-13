@@ -17,4 +17,4 @@ To run this tutorial project, you will need:
 1. Clone or download the project.
 1. Open the project in your code editor or IDE.
 1. In the `Home.razor` page, replace `<APP_ID>` in the `AppId` string property with your App Id which can be found in the **Settings** tab of your [TalkJS dashboard](https://talkjs.com/dashboard/login). 
-1. From the `blazor_talkjs` directory run the command `dotnet run` to render your project on the browser.
+1. From the `blazor_talkjs` directory run the command `dotnet watch` to render your project on the browser.
