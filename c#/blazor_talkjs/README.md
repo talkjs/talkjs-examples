@@ -1,6 +1,6 @@
 # TalkJS and Blazor integration tutorial example 
 
-This is an example project for TalkJS's tutorial on [how to integrate TalkJS with a Blazor app](update link).
+This is an example project for TalkJS's tutorial on [how to integrate TalkJS with a Blazor app](https://talkjs.com/resources/how-to-add-chat-to-a-blazor-web-app-with-talkjs/).
 
 This example demonstrates how to integrate TalkJS with a Blazor web application. There is one project present inside the repo:
 
