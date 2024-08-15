@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="blazor_talkjs.styles.css" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <HeadOutlet />
+</head>
+
+<body>
+    <Routes />
+    <script src="_framework/blazor.web.js"></script>
+
+    @* Initialize TalkJS *@
+    @* Minified snippet to load TalkJS without delaying your page *@
+    <script>
+            (function (t, a, l, k, j, s) {
+                s = a.createElement('script'); s.async = 1; s.src = 'https://cdn.talkjs.com/talk.js'; a.head.appendChild(s)
+                    ; k = t.Promise; t.Talk = {
+                        v: 3, ready: {
+                            then: function (f) {
+                                if (k) return new k(function (r, e) { l.push([f, r, e]) }); l
+                                    .push([f])
+                            }, catch: function () { return k && new k() }, c: l
+                        }
+                    };
+            })(window, document, []);
+    </script>
+
+    <script>
+        // Wait for TalkJS to be ready and then call createConversation function
+        window.TalkWrapper = {
+            initializeAndCreateConversation: function (appId, myUser, otherUser, conversationId) {
+                Talk.ready.then(function () {
+                    createConversation(appId, myUser, otherUser, conversationId);
+                });
+            }
+        };
+
+
+        // Create a conversation 
+        function createConversation(appId, myUser, otherUser, conversationId) {
+
+                // Create a Talk.User object for me
+                const me = new Talk.User(myUser);
+
+                // Create a Talk.Session object
+                const talkSession = new Talk.Session({
+                    appId: appId,
+                    me: me,
+                });
+
+                // Create a Talk.User object for other participant
+                const other = new Talk.User(otherUser);
+
+                // Create a conversation with a unique conversation ID
+                const conversation = talkSession.getOrCreateConversation(conversationId);
+
+                // Add myself as a participant
+                conversation.setParticipant(me);
+
+                // Add another participant
+                conversation.setParticipant(other);
+
+                const chatbox = talkSession.createChatbox();
+                chatbox.select(conversation);
+                // Mount a conversation into a given div
+                // We're getting the div by id, make sure the div has the id specified i.e talkjs-container
+                chatbox.mount(document.getElementById('talkjs-container'));
+            }
+    </script>
+
+</body>
+
+</html>
