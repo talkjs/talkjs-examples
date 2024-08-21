@@ -1,6 +1,6 @@
 # TalkJS and Rails example
 
-This is an example project for TalkJS's tutorial on [how to build a Rails chat app with TalkJS](). This example demonstrates how to integrate TalkJS with a Ruby application that uses the Rails framework.
+This is an example project for TalkJS's tutorial on [how to build a Rails chat app with TalkJS](https://talkjs.com/resources/how-to-add-chat-to-a-rails-app-with-talkjs/). This example demonstrates how to integrate TalkJS with a Ruby application that uses the Rails framework.
 
 ## Prerequisites
 
