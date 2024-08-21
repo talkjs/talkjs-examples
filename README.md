@@ -41,8 +41,10 @@ Examples of integrating with popular backend frameworks:
 
 - [Laravel](./php/laravel-integration/)
 - [Spring Boot](./java/spring-boot)
+- [Blazor](./csharp/blazor_talkjs/)
 - [Django](./django/)
 - [Flask](./flask)
+- [Rails](./ruby/rails-talkjs/)
 
 Using a library, framework or language not listed here? [Let us know](https://talkjs.com?ref=gh-example-readme&chatwithus=1) and we can help out.
 
