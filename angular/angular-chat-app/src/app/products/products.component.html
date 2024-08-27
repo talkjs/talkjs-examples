@@ -1,0 +1,15 @@
+<div class="row">
+  <ng-container *ngFor="let p of products$ | async; let i = index">
+    <div class="col custom-col">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src={{p.imageUrl}} alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{p.name}}</h5>
+          <p class="card-text">Price: ${{p.price}}</p>
+          <a href="#" class="btn btn-primary">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="(i+1)%4 === 0" class="w-100"></div>
+  </ng-container>
+</div>

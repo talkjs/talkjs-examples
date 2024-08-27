@@ -1,0 +1,10 @@
+.dropdown-toggle{
+  cursor: pointer;
+}
+*{
+  color: black;
+}
+.custom-navbar{
+  background-color: rgb(170, 218, 230);
+  padding: 20px;
+}
