@@ -12,7 +12,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-app.listen(3003, () => console.log("Server is up"));
+app.listen(3000, () => console.log("Server is up"));
 
 const axiosInstance = axios.create({
   baseURL: `${basePath}/v1/${appId}`,
@@ -123,7 +123,7 @@ async function handleThreadCreation(
 }
 
 // Endpoint for webhook listener for reply counts
-app.post("/populate-demo/update-reply-count", async (req, res) => {
+app.post("/update-reply-count", async (req, res) => {
   try {
     const data = req.body.data;
     const conversationId = data.conversation.id;
@@ -155,7 +155,7 @@ app.post("/populate-demo/update-reply-count", async (req, res) => {
 });
 
 // Endpoint to create new sub-conversation (thread)
-app.post("/populate-demo/new-thread", async (req, res) => {
+app.post("/new-thread", async (req, res) => {
   // Get details of the message we'll reply
   try {
     const parentMessageId = req.body.messageId;
