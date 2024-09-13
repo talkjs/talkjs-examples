@@ -22,15 +22,13 @@ const axiosInstance = axios.create({
   },
 });
 
-// Functions for threads endpoints
-// Get messages in given thread (sub-conversation)
+// Get messages in a given thread (sub-conversation)
 async function getMessages(messageId) {
   try {
-    //Sometimes getOrCreateConversation gets called slightly out of sync with this backend, which
-    //causes the thread functionality to break, so we have to put it here just once to make sure it exists and doesn't break
-    const putThread = await axiosInstance.put(
-      `/conversations/replyto_${messageId}/`
-    );
+    // Sometimes getOrCreateConversation gets called slightly out of sync with this backend,
+    // which causes the thread functionality to break, so we make a "put" call
+    // to create the conversation if it doesn't already exist
+    await axiosInstance.put(`/conversations/replyto_${messageId}/`);
     const response = await axiosInstance.get(
       `/conversations/replyto_${messageId}/messages`
     );
@@ -59,7 +57,6 @@ async function createThread(parentMessageId, parentConvId, participants) {
         },
       }
     );
-
     return response;
   } catch (error) {
     throw error;
@@ -107,7 +104,7 @@ async function handleThreadCreation(
       parentConvId,
       participants
     );
-    //might be that one of these gets called out of sync causing
+
     const duplicateMessageResponse = await duplicateParentMessageText(
       parentMessageId,
       messageText
@@ -145,10 +142,9 @@ app.post("/update-reply-count", async (req, res) => {
         await updateReplyCount(parentMessageId, parentConvId, messageCount - 1);
       }
     }
-    res.status(200).send("updated reply count");
   } catch (error) {
     res.status(500).send({
-      error: "there was an error updating the reply count: ",
+      error: "There was an error updating the reply count: ",
       details: error.message,
     });
   }
@@ -175,9 +171,8 @@ app.post("/new-thread", async (req, res) => {
         parentMessageText
       );
     }
-    res.status(200).send("created thread");
   } catch (error) {
-    res.status(400).send("there was an error creating a new thread: " + error);
+    res.status(400).send("There was an error creating a new thread: " + error);
   }
 });
 
