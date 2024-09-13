@@ -29,11 +29,11 @@ To run this tutorial, you will need:
       1. enable the "message.sent" option.
       1. Add the ngrok URL to **Webhook URLs** in the TalkJS dashboard, adding `/updateReplyCount`: `https://<YOUR_URL>.ngrok-free.app/updateReplyCount`
 1. Inside the `/backend` directory:
-   1. Replace `<APP_ID>` and `<TALKJS_SECRET_KEY>` in `server.js` with the values found in your [TalkJS dashboard](https://talkjs.com/dashboard/login).
+   1. Replace `<APP_ID>` and `<SECRET_KEY>` in `server.js` with the values found in the **Settings** tab of your [TalkJS dashboard](https://talkjs.com/dashboard/login).
    1. Install dependencies by running `npm install`
    1. Start the server with `npm run`
 1. Inside the `/src` directory:
-   1. Replace `appId` in `talkjsConfig.js` with the values found in your [TalkJS dashboard](https://talkjs.com/dashboard/login)
+   1. Replace `<APP_ID>` in `talkjsConfig.js` with the value found in the **Settings** tab of your [TalkJS dashboard](https://talkjs.com/dashboard/login)
    1. Install dependencies by either running `npm install`
    1. Start the app with `npm run`
 

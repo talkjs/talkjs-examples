@@ -1,5 +1,5 @@
 const talkJsConfig = {
-  appId: "tZNWA0Ox", // Replace this value with your app id
+  appId: "<APP_ID>", // Replace this value with your app id
   userId: "remoteWorkDemoUser", // The user id for the user from who's perspective you're using the UI
   /**
    * Below is a couple of example conversations to get you up and running.

@@ -3,8 +3,8 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import axios from "axios";
 
-const appId = "tZNWA0Ox";
-const secretKey = "sk_test_peHnYbD6WD0569ZBsF0CXwheo12hdsIP";
+const appId = "<APP_ID>";
+const secretKey = "<SECRET_KEY>";
 
 const basePath = "https://api.talkjs.com";
 
