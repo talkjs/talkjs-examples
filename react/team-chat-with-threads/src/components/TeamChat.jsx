@@ -132,7 +132,6 @@ const TeamChat = ({ unreadMessages }) => {
     if (chatboxRef.current?.isAlive) {
       chatboxRef.current.select(thread);
     }
-    // chatbox.select(thread);
 
     setHistoryStack((prevStack) => [
       ...prevStack,
