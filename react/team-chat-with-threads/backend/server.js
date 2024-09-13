@@ -12,7 +12,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-app.listen(3000, () => console.log("Server is up"));
+app.listen(3001, () => console.log("Server is up"));
 
 const axiosInstance = axios.create({
   baseURL: `${basePath}/v1/${appId}`,

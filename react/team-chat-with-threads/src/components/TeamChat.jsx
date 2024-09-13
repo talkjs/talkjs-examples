@@ -11,10 +11,37 @@ const TeamChat = ({ unreadMessages }) => {
   const [currentConversation, setCurrentConversation] =
     useState(initialConversation);
 
+  const [historyStack, setHistoryStack] = useState([]);
+
   const session = useSession();
   const chatboxRef = useRef(null);
 
   const [mobileChannelSelected, setMobileChannelSelected] = useState(true); //This is used to control whether or not to display the chatbox or the inbox while on mobile displays
+
+  const goBack = () => {
+    const conversation = historyStack[historyStack.length - 1];
+    setHistoryStack((prevStack) => prevStack.slice(0, -1));
+
+    if (session?.isAlive) {
+      const talkJsConversation = session.getOrCreateConversation(
+        conversation.id
+      );
+      const me = new Talk.User({
+        id: talkJsConfig.userId,
+        name: "Eulalia Van Helgen",
+        photoUrl: "https://talkjs.com/new-web/avatar-7.jpg",
+        role: "ThreadsUser",
+      });
+      talkJsConversation.setParticipant(me);
+
+      setMobileChannelSelected(true);
+      setCurrentConversation(conversation);
+
+      if (chatboxRef.current?.isAlive) {
+        chatboxRef.current.select(talkJsConversation);
+      }
+    }
+  };
 
   const changeConversation = (conversation) => {
     if (session?.isAlive) {
@@ -39,6 +66,85 @@ const TeamChat = ({ unreadMessages }) => {
     defaultConv.setParticipant(session.me);
     return defaultConv;
   }, []);
+
+  async function postMessageData(
+    messageId,
+    conversationId,
+    messageText,
+    participants
+  ) {
+    try {
+      const response = await fetch("http://localhost:3001/new-thread", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          messageId,
+          conversationId,
+          messageText,
+          participants,
+        }),
+      });
+
+      // if (!response.ok) {
+      //   throw new Error(errorData.error);
+      // }
+    } catch (error) {
+      console.log("there was an error creating a new thread");
+    }
+  }
+
+  const findConversation = (convId) => {
+    const allConversation = [
+      ...talkJsConfig.conversations.dms,
+      ...talkJsConfig.conversations.channels,
+    ];
+
+    const foundConversation = allConversation.find(
+      (conv) => conv.id === convId
+    );
+
+    if (!foundConversation) {
+      return {
+        id: convId,
+        subject: "Replies",
+        avatar: "",
+      };
+    } else {
+      return foundConversation;
+    }
+  };
+
+  const replyInThread = (event) => {
+    postMessageData(
+      event.message.id,
+      event.message.conversation.id,
+      event.message.body,
+      Object.keys(event.message.conversation.participants)
+    );
+
+    let thread = session.getOrCreateConversation("replyto_" + event.message.id);
+
+    const me = new Talk.User(talkJsConfig.userId);
+
+    thread.setParticipant(me);
+    if (chatboxRef.current?.isAlive) {
+      chatboxRef.current.select(thread);
+    }
+    // chatbox.select(thread);
+
+    setHistoryStack((prevStack) => [
+      ...prevStack,
+      findConversation(event.message.conversation.id),
+    ]);
+
+    setCurrentConversation({
+      id: "replyto_" + event.message.id,
+      avatar: "",
+      subject: "Replies",
+    });
+  };
 
   return (
     <>
@@ -115,6 +221,7 @@ const TeamChat = ({ unreadMessages }) => {
               conversation={currentConversation}
               mobileChannelSelected={mobileChannelSelected}
               setMobileChannelSelected={setMobileChannelSelected}
+              goBack={goBack}
             />
           </div>
 
@@ -122,8 +229,9 @@ const TeamChat = ({ unreadMessages }) => {
             syncConversation={syncConversation}
             className="h-full w-full overflow-hidden rounded-b-xl lg:rounded-none lg:rounded-br-xl"
             showChatHeader={false}
-            theme="team_chat"
+            theme="threads_chat"
             chatboxRef={chatboxRef}
+            onCustomMessageAction={replyInThread}
           />
         </div>
       </div>
