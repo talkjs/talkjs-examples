@@ -1,4 +1,5 @@
-## Intro
+## Team chat example
+
 This example shows you how to use React and TalkJS to create a team chat with channels (like Slack or Teams). It's similar to the [remote work demo](https://talkjs.com/demo/team-chat/) that you can try on our website. See our [How to use TalkJS to create a team chat with channels](https://talkjs.com/resources/how-to-use-talkjs-to-create-a-team-chat-with-channels/) tutorial for more details.
 
 ## Instructions
