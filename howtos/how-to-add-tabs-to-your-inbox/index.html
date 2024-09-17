@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>How to add tabs to your inbox</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+      <!-- minified snippet to load TalkJS without delaying your page -->
+    <script>
+        (function (t, a, l, k, j, s) {
+            s = a.createElement("script");
+            s.async = 1;
+            s.src = "https://cdn.talkjs.com/talk.js";
+            a.head.appendChild(s);
+            k = t.Promise;
+            t.Talk = {
+                v: 3,
+                ready: {
+                    then: function (f) {
+                        if (k)
+                            return new k(function (r, e) {
+                                l.push([f, r, e]);
+                            });
+                        l.push([f]);
+                    },
+                    catch: function () {
+                        return k && new k();
+                    },
+                    c: l,
+                },
+            };
+        })(window, document, []);
+    </script>
+
+    <script src="index.js" async defer></script>
+
+    <!-- container element in which TalkJS will display a chat UI -->
+    <div id="main-wrapper">
+        <div id="tab-navigation">
+            <button id="tab-chat" class="tab active-tab"><i class="fas fa-comments"></i> Chats</button>
+            <button id="tab-contacts" class="tab"><i class="fas fa-user"></i> Contacts</button>
+            <button id="tab-groups" class="tab"><i class="fas fa-users"></i> Groups</button>
+        </div>
+        <div id="talkjs-container">
+            <i>Loading...</i>
+        </div>
+    </div>
+        
+</body>
+</html>

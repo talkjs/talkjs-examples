@@ -1,0 +1,55 @@
+#main-wrapper {
+  width: 700px;
+  margin: 10px auto;
+}
+
+#tab-navigation {
+  display: flex;
+  justify-content: flex-start;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.tab {
+  padding: 12px 24px;
+  cursor: pointer;
+  border: none;
+  background-color: #ececec;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  margin: 0px 5px;
+  gap: 8px;
+}
+
+.tab i {
+  font-size: 16px;
+}
+
+.tab:hover {
+  color: #007DF9;
+}
+
+.active-tab {
+  background-color: #007DF9;
+  color: white;
+}
+
+.active-tab:hover {
+  background-color: #014e9b;
+  color: white;
+}
+
+#talkjs-container {
+  height: 500px;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  padding: 20px;
+}
