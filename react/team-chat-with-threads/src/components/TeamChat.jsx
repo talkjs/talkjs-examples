@@ -124,25 +124,28 @@ const TeamChat = ({ unreadMessages }) => {
       Object.keys(event.message.conversation.participants)
     );
 
-    let thread = session.getOrCreateConversation("replyto_" + event.message.id);
+    if (session?.isAlive) {
+      let thread = session.getOrCreateConversation(
+        "replyto_" + event.message.id
+      );
+      const me = new Talk.User(talkJsConfig.userId);
+      thread.setParticipant(me);
 
-    const me = new Talk.User(talkJsConfig.userId);
+      if (chatboxRef.current?.isAlive) {
+        chatboxRef.current.select(thread);
+      }
 
-    thread.setParticipant(me);
-    if (chatboxRef.current?.isAlive) {
-      chatboxRef.current.select(thread);
+      setCurrentConversation({
+        id: "replyto_" + event.message.id,
+        avatar: "",
+        subject: "Replies",
+      });
+
+      setHistoryStack((prevStack) => [
+        ...prevStack,
+        findConversation(event.message.conversation.id),
+      ]);
     }
-
-    setHistoryStack((prevStack) => [
-      ...prevStack,
-      findConversation(event.message.conversation.id),
-    ]);
-
-    setCurrentConversation({
-      id: "replyto_" + event.message.id,
-      avatar: "",
-      subject: "Replies",
-    });
   };
 
   return (
