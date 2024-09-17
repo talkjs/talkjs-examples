@@ -1,5 +1,4 @@
 import express from "express";
-import bodyParser from "body-parser";
 import cors from "cors";
 import axios from "axios";
 
@@ -11,6 +10,7 @@ const basePath = "https://api.talkjs.com";
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.json());
 
 app.listen(3001, () => console.log("Server is up"));
 
