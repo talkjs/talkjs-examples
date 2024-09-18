@@ -80,17 +80,7 @@ async function duplicateParentMessageText(parentMessageId, messageText) {
   }
 }
 
-// Update parent message with a reply count custom field
-async function updateReplyCount(messageId, conversationId, count) {
-  const response = await axiosInstance.put(
-    `/conversations/${conversationId}/messages/${messageId}`,
-    {
-      custom: { replyCount: count.toString() },
-    }
-  );
-  return response;
-}
-
+// Create thread and duplicate the parent message at the start
 async function handleThreadCreation(
   parentMessageId,
   parentConvId,
@@ -117,6 +107,43 @@ async function handleThreadCreation(
     throw error;
   }
 }
+
+// Update parent message with a reply count custom field
+async function updateReplyCount(messageId, conversationId, count) {
+  const response = await axiosInstance.put(
+    `/conversations/${conversationId}/messages/${messageId}`,
+    {
+      custom: { replyCount: count.toString() },
+    }
+  );
+  return response;
+}
+
+// Endpoint to create new sub-conversation (thread)
+app.post("/new-thread", async (req, res) => {
+  // Get details of the message we'll reply
+  try {
+    const parentMessageId = req.body.messageId;
+    const parentConvId = req.body.conversationId;
+    const parentMessageText = req.body.messageText;
+    const parentParticipants = req.body.participants;
+
+    const response = await getMessages(parentMessageId);
+    const messages = await response.data;
+
+    // Create a message with the text of the parent message if one doesn't already exist
+    if (!messages.data?.length) {
+      await handleThreadCreation(
+        parentMessageId,
+        parentConvId,
+        parentParticipants,
+        parentMessageText
+      );
+    }
+  } catch (error) {
+    res.status(400).send("There was an error creating a new thread: " + error);
+  }
+});
 
 // Endpoint for webhook listener for reply counts
 app.post("/update-reply-count", async (req, res) => {
@@ -146,32 +173,6 @@ app.post("/update-reply-count", async (req, res) => {
       error: "There was an error updating the reply count: ",
       details: error.message,
     });
-  }
-});
-
-// Endpoint to create new sub-conversation (thread)
-app.post("/new-thread", async (req, res) => {
-  // Get details of the message we'll reply
-  try {
-    const parentMessageId = req.body.messageId;
-    const parentConvId = req.body.conversationId;
-    const parentMessageText = req.body.messageText;
-    const parentParticipants = req.body.participants;
-
-    const response = await getMessages(parentMessageId);
-    const messages = await response.data;
-
-    // Create a message with the text of the parent message if one doesn't already exist
-    if (!messages.data?.length) {
-      await handleThreadCreation(
-        parentMessageId,
-        parentConvId,
-        parentParticipants,
-        parentMessageText
-      );
-    }
-  } catch (error) {
-    res.status(400).send("There was an error creating a new thread: " + error);
   }
 });
 
