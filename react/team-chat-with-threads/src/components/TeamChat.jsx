@@ -11,12 +11,12 @@ const TeamChat = ({ unreadMessages }) => {
   const [currentConversation, setCurrentConversation] =
     useState(initialConversation);
 
-  const [historyStack, setHistoryStack] = useState([]);
-
   const session = useSession();
   const chatboxRef = useRef(null);
 
   const [mobileChannelSelected, setMobileChannelSelected] = useState(true); //This is used to control whether or not to display the chatbox or the inbox while on mobile displays
+
+  const [historyStack, setHistoryStack] = useState([]);
 
   const goBack = () => {
     const conversation = historyStack[historyStack.length - 1];
