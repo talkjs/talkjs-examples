@@ -18,11 +18,9 @@ To run this tutorial, you will need:
 1. Clone or download the project
 1. Start ngrok with `ngrok http 3001`. You should see a forwarding URL which is something like `https://<YOUR_URL>.ngrok-free.app`
 1. In the TalkJS dashboard:
-   1. In the **Themes** tab:
-      1. Clone the `team_chat` theme to create a new `threads_chat` theme
-      1. Select to **Edit** `threads_chat` and replace the `UserMessage` template with the version in `themes/UserMessage.txt`.
+   1. In the **Themes** tab, select to **Edit** the `team_chat` theme and replace the `UserMessage` template with the version in `themes/UserMessage.txt`.
    1. In the **Chat UI** tab:
-      1. Select the `default` role and select to use the `threads_chat` theme
+      1. Select the `default` role and select to use the `team_chat` theme
       1. Under **Built-in message actions**, select "None" for the **Reply** action
       1. Under **Custom message actions**, create a new action with a name of "replyInThread" and a label of "Reply in thread", available to all messages for users with write permission
    1. In the **Settings** tab under **Webhooks**:

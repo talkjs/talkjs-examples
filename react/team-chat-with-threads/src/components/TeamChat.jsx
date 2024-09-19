@@ -231,7 +231,7 @@ const TeamChat = ({ unreadMessages }) => {
             syncConversation={syncConversation}
             className="h-full w-full overflow-hidden rounded-b-xl lg:rounded-none lg:rounded-br-xl"
             showChatHeader={false}
-            theme="threads_chat"
+            theme="team_chat"
             chatboxRef={chatboxRef}
             onCustomMessageAction={replyInThread}
           />
