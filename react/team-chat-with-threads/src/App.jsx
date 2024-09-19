@@ -13,7 +13,7 @@ function App() {
         id: talkJsConfig.userId,
         name: "Eulalia van Helgen",
         photoUrl: "https://talkjs.com/new-web/avatar-7.jpg",
-        role: "threads_user",
+        role: "default",
       }),
     []
   );

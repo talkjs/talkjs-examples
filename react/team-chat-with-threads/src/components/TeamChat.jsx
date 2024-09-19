@@ -30,7 +30,7 @@ const TeamChat = ({ unreadMessages }) => {
         id: talkJsConfig.userId,
         name: "Eulalia Van Helgen",
         photoUrl: "https://talkjs.com/new-web/avatar-7.jpg",
-        role: "threads_user",
+        role: "default",
       });
       talkJsConversation.setParticipant(me);
 
