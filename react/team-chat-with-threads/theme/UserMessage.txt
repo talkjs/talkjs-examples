@@ -1,0 +1,347 @@
+<!--
+Renders a message sent by a user.
+-->
+<template class="template">
+    <div class="message-container">
+    <div class="message-row {{ sender.isMe | then: 'by-me' | else: 'by-other' }} {{ body.type }} {{ sender.id == previousSenderId | then: 'previous-same' }}">
+        <Avatar t:if="{{ sender.id != previousSenderId }}"
+            photoUrl="{{ sender.photoUrl }}"
+        />
+        <t:set showAuthor="{{true}}" />
+        <div class="message {{ body.hasThumbnail | then: 'has-thumbnail' }} {{ showAuthor | then: 'has-author' }} {{hasLinkPreviews | then: 'has-link-previews'}}">
+
+            <ActionMenu class="action-menu"><Icon type="verticalDots" /></ActionMenu>
+
+            <div t:if="{{ showAuthor }}" class="message-author">
+                <p>{{ sender.name }}</p>
+                <p class="timestamp"><TimeAgo timestamp="{{ timestamp }}"/></p>
+            </div>
+
+            <!-- When there's no author name shown, the action menu icon may appear on top of any media previews in the message body, so darken the area below it. -->
+            <t:set darkenMenuArea="{{ showAuthor | then: false | else: showActionMenu }}" />
+            <MessageBody body="{{ body }}" editedAt="{{ editedAt }}" floatTimestamp="auto"
+                         isLongEmailMessage="{{isLongEmailMessage}}" darkenMenuArea="{{ darkenMenuArea }}" isSystemMessage="{{ false }}"
+                         hasReferencedMessage="{{ hasReferencedMessage }}" conversationId="{{ conversation.id }}" 
+                         replyCount="{{ conversation.custom.replyCount }}" isWelcomeMessage="{{ isWelcomeMessage }}" />
+
+        </div>
+    </div>
+    <div t:if="{{ reactions and reactions.length > 0 }}" class="emoji-reactions {{ sender.isMe | then: 'by-me' | else: 'by-other' }}">
+        <EmojiReactionButton t:for="{{ reaction in reactions }}" t:key="{{ reaction.emoji }}" class="emoji-reaction {{ reaction.iReacted | then: 'i-reacted' }}" reaction="{{ reaction }}">
+            <span class="reaction">{{ reaction.emoji }}</span>
+            <span class="num-reactions" t:if="{{ reaction.numReactions > 1 }}">{{ reaction.numReactions }}</span>
+        </EmojiReactionButton>
+
+        <AddEmojiReaction class="add-emoji-reaction" t:if="{{ canReact }}">
+            <Icon type="addEmoji" class="icon" />
+        </AddEmojiReaction>
+        </div>
+
+        <div t:if="{{ isWelcomeMessage }}"></div>
+        <div t:else>
+            <ActionLink t:if="{{ custom.replyCount > 1 }}" class="reply-box-link" action="replyInThread">
+                <div class="reply-box">
+                    <a  class="reply-box-link">{{ custom.replyCount }} replies</a> 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 64 64" class="Icon icon-chevronLeft view-thread" aria-hidden="true"><path d="M41.4157 12.5837C41.6019 12.7695 41.7497 12.9902 41.8505 13.2331C41.9513 13.4761 42.0032 13.7366 42.0032 13.9997C42.0032 14.2627 41.9513 14.5232 41.8505 14.7662C41.7497 15.0092 41.6019 15.2299 41.4157 15.4157L24.8277 31.9997L41.4157 48.5837C41.7912 48.9592 42.0022 49.4686 42.0022 49.9997C42.0022 50.5308 41.7912 51.0401 41.4157 51.4157C41.0401 51.7912 40.5308 52.0022 39.9997 52.0022C39.4686 52.0022 38.9592 51.7912 38.5837 51.4157L20.5837 33.4157C20.3974 33.2299 20.2496 33.0092 20.1488 32.7662C20.048 32.5232 19.9961 32.2627 19.9961 31.9997C19.9961 31.7366 20.048 31.4761 20.1488 31.2331C20.2496 30.9902 20.3974 30.7695 20.5837 30.5837L38.5837 12.5837C38.7695 12.3974 38.9902 12.2496 39.2331 12.1488C39.4761 12.048 39.7366 11.9961 39.9997 11.9961C40.2627 11.9961 40.5232 12.048 40.7662 12.1488C41.0092 12.2496 41.2299 12.3974 41.4157 12.5837Z" fill="currentColor"></path></svg>
+                </div>
+            </ActionLink>
+            <ActionLink t:else-if="{{ custom.replyCount > 0 }}" class="reply-box-link" action="replyInThread">
+                <div class="reply-box">
+                    <a  class="reply-box-link">{{ custom.replyCount }} reply</a>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 64 64" class="Icon icon-chevronLeft view-thread" aria-hidden="true"><path d="M41.4157 12.5837C41.6019 12.7695 41.7497 12.9902 41.8505 13.2331C41.9513 13.4761 42.0032 13.7366 42.0032 13.9997C42.0032 14.2627 41.9513 14.5232 41.8505 14.7662C41.7497 15.0092 41.6019 15.2299 41.4157 15.4157L24.8277 31.9997L41.4157 48.5837C41.7912 48.9592 42.0022 49.4686 42.0022 49.9997C42.0022 50.5308 41.7912 51.0401 41.4157 51.4157C41.0401 51.7912 40.5308 52.0022 39.9997 52.0022C39.4686 52.0022 38.9592 51.7912 38.5837 51.4157L20.5837 33.4157C20.3974 33.2299 20.2496 33.0092 20.1488 32.7662C20.048 32.5232 19.9961 32.2627 19.9961 31.9997C19.9961 31.7366 20.048 31.4761 20.1488 31.2331C20.2496 30.9902 20.3974 30.7695 20.5837 30.5837L38.5837 12.5837C38.7695 12.3974 38.9902 12.2496 39.2331 12.1488C39.4761 12.048 39.7366 11.9961 39.9997 11.9961C40.2627 11.9961 40.5232 12.048 40.7662 12.1488C41.0092 12.2496 41.2299 12.3974 41.4157 12.5837Z" fill="currentColor"></path></svg>   
+                </div>
+            </ActionLink>
+        </div>
+    </div>  
+</template>
+<style scoped>
+ActionLink {
+    text-decoration: none;
+}
+
+.reply-box {
+    margin: -0.5rem 0 0 3.35rem;
+    padding: 0.325rem 0.325rem 0.325rem 0.625rem;
+    border: solid transparent 1px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.reply-box:hover {
+    border: solid #737373 1px;
+    border-radius: 0.375rem;
+    background-color: #111
+}
+
+.reply-box-link {
+    font-weight: bold;
+    text-decoration: none;
+    color: #3291FF;
+}
+
+.message-container:hover .reply-box-link {
+    color: #a3a3a3;
+}
+
+.reply-box:hover .reply-box-link {
+    color: #f7f7f7;
+}
+
+.reply-box:hover .reply-box-link:after {
+    content: "View thread";
+    font-weight: normal;
+    margin-left: 0.75rem;
+    font-size: 12px;
+    color: #a3a3a3;
+}
+
+.reply-box-span {
+    color: #a3a3a3;
+}
+
+.reply-box .reply-box-span::after {
+    content: "Last reply date"
+}
+
+.reply-box:hover .reply-box-span::after {
+    content: "View thread"
+}
+
+.view-thread {
+    width: 1.25rem;
+    height: 1.25rem;
+    rotate: 180deg;
+    display: none;
+}
+
+.reply-box:hover .view-thread {
+    display: block;
+}
+
+.message-container {
+    padding: 0.5rem;
+}
+
+.message-container:hover {
+    background-color: #262626;
+    border-radius: 0.5rem;
+}
+
+.message-row {
+    display: flex;
+    /* Align the avatar and the message centrally, but if the message's height
+       is greater than the avatar we will align it to the top
+       -- See Avatar.template for how this is achieved */
+    align-items: center;
+}
+
+.message-row.previous-same {
+    margin-top: 0.25rem;
+}
+.message-row.by-me {
+    flex-direction: row;
+}
+
+.message {
+    white-space: normal;
+    overflow: hidden;
+    border-width: 1px;
+    border-style: solid;
+    word-wrap: break-word;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 100%;
+    border-color: transparent;
+    background-color: transparent;
+    color: #fff;
+}
+
+.by-me button[data-action],
+.by-other button[data-action] {
+    border-radius: 0.375rem;
+    font-size: inherit;
+    margin: 1px 0;
+    padding: 0.25rem 0.325rem;
+    cursor: pointer;
+    transition: color 200ms ease-in-out, background-color 200ms ease-in-out, border 200ms ease-in-out;
+}
+
+.by-me button[data-action],
+.by-other button[data-action] {
+    color: white;
+    background-color: #525252;
+    border: 1px solid #737373;
+}
+
+.by-me button[data-action]:hover,
+.by-other button[data-action]:hover {
+    color: #111;
+    background-color: #f7f7f7;
+    border: 1px solid #f7f7f7;
+}
+
+.by-me button[data-action]:active,
+.by-other button[data-action]:active {
+    color: #111;
+    background-color: #ececec;
+    border: 1px solid #ececec;
+}
+
+.by-me button[data-action]:focus-visible,
+.by-other button[data-action]:focus-visible {
+    outline: #A3A3A3 solid 2px;
+    outline-offset: 2px;
+}
+
+.has-avatar-spacer .message {
+    max-width: calc(100% - 3rem - 0.25rem - 0.25rem);
+}
+/* change some styles if the message is by me */
+.by-me .message {
+    border-color: transparent;
+    background-color: transparent;
+    color: #fff;
+    /* Space between avatar and the message */
+    margin-left: 0.15rem;
+}
+
+.has-link-previews {
+    width: 100%;
+}
+
+/*
+override some properties for avatars showing/hiding
+- balloons get whatever width is left after the avatar columns on both sides
+- we could avoid some of this math at the cost of inserting another div, but we prefer a lighter DOM.
+*/
+/* When multiple messages are sent by the same user but
+   only 1 avatar is displayed, so we need a space  */
+.by-other.previous-same {
+    /* Avatar width (see Avatar component) */
+    padding-left: 3rem;
+}
+.by-me.previous-same {
+    /* Avatar width (see Avatar component) */
+    padding-right: 3rem;
+}
+
+/* Set some widths and defaults on messages that need it */
+.message.has-thumbnail {
+    width: 100%;
+}
+
+.message-author {
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 0 1rem 0 1rem;
+    /* The message text has a 0.75rem top padding (except if there's a thumbnail).
+       If there's a message author, then we don't want that, so this cancels it out */
+    margin-bottom: -0.75rem;
+    color: #a3a3a3;
+}
+
+.timestamp {
+    margin-left: 1rem;
+    font-weight: normal;
+}
+
+/* If there's a thumbnail, show the author name in a bar above the thumbnail */
+.has-thumbnail .message-author {
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.typing-indicator .message {
+    width: max-content;
+}
+
+:root .typing-indicator.by-me .message {
+    float: right;
+}
+
+.action-menu {
+    border: 1px solid #737373;
+    border-radius: 0.25rem;
+    color: inherit;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    /* Increase the clickable area */
+    padding: 0.325rem;
+    margin: 0.1rem;
+    z-index: 1;
+}
+
+.by-me .action-menu {
+    background-color: #404040;
+}
+.by-other .action-menu {
+    background-color: #404040;
+}
+
+.message.has-thumbnail .action-menu {
+    box-shadow: none;
+    background: none;
+}
+
+.emoji-reactions {
+    margin-top: -0.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+}
+.emoji-reactions.by-me {
+    justify-content: flex-start;
+    margin-left: 4.25rem;
+}
+.emoji-reactions.by-other {
+    margin-left: 4.25rem;
+}
+.emoji-reaction {
+    border: 1px solid transparent;
+    margin: 0;
+    padding: 0.2rem 0.55rem;
+    border-radius: 8rem;
+    background-color: #404040;
+}
+.emoji-reaction.i-reacted {
+    background: #007df9;
+    border: 1px solid transparent;
+    color: white;
+}
+.emoji-reaction.i-reacted:hover {
+    background: #007df9;
+    border: 1px solid #737373;
+}
+.emoji-reaction span {
+    display: inline-block;
+    vertical-align: middle;
+}
+.emoji-reaction .reaction {
+    font-size: 1.25rem;
+}
+.emoji-reaction .num-reactions {
+    padding-left: 0.25rem;
+    font-size: 0.85rem;
+}
+.add-emoji-reaction {
+    border: 1px solid transparent;
+    margin: 0rem;
+    padding: 0.15rem 0.75rem;
+    border-radius: 8rem;
+    background-color: #404040;
+    color: white;
+}
+.emoji-reaction:hover,
+.add-emoji-reaction:hover {
+    border: 1px solid #737373;
+}
+.add-emoji-reaction .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+</style>

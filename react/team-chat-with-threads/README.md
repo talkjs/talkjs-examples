@@ -18,8 +18,9 @@ To run this tutorial, you will need:
 1. Clone or download the project
 1. Start ngrok with `ngrok http 3001`. You should see a forwarding URL which is something like `https://<YOUR_URL>.ngrok-free.app`
 1. In the TalkJS dashboard:
-   1. In the **Themes** tab, clone the `team_chat` theme to create a new `threads_chat` theme
-   <!-- 1. Make changes to `UserMessage` !! link to tutorial -->
+   1. In the **Themes** tab:
+      1. Clone the `team_chat` theme to create a new `threads_chat` theme
+      1. Select to **Edit** `threads_chat` and replace the `UserMessage` template with the version in `themes/UserMessage.txt`.
    1. In the **Chat UI** tab:
       1. Select **Edit role** and create a new `threads_user` role
       1. Select the `threads_user` role and select to use the `threads_chat` theme
