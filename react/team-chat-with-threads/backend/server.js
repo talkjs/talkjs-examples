@@ -1,10 +1,8 @@
 import express from "express";
 import cors from "cors";
-import axios from "axios";
 
 const appId = "<APP_ID>";
 const secretKey = "<SECRET_KEY>";
-
 const basePath = "https://api.talkjs.com";
 
 const app = express();
@@ -13,29 +11,36 @@ app.use(express.json());
 
 app.listen(3001, () => console.log("Server is up"));
 
-const axiosInstance = axios.create({
-  baseURL: `${basePath}/v1/${appId}`,
-  headers: {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${secretKey}`,
-  },
-});
-
 // Get messages in a given thread (sub-conversation)
 async function getMessages(messageId) {
   try {
     // Sometimes getOrCreateConversation gets called slightly out of sync with this backend,
     // which causes the thread functionality to break, so we make a "put" call
     // to create the conversation if it doesn't already exist
-    await axiosInstance.put(`/conversations/replyto_${messageId}/`);
-    const response = await axiosInstance.get(
-      `/conversations/replyto_${messageId}/messages`
+
+    await fetch(`${basePath}/v1/${appId}/conversations/replyto_${messageId}/`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${secretKey}`,
+      },
+    });
+
+    const response = await fetch(
+      `${basePath}/v1/${appId}/conversations/replyto_${messageId}/messages`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${secretKey}`,
+        },
+      }
     );
 
-    if (!response.data) {
+    const data = await response.json();
+    if (!data) {
       return { data: [] };
     } else {
-      return response;
+      return { data };
     }
   } catch (error) {
     throw error;
@@ -45,18 +50,26 @@ async function getMessages(messageId) {
 // Create a thread as a new conversation
 async function createThread(parentMessageId, parentConvId, participants) {
   try {
-    const response = await axiosInstance.put(
-      `/conversations/replyto_${parentMessageId}`,
+    const response = await fetch(
+      `${basePath}/v1/${appId}/conversations/replyto_${parentMessageId}`,
       {
-        participants: participants,
-        subject: "Replies",
-        custom: {
-          parentConvId: parentConvId,
-          parentMessageId: parentMessageId,
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${secretKey}`,
         },
+
+        body: JSON.stringify({
+          participants: participants,
+          subject: "Replies",
+          custom: {
+            parentConvId: parentConvId,
+            parentMessageId: parentMessageId,
+          },
+        }),
       }
     );
-    return response;
+    return response.json();
   } catch (error) {
     throw error;
   }
@@ -65,16 +78,24 @@ async function createThread(parentMessageId, parentConvId, participants) {
 // Send message to the new thread with text of parent message
 async function duplicateParentMessageText(parentMessageId, messageText) {
   try {
-    const response = await axiosInstance.post(
-      `/conversations/replyto_${parentMessageId}/messages`,
-      [
-        {
-          text: messageText,
-          type: "SystemMessage",
+    const response = await fetch(
+      `${basePath}/v1/${appId}/conversations/replyto_${parentMessageId}/messages`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${secretKey}`,
         },
-      ]
+
+        body: JSON.stringify([
+          {
+            text: messageText,
+            type: "SystemMessage",
+          },
+        ]),
+      }
     );
-    return response;
+    return response.json();
   } catch (error) {
     throw error;
   }
@@ -100,8 +121,8 @@ async function handleThreadCreation(
     );
 
     return {
-      thread: createThreadResponse.data,
-      duplicateMessage: duplicateMessageResponse.data,
+      thread: createThreadResponse,
+      duplicateMessage: duplicateMessageResponse,
     };
   } catch (error) {
     throw error;
@@ -110,13 +131,21 @@ async function handleThreadCreation(
 
 // Update parent message with a reply count custom field
 async function updateReplyCount(messageId, conversationId, count) {
-  const response = await axiosInstance.put(
-    `/conversations/${conversationId}/messages/${messageId}`,
+  const response = await fetch(
+    `${basePath}/v1/${appId}/conversations/${conversationId}/messages/${messageId}`,
     {
-      custom: { replyCount: count.toString() },
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${secretKey}`,
+      },
+
+      body: JSON.stringify({
+        custom: { replyCount: count.toString() },
+      }),
     }
   );
-  return response;
+  return response.json();
 }
 
 // Endpoint to create new sub-conversation (thread)
