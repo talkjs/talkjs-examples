@@ -18,7 +18,7 @@ To run this tutorial, you will need:
 1. Clone or download the project
 1. Start ngrok with `ngrok http 3001`. You should see a forwarding URL which is something like `https://<YOUR_URL>.ngrok-free.app`
 1. In the TalkJS dashboard:
-   1. In the **Themes** tab, select to **Edit** the `team_chat` theme and replace the `UserMessage` template with the version in `themes/UserMessage.txt`.
+   1. In the **Themes** tab, select to **Edit** the `team_chat` theme and replace the `UserMessage` template with the version in `theme/UserMessage.txt`.
    1. In the **Chat UI** tab:
       1. Select the `default` role and select to use the `team_chat` theme
       1. Under **Built-in message actions**, select "None" for the **Reply** action
@@ -29,11 +29,11 @@ To run this tutorial, you will need:
 1. Inside the `/backend` directory:
    1. Replace `<APP_ID>` and `<SECRET_KEY>` in `server.js` with the values found in the **Settings** tab of your [TalkJS dashboard](https://talkjs.com/dashboard/login).
    1. Install dependencies by running `npm install`
-   1. Start the server with `npm run`
+   1. Start the server with `npm start`
 1. Inside the `/src` directory:
    1. Replace `<APP_ID>` in `talkjsConfig.js` with the value found in the **Settings** tab of your [TalkJS dashboard](https://talkjs.com/dashboard/login)
    1. Install dependencies by either running `npm install`
-   1. Start the app with `npm run`
+   1. Start the app with `npm start`
 
 You can now view your app at localhost:3000.
 
