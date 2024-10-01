@@ -17,7 +17,6 @@ async function getMessages(messageId) {
     // Sometimes getOrCreateConversation gets called slightly out of sync with this backend,
     // which causes the thread functionality to break, so we make a "put" call
     // to create the conversation if it doesn't already exist
-
     await fetch(`${basePath}/v1/${appId}/conversations/replyto_${messageId}/`, {
       method: "PUT",
       headers: {
@@ -26,6 +25,7 @@ async function getMessages(messageId) {
       },
     });
 
+    // Get messages from the conversation
     const response = await fetch(
       `${basePath}/v1/${appId}/conversations/replyto_${messageId}/messages`,
       {
