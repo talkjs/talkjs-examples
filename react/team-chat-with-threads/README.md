@@ -25,7 +25,7 @@ To run this tutorial, you will need:
       1. Under **Custom message actions**, create a new action with a name of "replyInThread" and a label of "Reply in thread", available to all messages for users with write permission
    1. In the **Settings** tab under **Webhooks**:
       1. enable the "message.sent" option.
-      1. Add the ngrok URL to **Webhook URLs** in the TalkJS dashboard, adding `/updateReplyCount`: `https://<YOUR_URL>.ngrok-free.app/updateReplyCount`
+      1. Add the ngrok URL to **Webhook URLs** in the TalkJS dashboard, adding `/update-reply-count`: `https://<YOUR_URL>.ngrok-free.app/update-reply-count`
 1. Inside the `/backend` directory:
    1. Replace `<APP_ID>` and `<SECRET_KEY>` in `server.js` with the values found in the **Settings** tab of your [TalkJS dashboard](https://talkjs.com/dashboard/login).
    1. Install dependencies by running `npm install`
