@@ -1,8 +1,8 @@
-## Intro
+# Team chat with threads example
 
 This example shows you how to use React and TalkJS to create a team chat with channels and reply threads (like Slack or Teams). It's similar to our [remote work demo](https://talkjs.com/demo/team-chat/) that you can try on our website.
 
-<!-- See our [How to add reply threads to your TalkJS team chat]() tutorial for more details. -->
+See our [How to add reply threads to your TalkJS team chat](https://talkjs.com/resources/how-to-add-threads-to-your-team-chat-with-talkjs/) tutorial for more details.
 
 ## Prerequisites
 
