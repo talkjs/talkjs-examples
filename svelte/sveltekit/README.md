@@ -4,4 +4,4 @@ This example shows how to integrate TalkJS with SvelteKit in the simplest way. F
 
 Open `/src/lib/talkJsConfig.js` and replace `YOUR_APP_ID` with your own appId which you can find in the [TalkJS Dashboard](https://talkjs.com/dashboard)
 
-Run `npm install && npm run dev` to start the example on port 5000.
+Run `npm install && npm run dev` to start the example.
