@@ -2,13 +2,14 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<meta name="description" content="A TalkJS example." />
-    <link rel='stylesheet' href='/global.css' />
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-		%svelte.head%
+		<meta name="description" content="TalkJS chat example" />
+		<link rel='stylesheet' href='/global.css' />
+		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		%sveltekit.head%
 	</head>
-	<body>
-		%svelte.body%
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>
