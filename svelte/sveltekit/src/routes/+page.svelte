@@ -1,10 +1,10 @@
 <script>
-    import TalkjsChat from '../components/TalkjsChat.svelte'
+    import Chat from '../components/Chat.svelte'
 </script>
   
 <main>
     <h1>TalkJS chat example</h1>
-    <TalkjsChat />
+    <Chat />
 </main>
 
 <style>
