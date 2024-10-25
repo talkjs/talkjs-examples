@@ -118,3 +118,6 @@ dist
 .idea
 
 .vs
+
+# OS
+.DS_Store
