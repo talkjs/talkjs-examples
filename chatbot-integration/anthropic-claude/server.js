@@ -72,7 +72,6 @@ app.post("/onMessageSent", async (req, res) => {
     const reply = await getReply(messageHistory);
     await sendMessage(convId, reply);
   }
-  console.log(allMessageHistory);
 
   res.status(200).end();
 });
