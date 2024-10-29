@@ -1,4 +1,4 @@
-This is an example project for TalkJS's tutorial on [How to integrate Claude into your TalkJS chat with the Anthropic API](). The project uses TalkJS webhooks to listen for new message events from the TalkJS server, calls the Anthropic API to generate a message reply, and then adds the reply to the conversation with the TalkJS API.
+This is an example project for TalkJS's tutorial on [How to integrate Claude into your TalkJS chat with the Anthropic API](https://talkjs.com/resources/how-to-integrate-claude-into-your-talkjs-chat-with-the-anthropic-api/). The project uses TalkJS webhooks to listen for new message events from the TalkJS server, calls the Anthropic API to generate a message reply, and then adds the reply to the conversation with the TalkJS API.
 
 ## Prerequisites
 
