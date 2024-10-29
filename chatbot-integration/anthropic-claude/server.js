@@ -35,7 +35,7 @@ async function sendMessage(conversationId, text) {
       body: JSON.stringify([
         {
           text: text,
-          sender: "claudeExampleBot",
+          sender: botId,
           type: "UserMessage",
         },
       ]),
