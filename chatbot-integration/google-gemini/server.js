@@ -11,8 +11,7 @@ const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 const botId = "geminiExampleBot";
 const allMessageHistory = {};
 
-async function getReply(messageHistory) {
-  // Convert the message history format to Gemini's format
+async function getReply(messageHistory, messageText) {
   const chat = model.startChat({
     history: messageHistory,
     generationConfig: {
@@ -20,14 +19,12 @@ async function getReply(messageHistory) {
     },
   });
 
-  const result = await chat.sendMessage(
-    messageHistory[messageHistory.length - 1].content
-  );
+  const result = await chat.sendMessage(messageText);
   const response = await result.response;
   return response.text();
 }
 
-async function sendMessage(conversationId, text) {
+async function sendTalkJSMessage(conversationId, text) {
   return fetch(
     `https://api.talkjs.com/v1/${appId}/conversations/${conversationId}/messages`,
     {
@@ -59,30 +56,19 @@ app.post("/onMessageSent", async (req, res) => {
     allMessageHistory[convId] = [
       {
         role: "user",
-        parts:
-          "You are a helpful assistant. Please provide short, concise answers.",
+        parts: [
+          {
+            text: "You are a helpful assistant. Please provide short, concise answers.",
+          },
+        ],
       },
     ];
   }
   const messageHistory = allMessageHistory[convId];
 
-  if (senderId == botId) {
-    // Bot message
-    messageHistory.push({ role: "model", parts: messageText });
-  } else {
-    // User message
-    messageHistory.push({ role: "user", parts: messageText });
-
-    try {
-      const reply = await getReply(messageHistory);
-      await sendMessage(convId, reply);
-    } catch (error) {
-      console.error("Error getting reply from Gemini:", error);
-      await sendMessage(
-        convId,
-        "I apologize, but I encountered an error processing your message."
-      );
-    }
+  if (senderId != botId) {
+    const reply = await getReply(messageHistory, messageText);
+    await sendTalkJSMessage(convId, reply);
   }
 
   res.status(200).end();
