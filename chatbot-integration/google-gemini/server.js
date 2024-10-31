@@ -6,7 +6,7 @@ const talkJSSecretKey = "<TALKJS_SECRET_KEY>";
 const geminiApiKey = "<GEMINI_API_KEY>";
 
 const genAI = new GoogleGenerativeAI(geminiApiKey);
-const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 const botId = "geminiExampleBot";
 const allMessageHistory = {};
