@@ -36,7 +36,7 @@ async function sendTalkJSMessage(conversationId, text) {
       body: JSON.stringify([
         {
           text: text,
-          sender: "geminiExampleBot",
+          sender: botId,
           type: "UserMessage",
         },
       ]),
