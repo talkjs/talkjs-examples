@@ -1,0 +1,13 @@
+{
+    "name": "how-to-add-forwarding",
+    "type":"module",
+    "dependencies": {
+      "cors": "^2.8.5",
+      "express": "^4.21.1",
+      "node-fetch": "^3.3.2"
+    },
+    "scripts": {
+      "start": "node server.js"
+    }
+  }
+  
