@@ -4,3 +4,4 @@ The examples in this directory show you how to integrate TalkJS with AI chat to 
 
 - [OpenAI (ChatGPT)](./openai-chatgpt/)
 - [Anthropic (Claude)](./anthropic-claude/)
+- [Gemini (Google)](./google-gemini/)
