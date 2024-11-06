@@ -18,9 +18,10 @@ To run this example project, you need:
 
 1. Clone or download the project.
 2. Add a custom message action to allow message forwarding.
-    1. On the **Chat UI** page of your [TalkJS dashboard](https://talkjs.com/dashboard/), in the section 'Custom message actions', select **Add action** to add a message action.
-    2. Give your action the name `forward` and the label `Forward`.
-    3. Select which messages can be forwarded, and who can do the forwarding. For the purposes of this guide, for **Which messages** select that the action should be available for `All messages`, and for **Action available to**, select `Everyone`.
+    1. On the **Chat UI** page of your [TalkJS dashboard](https://talkjs.com/dashboard/), select the role for which you'd like to edit the settings. This guide uses the `default` role.
+    2. Still on the **Chat UI** page, in the section 'Custom message actions', select **Add action** to add a message action.
+    3. Give your action the name `forward` and the label `Forward`.
+    4. Select which messages can be forwarded, and who can do the forwarding. For the purposes of this guide, for **Which messages** select that the action should be available for `All messages`, and for **Action available to**, select `Everyone`.
 3. Add styling to distinguish forwarded messages in your theme. The following steps add a subtle but noticeable right-pointed arrow and the label *Forwarded* at the top of the message body of messages that have been forwarded.
     1. On the **Themes** page of your dashboard, select **Edit** for the theme that you’d like to use.
     2. To identify user messages that have been forwarded, in `UserMessage`, add the following to the `<template>` part of the code:
@@ -61,7 +62,7 @@ To run this example project, you need:
             opacity: 0.8;
         }
         ```
-4. Back in your project, add your own credentials. In `script.js` and `server.js`, replace `<APP_ID>` with your own app ID, and replace `<API_KEY>` with your secret key for the TalkJS REST API. You can find both on the **Settings** page of your [TalkJS dashboard](https://talkjs.com/dashboard/).
+4. Back in your project, add your own credentials. In `script.js` and `server.js`, replace `<APP_ID>` with your own app ID, and replace `<SECRET_KEY>` with your secret key for the TalkJS REST API. You can find both on the **Settings** page of your [TalkJS dashboard](https://talkjs.com/dashboard/).
 5. Run `npm install` to install the dependencies.
 6. Run `npm start` to start the server.
 
