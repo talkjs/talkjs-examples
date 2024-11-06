@@ -24,12 +24,12 @@ To run this example project, you need:
     4. Select which messages can be forwarded, and who can do the forwarding. For the purposes of this guide, for **Which messages** select that the action should be available for `All messages`, and for **Action available to**, select `Everyone`.
 3. Add styling to distinguish forwarded messages in your theme. The following steps add a subtle but noticeable right-pointed arrow and the label *Forwarded* at the top of the message body of messages that have been forwarded.
     1. On the **Themes** page of your dashboard, select **Edit** for the theme that you’d like to use.
-    2. To identify user messages that have been forwarded, in `UserMessage`, add the following to the `<template>` part of the code:
+    2. To identify user messages that have been forwarded, in `UserMessage`, add the following inside the `<template>` part of the code, for example at the top:
         ```html
         <!-- Check for forwarded messages -->
         <div class="{{ custom.forwardedFrom | then: 'forwarded' }}"></div>
         ```
-    3. Then, to style the message body of a forwarded message, go to `MessageBody` and add the following inside the `<template>` section:
+    3. Then, to style the message body of a forwarded message, go to `MessageBody` and add the following at the top inside the `<template>` section:
         ```html
         <div t:if="{{ forwardedFrom }}">
             <div class="forwarded-header">
@@ -40,7 +40,7 @@ To run this example project, you need:
             </div>
         </div>
         ```
-    4. Still in `MessageBody`, add the following styles to the `<styles>` section:
+    4. Still in `MessageBody`, add the following styles anywhere in the `<styles>` section:
         ```css
         /* Styles for forwarded messages */
         .forwarded-header {
@@ -48,6 +48,7 @@ To run this example project, you need:
             align-items: center;
             margin-top: 0.5rem;
             margin-left: 0.5rem;
+            margin-right: 0.8rem;
         }
 
         .forwarded-header svg {
