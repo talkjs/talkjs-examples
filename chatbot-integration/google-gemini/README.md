@@ -1,4 +1,4 @@
-This is an example project for TalkJS's tutorial on [How to integrate Google's Gemini into your TalkJS chat](). The project uses TalkJS webhooks to listen for new message events from the TalkJS server, calls the Gemini API to generate a message reply, and then adds the reply to the conversation with the TalkJS API.
+This is an example project for TalkJS's tutorial on [How to integrate Google's Gemini into your TalkJS chat](https://talkjs.com/resources/create-a-chatbot-with-talkjs-and-gemini/). The project uses TalkJS webhooks to listen for new message events from the TalkJS server, calls the Gemini API to generate a message reply, and then adds the reply to the conversation with the TalkJS API.
 
 ## Prerequisites
 
