@@ -11,8 +11,8 @@ app.use(express.json());
 app.use(cors());
 
 // Replace with your own app ID and secret key
-const appId = '<APP_ID>'
-const secretKey = '<SECRET_KEY>'
+const appId = '<APP_ID>';
+const secretKey = '<SECRET_KEY>';
 
 // Fetches conversations for a specific user
 async function getUserConversations(userId) {
