@@ -21,8 +21,8 @@
         </div>
 
     <!-- Conversation select modal -->
-    <section id="forwardModal" tabindex="-1" aria-hidden="true"
-    class="hidden fixed inset-0 z-50 flex items-center justify-center w-full h-full">
+    <section id="forwardModal" tabindex="-1" 
+    class="hidden fixed inset-0 z-50 flex items-center justify-center w-full h-full" aria-labelledby="modalTitle">
 
     <!-- Backdrop shadow -->
     <div class="fixed inset-0 bg-black opacity-30"></div>
@@ -32,7 +32,7 @@
         <div class="relative bg-white rounded-lg shadow">
             <!-- Modal header -->
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
-                <h2 class="text-lg font-semibold text-gray-900">Forward to ...</h2>
+                <h2 id="modalTitle" class="text-lg font-semibold text-gray-900">Forward to ...</h2>
                 <button type="button" onclick="closeModal()"
                     class="text-gray-400 bg-transparent hover:bg-white-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
                     aria-label="Close forwarding modal"
