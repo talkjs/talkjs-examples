@@ -29,7 +29,20 @@ To run this example project, you need:
         <!-- Check for forwarded messages -->
         <div class="{{ custom.forwardedFrom | then: 'forwarded' }}"></div>
         ```
-    3. Then, to style the message body of a forwarded message, go to `MessageBody` and add the following at the top inside the `<template>` section:
+    3. Still in `UserMessage`, find the section where it adds the `MessageBody`, and add `forwardedFrom="{{custom.forwardedFrom}}"` to its props:
+        ```html
+            <MessageBody
+                body="{{ body }}"
+                timestamp="{{ timestamp }}"
+                floatTimestamp="auto"
+                showStatus="{{ sender.isMe }}"
+                isLongEmailMessage="{{isLongEmailMessage}}"
+                darkenMenuArea="{{ darkenMenuArea }}"
+                referencedMessage="{{ referencedMessage }}"
+                forwardedFrom="{{custom.forwardedFrom}}"
+            />
+        ```
+    4. Then, to style the message body of a forwarded message, go to `MessageBody` and add the following at the top inside the `<template>` section:
         ```html
         <div t:if="{{ forwardedFrom }}">
             <div class="forwarded-header">
@@ -40,7 +53,7 @@ To run this example project, you need:
             </div>
         </div>
         ```
-    4. Still in `MessageBody`, add the following styles anywhere in the `<styles>` section:
+    5. Still in `MessageBody`, add the following styles anywhere in the `<styles>` section:
         ```css
         /* Styles for forwarded messages */
         .forwarded-header {
