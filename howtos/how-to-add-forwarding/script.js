@@ -155,6 +155,14 @@ Talk.ready.then(async function () {
 	// Tracks the message to be forwarded
 	let messageToForward = null;
 
+    // Tracks the current conversation
+    let currentConversationId = null;
+
+    // Add an event listener to update the current conversation
+    inbox.onConversationSelected((event) => {
+        currentConversationId = event.conversation.id;
+    });
+
 	// Handles showing the forwarding modal
 	inbox.onCustomMessageAction('forward', async (event) => {
     	console.log("Forward action initiated:", event);
@@ -163,10 +171,10 @@ Talk.ready.then(async function () {
 
     	// Fetches the current user's conversations and show the modal
     	const conversations = await fetchUserConversations(me.id);
-    	showConversationSelectionModal(conversations, session, messageToForward, inbox, conversationId);
+    	showConversationSelectionModal(conversations, session, messageToForward, inbox, currentConversationId);
 	});
 });
-ß
+
 // Closes the forwarding modal
 function closeModal() {
     document.getElementById('forwardModal').classList.add('hidden');
