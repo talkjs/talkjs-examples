@@ -85,7 +85,7 @@ You now have a working example project in which users can forward messages.
 ![In the top left a chat message with a dropdown menu with three options: 'Reply', 'Add reaction', and 'Forward'. In the bottom right a message with at the top a right-pointed arrow and the italicized text 'Forwarded'.](/howtos/how-to-add-forwarding/forwarding.png)
 *A menu with the option to forward a message, and an example of a forwarded message*
 
-**Note:** This example uses [Tailwind CSS](https://tailwindcss.com/) to styling. For ease of getting started, it adds Tailwind with the Play CDN, which is for development purposes only and should not be used in production. If you're planning to use Tailwind in production, follow the [installation instructions](https://tailwindcss.com/docs/installation).
+**Note:** This example uses [Tailwind CSS](https://tailwindcss.com/) for styling. For ease of getting started, it adds Tailwind with the Play CDN, which is for development purposes only and should not be used in production. If you're planning to use Tailwind in production, follow the [installation instructions](https://tailwindcss.com/docs/installation).
 
 ## Limitation
 
