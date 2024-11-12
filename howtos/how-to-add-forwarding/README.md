@@ -27,7 +27,7 @@ To run this example project, you need:
     2. To identify user messages that have been forwarded, in `UserMessage`, add the following inside the `<template>` part of the code, for example at the top:
         ```html
         <!-- Check for forwarded messages -->
-        <div class="{{ custom.forwardedFrom | then: 'forwarded' }}"></div>
+        <div t:if="{{ custom.forwardedFrom }}" class="{{ 'forwarded' }}"></div>
         ```
     3. Still in `UserMessage`, find the section where it adds the `MessageBody`, and add `forwardedFrom="{{custom.forwardedFrom}}"` to its props:
         ```html
