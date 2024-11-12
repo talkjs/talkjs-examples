@@ -2,7 +2,10 @@
 
 <!-- TO DO: add link to tutorial -->
 
-This is an example project for TalkJS's tutorial on [how to add message forwarding to your chat](ADD_URL). 
+This is an example project for TalkJS's tutorial on how to add message forwarding to your chat. 
+
+![An inbox pre-built chat UI with on the left a list of conversations with one conversation selected. On the right it shows the selected conversation. The conversation contains three messages, of which the last message has at the top of the message body a right-pointing arrow and the italicized text ‘Forwarded’.](/howtos/how-to-add-forwarding/1-demo.gif)
+*A conversation with a forwarded message*
 
 This project uses custom [message actions](https://talkjs.com/docs/Features/Message_Features/Message_Actions/) and the [TalkJS REST API](https://talkjs.com/docs/Reference/REST_API/Getting_Started/Introduction/) to allow users to forward text-based messages to conversations that they're part of.
 
@@ -82,7 +85,7 @@ To run this example project, you need:
 
 You now have a working example project in which users can forward messages. 
 
-![In the top left a chat message with a dropdown menu with three options: 'Reply', 'Add reaction', and 'Forward'. In the bottom right a message with at the top a right-pointed arrow and the italicized text 'Forwarded'.](/howtos/how-to-add-forwarding/forwarding.png)
+![In the top left a chat message with a dropdown menu with three options: 'Reply', 'Add reaction', and 'Forward'. In the bottom right a message with at the top a right-pointed arrow and the italicized text 'Forwarded'.](/howtos/how-to-add-forwarding/2-styling.png)
 *A menu with the option to forward a message, and an example of a forwarded message*
 
 **Note:** This example uses [Tailwind CSS](https://tailwindcss.com/) for styling. For ease of getting started, it adds Tailwind with the Play CDN, which is for development purposes only and should not be used in production. If you're planning to use Tailwind in production, follow the [installation instructions](https://tailwindcss.com/docs/installation).
