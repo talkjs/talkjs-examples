@@ -17,6 +17,8 @@ To run this example project, you need:
 - [Node.js](https://nodejs.org/en)
 - [npm](https://www.npmjs.com/)
 
+**Note:** This guide uses `fetch` to be able to use the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) to get resources. `fetch` is available natively from Node.js 18 onward. If you use an older version of Node.js, you can use the [Node Fetch](https://www.npmjs.com/package/node-fetch) package. 
+
 ## How to run the example
 
 1. Clone or download the project.
