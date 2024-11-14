@@ -32,11 +32,11 @@ To run this example project, you need:
     2. To identify user messages that have been forwarded, in `UserMessage`, add the following inside the `<template>` part of the code, for example at the top:
         ```html
         <!-- Check for forwarded messages -->
-        <div t:if="{{ custom.forwardedFrom }}" class="{{ 'forwarded' }}"></div>
+        <div t:if="{{ custom and custom.forwardedFrom }}" class="{{ 'forwarded' }}"></div>
         ```
-    3. Still in `UserMessage`, find the section where it adds the `MessageBody`, and add `forwardedFrom="{{custom.forwardedFrom}}"` to its props:
+    3. Still in `UserMessage`, find the section where it adds the `MessageBody`, and replace it with the following, which adds `forwardedFrom="{{custom.forwardedFrom}}"` to the message body props if the message has the `forwardedFrom` custom property:
         ```html
-            <MessageBody
+            <MessageBody t:if="{{ custom and custom.forwardedFrom }}"
                 body="{{ body }}"
                 timestamp="{{ timestamp }}"
                 floatTimestamp="auto"
@@ -44,7 +44,17 @@ To run this example project, you need:
                 isLongEmailMessage="{{isLongEmailMessage}}"
                 darkenMenuArea="{{ darkenMenuArea }}"
                 referencedMessage="{{ referencedMessage }}"
-                forwardedFrom="{{custom.forwardedFrom}}"
+                forwardedFrom="{{ custom.forwardedFrom }}"
+            />
+            <MessageBody t:else
+                body="{{ body }}"
+                timestamp="{{ timestamp }}"
+                floatTimestamp="auto"
+                showStatus="{{ sender.isMe }}"
+                isLongEmailMessage="{{isLongEmailMessage}}"
+                darkenMenuArea="{{ darkenMenuArea }}"
+                referencedMessage="{{ referencedMessage }}"
+                forwardedFrom="null"
             />
         ```
     4. Then, to style the message body of a forwarded message, go to `MessageBody` and add the following at the top inside the `<template>` section:
