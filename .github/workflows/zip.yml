@@ -1,0 +1,26 @@
+name: "zip"
+
+on:
+  push:
+    branches:
+      - "master"
+
+jobs:
+  zip-and-release-folders:
+    name: Zip and folders and create release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: zip folders
+        run: find * -mindepth 1 -maxdepth 1 -type d -exec sh -c 'cd "$0" ; zip -r "../../`echo "$0" | tr / .`.zip" *' {} \;
+
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H.%M.%S')"
+
+      - name: release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: "*.zip"
+          tag_name: ${{ steps.date.outputs.date }}
