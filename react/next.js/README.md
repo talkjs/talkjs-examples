@@ -15,9 +15,10 @@ To run this tutorial, you will need:
 ## How to run the tutorial
 
 1. Clone or download the project.
-2. Replace `<APP_ID>` in `app/page.js` with the value found in the **Settings** tab of your [TalkJS dashboard](https://talkjs.com/dashboard/login).
-3. Run `npm install` to install dependencies.
-4. Run `npm run dev` to start the server.
-5. Visit <http://localhost:3000>.
+2. Copy `.env.example` to a new `.env` file.
+3. Replace `<APP_ID>` in `.env` with the value found in the **Settings** tab of your [TalkJS dashboard](https://talkjs.com/dashboard/login).
+4. Run `npm install` to install dependencies.
+5. Run `npm run dev` to start the server.
+6. Visit <http://localhost:3000>.
 
 You should see a page which loads a chatbox on startup.

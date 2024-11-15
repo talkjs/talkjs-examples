@@ -38,7 +38,7 @@ function Chat() {
   }, []);
 
   return (
-    <Session appId="<APP_ID>" syncUser={syncUser}>
+    <Session appId={process.env.NEXT_PUBLIC_APP_ID} syncUser={syncUser}>
       <Chatbox
         syncConversation={syncConversation}
         style={{ width: "100%", height: "500px" }}
