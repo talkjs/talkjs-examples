@@ -1,8 +1,6 @@
 # How to add message forwarding to your chat
 
-<!-- TO DO: add link to tutorial -->
-
-This is an example project for TalkJS's tutorial on how to add message forwarding to your chat. 
+This is an example project for TalkJS's tutorial on [How to add a forward message feature to your chat](https://talkjs.com/resources/how-to-add-a-forward-message-feature/). 
 
 ![An inbox pre-built chat UI with on the left a list of conversations with one conversation selected. On the right it shows the selected conversation. The conversation contains three messages, of which the last message has at the top of the message body a right-pointing arrow and the italicized text ‘Forwarded’.](/howtos/how-to-add-forwarding/1-demo.gif)
 *A conversation with a forwarded message*
