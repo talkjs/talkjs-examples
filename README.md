@@ -1,6 +1,6 @@
 # TalkJS code examples
 
-This repo demonstrates common use cases for TalkJS.
+This repo contains example projects for common use cases for TalkJS.
 
 TalkJS is a chat API with a pre-built UI for web and mobile apps. Build any chat use case into your product with just a few lines of code. Frontend UI SDK and out-of-the-box notifications included.
 
