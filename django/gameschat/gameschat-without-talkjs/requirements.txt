@@ -22,7 +22,7 @@ pylint-plugin-utils==0.5
 pytz==2019.2
 requests==2.22.0
 six==1.12.0
-sqlparse==0.4.4
+sqlparse==0.5.0
 typed-ast==1.4.0
 urllib3==1.26.5
 whitenoise==4.1.3
