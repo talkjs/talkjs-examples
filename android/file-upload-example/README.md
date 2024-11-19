@@ -1,4 +1,4 @@
-# TalkJS Android File Upload Example
+# Android file upload example
 
 This code shows how to implement file upload support in Android's WebView.
 Despite TalkJS already supporting uploading of files, the default Android WebView implementation
@@ -6,12 +6,15 @@ does not implement file uploads. The code also shows how to upload rich content
 to TalkJS via the [unified API](https://developer.android.com/develop/ui/views/receive-rich-content)
 This enables users to upload images and videos from the clipboard, keyboard or through drag and drop.
 
+> [!TIP]
+> [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/android.file-upload-example.zip)
+
 ## Getting Started
 
 It is recommended to open this project in Android Studio so that Gradle sync is handled
 automatically for you.
 
-Before running the app, don’t forget to replace the string, YOUR_APP_ID, with your TalkJS app ID from the dashboard.
+Before running the app, don’t forget to replace the string, `YOUR_APP_ID`, with your app ID from the [TalkJS dashboard](https://talkjs.com/dashboard/).
 
 This code sample was used as part of two tutorials:
 

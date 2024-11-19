@@ -4,6 +4,9 @@ This example extends our [team chat with channels example](https://github.com/ta
 
 See our [How to add reply threads to your TalkJS team chat](https://talkjs.com/resources/how-to-add-threads-to-your-team-chat-with-talkjs/) tutorial for more details.
 
+> [!TIP]
+> [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/react.team-chat-with-threads.zip)
+
 ## Prerequisites
 
 To run this tutorial, you will need:
@@ -15,7 +18,7 @@ To run this tutorial, you will need:
 
 ## Instructions
 
-1. Clone or download the project
+1. Clone or [download this project](https://github.com/talkjs/talkjs-examples/releases/latest/download/react.team-chat-with-threads.zip).
 1. Start ngrok with `ngrok http 3001`. You should see a forwarding URL which is something like `https://<YOUR_URL>.ngrok-free.app`
 1. In the TalkJS dashboard:
    1. In the **Themes** tab, select to **Edit** the `team_chat` theme and replace the `UserMessage` template with the version in `theme/UserMessage.txt`.

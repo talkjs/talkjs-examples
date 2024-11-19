@@ -2,6 +2,9 @@
 
 This is an example project for TalkJS's tutorial on [how to build a chat into an Angular app with TalkJS](https://talkjs.com/resources/angular-chat-app/).
 
+> [!TIP]
+> [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/angular.angular-chat-app.zip)
+
 ## Prerequisites
 
 To run this tutorial, you will need:
@@ -13,7 +16,7 @@ To run this tutorial, you will need:
 
 ## How to run the tutorial
 
-1. Clone or download the project.
+1. Clone or [download this project](https://github.com/talkjs/talkjs-examples/releases/latest/download/angular.angular-chat-app.zip).
 2. Replace `YOUR_APP_ID_HERE` in `src/app/talk.service.ts` with your own app ID. You can find your app ID on the **Settings** page of your [TalkJS dashboard](https://talkjs.com/dashboard/).
 3. Run `npm install` to install dependencies.
 4. Run `ng serve` to start the server.

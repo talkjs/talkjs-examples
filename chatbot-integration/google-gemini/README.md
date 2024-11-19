@@ -1,4 +1,9 @@
+# How to integrate Google's Gemini into your TalkJS chat
+
 This is an example project for TalkJS's tutorial on [How to integrate Google's Gemini into your TalkJS chat](https://talkjs.com/resources/create-a-chatbot-with-talkjs-and-gemini/). The project uses TalkJS webhooks to listen for new message events from the TalkJS server, calls the Gemini API to generate a message reply, and then adds the reply to the conversation with the TalkJS API.
+
+> [!TIP]
+> [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/chatbot-integration.google-gemini.zip)
 
 ## Prerequisites
 
@@ -12,7 +17,7 @@ To run this tutorial, you will need:
 
 ## How to run the tutorial
 
-1. Clone or download the project.
+1. Clone or [download this project](https://github.com/talkjs/talkjs-examples/releases/latest/download/chatbot-integration.google-gemini.zip).
 2. Replace `<APP_ID>` and `<TALKJS_SECRET_KEY>` in `index.html` and `server.js` with the values found in your [TalkJS dashboard](https://talkjs.com/dashboard/login).
 3. Replace `<GEMINI_SECRET_KEY>` with your Anthropic API key
 4. Enable the `message.sent` option in the **Webhooks** section of the TalkJS dashboard.

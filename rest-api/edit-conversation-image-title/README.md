@@ -1,7 +1,11 @@
-This is an example project to go with our tutorial on How to edit the title and image of your TalkJS Conversation.
-<!-- Add link to tutorial once published -->
+# How to edit the title and image of your TalkJS conversation
+
+This is an example project to go with our tutorial on [How to edit the title and image of your TalkJS Conversation](https://talkjs.com/resources/how-to-change-the-title-and-image-of-a-talkjs-conversation/).
 
 The project uses TalkJS's [conversation actions](https://talkjs.com/docs/Features/Customizations/Conversation_Actions/) to add a custom action to the conversation that lets users edit the title or image of group conversations. The action is hooked to a backend server that calls the TalkJS REST API to update the conversation object.
+
+> [!TIP]
+> [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/rest-api.edit-conversation-image-title.zip)
 
 ## Prerequisites
 
@@ -12,7 +16,7 @@ To run this tutorial, you will need:
 
 ## How to run the tutorial
 
-1. Clone or download this project.
+1. Clone or [download this project](https://github.com/talkjs/talkjs-examples/releases/latest/download/rest-api.edit-conversation-image-title.zip).
 2. Rename the `.env_new` file to `.env` and paste your TalkJS appID and secret key. You can find both of these on your TalkJS dashboard.
 3. Go to your TalkJS dashboard and navigate to the Roles tab. Select the “default” role and go down to the Custom conversation actions section. Add a new action and name it “editTitleOrImage” with the label “Edit title or image”. Don’t forget to click Save all roles to persist your changes.
 4. Go to the `server` folder and run `npm install` followed by `npm start`. This installs all the required dependencies and starts the NodeJS server.

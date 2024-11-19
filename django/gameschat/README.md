@@ -1,25 +1,21 @@
-# Games Chat App with Django and TalkJS
+# Games chat app with Django and TalkJS
 
-## Context
 This directory contains two games chat applications: one with and one without TalkJS integrated.
 
 The application without chat functionality serves as a start application for the TalkJS implementation tutorial, in which chat functionalities are being added within a project. The final product of the tutorial is the games chat application with chat functionality. 
 
-## First things first
+You can find additional information in the tutorial [How to add chat to a Django app with TalkJS](https://talkjs.com/tutorials/article/how-to-add-direct-messaging-to-a-discussion-forum-with-django-and-talkjs/).
 
-### Python version
-Make sure you're working with Python 3.7.4 or above.
-You can download it from [here](https://www.python.org/).
+> [!TIP]
+> [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/django.gameschat.zip)
 
-Make sure you tick the box that says 'Add Python to PATH'.
+## Prerequisites
 
-### PostgreSQL version
-Make sure you're working with PostgreSQL 11.6 or above.
-You can download it from [here](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads).
-
-Through the installation you will be asked to enter a password for your database. In this example the password `gameschat` is used, but you can write whatever you want, just make sure to remember it because you will need it later. 
+- **Python version:** Make sure you're working with Python 3.7.4 or above. You can download it from [here](https://www.python.org/). Make sure you tick the box that says 'Add Python to PATH'.
+- **PostgreSQL version:** Make sure you're working with PostgreSQL 11.6 or above. You can download it from [here](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads). You'll be asked to enter a password for your database. In this example the password `gameschat` is used, but you can write whatever you want. Just make sure to remember your password because you'll need it later. 
 
 ## Getting started
+
 The following steps should be executed in either the ```gameschat-with-talkjs``` or ```gameschat-without-talkjs``` directory.
 
 - After the installation of PostgreSQL is done, start the `pgAdmin` which will open the database in your browser. Enter the password you chose during the installation. Expand the Servers section from the `Browser` on the right (if asked enter the same password again). Right click on `Databases->Create->Database...`, then enter the name you want and click `Save`.
@@ -39,7 +35,8 @@ The following steps should be executed in either the ```gameschat-with-talkjs```
 
 - After you've cloned/downloaded the repository, open the terminal in the project's directory and write `pip install -r requirements.txt`. After the installation is done, write `python manage.py migrate`. Lastly, write `python manage.py runserver`, this will start the server on port 8000. Go ahead and write the following in your browser `http://localhost:8000`.
 
-Good job! Additional information can be found in the [tutorial](https://talkjs.com/tutorials/article/how-to-add-direct-messaging-to-a-discussion-forum-with-django-and-talkjs/) of this application.
+Good job!
 
 ## Documentation
+
 For more information on how to integrate TalkJS into your projects, check out our [documentation](https://talkjs.com/docs/?ref=gh-example-readme).

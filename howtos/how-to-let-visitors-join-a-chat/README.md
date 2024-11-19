@@ -1,13 +1,18 @@
-# Chatting without an account
-In this example we will show you how to let users join a conversation without needing an account. It will also give the option for users to set their email in the chat to receive notifications. The example popup will look like this:
+# How to let visitors start a chat without registering for an account
 
-![text](https://firebasestorage.googleapis.com/v0/b/klets-3642/o/user_files%2FHku1c4Pt%2F508cec80a2254a06a817e35f8b86f31c%2Fimage.png?alt=media&token=c5b55860-f273-4bc1-88e1-6fe5f6f6b8a9) 
+This example project accompanies the tutorial [How to let visitors start a chat without registering for an account](https://talkjs.com/resources/can-we-let-visitors-start-a-chat-without-registering-for-an-account/). It shows you how to let users join a conversation without needing an account. It will also give the option for users to set their email in the chat to receive notifications. The example popup will look like this:
+
+![A chat with a single message and a popup inside the chat with the text 'Get notified by email', and a field to fill out one's email](https://firebasestorage.googleapis.com/v0/b/klets-3642/o/user_files%2FHku1c4Pt%2F508cec80a2254a06a817e35f8b86f31c%2Fimage.png?alt=media&token=c5b55860-f273-4bc1-88e1-6fe5f6f6b8a9) 
 
 Even though `add-user-info.php` is written in PHP for this example, you can use any framework you desire. `add-user-info.php` sets and reads cookies, makes API calls and hides your secret key. If you need help with other languages, please [let us know](https://talkjs.com/?chat) and we can create it. 
 
-We will be using HTML panels in this example. Be sure to read up on our docs [here](https://talkjs.com/docs/Features/Customizations/HTML_Panels.html) to learn all it's functionalities. 
+We will be using HTML panels in this example. [Read more on HTML panels.](https://talkjs.com/docs/Features/Customizations/HTML_Panels/)
+
+> [!TIP]
+> [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/howtos.how-to-let-visitors-join-a-chat.zip)
 
 ## Getting started
+
 `example-chat.js` gives you a basic example on how this integration could look on a marketplace based website. Before being able to use `example-chat.js` we need to change a few variables specific to your application. These variables can be found in the file `add-user-info.php` and `example-chat.js`. 
 
 At the top of `add-user-info.php` you should see `appId` and `secretKey`. These are used to send API calls to the TalkJS backend specific to your application. These values can be found inside your application dashboard [here](https://talkjs.com/dashboard/). 
@@ -24,4 +29,5 @@ Once these files are edited to fit your use case you can start your application.
 ```
 
 ## Important
+
 We recommend that you host this HTML document, `form-signup.html`, on the same domain (and subdomain) as your main site. This is because browsers have a security feature called the [Same-Origin Policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) which severely limits the kind of programmatic interaction you can do with iframes hosted on different domains. 

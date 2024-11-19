@@ -1,6 +1,11 @@
-This is an example project for TalkJS's tutorial on [how to make a comment section with threaded replies](https://talkjs.com/resources/how-to-build-a-reply-thread-feature-with-talkjs/).
+# How to build a reply thread feature with TalkJS
+
+This is an example project for TalkJS's tutorial on [how to build a reply thread feature with TalkJS](https://talkjs.com/resources/how-to-build-a-reply-thread-feature-with-talkjs/).
 
 This project uses action buttons and the REST API to add a custom reply option that opens a new conversation for replies, and a back button to navigate back to the original message. It also uses a webhook to listen for new messages and updates the reply action button to show the number of replies.
+
+> [!TIP]
+> [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/howtos.how-to-make-a-threaded-chat.zip)
 
 ## Prerequisites
 
@@ -12,7 +17,7 @@ To run this tutorial, you will need:
 
 ## How to run the tutorial
 
-1.  Clone or download the project.
+1.  Clone or [download this project](https://github.com/talkjs/talkjs-examples/releases/latest/download/howtos.how-to-make-a-threaded-chat.zip).
 2.  Run `npm install` to install dependencies.
 3.  Run `npm start` to start the server.
 4.  Remove the default "Reply" message action:

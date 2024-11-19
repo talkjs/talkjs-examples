@@ -1,6 +1,11 @@
-This is an example project for TalkJS's tutorial on how to set an automatic away message outside office hours.
+# How to set an automatic away message
+
+This is an example project for TalkJS's tutorial on [how to set an automatic away message](https://talkjs.com/resources/how-to-set-an-automatic-away-message/) outside office hours.
 
 The project uses TalkJS webhooks to listen for new message events from the TalkJS server, and then calls the REST API to reply with a automatic system message when a customer sends a message outside of support hours.
+
+> [!TIP]
+> [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/howtos.how-to-set-an-away-message.zip)
 
 ## Prerequisites
 
@@ -13,7 +18,7 @@ To run this tutorial, you will need:
 
 ## How to run the tutorial
 
-1. Clone or download the project.
+1. Clone or [download this project](https://github.com/talkjs/talkjs-examples/releases/latest/download/howtos.how-to-set-an-away-message.zip).
 2. Replace `<APP_ID>` and `<SECRET_KEY>` in `index.html` and `server.js` with the values found in your [TalkJS dashboard](https://talkjs.com/dashboard/login).
 3. Enable the `message.sent` option in the **Webhooks** section of the TalkJS dashboard.
 4. Add "support" and "customer" roles in the **Roles** tab of the TalkJS dashboard.
