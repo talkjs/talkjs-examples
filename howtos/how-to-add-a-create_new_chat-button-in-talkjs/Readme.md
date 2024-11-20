@@ -1,4 +1,4 @@
-## How to add a 'Create a new chat'-button 
+## How to add a 'Create a new chat' button 
 
 This is the example project for the tutorial [How to add a 'Create new chat'-button in TalkJS](https://talkjs.com/resources/how-to-add-a-create-new-chat-button-in-talkjs/).
 
