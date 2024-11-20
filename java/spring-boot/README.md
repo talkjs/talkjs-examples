@@ -7,6 +7,9 @@ This example demonstrates how to integrate TalkJS with a Java application that u
 - The `SpringBootTalkJS` project contains the Spring Boot backend, which serves a REST endpoint with user data.
 - The `talkjs-springboot-frontend` project contains the frontend code, which uses TalkJS's [JavaScript SDK](https://talkjs.com/docs/Reference/JavaScript_Chat_SDK/) to create chats between users.
 
+> [!TIP]
+> [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/java.spring-boot.zip)
+
 ## Prerequisites
 
 To run this tutorial, you will need:
@@ -17,7 +20,7 @@ To run this tutorial, you will need:
 
 ## How to run the tutorial
 
-1. Clone or download the project.
+1. Clone or [download this project](https://github.com/talkjs/talkjs-examples/releases/latest/download/java.spring-boot.zip).
 1. From the `SpringBootTalkJS` directory:
    1. Run `mvn clean install` to build the project
    1. Run `mvn spring-boot:run` to run the project
@@ -49,4 +52,4 @@ To run this tutorial, you will need:
 
 1. From the `talkjs-springboot-frontend` directory:
    1. Replace `<APP_ID>` in `script.js` with the value found in the **Settings** tab of your [TalkJS dashboard](https://talkjs.com/dashboard/login).
-   1. Open `index.html` from a browser, or through an extension like VS Code's Live Server, to view the app
+   1. Open `index.html` from a browser, or through an extension like VS Code's Live Server, to view the app.

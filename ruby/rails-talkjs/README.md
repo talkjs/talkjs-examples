@@ -1,6 +1,9 @@
-# TalkJS and Rails example
+# Rails and TalkJS example
 
 This is an example project for TalkJS's tutorial on [how to build a Rails chat app with TalkJS](https://talkjs.com/resources/how-to-add-chat-to-a-rails-app-with-talkjs/). This example demonstrates how to integrate TalkJS with a Ruby application that uses the Rails framework.
+
+> [!TIP]
+> [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/ruby.rails-talkjs.zip)
 
 ## Prerequisites
 
@@ -11,7 +14,7 @@ To run this tutorial, you will need:
 
 ## How to run the tutorial
 
-1. Clone or download the project.
+1. Clone or [download this project](https://github.com/talkjs/talkjs-examples/releases/latest/download/ruby.rails-talkjs.zip).
 2. Replace `<APP_ID>` in `rails-talkjs/app/javascript/conversation.js` with the value found in the **Settings** tab of your [TalkJS dashboard](https://talkjs.com/dashboard/login).
 3. Install Rails:
 

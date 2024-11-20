@@ -1,16 +1,19 @@
 # How to add message forwarding to your chat
 
-> [!TIP]
-> [Download this example project as a zip file](https://download-directory.github.io?url=https://github.com/talkjs/talkjs-examples/tree/master/howtos/how-to-add-forwarding) (using a GitHub folder download tool)
-
 This is an example project for TalkJS's tutorial on [How to add a forward message feature to your chat](https://talkjs.com/resources/how-to-add-a-forward-message-feature/). 
 
-![An inbox pre-built chat UI with on the left a list of conversations with one conversation selected. On the right it shows the selected conversation. The conversation contains three messages, of which the last message has at the top of the message body a right-pointing arrow and the italicized text ‘Forwarded’.](/howtos/how-to-add-forwarding/1-demo.gif)
-*A conversation with a forwarded message*
+<figure class="kg-image-card">
+  <img class="kg-image" src="1-demo.gif" alt="An inbox pre-built chat UI with on the left a list of conversations with one conversation selected. On the right it shows the selected conversation. The conversation contains three messages, of which the last message has at the top of the message body a right-pointing arrow and the italicized text ‘Forwarded’."/>
+  <figcaption>A conversation with a forwarded message</figcaption>
+</figure>
 
 This project uses custom [message actions](https://talkjs.com/docs/Features/Message_Features/Message_Actions/) and the [TalkJS REST API](https://talkjs.com/docs/Reference/REST_API/Getting_Started/Introduction/) to allow users to forward text-based messages to conversations that they're part of.
 
-**Note:** This example implementation of message forwarding only supports forwarding text-based messages, not messages that are location shares, [voice messages](https://talkjs.com/docs/Features/Message_Features/Voice_Messages/), or [file attachments](https://talkjs.com/docs/Features/Message_Features/File_Sharing/). To extend the current functionality to also include forwarding files, see the information on [sending files with the REST API](https://talkjs.com/docs/Reference/REST_API/Messages/#send-a-file). 
+> [!NOTE]
+> This example implementation of message forwarding only supports forwarding text-based messages, not messages that are location shares, [voice messages](https://talkjs.com/docs/Features/Message_Features/Voice_Messages/), or [file attachments](https://talkjs.com/docs/Features/Message_Features/File_Sharing/). To extend the current functionality to also include forwarding files, see the information on [sending files with the REST API](https://talkjs.com/docs/Reference/REST_API/Messages/#send-a-file). 
+
+> [!TIP]
+> [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/howtos.how-to-add-forwarding.zip)
 
 ## Prerequisites
 
@@ -20,11 +23,12 @@ To run this example project, you need:
 - [Node.js](https://nodejs.org/en)
 - [npm](https://www.npmjs.com/)
 
-**Note:** This guide uses `fetch` to be able to use the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) to get resources. `fetch` is available natively from Node.js 18 onward. If you use an older version of Node.js, you can use the [Node Fetch](https://www.npmjs.com/package/node-fetch) package. 
+> [!NOTE]
+> This guide uses `fetch` to be able to use the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) to get resources. `fetch` is available natively from Node.js 18 onward. If you use an older version of Node.js, you can use the [Node Fetch](https://www.npmjs.com/package/node-fetch) package. 
 
 ## How to run the example
 
-1. Clone or download the project.
+1. Clone or [download this project](https://github.com/talkjs/talkjs-examples/releases/latest/download/howtos.how-to-add-forwarding.zip).
 2. Add a custom message action to allow message forwarding.
     1. On the **Chat UI** page of your [TalkJS dashboard](https://talkjs.com/dashboard/), select the role for which you'd like to edit the settings. This guide uses the `default` role.
     2. Still on the **Chat UI** page, in the section 'Custom message actions', select **Add action** to add a message action.
@@ -100,7 +104,10 @@ To run this example project, you need:
 
 You now have a working example project in which users can forward messages. 
 
-![In the top left a chat message with a dropdown menu with three options: 'Reply', 'Add reaction', and 'Forward'. In the bottom right a message with at the top a right-pointed arrow and the italicized text 'Forwarded'.](/howtos/how-to-add-forwarding/2-styling.png)
-*A menu with the option to forward a message, and an example of a forwarded message*
+<figure class="kg-image-card">
+  <img class="kg-image" src="2-styling.png" alt="An inbox pre-built chat UI with on the left a list of conversations with one conversation selected. On the right it shows the selected conversation. The conversation contains three messages, of which the last message has at the top of the message body a right-pointing arrow and the italicized text ‘Forwarded’."/>
+  <figcaption>A menu with the option to forward a message, and an example of a forwarded message</figcaption>
+</figure>
 
-**Note:** This example uses [Tailwind CSS](https://tailwindcss.com/) for styling. For ease of getting started, it adds Tailwind with the Play CDN, which is for development purposes only and should not be used in production. If you're planning to use Tailwind in production, follow the [installation instructions](https://tailwindcss.com/docs/installation).
+> [!NOTE]
+> This example uses [Tailwind CSS](https://tailwindcss.com/) for styling. For ease of getting started, it adds Tailwind with the Play CDN, which is for development purposes only and should not be used in production. If you're planning to use Tailwind in production, follow the [installation instructions](https://tailwindcss.com/docs/installation).
