@@ -19,7 +19,7 @@ To get this app running on your system, ensure that you are working with Node >=
 Here are the steps to get this app running on your system.
 - Clone or [download this project](https://github.com/talkjs/talkjs-examples/releases/latest/download/react.linkedin-like-app.zip).
 - Run `npm install`.
-- In the `Messaging.js` file, replace "MY_APP_ID" on line 30 with your APP ID gotten from your TalkJS dashboard at at https://talkjs.com/dashboard/login. Do the same thing in the `MyNetwork.js` file on line 25.
+- In the `Messaging.js` file, replace "MY_APP_ID" on line 30 with your app ID from the **Chat UI** tab of your TalkJS dashboard at https://talkjs.com/dashboard/login. Do the same thing in the `MyNetwork.js` file on line 25.
 - Run `npm start`.
 
 ### More information
