@@ -7,6 +7,6 @@ This example project accompanies the tutorials [How to build a live comments sec
 
 ## Note
 
-There are many scenarios where a chat can have more than two participants, for example an online class or a gaming chatroom. This tutorial will detail how to implement group chat  functionality allowing multiple users using TalkJS.
+There are many scenarios where a chat can have more than two participants, for example an online class or a gaming chatroom. This tutorial will detail how to implement group chat functionality allowing multiple users using TalkJS.
 
 Replace `"YOUR_APP_ID"` with your own app ID. You can find your app ID on the **Settings** page of your [TalkJS dashboard](https://talkjs.com/dashboard/).
