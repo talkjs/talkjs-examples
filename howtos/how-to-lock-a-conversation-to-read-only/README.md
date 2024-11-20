@@ -20,4 +20,5 @@ To run this tutorial, you will need:
 3. Again on the **Chat UI** page, select to edit the settings for the new admin role. 
 4. Go to the **Custom conversation actions** section on the same page, and add a new custom conversation action with a name of "setReadOnly" and a label of "Set Read-Only".
 5. Replace `<APP_ID>` in the `index.html` file with the value found in your [TalkJS dashboard](https://talkjs.com/dashboard/login).
-6. Open `index.html`, or run debug the program in your IDE of choice.
+6. Open `index.html` to view the chat.
+
