@@ -1,23 +1,83 @@
+# OS
 .DS_Store
+
+# Dependencies
 node_modules
+bower_components
+jspm_packages/
+web_modules/
+
+# Build outputs
 /dist
+.next
+out
+.nuxt
+dist
+.vuepress/dist
+build/Release
 
-
-# local env files
+# Environment files
+.env
+.env.test
 .env.local
 .env.*.local
 
 # Log files
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+lerna-debug.log*
 
 # Editor directories and files
 .idea
 .vscode
+.vscode-test
+.vs
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# Cache directories
+.cache
+.parcel-cache
+.npm
+.eslintcache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+.fusebox/
+.dynamodb/
+.serverless/
+lib-cov
+coverage
+*.lcov
+.nyc_output
+
+# Runtime & temp files
+pids
+*.pid
+*.seed
+*.pid.lock
+.lock-wscript
+.grunt
+.tern-port
+*.tsbuildinfo
+.node_repl_history
+*.tgz
+.yarn-integrity
+
+# Yarn v2 specific
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# Reports
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
