@@ -36,12 +36,7 @@ To run this example project, you need:
     4. Select which messages can be forwarded, and who can do the forwarding. For the purposes of this guide, for **Which messages** select that the action should be available for `All messages`, and for **Action available to**, select `Everyone`.
 3. Add styling to distinguish forwarded messages in your theme. The following steps add a subtle but noticeable right-pointed arrow and the label *Forwarded* at the top of the message body of messages that have been forwarded.
     1. On the **Themes** page of your dashboard, select **Edit** for the theme that you’d like to use.
-    2. To identify user messages that have been forwarded, in `UserMessage`, add the following inside the `<template>` part of the code, for example at the top:
-        ```html
-        <!-- Check for forwarded messages -->
-        <div t:if="{{ custom and custom.forwardedFrom }}" class="{{ 'forwarded' }}"></div>
-        ```
-    3. Still in `UserMessage`, find the section where it adds the `MessageBody`, and replace it with the following, which adds `forwardedFrom="{{custom.forwardedFrom}}"` to the message body props if the message has the `forwardedFrom` custom property:
+    2. To identify user messages that have been forwarded, go to the `UserMessage` component. Inside the `<template>` part of the code, find the section where it adds the `MessageBody`, and replace it with the following, which adds `forwardedFrom="{{custom.forwardedFrom}}"` to the message body props if the message has the `forwardedFrom` custom property:
         ```html
             <MessageBody t:if="{{ custom and custom.forwardedFrom }}"
                 body="{{ body }}"
@@ -61,10 +56,9 @@ To run this example project, you need:
                 isLongEmailMessage="{{isLongEmailMessage}}"
                 darkenMenuArea="{{ darkenMenuArea }}"
                 referencedMessage="{{ referencedMessage }}"
-                forwardedFrom="null"
             />
         ```
-    4. Then, to style the message body of a forwarded message, go to `MessageBody` and add the following at the top inside the `<template>` section:
+    3. Then, to style the message body of a forwarded message, go to `MessageBody` and add the following at the top inside the `<template>` section:
         ```html
         <div t:if="{{ forwardedFrom }}">
             <div class="forwarded-header">
