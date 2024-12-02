@@ -1,6 +1,6 @@
 # How to create a message center with TalkJS
 
-This is an example project for TalkJS's tutorial on [how to create a message center](https://talkjs.com/resources/how-to-create-a-message-center/).
+This is an example project for TalkJS's tutorial on [how to create a message center](https://talkjs.com/resources/how-to-create-a-message-center-with-talkjs/).
 
 The project uses TalkJS's [REST API](https://talkjs.com/docs/Features/Customizations/Conversation_Actions/) to create messages and set the user's conversation access to read-only, and then hides the message field of the inbox.
 
