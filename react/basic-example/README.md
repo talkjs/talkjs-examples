@@ -2,8 +2,9 @@
 
 This is a basic example that demonstrates how to integrate TalkJS into a React app with our [React SDK](https://talkjs.com/docs/Reference/React_SDK/Installation/), bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-> [!TIP]
-> [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/react.basic-example.zip)
+This example uses React version 18. You can use the React SDK with versions 17 and up.
+
+> [!TIP] > [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/react.basic-example.zip)
 
 ## Prerequisites
 
