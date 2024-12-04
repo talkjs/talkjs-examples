@@ -4,8 +4,9 @@ This example extends our [team chat with channels example](https://github.com/ta
 
 See our [How to add reply threads to your TalkJS team chat](https://talkjs.com/resources/how-to-add-threads-to-your-team-chat-with-talkjs/) tutorial for more details.
 
-> [!TIP]
-> [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/react.team-chat-with-threads.zip)
+The example uses React version 18. You can use the React SDK with versions 17 and up.
+
+> [!TIP] > [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/react.team-chat-with-threads.zip)
 
 ## Prerequisites
 
