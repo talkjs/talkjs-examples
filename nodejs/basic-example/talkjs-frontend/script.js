@@ -1,22 +1,10 @@
-const getAgent = async () => {
-  const response = await fetch("http://127.0.0.1:3000/getUser/1");
-  const data = await response.json();
-  let agent = new Talk.User({
-    id: data.id,
-    name: data.name,
-    photoUrl: data.dp,
-    email: data.email,
-    role: data.role,
-  });
-  return agent;
-};
-const getUser = async () => {
-  const response = await fetch("http://127.0.0.1:3000/getUser/2");
+const getUser = async (id) => {
+  const response = await fetch(`http://127.0.0.1:3000/getUser/${id}`);
   const data = await response.json();
   let user = new Talk.User({
     id: data.id,
     name: data.name,
-    photoUrl: data.dp,
+    photoUrl: data.photoUrl,
     email: data.email,
     role: data.role,
   });
@@ -25,26 +13,24 @@ const getUser = async () => {
 
 (async function () {
   await Talk.ready;
-  let agent = await getAgent();
-  let user = await getUser();
+  let agent = await getUser(1);
+  let user = await getUser(2);
   const session = new Talk.Session({
-    appId: "<APP_ID>",
+    appId: "<APP_ID>", // replace with your app ID
     me: user,
   });
   var conversation = session.getOrCreateConversation(
-    Talk.oneOnOneId(user, agent)
+    "nodeJSExampleConversation"
   );
   conversation.setAttributes({
     welcomeMessages: [
-      "You can start typing your message here and one of our agents will be with you shortly.",
-      "Please do not divulge any of your personal information.",
+      "Example chat for our Node.js tutorial. Try sending a message!",
     ],
   });
   conversation.setParticipant(user);
   conversation.setParticipant(agent);
-  console.log(conversation);
 
-  var inbox = session.createInbox(conversation);
-  inbox.select(conversation);
-  inbox.mount(document.getElementById("talkjs-container"));
+  var chatbox = session.createChatbox(conversation);
+  chatbox.select(conversation);
+  chatbox.mount(document.getElementById("talkjs-container"));
 })();
