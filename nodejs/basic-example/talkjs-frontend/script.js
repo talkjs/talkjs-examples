@@ -13,13 +13,13 @@ const getUser = async (id) => {
 
 (async function () {
   await Talk.ready;
-  let agent = await getUser(1);
-  let user = await getUser(2);
+  const alice = await getUser(1);
+  const sebastian = await getUser(2);
   const session = new Talk.Session({
     appId: "<APP_ID>", // replace with your app ID
-    me: user,
+    me: sebastian,
   });
-  var conversation = session.getOrCreateConversation(
+  const conversation = session.getOrCreateConversation(
     "nodeJSExampleConversation"
   );
   conversation.setAttributes({
@@ -27,10 +27,10 @@ const getUser = async (id) => {
       "Example chat for our Node.js tutorial. Try sending a message!",
     ],
   });
-  conversation.setParticipant(user);
-  conversation.setParticipant(agent);
+  conversation.setParticipant(alice);
+  conversation.setParticipant(sebastian);
 
-  var chatbox = session.createChatbox(conversation);
+  const chatbox = session.createChatbox(conversation);
   chatbox.select(conversation);
   chatbox.mount(document.getElementById("talkjs-container"));
 })();
