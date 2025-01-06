@@ -10,7 +10,6 @@ db.data ||= { users: [] };
 const app = express();
 const port = 3000;
 app.use(cors());
-
 app.use(express.json());
 
 app.post("/createUser", (req, res) => {
