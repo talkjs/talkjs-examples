@@ -5,7 +5,7 @@ import bodyParser from "body-parser";
 
 import { LowSync, JSONFileSync } from "lowdb";
 
-const adapter = new JSONFileSync("file.json");
+const adapter = new JSONFileSync("users.json");
 const db = new LowSync(adapter);
 db.read();
 db.data ||= { users: [] };
@@ -23,7 +23,6 @@ app.post("/createUser", (req, res) => {
   const email = req.body.email;
   const photoUrl = req.body.photoUrl;
   const role = req.body.role;
-  console.log(id, name, email, photoUrl, role);
   db.data.users.push({
     id: id,
     name: name,
@@ -47,4 +46,4 @@ app.get("/getUser/:id", (req, res) => {
   }
 });
 
-app.listen(port, () => console.log(`Server up and running at port ${port}!`));
+app.listen(port, () => console.log(`Server up and running on port ${port}`));
