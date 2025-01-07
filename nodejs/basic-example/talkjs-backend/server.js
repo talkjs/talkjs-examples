@@ -19,12 +19,14 @@ app.post("/createUser", (req, res) => {
   const email = req.body.email;
   const photoUrl = req.body.photoUrl;
   const role = req.body.role;
+  const welcomeMessage = req.body.welcomeMessage;
   db.data.users.push({
     id: id,
     name: name,
     email: email,
     photoUrl: photoUrl,
     role: role,
+    welcomeMessage: welcomeMessage,
   });
   db.write();
   res.status(200).send("User created successfully");
