@@ -5,6 +5,7 @@ import { LowSync, JSONFileSync } from "lowdb";
 const adapter = new JSONFileSync("users.json");
 const db = new LowSync(adapter);
 db.read();
+// Initialize with an empty array if users.json is empty or doesn't exist
 db.data ||= { users: [] };
 
 const app = express();
