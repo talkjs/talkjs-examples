@@ -7,6 +7,7 @@ const getUser = async (id) => {
     photoUrl: data.photoUrl,
     email: data.email,
     role: data.role,
+    welcomeMessage: data.welcomeMessage,
   });
   return user;
 };
