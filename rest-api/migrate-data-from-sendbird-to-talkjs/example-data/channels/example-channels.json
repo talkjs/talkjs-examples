@@ -1,0 +1,76 @@
+{
+  "group_channels": [
+    {
+      "name": "TalkJS migration chat",
+      "channel_url": "sendbird_group_channel_483424280_ac14e7e8e6d5b3bc2dd3979fb360ad432ae0d6e8",
+      "cover_url": "https://static.sendbird.com/sample/cover/cover_14.jpg",
+      "created_at": 1736855603,
+      "max_length_message": 5000,
+      "custom_type": "",
+      "is_distinct": false,
+      "data": "",
+      "member_count": 3,
+      "joined_member_count": 3,
+      "is_access_code_required": false,
+      "is_super": false,
+      "is_broadcast": false,
+      "is_public": false,
+      "is_discoverable": false,
+      "freeze": false,
+      "is_ephemeral": false,
+      "unread_message_count": 0,
+      "unread_mention_count": 0,
+      "message_survival_seconds": -1,
+      "sms_fallback_wait_seconds": -1,
+      "sms_fallback_exclude_user_ids": [],
+      "members": [
+        {
+          "name": "Sebastian",
+          "user_id": "sebastian-sendbird",
+          "is_active": true,
+          "image": "https://talkjs.com/new-web/avatar-2.jpg",
+          "is_bot": false
+        },
+        {
+          "name": "Alice",
+          "user_id": "alice-sendbird",
+          "is_active": true,
+          "image": "https://talkjs.com/new-web/avatar-6.jpg",
+          "is_bot": false
+        },
+        {
+          "name": "Nina",
+          "user_id": "nina-sendbird",
+          "is_active": true,
+          "image": "https://talkjs.com/new-web/avatar-7.jpg",
+          "is_bot": false
+        }
+      ],
+      "read_receipt": {},
+      "last_message": {
+        "type": "MESG",
+        "message_id": 10463405355,
+        "message": "Let's try importing this chat into TalkJS!",
+        "data": "",
+        "custom_type": "",
+        "file": {},
+        "created_at": 1736856656811,
+        "user": {
+          "user_id": "nina-sendbird",
+          "profile_url": "https://talkjs.com/new-web/avatar-7.jpg",
+          "nickname": "Nina",
+          "metadata": {}
+        },
+        "channel_url": "sendbird_group_channel_483424280_ac14e7e8e6d5b3bc2dd3979fb360ad432ae0d6e8",
+        "updated_at": 0,
+        "message_survival_seconds": -1,
+        "mentioned_users": [],
+        "mention_type": "users",
+        "silent": false,
+        "translations": {},
+        "is_removed": false,
+        "req_id": "rq-13df2f9e-f1d6-4c75-ae66-32ea1eb1a2d2"
+      }
+    }
+  ]
+}
