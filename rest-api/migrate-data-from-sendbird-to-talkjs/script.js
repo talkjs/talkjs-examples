@@ -19,5 +19,6 @@ Talk.ready.then(function () {
   conversation.setParticipant(nina);
 
   var chatbox = window.talkSession.createChatbox(conversation);
+  chatbox.select(conversation);
   chatbox.mount(document.getElementById("talkjs-container"));
 });

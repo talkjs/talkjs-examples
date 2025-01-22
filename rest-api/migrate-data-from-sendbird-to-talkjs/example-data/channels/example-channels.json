@@ -2,7 +2,7 @@
   "group_channels": [
     {
       "name": "TalkJS migration chat",
-      "channel_url": "sendbird_group_channel_483424280_ac14e7e8e6d5b3bc2dd3979fb360ad432ae0d6e8",
+      "channel_url": "sendbird_group_channel_483424280_ac14e7e8e6d5b3bc2dd3979fb360ad432ae0d6e9",
       "cover_url": "https://static.sendbird.com/sample/cover/cover_14.jpg",
       "created_at": 1736855603,
       "max_length_message": 5000,
@@ -61,7 +61,7 @@
           "nickname": "Nina",
           "metadata": {}
         },
-        "channel_url": "sendbird_group_channel_483424280_ac14e7e8e6d5b3bc2dd3979fb360ad432ae0d6e8",
+        "channel_url": "sendbird_group_channel_483424280_ac14e7e8e6d5b3bc2dd3979fb360ad432ae0d6e9",
         "updated_at": 0,
         "message_survival_seconds": -1,
         "mentioned_users": [],
