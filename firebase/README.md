@@ -10,7 +10,6 @@ To run this example project, you need:
 
 - The [Firebase CLI](https://firebase.google.com/docs/cli#install_the_firebase_cli)
 - A [TalkJS account](https://talkjs.com/dashboard/login)
-- Firebase Cloud Messaging configured in the **Settings** page of the [TalkJS dashboard](https://talkjs.com/dashboard). For more details on how to set this up, see [Configure Firebase Cloud Messaging](https://talkjs.com/docs/Features/Notifications/Mobile_Push_Notifications/Configure_FCM/).
 
 ## How to run the example
 
@@ -24,7 +23,7 @@ To run this example project, you need:
    ```sh
    firebase init hosting
    ```
-   Select to either use an existing Firebase project or create a new one. If you create a new one, you'll need to [configure Firebase Cloud Messaging](https://talkjs.com/docs/Features/Notifications/Mobile_Push_Notifications/Configure_FCM/).
+   Select to either use an existing Firebase project or create a new one. If you create a new one, or you haven't yet set up Firebase Cloud Messaging in the TalkJS dashboard, see [Configure Firebase Cloud Messaging](https://talkjs.com/docs/Features/Notifications/Mobile_Push_Notifications/Configure_FCM/) in our docs.
 1. Answer the prompted questions:
    1. Select to use the default (`public`) as your public directory
    1. Select Yes for "Configure as a single-page app?"
