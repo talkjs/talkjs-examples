@@ -1,4 +1,4 @@
-## How to send web push notifications to a mobile device with Firebase
+## How to send web push notifications to a browser with Firebase
 
 This example project shows you how to send TalkJS's web push notifications to a mobile device with Firebase.
 
