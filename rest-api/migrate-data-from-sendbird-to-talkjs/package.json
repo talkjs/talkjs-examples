@@ -2,9 +2,10 @@
   "name": "migrate-data-from-sendbird-to-talkjs",
   "version": "1.0.0",
   "description": "",
-  "main": "talkjs-migration-users.js",
+  "main": "runImport.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node runImport.js"
   },
   "author": "",
   "license": "ISC",

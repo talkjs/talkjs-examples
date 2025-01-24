@@ -1,33 +1,24 @@
+const appId = "<APP_ID>"; // Replace with your app ID from the TalkJS dashboard
+
 Talk.ready.then(function () {
-  var me = new Talk.User({
-    id: "523915",
-    name: "Mathew Jacob"
-  });
-  var other1 = new Talk.User({
-    id: "523916",
-    name: "Morgan Stanley"
-  });
-  var other2 = new Talk.User({
-    id: "523917",
-    name: "Shane Riley"
-  });
-  var other3 = new Talk.User({
-    id: "523918",
-    name: "Clyde Howell"
-  });
+  // Add users from example-data
+  var alice = new Talk.User("alice-sendbird");
+  var sebastian = new Talk.User("sebastian-sendbird");
+  var nina = new Talk.User("nina-sendbird");
   window.talkSession = new Talk.Session({
-    appId: "YOUR_APP_ID",
-    me: me
+    appId: appId,
+    me: alice,
   });
 
+  // Add conversation from example-data
   var conversation = window.talkSession.getOrCreateConversation(
-    "sendbird_group_channel_229583953_53183fc50174e861b9a7d5c6684636dc94922349"
+    "sendbird_group_channel_483424280_ac14e7e8e6d5b3bc2dd3979fb360ad432ae0d6e9"
   );
-  conversation.setParticipant(me);
-  conversation.setParticipant(other1);
-  conversation.setParticipant(other2);
-  conversation.setParticipant(other3);
+  conversation.setParticipant(alice);
+  conversation.setParticipant(sebastian);
+  conversation.setParticipant(nina);
 
   var chatbox = window.talkSession.createChatbox(conversation);
+  chatbox.select(conversation);
   chatbox.mount(document.getElementById("talkjs-container"));
 });

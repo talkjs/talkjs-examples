@@ -1,0 +1,37 @@
+{
+  "active_users": [
+    {
+      "has_ever_logged_in": true,
+      "user_id": "alice-sendbird",
+      "is_active": true,
+      "profile_url": "https://talkjs.com/new-web/avatar-6.jpg",
+      "metadata": {},
+      "last_seen_at": "1969-12-31 23:59:59+0000",
+      "nickname": "Alice",
+      "access_token": "",
+      "session_tokens": []
+    },
+    {
+      "has_ever_logged_in": true,
+      "user_id": "sebastian-sendbird",
+      "is_active": true,
+      "profile_url": "https://talkjs.com/new-web/avatar-2.jpg",
+      "metadata": {},
+      "last_seen_at": "1969-12-31 23:59:59+0000",
+      "nickname": "Sebastian",
+      "access_token": "",
+      "session_tokens": []
+    },
+    {
+      "has_ever_logged_in": true,
+      "user_id": "nina-sendbird",
+      "is_active": true,
+      "profile_url": "https://talkjs.com/new-web/avatar-7.jpg",
+      "metadata": {},
+      "last_seen_at": "1969-12-31 23:59:59+0000",
+      "nickname": "Nina",
+      "access_token": "",
+      "session_tokens": []
+    }
+  ]
+}
