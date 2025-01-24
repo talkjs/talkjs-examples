@@ -40,7 +40,7 @@ To run this example project, you need:
      "projectId": "<APP_NAME>",
      "storageBucket": "<APP_NAME>.firebasestorage.app",
      "messagingSenderId": "<SENDER_ID>",
-     "appId": "<APP_ID>"
+     "appId": "<FIREBASE_APP_ID>"
    }
    ```
 1. Inside `public/index.html` (lines 168-175) and `public/firebase-messaging-sw.js` (lines 9-16), replace the placeholder object with your `firebaseConfig` object.
