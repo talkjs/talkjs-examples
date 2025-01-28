@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": "1",
+      "id": "alice",
       "name": "Alice",
       "email": "alice@example.com",
       "photoUrl": "https://talkjs.com/new-web/avatar-7.jpg",
@@ -9,7 +9,7 @@
       "welcomeMessage": "Hi 👋"
     },
     {
-      "id": "2",
+      "id": "sebastian",
       "name": "Sebastian",
       "email": "sebastian@example.com",
       "photoUrl": "https://talkjs.com/new-web/avatar-2.jpg",

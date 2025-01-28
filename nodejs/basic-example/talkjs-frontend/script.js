@@ -7,14 +7,15 @@ const getUser = async (id) => {
     photoUrl: data.photoUrl,
     email: data.email,
     role: data.role,
+    welcomeMessage: data.welcomeMessage,
   });
   return user;
 };
 
 (async function () {
   await Talk.ready;
-  const alice = await getUser(1);
-  const sebastian = await getUser(2);
+  const alice = await getUser("alice");
+  const sebastian = await getUser("sebastian");
   const session = new Talk.Session({
     appId: "<APP_ID>", // replace with your app ID
     me: sebastian,
