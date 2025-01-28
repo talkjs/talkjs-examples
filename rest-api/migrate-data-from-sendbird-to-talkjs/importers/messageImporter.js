@@ -75,6 +75,12 @@ async function importBatch(conversationId, messages) {
 
 async function importMessages(filePath) {
   try {
+    // Check if file is JSON
+    if (!filePath.toLowerCase().endsWith(".json")) {
+      console.log(`Skipping non-JSON file: ${filePath}`);
+      return;
+    }
+
     // Read and parse file
     const data = await fs.readFile(filePath, "utf8");
     console.log(`Read file: ${filePath}`);
