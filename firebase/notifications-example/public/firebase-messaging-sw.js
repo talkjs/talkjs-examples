@@ -35,10 +35,10 @@ messaging.onBackgroundMessage((payload) => {
   );
 
   const data = JSON.parse(payload.data["talkjs"]);
-  console.log("Talkjs Payload: ", data);
+  console.log("Talkjs payload: ", data);
 
   // Customize notification here
-  const notificationTitle = `Message From ${data.sender.name}`;
+  const notificationTitle = `Message from ${data.sender.name}`;
   const notificationOptions = {
     body: data.message.text,
     icon: "/firebase-logo.png",
