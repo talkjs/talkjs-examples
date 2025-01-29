@@ -200,7 +200,7 @@
           .addEventListener("click", () => {
             messaging
               .getToken({
-                vapidKey: "", // update this with your Firebase project public key
+                vapidKey: "<FIREBASE_PUBLIC_KEY>", // update this with your Firebase project public key
               })
               .then((token) => {
                 window.talkSession.setPushRegistration({
