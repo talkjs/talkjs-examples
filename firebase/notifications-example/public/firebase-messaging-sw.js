@@ -35,7 +35,7 @@ messaging.onBackgroundMessage((payload) => {
   );
 
   const data = JSON.parse(payload.data["talkjs"]);
-  console.log("Talkjs payload: ", data);
+  console.log("TalkJS payload: ", data);
 
   // Customize notification here
   const notificationTitle = `Message from ${data.sender.name}`;
