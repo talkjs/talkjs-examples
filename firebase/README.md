@@ -35,10 +35,10 @@ To run this example project, you need:
 1. After registering the app name, you will see some code samples for adding the Firebase SDK. Copy the `firebaseConfig` JavaScript object. It will look something like this:
    ```json
    {
-     "apiKey": "<API_KEY>",
-     "authDomain": "<APP_NAME>.firebaseapp.com",
-     "projectId": "<APP_NAME>",
-     "storageBucket": "<APP_NAME>.firebasestorage.app",
+     "apiKey": "<FIREBASE_API_KEY>",
+     "authDomain": "<FIREBASE_APP_NAME>.firebaseapp.com",
+     "projectId": "<FIREBASE_APP_NAME>",
+     "storageBucket": "<FIREBASE_APP_NAME>.firebasestorage.app",
      "messagingSenderId": "<SENDER_ID>",
      "appId": "<FIREBASE_APP_ID>"
    }
@@ -52,11 +52,11 @@ To run this example project, you need:
    ```sh
    firebase deploy --only hosting
    ```
-   This will deploy the website at a URL like `https://<APP_NAME>.web.app`.
+   This will deploy the website at a URL like `https://<FIREBASE_APP_NAME>.web.app`.
 
 ## How to test the example
 
-1. On the device where you want to receive push notifications, go to `https://<APP_NAME>.web.app` and click the **Request token** button. Select to allow push notifications if prompted.
+1. On the device where you want to receive push notifications, go to `https://<FIREBASE_APP_NAME>.web.app` and click the **Request token** button. Select to allow push notifications if prompted.
 1. Switch to a different tab with another site (this is so that a notification will trigger when you get a new message).
 1. Add a new message to the TalkJS `sample_conversation` conversation from the other user, `sample_user_alice`. A simple way to do this is to go to the **Chat UI** tab of the TalkJS dashboard](https://talkjs.com/dashboard) and add a message from the **Preview** chat UI.
 1. You should now receive a push notification to your device with the message text.
