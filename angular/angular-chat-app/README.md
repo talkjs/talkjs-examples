@@ -1,4 +1,4 @@
-# TalkJS and Angular example
+# Build chat into an Angular app example
 
 This is an example project for TalkJS's tutorial on [how to build a chat into an Angular app with TalkJS](https://talkjs.com/resources/angular-chat-app/).
 
