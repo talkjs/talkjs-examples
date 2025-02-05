@@ -1,4 +1,4 @@
-# Angular getting started guide example
+# TalkJS and Angular example
 
 This is the example code for the [Angular getting started guide](https://talkjs.com/docs/Getting_Started/Frameworks/Angular/).
 
