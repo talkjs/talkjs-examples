@@ -208,7 +208,9 @@
                   pushRegistrationId: token,
                 });
 
-                document.getElementById("token").textContent = token;
+                document.getElementById(
+                  "token"
+                ).textContent = `Got token: ${token.substring(0, 16)}...`;
               });
           });
       });
