@@ -1,0 +1,37 @@
+﻿@using TalkJsInBlazorWasm.Models.TalkJsModels;
+@inject IJSRuntime jsRuntime;
+
+<div id="@OUTPUT_DIV_ID" class="talk-js-main-chat-div"></div>
+
+
+@code {
+    /// <summary>
+    /// The user representing the user of the app.
+    /// </summary>
+    [Parameter]
+    public User MyUser { get; set; }
+    /// <summary>
+    /// A list representing the other participants of the conversation.
+    /// </summary>
+    [Parameter]
+    public List<User> OtherUsers { get; set; }
+    /// <summary>
+    /// AppId from the TalkJS Dashboard.
+    /// </summary>
+    [Parameter]
+    public string AppId { get; set; }
+    /// <summary>
+    /// Id of the DOM element where TalkJS UI will be placed in.
+    /// </summary>
+    protected const string OUTPUT_DIV_ID = "talk-js-chat-div";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+    
+        if (MyUser != null && OtherUsers != null && OtherUsers.Count > 0 && !string.IsNullOrEmpty(AppId))
+        {
+            await jsRuntime.InvokeVoidAsync("TalkWrapper.createConversation", AppId, MyUser, OtherUsers, OUTPUT_DIV_ID, "MY_CONVERSATION_ID");
+        }
+    }
+}
