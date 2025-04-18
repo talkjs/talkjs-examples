@@ -34,10 +34,44 @@ Before running the app, make sure you have connected your device via ADB for And
 If you aren't using a physical device, make sure the emulator/simulator for your respective platform is
 setup correctly.
 
-Enter the following in a command terminal:
+### Step 1: Start Metro
+
+First, you will need to run **Metro**, the JavaScript build tool for React Native.
+
+To start the Metro dev server, run the following command from the root of your React Native project:
 
 ```sh
+# Using npm
+npm start
+
+# OR using Yarn
 yarn start
 ```
 
-Follow the onscreen prompt to run the app on the OS of your choice.
+### Step 2: Build and run your app
+
+With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+
+#### Android
+
+```sh
+# Using npm
+npm run android
+
+# OR using Yarn
+yarn android
+```
+
+#### iOS
+
+```sh
+# Using npm
+npm run ios
+
+# OR using Yarn
+yarn ios
+```
+
+If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+
+This is one way to run your app — you can also build it directly from Android Studio or Xcode.

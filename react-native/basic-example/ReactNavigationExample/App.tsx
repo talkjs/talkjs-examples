@@ -7,6 +7,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import type Talk from '@talkjs/react-native';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 type RootStackParamList = {
   Chatbox: {conversationData: Talk.ConversationData} | undefined;
@@ -82,9 +83,6 @@ function Chatbox(props: NativeStackScreenProps<RootStackParamList, 'Chatbox'>) {
           conversationBuilder={conversation ?? conversationBuilder}
           showChatHeader={false}
           highlightedWords={['he', 'hehe', 'you']}
-          messageFilter={{type: ['==', 'UserMessage']}}
-          onBlur={event => console.log('onBlur: ', event)}
-          onFocus={event => console.log('onFocus: ', event)}
           onSendMessage={event => console.log('onSendMessage: ', event)}
           loadingComponent={
             <ActivityIndicator
@@ -127,12 +125,14 @@ export default function App() {
   const Stack = createNativeStackNavigator<RootStackParamList>();
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Chatbox" component={Chatbox} />
-        <Stack.Screen name="ConversationList" component={ConversationList} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Chatbox" component={Chatbox} />
+          <Stack.Screen name="ConversationList" component={ConversationList} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
