@@ -6,7 +6,6 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactNativeHost;
-import com.facebook.react.flipper.ReactNativeFlipper;
 import com.facebook.soloader.SoLoader;
 import java.util.List;
 
@@ -35,6 +34,16 @@ public class MainApplication extends NavigationApplication {
         protected String getJSMainModuleName() {
           return "index";
         }
+
+        @Override
+        protected Boolean isHermesEnabled() {
+          return BuildConfig.IS_HERMES_ENABLED;
+        }
+
+        @Override
+        protected boolean isNewArchEnabled() {
+          return BuildConfig.IS_NEW_ARCHITECTURE_ENABLED;
+        }
       };
 
   @Override
@@ -50,6 +59,5 @@ public class MainApplication extends NavigationApplication {
       // if you opted-in for the New Architecture, we load the native entry point for this app.
       DefaultNewArchitectureEntryPoint.load();
     }
-    ReactNativeFlipper.initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
   }
 }

@@ -2,16 +2,16 @@
 
 buildscript {
     ext {
-        buildToolsVersion = "34.0.0"
-        minSdkVersion = 21
+        buildToolsVersion = "35.0.0"
+        minSdkVersion = 23
         compileSdkVersion = 34
         targetSdkVersion = 34
 
         // Required by React Native Navigation
-        kotlinVersion = "1.9.20"
+        kotlinVersion = "1.9.25"
         RNNKotlinVersion = kotlinVersion
 
-        ndkVersion = "25.1.8937393"
+        ndkVersion = "26.1.10909125"
     }
     repositories {
         google()
@@ -19,10 +19,10 @@ buildscript {
         mavenLocal()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:8.2.0")
+        classpath("com.android.tools.build:gradle")
         classpath("com.facebook.react:react-native-gradle-plugin")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
-        classpath("com.google.gms:google-services:4.4.0")
+        classpath("com.google.gms:google-services:4.4.2")
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
