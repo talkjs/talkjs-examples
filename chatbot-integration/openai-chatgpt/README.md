@@ -24,6 +24,6 @@ To run this tutorial, you will need:
 3. Replace `<OPENAI_SECRET_KEY>` with your OpenAI API key
 4. Enable the `message.sent` option in the **Webhooks** section of the TalkJS dashboard.
 5. Start ngrok with `ngrok http 3000`.
-6. Add the ngrok URL to **Webhook URLs** in the TalkJS dashboard.
+6. Add the ngrok URL to **Webhook URLs** in the TalkJS dashboard, along with the `/onMessageSent` path: `https://<YOUR_SITE>.ngrok-free.app/onMessageSent`.
 7. Run `npm install` to install dependencies.
 8. Run `npm start` to start the webhooks server.
