@@ -8,7 +8,7 @@ TalkJS already displays an [unread message counter](https://talkjs.com/resources
 
 ## How to run the example
 
-- Replace `<YOUR_APP_ID>` in `index.html` and `other.html` with your App ID. You can find this in the **Settings** tab of your [TalkJS dashboard](https://talkjs.com/dashboard/app/tZNWA0Ox/settings)
+- Replace `<YOUR_APP_ID>` in `index.html` and `other.html` with your App ID. You can find this in the **Settings** tab of your [TalkJS dashboard](https://talkjs.com/dashboard)
 - Open `index.html` and `other.html` in your browser.
 - Test it out:
   - Switch to a different conversation in Alice's inbox (you should have sample conversations available)
