@@ -1,11 +1,11 @@
 import { Component } from "@angular/core";
-import { TalkjsChatComponent } from "./talkjs-chat/talkjs-chat.component";
+import { ChatComponent } from "./chat/chat.component";
 
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [TalkjsChatComponent],
-  template: ` <app-talkjs-chat></app-talkjs-chat> `,
+  imports: [ChatComponent],
+  template: ` <app-chat></app-chat> `,
   styles: [],
 })
 export class AppComponent {
