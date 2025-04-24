@@ -3,7 +3,7 @@ import { Component } from "@angular/core";
 import Talk from "talkjs";
 
 @Component({
-  selector: "app-talkjs-chat",
+  selector: "app-chat",
   standalone: true,
   imports: [],
   template: `
@@ -11,34 +11,34 @@ import Talk from "talkjs";
   `,
   styles: ``,
 })
-export class TalkjsChatComponent {
+export class ChatComponent {
   constructor() {
     Talk.ready.then(function () {
-      const me = new Talk.User({
-        id: "nina",
+      const session = new Talk.Session({
+        appId: "<APP_ID>",
+        userId: "nina",
+      });
+      session.currentUser.createIfNotExists({
         name: "Nina",
         email: "nina@example.com",
         photoUrl: "https://talkjs.com/new-web/avatar-7.jpg",
         welcomeMessage: "Hi!",
       });
-      const session = new Talk.Session({
-        appId: "<APP_ID>",
-        me: me,
-      });
-      const other = new Talk.User({
-        id: "frank",
+
+      const otherRef = session.user("frank");
+      otherRef.createIfNotExists({
         name: "Frank",
         email: "frank@example.com",
         photoUrl: "https://talkjs.com/new-web/avatar-8.jpg",
         welcomeMessage: "Hey, how can I help?",
       });
 
-      const conversation = session.getOrCreateConversation("new_conversation");
-      conversation.setParticipant(me);
-      conversation.setParticipant(other);
+      const conversationRef = session.conversation("new_conversation");
+      conversationRef.createIfNotExists();
+      conversationRef.participant(otherRef).createIfNotExists();
 
       const chatbox = session.createChatbox();
-      chatbox.select(conversation);
+      chatbox.select(conversationRef);
       chatbox.mount(document.getElementById("talkjs-container"));
     });
   }
