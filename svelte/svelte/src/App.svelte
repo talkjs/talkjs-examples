@@ -7,18 +7,21 @@
 
   onMount(async () => {
     Talk.ready.then(() => {
-      const me = new Talk.User(oliver);
-      const other = new Talk.User(abby);
+      const session = new Talk.Session({
+        appId: appId,
+        userId: oliver.id,
+      });
+      session.currentUser.createIfNotExists(oliver);
 
-      const session = new Talk.Session({ appId, me });
+      const otherRef = session.user(abby.id);
+      otherRef.createIfNotExists(abby);
 
-      const conversationId = Talk.oneOnOneId(me, other);
-      const conversation = session.getOrCreateConversation(conversationId);
-      conversation.setParticipant(me);
-      conversation.setParticipant(other);
+      const conversationRef = session.conversation('svelte_example_conversation');
+      conversationRef.createIfNotExists();
+      conversationRef.participant(otherRef).createIfNotExists();
 
       const chatbox = session.createChatbox();
-      chatbox.select(conversation);
+      chatbox.select(conversationRef);
       chatbox.mount(element);
     });
   });

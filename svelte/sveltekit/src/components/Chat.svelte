@@ -5,20 +5,21 @@
 
   onMount(async () => {
     await Talk.ready;
-    // Safe to use the SDK here
-    const me = new Talk.User(oliver);
-    const other = new Talk.User(abby);
+    const session = new Talk.Session({
+        appId: appId,
+        userId: oliver.id,
+      });
+      session.currentUser.createIfNotExists(oliver);
 
-    const session = new Talk.Session({ appId, me });
+      const otherRef = session.user(abby.id);
+      otherRef.createIfNotExists(abby);
 
-    const conversation = session.getOrCreateConversation(
-        'new_conversation'
-      );
-      conversation.setParticipant(me);
-      conversation.setParticipant(other);
+      const conversationRef = session.conversation('sveltekit_example_conversation');
+      conversationRef.createIfNotExists();
+      conversationRef.participant(otherRef).createIfNotExists();
 
       const chatbox = session.createChatbox();
-      chatbox.select(conversation);
+      chatbox.select(conversationRef);
       chatbox.mount(document.getElementById('talkjs-container'));
     });
 </script>
