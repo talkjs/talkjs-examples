@@ -32,7 +32,7 @@ async function sendInitialMessage(conversationId) {
       body: JSON.stringify([
         {
           text: "_Let me think for a bit..._", // Placeholder text that the theme will replace with a typing indicator
-          sender: "chatbotExampleBot",
+          sender: botId,
           type: "UserMessage",
           custom: { isTyping: "true" },
         },
