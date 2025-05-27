@@ -65,9 +65,9 @@
       conversation.setParticipant(me);
       conversation.setParticipant(bot);
 
-      const inbox = talkSession.createChatbox();
-      inbox.select(conversation);
-      inbox.mount(document.getElementById("talkjs-container"));
+      const chatbox = talkSession.createChatbox();
+      chatbox.select(conversation);
+      chatbox.mount(document.getElementById("talkjs-container"));
     });
   </script>
 
