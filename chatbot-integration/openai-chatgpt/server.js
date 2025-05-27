@@ -4,6 +4,7 @@ import OpenAI from "openai";
 
 const appId = "<APP_ID>";
 const talkJSSecretKey = "<TALKJS_SECRET_KEY>";
+const basePath = "https://api.talkjs.com";
 
 const openAISecretKey = "<OPENAI_SECRET_KEY>";
 const openai = new OpenAI({ apiKey: openAISecretKey });
@@ -22,7 +23,7 @@ async function getCompletion(messageHistory) {
 
 async function sendInitialMessage(conversationId) {
   const response = await fetch(
-    `https://api.talkjs.com/v1/${appId}/conversations/${conversationId}/messages`,
+    `${basePath}/v1/${appId}/conversations/${conversationId}/messages`,
     {
       method: "POST",
       headers: {
@@ -47,7 +48,7 @@ async function sendInitialMessage(conversationId) {
 
 async function updateBotMessage(conversationId, messageId, text) {
   return fetch(
-    `https://api.talkjs.com/v1/${appId}/conversations/${conversationId}/messages/${messageId}`,
+    `${basePath}/v1/${appId}/conversations/${conversationId}/messages/${messageId}`,
     {
       method: "PUT",
       headers: {
@@ -64,7 +65,7 @@ async function updateBotMessage(conversationId, messageId, text) {
 
 async function setUserAccess(conversationId, userId, access) {
   return fetch(
-    `https://api.talkjs.com/v1/${appId}/conversations/${conversationId}/participants/${userId}`,
+    `${basePath}/v1/${appId}/conversations/${conversationId}/participants/${userId}`,
     {
       method: "PUT",
       headers: {
