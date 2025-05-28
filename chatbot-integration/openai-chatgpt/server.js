@@ -4,6 +4,7 @@ import OpenAI from "openai";
 
 const appId = "<APP_ID>";
 const talkJSSecretKey = "<TALKJS_SECRET_KEY>";
+const basePath = "https://api.talkjs.com";
 
 const openAISecretKey = "<OPENAI_SECRET_KEY>";
 const openai = new OpenAI({ apiKey: openAISecretKey });
@@ -14,16 +15,15 @@ const allMessageHistory = {};
 async function getCompletion(messageHistory) {
   const completion = await openai.chat.completions.create({
     messages: messageHistory,
-    model: "gpt-3.5-turbo",
+    model: "gpt-4o-mini",
   });
-
   const reply = completion.choices[0].message.content;
   return reply;
 }
 
-async function sendMessage(conversationId, text) {
-  return fetch(
-    `https://api.talkjs.com/v1/${appId}/conversations/${conversationId}/messages`,
+async function sendInitialMessage(conversationId) {
+  const response = await fetch(
+    `${basePath}/v1/${appId}/conversations/${conversationId}/messages`,
     {
       method: "POST",
       headers: {
@@ -32,11 +32,47 @@ async function sendMessage(conversationId, text) {
       },
       body: JSON.stringify([
         {
-          text: text,
-          sender: "chatbotExampleBot",
+          text: "_Let me think for a bit..._", // Placeholder text that the theme will replace with a typing indicator
+          sender: botId,
           type: "UserMessage",
+          custom: { isTyping: "true" },
         },
       ]),
+    }
+  );
+
+  // Return the message ID for later editing
+  const data = await response.json();
+  return data[0].id;
+}
+
+async function updateBotMessage(conversationId, messageId, text) {
+  return fetch(
+    `${basePath}/v1/${appId}/conversations/${conversationId}/messages/${messageId}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${talkJSSecretKey}`,
+      },
+      body: JSON.stringify({
+        text: text,
+        custom: { isTyping: "false" },
+      }),
+    }
+  );
+}
+
+async function setUserAccess(conversationId, userId, access) {
+  return fetch(
+    `${basePath}/v1/${appId}/conversations/${conversationId}/participants/${userId}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${talkJSSecretKey}`,
+      },
+      body: JSON.stringify({ access: access }),
     }
   );
 }
@@ -58,18 +94,19 @@ app.post("/onMessageSent", async (req, res) => {
       },
     ];
   }
+
   const messageHistory = allMessageHistory[convId];
 
-  if (senderId == botId) {
-    // Bot message
-    messageHistory.push({ role: "assistant", content: messageText });
-  } else {
-    // User message
+  if (senderId != botId) {
     messageHistory.push({ role: "user", content: messageText });
-    getCompletion(messageHistory).then((reply) => sendMessage(convId, reply));
+    const messageId = await sendInitialMessage(convId);
+    await setUserAccess(convId, senderId, "Read");
+    const reply = await getCompletion(messageHistory);
+    await updateBotMessage(convId, messageId, reply);
+    messageHistory.push({ role: "assistant", content: reply });
+    await setUserAccess(convId, senderId, "ReadWrite");
   }
 
   res.status(200).end();
 });
 
-app.listen(3000, () => console.log("Server is up"));
