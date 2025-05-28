@@ -22,7 +22,7 @@ To run this tutorial, you will need:
 2. Replace `<APP_ID>` and `<TALKJS_SECRET_KEY>` in `index.html` and `server.js` with the values found in your [TalkJS dashboard](https://talkjs.com/dashboard/login).
 3. Replace `<OPENAI_SECRET_KEY>` with your OpenAI API key
 4. Enable the `message.sent` option in the **Webhooks** section of the TalkJS dashboard.
-5. Update the theme to show a typing indicator when the bot is generating a response. In the **Themes** tab, select to **Edit** the the `default` theme. Select the `UserMessage` component from the list of **Built-in components** and replace the existing `MessageBody` component with the following:
+5. Update the theme to show a typing indicator when the bot is generating a response. In the **Themes** tab, select to **Edit** the `default` theme. Select the `UserMessage` component from the list of **Built-in components** and replace the existing `MessageBody` component with the following:
 
    ```jsx
    <div t:if="{{ custom.isTyping == 'true' }}" class="typing-indicator">
