@@ -19,7 +19,7 @@ To run this tutorial, you will need:
 ## How to run the tutorial
 
 1. Clone or [download this project](https://github.com/talkjs/talkjs-examples/releases/latest/download/react.next.js.zip).
-2. Save `.env.example` as `.env` and replace `<APP_ID>` with the value found in the **Settings** tab of your [TalkJS dashboard](https://talkjs.com/dashboard/login).
+2. Save a copy of `.env.example` as `.env` and replace `<APP_ID>` with the value found in the **Settings** tab of your [TalkJS dashboard](https://talkjs.com/dashboard/login).
 3. Run `npm install` to install dependencies.
 4. Run `npm run dev` to start the server.
 5. Visit <http://localhost:3000>.
