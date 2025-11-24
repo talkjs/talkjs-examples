@@ -2,7 +2,7 @@
 
 This example shows you how to use React and TalkJS to create a team chat with channels (like Slack or Teams). It's similar to the [remote work demo](https://talkjs.com/demo/team-chat/) that you can try on our website. See our [How to use TalkJS to create a team chat with channels](https://talkjs.com/resources/how-to-use-talkjs-to-create-a-team-chat-with-channels/) tutorial for more details.
 
-The example uses React version 18. You can use the React SDK with versions 17 and up.
+The example uses React version 18. You can use the [classic React SDK](https://talkjs.com/docs/UI_Components/React/Classic) with versions 17 and up.
 
 > [!TIP] > [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/react.remote-work-demo.zip)
 
