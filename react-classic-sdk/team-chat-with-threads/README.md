@@ -6,7 +6,7 @@ See our [How to add reply threads to your TalkJS team chat](https://talkjs.com/r
 
 The example uses React version 18. You can use the [classic React SDK](https://talkjs.com/docs/UI_Components/React/Classic) with versions 17 and up.
 
-> [!TIP] > [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/react.team-chat-with-threads.zip)
+> [!TIP] > [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/react-classic-sdk.team-chat-with-threads.zip)
 
 ## Prerequisites
 

@@ -6,7 +6,7 @@ The classic React SDK isn't able to render components on the server, so you can 
 
 This example uses React version 18.
 
-> [!TIP] > [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/react.next.js.zip)
+> [!TIP] > [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/react-classic-sdk.next.js.zip)
 
 ## Prerequisites
 

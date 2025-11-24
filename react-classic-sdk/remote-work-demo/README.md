@@ -4,7 +4,7 @@ This example shows you how to use React and TalkJS to create a team chat with ch
 
 The example uses React version 18. You can use the [classic React SDK](https://talkjs.com/docs/UI_Components/React/Classic) with versions 17 and up.
 
-> [!TIP] > [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/react.remote-work-demo.zip)
+> [!TIP] > [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/react-classic-sdk.remote-work-demo.zip)
 
 ## Instructions
 
