@@ -2,6 +2,6 @@
 
 The examples in this directory demonstrate how to use TalkJS with React.
 
-To get started with TalkJS's React SDK, try our [basic example](./basic-example/).
+To get started with TalkJS's classic React SDK, try the [basic example](./classic-sdk/basic-example/).
 
-For a more advanced example, check out our demo of a [team chat with channels](./remote-work-demo/).
+For a more advanced example, check out the demo of a [team chat with channels](./classic-sdk/remote-work-demo/).
