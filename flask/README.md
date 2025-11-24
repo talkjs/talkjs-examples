@@ -5,7 +5,7 @@ This is an example project for TalkJS's tutorial on [how to build a Flask chat a
 This example demonstrates how to integrate TalkJS with a Python application that uses the Flask framework. There are two projects present inside the repo:
 
 - `talkjs-flask-python`: This project contains the Flask backend, which serves a REST endpoint with user data.
-- `talkjs-frontend`: This project contains the frontend code, which uses TalkJS's [JavaScript SDK](https://talkjs.com/docs/Reference/JavaScript_Chat_SDK/) to create chats between users.
+- `talkjs-frontend`: This project contains the frontend code, which uses TalkJS's [classic JavaScript SDK](https://talkjs.com/docs/UI_Components/JavaScript/Classic/) to create chats between users.
 
 ## Prerequisites
 

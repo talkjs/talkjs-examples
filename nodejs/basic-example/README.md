@@ -5,7 +5,7 @@ This is an example project for TalkJS's tutorial on [how to build a Node.js chat
 This example demonstrates how to integrate TalkJS with an application that has a Node.js backend. There are two projects inside the repo:
 
 - The `talkjs-backend` project contains the Node.js backend, which serves a REST endpoint with user data.
-- The `talkjs-frontend` project contains the frontend code, which uses TalkJS's [JavaScript SDK](https://talkjs.com/docs/Reference/JavaScript_Chat_SDK/) to create chats between users.
+- The `talkjs-frontend` project contains the frontend code, which uses TalkJS's [classic JavaScript SDK](https://talkjs.com/docs/UI_Components/JavaScript/Classic/) to create chats between users.
 
 > [!TIP]
 > [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/nodejs.basic-example.zip)

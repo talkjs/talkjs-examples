@@ -25,8 +25,8 @@ This sample code accompanies a guide on [How to hide messages for users in a Tal
 
 ## Initiate First Messages Using The Rest Api
 
-- At first, the chat window will be empty. To get a conversation going between these 4 users, [create a conversation using the REST API](https://talkjs.com/docs/Reference/REST_API/Conversations/) and add these 4 users to the participants list.
-- After creating a conversation, [send an initial message from each user to the conversation using the REST API](https://talkjs.com/docs/Reference/REST_API/Messages/).
+- At first, the chat window will be empty. To get a conversation going between these 4 users, [create a conversation using the REST API](https://talkjs.com/docs/REST_API/Conversations/) and add these 4 users to the participants list.
+- After creating a conversation, [send an initial message from each user to the conversation using the REST API](https://talkjs.com/docs/REST_API/Messages/).
 - Now every users TalkJS instances should start showing up messages.
 
 You are now free to start playing around and apply different filters!

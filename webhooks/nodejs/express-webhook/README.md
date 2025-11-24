@@ -1,6 +1,6 @@
 # Webhooks example (Node.js)
 
-This example demonstrates how the [webhooks feature](https://talkjs.com/docs/Reference/Webhooks.html)  can be used so that additional functionality can be added to your TalkJS enabled applications. For more information check out [TalkJS.com](https://talkjs.com/) or [get in touch](https://talkjs.com?chat).
+This example demonstrates how the [webhooks feature](https://talkjs.com/docs/Webhooks)  can be used so that additional functionality can be added to your TalkJS enabled applications. For more information check out [TalkJS.com](https://talkjs.com/) or [get in touch](https://talkjs.com/?chat).
 
 > [!TIP]
 > [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/webhooks.nodejs.zip)

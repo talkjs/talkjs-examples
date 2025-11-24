@@ -1,6 +1,6 @@
 # TalkJS and Flutter example
 
-An example project that shows both the [ChatBox](https://talkjs.com/docs/Reference/Flutter_SDK/Widgets/Chatbox/) and [ConversationList](https://talkjs.com/docs/Reference/Flutter_SDK/Widgets/ConversationList/) widgets of TalkJS.
+An example project that shows both the [ChatBox](https://talkjs.com/docs/UI_Components/Flutter/Widgets/Chatbox/) and [ConversationList](https://talkjs.com/docs/UI_Components/Flutter/Widgets/ConversationList/) widgets of TalkJS.
 
 > [!TIP]
 > [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/flutter_sdk.basic-example.zip)

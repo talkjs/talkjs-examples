@@ -32,7 +32,7 @@ To run the import script on your own exported Sendbird data:
 
 1. Export your Sendbird user, channel and message data, following the instructions in the [tutorial](https://talkjs.com/resources/how-to-migrate-data-from-sendbird-to-talkjs/), and add the files to the `users`, `channels` and `messages` directories in `sendbird-data`.
 2. Run `npm start` to run the import.
-3. Test the import. You could check that the users, conversations and messages have been added with the [REST API](https://talkjs.com/docs/Reference/REST_API/Getting_Started/Introduction/), view them in the **Activity** tab of the TalkJS [dashboard](https://talkjs.com/dashboard), or edit `script.js` to view your own data in a TalkJS chatbox.
+3. Test the import. You could check that the users, conversations and messages have been added with the [REST API](https://talkjs.com/docs/REST_API/), view them in the **Activity** tab of the TalkJS [dashboard](https://talkjs.com/dashboard), or edit `script.js` to view your own data in a TalkJS chatbox.
 
 ## About the import script
 
@@ -46,9 +46,9 @@ The import script `runImport.js` calls the scripts in the `importers` directory 
 
 ### User import
 
-The `userImporter.js` script calls the [create user](https://talkjs.com/docs/Reference/REST_API/Users/#create-or-update-a-user) endpoint of the TalkJS REST API.
+The `userImporter.js` script calls the [create user](https://talkjs.com/docs/REST_API/Users/#create-or-update-a-user) endpoint of the TalkJS REST API.
 
-It maps the following Sendbird user fields to TalkJS [user fields](https://talkjs.com/docs/Reference/Concepts/Users/#user-data):
+It maps the following Sendbird user fields to TalkJS [user fields](https://talkjs.com/docs/Concepts/Users/#user-data):
 
 | Sendbird field     | TalkJS field | Required? |
 | ------------------ | ------------ | --------- |
@@ -59,22 +59,22 @@ It maps the following Sendbird user fields to TalkJS [user fields](https://talkj
 
 #### Conversation (channel) import
 
-The `channelImporter` script calls the [create conversation](https://talkjs.com/docs/Reference/REST_API/Conversations/#setting-conversation-data) REST API endpoint.
+The `channelImporter` script calls the [create conversation](https://talkjs.com/docs/REST_API/Conversations/#setting-conversation-data) REST API endpoint.
 
-It maps the following Sendbird channel fields to TalkJS [conversation fields](https://talkjs.com/docs/Reference/Concepts/Conversations/#conversation-data):
+It maps the following Sendbird channel fields to TalkJS [conversation fields](https://talkjs.com/docs/Concepts/Conversations/#conversation-data):
 
 | TalkJS field | Sendbird field | Required? |
 | ------------ | -------------- | --------- |
 | `id`         | `channel_url`  | Yes       |
 | `subject`    | `name`         | No        |
 
-It then adds users to the conversation as TalkJS [participants](https://talkjs.com/docs/Reference/Concepts/Participants/).
+It then adds users to the conversation as TalkJS [participants](https://talkjs.com/docs/Concepts/Participants/).
 
 #### Message import
 
-The `messageImporter` script calls the [import messages](https://talkjs.com/docs/Reference/REST_API/Importing_Messages/) REST API endpoint.
+The `messageImporter` script calls the [import messages](https://talkjs.com/docs/REST_API/Importing_Messages/) REST API endpoint.
 
-It uploads all Sendbird messages where `is_removed` is false, and where the [Sendbird message type](https://sendbird.com/docs/desk/sdk/v1/javascript/features/messages#2-message-types) is `MESG`. These correspond to TalkJS's [user messages](https://talkjs.com/docs/Reference/Concepts/Messages/). The import message endpoint does not support importing [system messages](https://talkjs.com/docs/Reference/Concepts/System_Messages/).
+It uploads all Sendbird messages where `is_removed` is false, and where the [Sendbird message type](https://sendbird.com/docs/desk/sdk/v1/javascript/features/messages#2-message-types) is `MESG`. These correspond to TalkJS's [user messages](https://talkjs.com/docs/Concepts/Messages/). The import message endpoint does not support importing [system messages](https://talkjs.com/docs/Concepts/System_Messages/).
 
 TalkJS autogenerates an `id` for each message. Other fields are mapped as follows:
 

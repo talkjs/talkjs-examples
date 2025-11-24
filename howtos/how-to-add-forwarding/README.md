@@ -7,10 +7,10 @@ This is an example project for TalkJS's tutorial on [How to add a forward messag
   <figcaption>A conversation with a forwarded message</figcaption>
 </figure>
 
-This project uses custom [message actions](https://talkjs.com/docs/Features/Message_Features/Message_Actions/) and the [TalkJS REST API](https://talkjs.com/docs/Reference/REST_API/Getting_Started/Introduction/) to allow users to forward text-based messages to conversations that they're part of.
+This project uses custom [message actions](https://talkjs.com/docs/Features/Messages/Message_Actions/) and the [TalkJS REST API](https://talkjs.com/docs/REST_API/) to allow users to forward text-based messages to conversations that they're part of.
 
 > [!NOTE]
-> This example implementation of message forwarding only supports forwarding text-based messages, not messages that are location shares, [voice messages](https://talkjs.com/docs/Features/Message_Features/Voice_Messages/), or [file attachments](https://talkjs.com/docs/Features/Message_Features/File_Sharing/). To extend the current functionality to also include forwarding files, see the information on [sending files with the REST API](https://talkjs.com/docs/Reference/REST_API/Messages/#send-a-file). 
+> This example implementation of message forwarding only supports forwarding text-based messages, not messages that are location shares, [voice messages](https://talkjs.com/docs/Features/Messages/Voice_Messages/), or [file attachments](https://talkjs.com/docs/Features/Message_Features/File_Sharing/). To extend the current functionality to also include forwarding files, see the information on [sending files with the REST API](https://talkjs.com/docs/REST_API/Messages/#send-a-file). 
 
 > [!TIP]
 > [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/howtos.how-to-add-forwarding.zip)
