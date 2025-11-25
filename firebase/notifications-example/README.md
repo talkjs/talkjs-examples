@@ -2,7 +2,8 @@
 
 This example project accompanies our [Set up web push notifications with Firebase Cloud Messaging](https://talkjs.com/resources/set-up-web-push-notifications-with-firebase-cloud-messaging/) tutorial.
 
-> [!TIP] > [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/firebase.notifications-example.zip)
+> [!TIP] 
+> [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/firebase.notifications-example.zip)
 
 ## Prerequisites
 

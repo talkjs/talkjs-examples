@@ -4,7 +4,8 @@ This example shows you how to get the current user's unread messages with [`Sess
 
 TalkJS already displays an [unread message counter](https://talkjs.com/resources/unread-message-counter/) next to conversations with unread messages, but you might want to add a counter elsewhere in your UI. See our [Browser notifications](https://talkjs.com/docs/Features/Notifications/Browser_Notifications/#a-notifier-badge-in-your-navigation-bar) docs for more details.
 
-> [!TIP] > [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/howtos.how-to-listen-for-unread-messages.zip)
+> [!TIP] 
+> [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/howtos.how-to-listen-for-unread-messages.zip)
 
 ## How to run the example
 

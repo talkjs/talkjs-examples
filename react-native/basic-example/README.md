@@ -7,4 +7,5 @@ The examples in this directory demonstrate how to use TalkJS with React Native t
 
 The examples use React Native version 0.73. You can use the React Native SDK with versions 0.64 and up.
 
-> [!TIP] > [Download these example projects as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/react-native.basic-example.zip)
+> [!TIP] 
+> [Download these example projects as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/react-native.basic-example.zip)
