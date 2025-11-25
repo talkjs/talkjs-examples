@@ -40,7 +40,7 @@ exports.dual = (req, res) => {
         // Marco will a be a member of the group conversation
         marco: marco,
         // Generate a unique conversation ID for the group chat by using the user's IDs alphabetically sorted (by name)
-        // see: https://talkjs.com/docs/Reference/Concepts/Conversations.html
+        // see: https://talkjs.com/docs/Concepts/Conversations
         convId: alice.id + marco.id + sebastian.id
     })
 }

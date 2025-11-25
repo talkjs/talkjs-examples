@@ -48,7 +48,7 @@ var me = new Talk.User({
 
 We also want to add a default message that a customer sees when they open the chat, for example containing a link to docs, availability or other resources. ( Such as you see on the TalkJS live chat).
 
-To do this we use the `setAttributes` method. [ConversationBuilder.setAttributes](https://talkjs.com/docs/Reference/JavaScript_Chat_SDK/ConversationBuilder/#ConversationBuilder__setAttributes) can also be used to set a subject, and even a display picture of the whole chat, as opposed to the profile pictures on individual participants.
+To do this we use the `setAttributes` method. [ConversationBuilder.setAttributes](https://talkjs.com/docs/UI_Components/JavaScript/Classic/Classic_Data_API/#ConversationBuilder__setAttributes) can also be used to set a subject, and even a display picture of the whole chat, as opposed to the profile pictures on individual participants.
 
 So we add the following code:
 

@@ -200,7 +200,7 @@ let me = new Talk.User({
 });
 ```
 
-We then use the `appId` to start and authenticate our chat [`Session`](https://talkjs.com/docs/Reference/JavaScript_Chat_SDK/Session/) with the TalkJS servers. This `appId` is found in the [TalkJS dashboard](https://talkjs.com/dashboard), and without it the chat will not load.
+We then use the `appId` to start and authenticate our chat [`Session`](https://talkjs.com/docs/UI_Components/JavaScript/Classic/Session/) with the TalkJS servers. This `appId` is found in the [TalkJS dashboard](https://talkjs.com/dashboard), and without it the chat will not load.
 
 Next we create and mount the chatbox where the conversation will be displayed:
 

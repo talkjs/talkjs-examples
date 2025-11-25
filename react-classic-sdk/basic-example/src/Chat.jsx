@@ -17,7 +17,7 @@ function Chat() {
   );
 
   const syncConversation = useCallback((session) => {
-    // Use the JavaScript SDK here
+    // Use the classic JavaScript SDK here
     const conversation = session.getOrCreateConversation("welcome");
 
     const other = new Talk.User({

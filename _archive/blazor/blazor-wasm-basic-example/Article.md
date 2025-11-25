@@ -104,7 +104,7 @@ public class User
 }
 ```
 
-The properties are pretty self-explanatory. If you are interested in deeper explanations feel free to visit the official docs: https://talkjs.com/docs/Reference/Concepts/Users/
+The properties are pretty self-explanatory. If you are interested in deeper explanations feel free to visit the official docs: https://talkjs.com/docs/Concepts/Users/
 
 Due to the way we developed our functions in the `TalkAux` object, we do not need any additional models.
 

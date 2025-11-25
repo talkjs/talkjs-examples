@@ -2,7 +2,7 @@
 
 This is an example project for TalkJS's tutorial on [How to lock a conversation to be read-only](https://talkjs.com/resources/how-to-lock-a-conversation-to-be-read-only/).
 
-The project uses TalkJS's [custom conversation actions](https://talkjs.com/docs/Features/Customizations/Conversation_Actions/) to add a new "Set read-only" option to the chat inbox UI. We add code to listen for this custom action and use the [ConversationBuilder.setParticipant](https://talkjs.com/docs/Reference/JavaScript_Chat_SDK/ConversationBuilder/#ConversationBuilder__setParticipant) method to set each participant's access level to read-only.
+The project uses TalkJS's [custom conversation actions](https://talkjs.com/docs/Features/Conversations/Conversation_Actions/) to add a new "Set read-only" option to the chat inbox UI. We add code to listen for this custom action and use the [ConversationBuilder.setParticipant](https://talkjs.com/docs/UI_Components/JavaScript/Classic/Classic_Data_API/#ConversationBuilder__setParticipant) method to set each participant's access level to read-only.
 
 > [!TIP]
 > [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/howtos.how-to-lock-a-conversation-to-read-only.zip)

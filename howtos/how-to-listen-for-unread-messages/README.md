@@ -1,6 +1,6 @@
 # How to listen for unread messages
 
-This example shows you how to get the current user's unread messages with [`Session.unreads`](https://talkjs.com/docs/Reference/JavaScript_Chat_SDK/Session/#Session__unreads).
+This example shows you how to get the current user's unread messages with [`Session.unreads`](https://talkjs.com/docs/UI_Components/JavaScript/Classic/Session/#Session__unreads).
 
 TalkJS already displays an [unread message counter](https://talkjs.com/resources/unread-message-counter/) next to conversations with unread messages, but you might want to add a counter elsewhere in your UI. See our [Browser notifications](https://talkjs.com/docs/Features/Notifications/Browser_Notifications/#a-notifier-badge-in-your-navigation-bar) docs for more details.
 

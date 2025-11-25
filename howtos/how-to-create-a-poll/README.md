@@ -2,7 +2,7 @@
 
 This is an example project for the tutorial on [how to create a poll with TalkJS](https://talkjs.com/resources/how-to-create-a-poll-in-talkjs/).
 
-This project uses [HTML Panels](https://talkjs.com/docs/Features/Customizations/HTML_Panels/) to allow you to display a HTML document in your chats, just above the message field. We’ll use a panel to display the results of a poll, where users voted using custom action buttons. The question in this poll is sent as a [System Message](https://talkjs.com/docs/Reference/Concepts/System_Messages/). This System Message is created through a call to a backend server through TalkJS’s [REST API](https://talkjs.com/docs/Reference/REST_API/Getting_Started/Introduction/).
+This project uses [HTML Panels](https://talkjs.com/docs/Features/Customizations/HTML_Panels/) to allow you to display a HTML document in your chats, just above the message field. We’ll use a panel to display the results of a poll, where users voted using custom action buttons. The question in this poll is sent as a [System Message](https://talkjs.com/docs/Concepts/System_Messages/). This System Message is created through a call to a backend server through TalkJS’s [REST API](https://talkjs.com/docs/REST_API/).
 
 > [!TIP]
 > [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/howtos.how-to-create-a-poll.zip)

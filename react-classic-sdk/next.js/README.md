@@ -1,12 +1,12 @@
 # Next.js and TalkJS example
 
-This example accompanies our [Add chat to a Next.js app with TalkJS](https://talkjs.com/resources/add-chat-to-a-nextjs-app-with-talkjs/) tutorial. It demonstrates how to integrate TalkJS into a Next.js project using our [React SDK](https://talkjs.com/docs/Reference/React_SDK/Installation/).
+This example accompanies the [Add chat to a Next.js app with TalkJS](https://talkjs.com/resources/add-chat-to-a-nextjs-app-with-talkjs/) tutorial. It demonstrates how to integrate TalkJS into a Next.js project using the [classic React SDK](https://talkjs.com/docs/UI_Components/React/Classic/Installation/).
 
-The React SDK is not able to render components on the server, so we use Next.js's [Client Components](https://nextjs.org/docs/app/building-your-application/rendering/client-components) to render them on the client.
+The classic React SDK isn't able to render components on the server, so you can use Next.js's [Client Components](https://nextjs.org/docs/app/building-your-application/rendering/client-components) to render them on the client.
 
 This example uses React version 18.
 
-> [!TIP] > [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/react.next.js.zip)
+> [!TIP] > [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/react-classic-sdk.next.js.zip)
 
 ## Prerequisites
 

@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * This class matches the Talk.User object that's used by the TalkJS JavaScript SDK. It's converted
+ * This class matches the Talk.User object that's used by the TalkJS classic JavaScript SDK. It's converted
  * to JSON in JavaScriptCallbacks.java and then used in chat.js to synchronize user data. You can either
  * use this class in your apps, or modify chat.js to create Talk.User objects from your existing user classes.
  */

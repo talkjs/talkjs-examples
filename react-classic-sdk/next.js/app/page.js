@@ -1,5 +1,5 @@
 // Marks the file as a Next.js Client Component, so that it will only be rendered on the client,
-// as the TalkJS JavaScript SDK, which the React SDK uses, can only run in the browser.
+// as the TalkJS classic JavaScript SDK, which the React SDK uses, can only run in the browser.
 // See https://nextjs.org/docs/app/building-your-application/rendering/client-components
 "use client";
 
@@ -21,7 +21,7 @@ function Chat() {
   );
 
   const syncConversation = useCallback((session) => {
-    // JavaScript SDK code here
+    // Classic JavaScript SDK code here
     const conversation = session.getOrCreateConversation("new_conversation");
 
     const other = new Talk.User({
