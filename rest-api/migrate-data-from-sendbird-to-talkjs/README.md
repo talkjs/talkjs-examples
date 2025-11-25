@@ -4,7 +4,8 @@ This example project provides a script that imports Sendbird data into TalkJS. F
 
 You can test the import script with the example data provided, or run it on your own data that you export from Sendbird.
 
-> [!TIP] > [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/rest-api.migrate-data-from-sendbird-to-talkjs.zip)
+> [!TIP] 
+> [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/rest-api.migrate-data-from-sendbird-to-talkjs.zip)
 
 ## Prerequisites
 

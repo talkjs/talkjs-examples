@@ -4,7 +4,8 @@ This is a basic example that demonstrates how to integrate TalkJS into a React a
 
 This example uses React version 18. You can use the classic React SDK with versions 17 and up.
 
-> [!TIP] > [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/react-classic-sdk.basic-example.zip)
+> [!TIP] 
+> [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/react-classic-sdk.basic-example.zip)
 
 ## Prerequisites
 

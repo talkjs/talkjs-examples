@@ -4,7 +4,8 @@ This is an example project for TalkJS's tutorial on [How to integrate a chatbot 
 
 The project uses TalkJS webhooks to listen for new message events from the TalkJS server, calls the OpenAI API to generate a message reply, and then adds the reply to the conversation with the TalkJS API.
 
-> [!TIP] > [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/chatbot-integration.openai-chatgpt.zip)
+> [!TIP] 
+> [Download this example project as a zip file](https://github.com/talkjs/talkjs-examples/releases/latest/download/chatbot-integration.openai-chatgpt.zip)
 
 ## Prerequisites
 
