@@ -10,7 +10,7 @@ jobs:
     name: Zip and folders and create release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.2
 
       - name: zip folders
         run: find * -mindepth 1 -maxdepth 1 -type d -exec sh -c 'cd "$0" ; zip -r "../../`echo "$0" | tr / .`.zip" *' {} \;
@@ -20,7 +20,7 @@ jobs:
         run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H.%M.%S')"
 
       - name: release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@153bb8e04406b158c6c84fc1615b65b24149a1fe #v2.6.1
         with:
           files: "*.zip"
           tag_name: ${{ steps.date.outputs.date }}
