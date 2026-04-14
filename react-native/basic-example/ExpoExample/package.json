@@ -1,0 +1,52 @@
+{
+  "name": "talkjsexpo",
+  "main": "index.ts",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "expo start",
+    "reset-project": "node ./scripts/reset-project.js",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "lint": "expo lint"
+  },
+  "dependencies": {
+    "@notifee/react-native": "^9.1.8",
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "@react-navigation/bottom-tabs": "^7.15.9",
+    "@react-navigation/elements": "^2.9.14",
+    "@react-navigation/native": "^7.2.2",
+    "@talkjs/core": "^1.9.0",
+    "@talkjs/expo": "^0.17.1",
+    "expo": "~55.0.14",
+    "expo-build-properties": "~55.0.13",
+    "expo-constants": "~55.0.13",
+    "expo-device": "~55.0.15",
+    "expo-font": "~55.0.6",
+    "expo-glass-effect": "~55.0.10",
+    "expo-image": "~55.0.8",
+    "expo-linking": "~55.0.12",
+    "expo-notifications": "~55.0.18",
+    "expo-router": "~55.0.12",
+    "expo-splash-screen": "~55.0.17",
+    "expo-status-bar": "~55.0.5",
+    "expo-symbols": "~55.0.7",
+    "expo-system-ui": "~55.0.15",
+    "expo-task-manager": "~55.0.14",
+    "expo-web-browser": "~55.0.14",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "react-native": "0.83.4",
+    "react-native-gesture-handler": "~2.30.1",
+    "react-native-reanimated": "4.2.1",
+    "react-native-safe-area-context": "~5.6.2",
+    "react-native-screens": "~4.23.0",
+    "react-native-web": "~0.21.2",
+    "react-native-webview": "13.16.0",
+    "react-native-worklets": "0.7.2"
+  },
+  "devDependencies": {
+    "@types/react": "~19.2.14",
+    "typescript": "~5.9.3"
+  },
+  "private": true
+}
