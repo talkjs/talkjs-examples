@@ -18,7 +18,7 @@ Update the `YOUR_APP_ID` placeholder in `src/constants/chat.ts` with your TalkJS
 
 ## Configure push notifications
 
-Follow our Expo push notifications guide to configure push notifications for [Android](https://talkjs.com/docs/Guides/React_Native/Push_Notifications_Expo/#android) or [iOS](https://talkjs.com/docs/Guides/React_Native/Push_Notifications_Expo/#ios).
+Follow the TalkJS Expo push notifications guide to configure push notifications for [Android](https://talkjs.com/docs/Guides/React_Native/Push_Notifications_Expo/#android) or [iOS](https://talkjs.com/docs/Guides/React_Native/Push_Notifications_Expo/#ios).
 For both guides you can skip the **Install dependencies** step.
 
 ## Install and run the app
