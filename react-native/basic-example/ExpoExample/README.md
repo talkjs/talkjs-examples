@@ -23,7 +23,7 @@ For both guides you can skip the **Install dependencies** step.
 
 ## Install and run the app
 
-Before running the app, make sure you have connected your device via ADB for Android and on XCode for iOS.
+Before running the app, make sure you have connected your device via [adb](https://developer.android.com/tools/adb) for Android or on [XCode](https://developer.apple.com/xcode/) for iOS.
 If you aren't using a physical device, make sure the emulator/simulator for your respective platform is
 setup correctly.
 
