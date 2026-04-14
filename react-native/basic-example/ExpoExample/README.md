@@ -31,7 +31,7 @@ setup correctly.
 npx expo start
 ```
 
-Then in a separate terminal session/window run the following to build on Android:
+Then in a separate terminal session or window run the following to build on Android:
 
 ```sh
 npx expo run:android
