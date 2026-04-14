@@ -4,7 +4,7 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
 ## Prerequisites
 
-Set up your Android and/or iOS development environment as specified [here](https://docs.expo.dev/get-started/set-up-your-environment/?mode=development-build&buildEnv=local&platform=android&device=physical)
+[Set up your Android or iOS development environment](https://docs.expo.dev/get-started/set-up-your-environment/?mode=development-build&buildEnv=local&platform=android&device=physical) to start building with Expo.
 
 ## Install dependencies
 
