@@ -27,6 +27,8 @@ Before running the app, make sure you have connected your device via [adb](https
 If you aren't using a physical device, make sure the emulator/simulator for your respective platform is
 setup correctly.
 
+Enter the following command in your terminal window to start the React Native Metro:
+
 ```sh
 npx expo start
 ```
@@ -37,7 +39,7 @@ Then in a separate terminal session or window run the following to build on Andr
 npx expo run:android
 ```
 
-and the following to build on iOS:
+or the following to build on iOS:
 
 ```sh
 npx expo run:ios --device
