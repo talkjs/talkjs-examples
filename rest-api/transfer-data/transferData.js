@@ -312,83 +312,46 @@ async function prepareMessageForImport(app, message) {
 
   let transferredAttachments = 0;
   let failedAttachments = 0;
+  const content = [];
 
-  // Prefer structured content when present; fall back to legacy fields.
-  if (Array.isArray(message.content) && message.content.length > 0) {
-    const content = [];
-    for (const block of message.content) {
-      if (block.type === "text") {
-        content.push({ type: "text", children: block.children });
-        continue;
-      }
-
-      if (block.type === "location") {
-        content.push({
-          type: "location",
-          latitude: block.latitude,
-          longitude: block.longitude,
-        });
-        continue;
-      }
-
-      if (block.type === "file") {
-        try {
-          const fileToken = await transferFileAttachment(app, block);
-          content.push({ type: "file", fileToken });
-          transferredAttachments++;
-        } catch (err) {
-          failedAttachments++;
-          console.warn(
-            `[TalkJS] Could not transfer attachment for message ${message.id}: ${err.message}`,
-          );
-        }
-        continue;
-      }
-
-      content.push(block);
+  for (const block of message.content) {
+    if (block.type === "text") {
+      content.push({ type: "text", children: block.children });
+      continue;
     }
 
-    if (content.length === 0) {
-      return { message: null, transferredAttachments, failedAttachments };
-    }
-
-    imported.content = content;
-    return { message: imported, transferredAttachments, failedAttachments };
-  }
-
-  if (message.attachment) {
-    try {
-      const fileToken = await transferFileAttachment(app, message.attachment);
-      imported.content = [{ type: "file", fileToken }];
-      transferredAttachments++;
-      return { message: imported, transferredAttachments, failedAttachments };
-    } catch (err) {
-      failedAttachments++;
-      console.warn(
-        `[TalkJS] Could not transfer attachment for message ${message.id}: ${err.message}`,
-      );
-      return { message: null, transferredAttachments, failedAttachments };
-    }
-  }
-
-  if (message.text != null && message.text !== "") {
-    imported.text = message.text;
-    return { message: imported, transferredAttachments, failedAttachments };
-  }
-
-  if (message.location) {
-    imported.content = [
-      {
+    if (block.type === "location") {
+      content.push({
         type: "location",
-        latitude: message.location[0],
-        longitude: message.location[1],
-      },
-    ];
-    return { message: imported, transferredAttachments, failedAttachments };
+        latitude: block.latitude,
+        longitude: block.longitude,
+      });
+      continue;
+    }
+
+    if (block.type === "file") {
+      try {
+        const fileToken = await transferFileAttachment(app, block);
+        content.push({ type: "file", fileToken });
+        transferredAttachments++;
+      } catch (err) {
+        failedAttachments++;
+        console.warn(
+          `[TalkJS] Could not transfer attachment for message ${message.id}: ${err.message}`,
+        );
+      }
+      continue;
+    }
+
+    content.push(block);
   }
 
-  // Empty / unsupported message body — skip rather than fail the batch.
-  return { message: null, transferredAttachments, failedAttachments };
+  if (content.length === 0) {
+    return { message: null, transferredAttachments, failedAttachments };
+  }
+
+  imported.content = content;
+  return { message: imported, transferredAttachments, failedAttachments };
 }
 
 async function transferFileAttachment(app, fileBlock) {
